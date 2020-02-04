@@ -15,6 +15,6 @@ function setup() {
 describe('WelcomeMessage Test Suite', () => {
   it('Should have an image', () => {
     const { wrapper } = setup();
-    expect(wrapper.find('img').exists()).toBe(true);
+    expect(wrapper.find('img').exists()).toBe(false);
   });
 });
