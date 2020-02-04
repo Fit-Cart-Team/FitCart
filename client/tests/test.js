@@ -6,7 +6,7 @@ import WelcomeMessage from '../src/components/WelcomeMessage';
 
 function setup() {
   const props = {
-    imgPath: 'some/image/path/to/a/mock/image'
+    imgPath: 'some/image/path/to/a/mock/image',
   };
   const wrapper = shallow(<WelcomeMessage />);
   return { wrapper, props };
@@ -15,6 +15,6 @@ function setup() {
 describe('WelcomeMessage Test Suite', () => {
   it('Should have an image', () => {
     const { wrapper } = setup();
-    expect(wrapper.find('img').exists()).toBe(false);
+    expect(wrapper.find('img').exists()).toBe(true);
   });
 });
