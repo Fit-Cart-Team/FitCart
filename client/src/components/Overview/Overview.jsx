@@ -50,11 +50,7 @@ const Overview = () => {
   return (
     <div className="overview">
       <div className="overview-top">
-        <ImageGallery
-          productInfo={productInfo}
-          styleInfo={styleInfo}
-          selectedStyle
-        />
+        <ImageGallery styleInfo={styleInfo} selectedStyle={selectedStyle} />
         <div className="right-hand-overview">
           <Details productInfo={productInfo} styleInfo={styleInfo} />
           <StyleSelector

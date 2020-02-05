@@ -3,7 +3,7 @@
   background: beige;
 }
 
-.overview .overview-top .bottom-information {
+.overview .bottom-information {
   display: flex;
 }
 
@@ -16,6 +16,7 @@
 }
 
 .overview-top {
+  display: flex;
   margin-bottom: 30px;
 }
 #app {

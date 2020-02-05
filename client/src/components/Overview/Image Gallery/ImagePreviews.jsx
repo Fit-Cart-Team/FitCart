@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ImagePreviews = () => {
+const ImagePreviews = ({ photos }) => {
   return <div></div>;
 };
 
