@@ -5,7 +5,7 @@ const ProductOverview = ({ productInfo }) => {
   console.log(features);
   const displayFeatures = features ? (
     features.map(feature => (
-      <p>
+      <p key={feature.feature}>
         {feature.feature} | {feature.value || ''}
       </p>
     ))

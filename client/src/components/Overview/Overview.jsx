@@ -37,10 +37,10 @@ const Overview = () => {
         axios.get(`http://3.134.102.30/products/${id}/styles`).then(results => {
           console.log(results.data.results);
           let styles = results.data.results;
-          setStyleInfo(results.data.results);
+          setStyleInfo(styles);
           styles.forEach((style, index) => {
             if (style['default?'] === 1) {
-              setSelectedStyle(style.style_id);
+              setSelectedStyle(index);
             }
           });
         });
@@ -51,22 +51,21 @@ const Overview = () => {
     <div className="overview">
       <div className="overview-top">
         <ImageGallery
-          id={id}
           productInfo={productInfo}
           styleInfo={styleInfo}
           selectedStyle
         />
         <div className="right-hand-overview">
-          <Details id={id} productInfo={productInfo} styleInfo={styleInfo} />
+          <Details productInfo={productInfo} styleInfo={styleInfo} />
           <StyleSelector
             id={id}
             styleInfo={styleInfo}
             setSelectedStyle={setSelectedStyle}
           />
-          <AddCart id={id} productInfo={productInfo} styleInfo={styleInfo} />
+          <AddCart styleInfo={styleInfo} selectedStyle={selectedStyle} />
         </div>
       </div>
-      <Information id={id} productInfo={productInfo} />
+      <Information productInfo={productInfo} />
     </div>
   );
 };

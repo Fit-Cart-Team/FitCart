@@ -4,11 +4,13 @@ import AddButton from './AddButton';
 import QuantitySelector from './QuantitySelector';
 import SizeSelector from './SizeSelector';
 
-const AddCart = ({ id }) => {
+const AddCart = ({ selectedStyle, styleInfo }) => {
+  let currStyle = styleInfo[selectedStyle];
+
   return (
-    <div>
-      <SizeSelector id={id} />
-      <QuantitySelector id={id} />
+    <div className="cart-options">
+      <SizeSelector selectedStyle={currStyle} />
+      <QuantitySelector selectedStyle={currStyle} />
       <AddButton />
     </div>
   );
