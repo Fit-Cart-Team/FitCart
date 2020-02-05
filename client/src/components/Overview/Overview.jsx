@@ -58,7 +58,6 @@ const Overview = () => {
         <div className="right-hand-overview">
           <Details productInfo={productInfo} styleInfo={styleInfo} />
           <StyleSelector
-            id={id}
             styleInfo={styleInfo}
             setSelectedStyle={setSelectedStyle}
           />

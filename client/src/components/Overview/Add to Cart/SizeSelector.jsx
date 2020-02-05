@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SizeSelector = ({ selectedStyle }) => {
+const SizeSelector = ({ selectedStyle, setSize }) => {
   const skus = selectedStyle ? selectedStyle.skus : {};
   const sizes = Object.keys(skus);
   const sizeOptions = sizes.map(size => {
@@ -15,10 +15,15 @@ const SizeSelector = ({ selectedStyle }) => {
     );
   });
   return sizes.length > 0 ? (
-    <select className="size-selector" defaultValue="Select Size">
-      {/* <option value="" selected disabled hidden>
+    <select
+      className="size-selector"
+      onChange={e => {
+        setSize(e.target.value);
+      }}
+    >
+      <option value="" selected disabled hidden>
         Select Size
-      </option> */}
+      </option>
       {sizeOptions}
     </select>
   ) : (
