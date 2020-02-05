@@ -1,6 +1,7 @@
 import React from 'react';
 import Homepage from './Homepage';
 import Overview from './Overview/Overview';
+import QuestionsAnswers from './QA/QuestionsAnswers';
 import NavBar from './NavBar';
 import { Route, Switch } from 'react-router-dom';
 
@@ -15,11 +16,12 @@ class App extends React.Component {
       <React.Fragment>
         <NavBar />
         <Switch>
-          <Route exact path="/">
+          <Route exact path='/'>
             <Homepage />
           </Route>
-          <Route path="/:id">
+          <Route path='/:id'>
             <Overview />
+            <QuestionsAnswers />
           </Route>
         </Switch>
       </React.Fragment>
