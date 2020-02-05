@@ -1,0 +1,7 @@
+.nav-bar {
+  display: flex;
+  background: beige;
+}
+#app {
+  padding: 0;
+}

@@ -5,7 +5,7 @@ import App from './components/App';
 
 ReactDOM.render(
   <Router>
-    <App test="Test" />
+    <App />
   </Router>,
   document.getElementById('app')
 );
