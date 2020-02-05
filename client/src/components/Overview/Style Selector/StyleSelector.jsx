@@ -2,7 +2,7 @@ import React from 'react';
 
 import Style from './Style';
 
-const StyleSelector = () => {
+const StyleSelector = ({ id }) => {
   return <div></div>;
 };
 

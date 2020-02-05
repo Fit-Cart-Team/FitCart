@@ -3,8 +3,13 @@ import React from 'react';
 import ProductOverview from './ProductOverview';
 import SocialMedia from './SocialMedia';
 
-const Information = () => {
-  return <div></div>;
+const Information = ({ id }) => {
+  return (
+    <div className="bottom-information">
+      <ProductOverview id={id} />
+      <SocialMedia />
+    </div>
+  );
 };
 
 export default Information;

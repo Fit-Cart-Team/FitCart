@@ -4,8 +4,14 @@ import AddButton from './AddButton';
 import QuantitySelector from './QuantitySelector';
 import SizeSelector from './SizeSelector';
 
-const AddCart = () => {
-  return <div></div>;
+const AddCart = ({ id }) => {
+  return (
+    <div>
+      <SizeSelector id={id} />
+      <QuantitySelector id={id} />
+      <AddButton />
+    </div>
+  );
 };
 
 export default AddCart;
