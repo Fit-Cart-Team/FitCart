@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SocialMedia = () => {
-  return <div></div>;
+  return <div>Social Media</div>;
 };
 
 export default SocialMedia;

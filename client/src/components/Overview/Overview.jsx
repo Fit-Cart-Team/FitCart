@@ -23,7 +23,8 @@ const Overview = () => {
   const { id } = useParams();
 
   const [productInfo, setProductInfo] = useState({});
-  const [styleInfo, setStyleInfo] = useState({});
+  const [styleInfo, setStyleInfo] = useState([]);
+  const [selectedStyle, setSelectedStyle] = useState(0);
 
   useEffect(() => {
     axios
@@ -35,20 +36,31 @@ const Overview = () => {
       .then(() => {
         axios.get(`http://3.134.102.30/products/${id}/styles`).then(results => {
           console.log(results.data.results);
-          setStyleInfo(results.data.results);
+          let styles = results.data.results;
+          setStyleInfo(styles);
+          styles.forEach((style, index) => {
+            if (style['default?'] === 1) {
+              setSelectedStyle(index);
+            }
+          });
         });
       });
   }, []);
 
   return (
     <div className="overview">
-      <ImageGallery id={id} />
-      <div className="right-hand-overview">
-        <Details id={id} productInfo={productInfo} />
-        <StyleSelector id={id} />
-        <AddCart id={id} />
+      <div className="overview-top">
+        <ImageGallery styleInfo={styleInfo} selectedStyle={selectedStyle} />
+        <div className="right-hand-overview">
+          <Details productInfo={productInfo} styleInfo={styleInfo} />
+          <StyleSelector
+            styleInfo={styleInfo}
+            setSelectedStyle={setSelectedStyle}
+          />
+          <AddCart styleInfo={styleInfo} selectedStyle={selectedStyle} />
+        </div>
       </div>
-      <Information id={id} productInfo={productInfo} />
+      <Information productInfo={productInfo} />
     </div>
   );
 };

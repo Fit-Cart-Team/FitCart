@@ -2,6 +2,23 @@
   display: flex;
   background: beige;
 }
+
+.overview .bottom-information {
+  display: flex;
+}
+
+.product-description {
+  display: flex;
+}
+
+.product-description > div {
+  margin: 1vw;
+}
+
+.overview-top {
+  display: flex;
+  margin-bottom: 30px;
+}
 #app {
   padding: 0;
 }
