@@ -1,5 +1,7 @@
 import React from 'react';
+import Homepage from './Homepage';
 import Overview from './Overview/Overview';
+import NavBar from './NavBar';
 import { Route, Switch } from 'react-router-dom';
 
 class App extends React.Component {
@@ -9,11 +11,18 @@ class App extends React.Component {
   }
 
   render() {
-    const { test } = this.props;
     return (
-      <Route path="/:id">
-        <Overview />
-      </Route>
+      <React.Fragment>
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <Homepage />
+          </Route>
+          <Route path="/:id">
+            <Overview />
+          </Route>
+        </Switch>
+      </React.Fragment>
     );
   }
 }
