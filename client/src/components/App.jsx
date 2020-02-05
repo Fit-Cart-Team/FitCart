@@ -1,7 +1,7 @@
 import React from 'react';
 import Homepage from './Homepage';
 import Overview from './Overview/Overview';
-import QuestionsAnswers from './QA/QuestionsAnswers.jsx.js';
+import QuestionsAnswers from './QA/QuestionsAnswers';
 import NavBar from './NavBar';
 import { Route, Switch } from 'react-router-dom';
 
