@@ -1,4 +1,5 @@
 import React from 'react';
+import Overview from './Overview/Overview';
 import { Route, Switch } from 'react-router-dom';
 
 class App extends React.Component {
@@ -9,7 +10,11 @@ class App extends React.Component {
 
   render() {
     const { test } = this.props;
-    return <h1>{test}</h1>;
+    return (
+      <Route path="/:id">
+        <Overview />
+      </Route>
+    );
   }
 }
 
