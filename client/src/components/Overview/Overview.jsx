@@ -49,20 +49,22 @@ const Overview = () => {
 
   return (
     <div className="overview">
-      <ImageGallery
-        id={id}
-        productInfo={productInfo}
-        styleInfo={styleInfo}
-        selectedStyle
-      />
-      <div className="right-hand-overview">
-        <Details id={id} productInfo={productInfo} styleInfo={styleInfo} />
-        <StyleSelector
+      <div className="overview-top">
+        <ImageGallery
           id={id}
+          productInfo={productInfo}
           styleInfo={styleInfo}
-          setSelectedStyle={setSelectedStyle}
+          selectedStyle
         />
-        <AddCart id={id} productInfo={productInfo} styleInfo={styleInfo} />
+        <div className="right-hand-overview">
+          <Details id={id} productInfo={productInfo} styleInfo={styleInfo} />
+          <StyleSelector
+            id={id}
+            styleInfo={styleInfo}
+            setSelectedStyle={setSelectedStyle}
+          />
+          <AddCart id={id} productInfo={productInfo} styleInfo={styleInfo} />
+        </div>
       </div>
       <Information id={id} productInfo={productInfo} />
     </div>
