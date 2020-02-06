@@ -3,12 +3,6 @@ import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return (
-    // <div className="nav-bar">
-    // <img
-    //   src="https://cdn.iconscout.com/icon/premium/png-256-thumb/shopping-bags-8-859849.png"
-    //   className="logo"
-    // ></img>
-    // </div>
     <ul>
       <li>
         <Link to="/" className="active">
