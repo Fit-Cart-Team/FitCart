@@ -21,31 +21,37 @@ const Context = React.createContext('lol');
 
 const Overview = () => {
   const { id } = useParams();
-
+  const [url, seturl] = useState(id);
   const [productInfo, setProductInfo] = useState({});
   const [styleInfo, setStyleInfo] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({ 0: '' });
+  if (url !== id) {
+    seturl(id);
+  }
 
   useEffect(() => {
     axios
-      .get(`http://3.134.102.30/products/${id}`)
+      .get(`http://3.134.102.30/products/${url}`)
       .then(results => {
         // console.log(results.data);
         setProductInfo(results.data);
       })
       .then(() => {
-        axios.get(`http://3.134.102.30/products/${id}/styles`).then(results => {
-          // console.log(results.data.results);
-          let styles = results.data.results;
-          setStyleInfo(styles);
-          styles.forEach((style, index) => {
-            if (style['default?'] === 1) {
-              setSelectedStyle({ index: index, name: style.name });
-            }
+        axios
+          .get(`http://3.134.102.30/products/${url}/styles`)
+          .then(results => {
+            // console.log(results.data.results);
+            let styles = results.data.results;
+            setStyleInfo(styles);
+            styles.forEach((style, index) => {
+              if (style['default?'] === 1) {
+                setSelectedStyle({ index: index, name: style.name });
+              }
+            });
           });
-        });
       });
-  }, []);
+  }, [url]);
+
   return (
     <div className="overview">
       <div className="overview-top">
