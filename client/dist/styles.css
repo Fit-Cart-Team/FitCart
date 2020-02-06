@@ -103,6 +103,7 @@ li a:hover:not(.active) {
 .style-list {
   display: flex;
   flex-wrap: wrap;
+  max-width: 800px;
 }
 
 .style-item {
