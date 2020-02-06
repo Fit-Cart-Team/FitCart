@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProductOverview = ({ productInfo }) => {
-  const { description, features } = productInfo;
+  const { description, features, slogan } = productInfo;
   const displayFeatures = features ? (
     features.map(feature => (
       <p key={feature.feature}>
@@ -13,7 +13,11 @@ const ProductOverview = ({ productInfo }) => {
   );
   return (
     <div className="product-description">
-      <div className="product-description-left">{description}</div>
+      <div className="product-description-left">
+        <div className="slogan">{slogan}</div>
+        <div className="description">{description}</div>
+      </div>
+      <div className="divider"></div>
       <div className="product-description-right">{displayFeatures}</div>
     </div>
   );
