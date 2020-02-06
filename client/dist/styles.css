@@ -39,6 +39,19 @@
   font-size: larger;
 }
 
+.prices {
+  display: flex;
+}
+
+.original-price {
+  text-decoration: line-through;
+}
+
+.sale-price {
+  margin-right: 10px;
+  color: red;
+}
+
 .style-list {
   display: flex;
   flex-wrap: wrap;
