@@ -5,7 +5,7 @@ import SocialMedia from './SocialMedia';
 
 const Information = ({ productInfo }) => {
   return (
-    <div className="bottom-information">
+    <div className="overview-bottom">
       <ProductOverview productInfo={productInfo} />
       <SocialMedia />
     </div>
