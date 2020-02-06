@@ -23,32 +23,51 @@ const Overview = () => {
   const { id } = useParams();
 
   const [productInfo, setProductInfo] = useState({});
-  const [styleInfo, setStyleInfo] = useState({});
+  const [styleInfo, setStyleInfo] = useState([]);
+  const [selectedStyle, setSelectedStyle] = useState({ 0: '' });
 
   useEffect(() => {
     axios
       .get(`http://3.134.102.30/products/${id}`)
       .then(results => {
-        console.log(results.data);
+        // console.log(results.data);
         setProductInfo(results.data);
       })
       .then(() => {
         axios.get(`http://3.134.102.30/products/${id}/styles`).then(results => {
-          console.log(results.data.results);
-          setStyleInfo(results.data.results);
+          // console.log(results.data.results);
+          let styles = results.data.results;
+          setStyleInfo(styles);
+          styles.forEach((style, index) => {
+            if (style['default?'] === 1) {
+              setSelectedStyle({ index: index, name: style.name });
+            }
+          });
         });
       });
   }, []);
-
   return (
     <div className="overview">
-      <ImageGallery id={id} />
-      <div className="right-hand-overview">
-        <Details id={id} productInfo={productInfo} />
-        <StyleSelector id={id} />
-        <AddCart id={id} />
+      <div className="overview-top">
+        <ImageGallery styleInfo={styleInfo} selectedStyle={selectedStyle} />
+        <div className="right-hand-overview">
+          <Details
+            productInfo={productInfo}
+            styleInfo={styleInfo}
+            selectedStyle={selectedStyle}
+          />
+          <p>
+            <b>Style > </b>
+            {selectedStyle.name}
+          </p>
+          <StyleSelector
+            styleInfo={styleInfo}
+            setSelectedStyle={setSelectedStyle}
+          />
+          <AddCart styleInfo={styleInfo} selectedStyle={selectedStyle} />
+        </div>
       </div>
-      <Information id={id} productInfo={productInfo} />
+      <Information productInfo={productInfo} />
     </div>
   );
 };
