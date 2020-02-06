@@ -4,7 +4,7 @@ import ImageCarousel from './ImageCarousel';
 import ImagePreviews from './ImagePreviews';
 
 const ImageGallery = ({ styleInfo, selectedStyle }) => {
-  let currStyle = styleInfo[selectedStyle];
+  let currStyle = styleInfo[selectedStyle.index];
   let photos = currStyle ? currStyle.photos : [];
   return (
     <div className="image-gallery">

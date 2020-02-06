@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Style = ({ style, setSelectedStyle }) => {
+const Style = ({ style, setSelectedStyle, index }) => {
   return (
     <div
       className="style-item"
       onClick={() => {
-        setSelectedStyle(style.style_id);
+        setSelectedStyle({ index: index, name: style.name });
       }}
     >
       {style.name}

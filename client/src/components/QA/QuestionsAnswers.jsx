@@ -6,7 +6,7 @@ import Question from './Question';
 
 const QuestionsAnswers = () => {
   const { id } = useParams();
-  return <div>{id}</div>;
+  return <div></div>;
 };
 
 export default QuestionsAnswers;

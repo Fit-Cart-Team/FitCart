@@ -2,7 +2,6 @@ import React from 'react';
 
 const ProductOverview = ({ productInfo }) => {
   const { description, features } = productInfo;
-  console.log(features);
   const displayFeatures = features ? (
     features.map(feature => (
       <p key={feature.feature}>
