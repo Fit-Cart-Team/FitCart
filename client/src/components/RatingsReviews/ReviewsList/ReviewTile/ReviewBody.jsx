@@ -12,7 +12,7 @@ const ReviewBody = (props) => {
     return (
       <div>
         <p>
-          Body: {props.body}
+          {props.body}
         </p>
         { (props.photos.length) ? (<Photos photos={props.photos} />) : (<div></div>) }
       </div>

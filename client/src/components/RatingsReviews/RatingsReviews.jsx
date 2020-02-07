@@ -23,7 +23,7 @@ const RatingsReviews = () => {
   return (
     <div id="ratings-reviews" >
       <h1>
-        From Ratings & Reviews: {id}
+        Ratings & Reviews
       </h1>
       <ReviewsList id={id} reviewsList={reviewsList} />
     </div>
