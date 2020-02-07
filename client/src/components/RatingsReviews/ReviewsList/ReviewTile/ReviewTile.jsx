@@ -7,6 +7,7 @@ import ReviewResponse from './ReviewResponse';
 import RatingHelpfulness from './RatingHelpfulness';
 import ReviewDate from './ReviewDate';
 import ReviewerName from './ReviewerName';
+import Stars from '../../../Stars';
 
 // review_id: 57340
 // rating: 5
@@ -28,7 +29,8 @@ const ReviewTile = (props) => {
       </h2>
       <div>
         <div style={{display: "inline-block", "float": "left"}} >
-          <StarRating rating={review.rating} />
+          <Stars avg={review.rating} />
+          {/* <StarRating rating={review.rating} /> */}
         </div>
         <div style={{display: "inline-block", "float": "right"}} >
           <ReviewerName reviewerName={review.reviewer_name} />
