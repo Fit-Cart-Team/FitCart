@@ -25,10 +25,8 @@ const NavBar = () => {
         <Link to="/5">Shoes</Link>
       </li>
       <li className="float">
-        <div className="search-bar">
-          <input type="text"></input>
-          <button>Search</button>
-        </div>
+        <input className="search-text" type="text"></input>
+        <div className="fa fa-search search-button"></div>
       </li>
     </ul>
   );

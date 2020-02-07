@@ -48,10 +48,41 @@ li a:hover:not(.active) {
 }
 
 .float {
-  margin: 12px 20px 13px 0px;
   position: relative;
   top: 70%;
   float: right;
+  background: none;
+  border-radius: 50px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-button {
+  color: #bdc3c7;
+  float: right;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.search-text {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid #bdc3c7;
+  float: left;
+  padding: 0;
+  color: #bdc3c7;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 200px;
 }
 
 .overview {
