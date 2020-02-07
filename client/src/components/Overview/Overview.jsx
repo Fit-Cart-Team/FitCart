@@ -62,7 +62,7 @@ const Overview = () => {
             styleInfo={styleInfo}
             selectedStyle={selectedStyle}
           />
-          <p>
+          <p className="style-label">
             <b>Style > </b>
             {selectedStyle.name}
           </p>

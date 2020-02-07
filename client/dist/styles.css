@@ -240,9 +240,13 @@ li a:hover:not(.active) {
   background-clip: text;
 }
 
+.product-category {
+  font-size: large;
+}
+
 .product-title {
   font-weight: bolder;
-  font-size: larger;
+  font-size: xx-large;
 }
 
 .prices {
@@ -256,6 +260,10 @@ li a:hover:not(.active) {
 .sale-price {
   margin-right: 10px;
   color: red;
+}
+
+.style-label {
+  margin: 0 0 10px 0;
 }
 
 .style-list {
@@ -301,27 +309,30 @@ li a:hover:not(.active) {
 }
 
 .cart-options > select {
-  margin: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .size-selector {
   flex-grow: 3;
   appearance: none;
-  height: 75px;
+  margin-right: 20px;
+  height: 60px;
   padding: 20px;
-  font-size: 20px;
+  font-size: medium;
   background-color: white;
   color: black;
-  border: 2px solid #525252;
+  border: 1px solid #525252;
 }
 
 .quantity-selector {
   flex-grow: 2;
+  height: 60px;
   padding: 20px;
-  font-size: 20px;
+  font-size: medium;
   background-color: white;
   color: black;
-  border: 2px solid #525252;
+  border: 1px solid #525252;
 }
 
 .cart-buttons {
@@ -329,7 +340,7 @@ li a:hover:not(.active) {
 }
 
 .cart-buttons > button {
-  margin: 10px;
+  /* margin: 10px; */
   cursor: pointer;
   transition: 0.5s;
 }
@@ -340,18 +351,32 @@ li a:hover:not(.active) {
 
 .add-to-bag {
   flex-grow: 5;
+  margin-right: 20px;
+  height: 60px;
   padding: 20px;
-  font-size: 20px;
+  font-size: medium;
   background-color: white;
   color: black;
-  border: 2px solid #525252;
+  border: 1px solid black;
+}
+
+.add-text {
+  float: left;
+}
+
+.fa-plus {
+  float: right;
+  font-size: large;
+  font-weight: lighter;
 }
 .add-to-favorites {
   flex-grow: 2;
-  font-size: 50px;
+  height: 60px;
+  max-width: 60px;
+  font-size: 30px;
   background-color: white;
   color: black;
-  border: 2px solid #525252;
+  border: 1px solid black;
 }
 
 .overview-bottom {
