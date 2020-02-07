@@ -18,6 +18,19 @@ li {
   float: left;
 }
 
+.imgs {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li img {
+  height: 25px;
+  width: 25px;
+}
+
 li a {
   display: block;
   color: white;
@@ -157,7 +170,17 @@ li a:hover:not(.active) {
 }
 
 .size-selector {
-  flex-grow: 1;
+  flex-grow: 5;
+  appearance: none;
+  height: 75px;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.quantity-selector {
+  flex-grow: 2;
+  padding: 20px;
+  font-size: 20px;
 }
 
 .overview-bottom {
@@ -182,7 +205,7 @@ li a:hover:not(.active) {
 }
 
 .divider {
-  width: 2px;
+  width: 1px;
   height: 100px;
   background: #525252;
 }

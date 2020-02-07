@@ -5,8 +5,9 @@ const NavBar = () => {
   return (
     <ul>
       <li>
-        <Link to="/" className="active">
-          Home
+        <Link to="/" className="active imgs">
+          <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/shopping-bags-8-859849.png" />
+          {/* Home */}
         </Link>
       </li>
       <li>
