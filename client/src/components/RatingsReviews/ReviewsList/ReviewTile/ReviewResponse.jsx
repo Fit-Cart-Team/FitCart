@@ -5,8 +5,11 @@ const ReviewResponse = (props) => {
   return (
     <div>
       <p>
-        Review Response: {props.response}
+        Response:
       </p>   
+      <p>
+        {props.response}
+      </p>
     </div>
   );
 };
