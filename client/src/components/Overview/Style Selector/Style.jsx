@@ -19,7 +19,7 @@ const Style = ({ style, setSelectedStyle, index }) => {
       }}
     >
       {photoIMG}
-      <span class="style-tooltip">{style.name}</span>
+      <span className="style-tooltip">{style.name}</span>
     </div>
   );
 };
