@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 
-const RatingHelpfulness = (props) => {
+const RatingHelpfulness = props => {
   let review_id = props.reviewID;
 
   const [markable, setMarkable] = useState(true);
