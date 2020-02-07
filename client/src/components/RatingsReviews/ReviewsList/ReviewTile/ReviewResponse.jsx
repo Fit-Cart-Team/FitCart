@@ -5,7 +5,7 @@ const ReviewResponse = (props) => {
   return (
     <div>
       <p>
-        Review Response Component
+        Review Response: {props.response}
       </p>   
     </div>
   );

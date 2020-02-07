@@ -1,14 +1,10 @@
 import React from 'react';
 
-const ReviewerDate = (props) => {
+const ReviewerName = (props) => {
 
   return (
-    <div>
-      <p>
-        Reviewer Date Component
-      </p>   
-    </div>
+    <span> Name: {props.reviewerName}, </span>
   );
 };
 
-export default ReviewerDate;
+export default ReviewerName;

@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Photos from './Photos';
 
 const ReviewBody = (props) => {
+  const [showMore, setShowMore] = useState(false);
 
-  return (
-    <div>
-      <p>
-        Review Body Component
-      </p>   
-    </div>
-  );
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
+  }
+
+  if (props.body.length < 250) {
+    return (
+      <div>
+        <p>
+          Body: {props.body}
+        </p>
+        { (props.photos.length) ? (<Photos photos={props.photos} />) : (<div></div>) }
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>
+          Body: { (!showMore) ? (`${props.body.slice(0, 250)}...`) : (`${props.body}`) }
+        </p>
+        <button onClick={toggleShowMore} >{ (!showMore) ? 'Show more' : 'Show less' }</button>
+        { (props.photos.length) ? (<Photos photos={props.photos} />) : (<div></div>) }
+      </div>
+    )
+  }
+
 };
 
 export default ReviewBody;

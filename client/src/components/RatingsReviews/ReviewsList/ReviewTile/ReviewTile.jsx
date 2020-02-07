@@ -26,13 +26,15 @@ const ReviewTile = (props) => {
       <h2>
         Review Tile Component
       </h2>
-      <StarRating rating={review.rating} />
-      <ReviewerName reviewerName={review.reviewer_name} />
-      <ReviewDate date={review.date} />
+      <div>
+        <StarRating rating={review.rating} />
+        <ReviewerName reviewerName={review.reviewer_name} />
+        <ReviewDate date={review.date} />
+      </div>
       <ReviewSummary summary={review.summary} />
-      <ReviewBody body={review.body} />
-      <Recommend recommend={review.recommend} />
-      {review.response ? <ReviewResponse response={review.response} /> : <div></div>}
+      <ReviewBody body={review.body} photos={review.photos} />
+      { (review.recommend > 0) ? <Recommend recommend={review.recommend} /> : <div></div> }
+      { review.response ? <ReviewResponse response={review.response} /> : <div></div> }
       <RatingHelpfulness helpfulness={review.helpfulness} />
     </div>
   );
