@@ -27,15 +27,19 @@ const Question = ({ q }) => {
       <p>
         <b>Q: {q.question_body} </b>
         <small>
-          <Helpful question={q} />
+          <Helpful question={q} /> | <u>Add Answer</u>
         </small>
       </p>
-      <div>
-        <b>A: </b>
-        <span>
-          <Alist list={alist} />
-        </span>
-      </div>
+      {alist.length > 0 ? (
+        <div>
+          <b>A: </b>
+          <span>
+            <Alist list={alist} />
+          </span>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };
