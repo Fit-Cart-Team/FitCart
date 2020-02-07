@@ -6,18 +6,22 @@ import ReviewsList from './ReviewsList/ReviewsList';
 const RatingsReviews = () => {
   const { id } = useParams();
 
+  const [url, seturl] = useState(id);
   const [reviewsList, setReviewsList] = useState([]);
 
+  if (url !== id) {
+    seturl(id);
+  }
+
   useEffect(() => {
-    axios.get(`http://3.134.102.30/reviews/${id}/list`)
+    axios.get(`http://3.134.102.30/reviews/${url}/list`)
       .then(( {data} ) => {
-        console.log(data);
         setReviewsList(data.results);
       })
-  }, []);
+  }, [url]);
 
   return (
-    <div>
+    <div id="ratings-reviews" >
       <h1>
         From Ratings & Reviews: {id}
       </h1>
