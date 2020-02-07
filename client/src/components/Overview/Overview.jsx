@@ -42,12 +42,17 @@ const Overview = () => {
           .then(results => {
             // console.log(results.data.results);
             let styles = results.data.results;
+            let emptyStyle = true;
             setStyleInfo(styles);
             styles.forEach((style, index) => {
               if (style['default?'] === 1) {
                 setSelectedStyle({ index: index, name: style.name });
+                emptyStyle = false;
               }
             });
+            if (emptyStyle) {
+              setSelectedStyle({ index: 0, name: styles[0].name });
+            }
           });
       });
   }, [url]);
