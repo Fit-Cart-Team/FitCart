@@ -5,7 +5,7 @@ import Question from './Question';
 const Qlist = ({ list }) => {
   const { id } = useParams();
   return list.map((q, index) => {
-    return <Question q={q} key={index} qid={q.question_id} />;
+    return <Question q={q} key={index} id={q.question_id} />;
   });
 };
 export default Qlist;

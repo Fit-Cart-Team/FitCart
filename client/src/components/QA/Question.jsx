@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Alist from './Alist';
 
 const Question = ({ q }) => {
   const [alist, setalist] = useState([]);
@@ -22,7 +23,15 @@ const Question = ({ q }) => {
 
   return (
     <div>
-      <p>Q: {q.question_body}</p>
+      <p>
+        <b>Q: {q.question_body}</b>
+      </p>
+      <div>
+        <b>A: </b>
+        <span>
+          <Alist list={alist} />
+        </span>
+      </div>
     </div>
   );
 };
