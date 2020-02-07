@@ -17,7 +17,7 @@ const Details = ({ productInfo, styleInfo, selectedStyle }) => {
   }
   return (
     <div className="product-info">
-      <Stars avg={2.5} />
+      <Stars avg={0.6} />
       <div className="product-category">{productInfo.category}</div>
       <div className="product-title">{productInfo.name}</div>
       <div className="product-price">{currPrice}</div>
