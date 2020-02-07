@@ -291,7 +291,7 @@ li a:hover:not(.active) {
 }
 
 .fa-check-circle {
-  color: white;
+  color: rgb(75, 179, 106);
   position: absolute;
   border-radius: 50%;
 }
