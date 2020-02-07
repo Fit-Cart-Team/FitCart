@@ -5,8 +5,9 @@ const NavBar = () => {
   return (
     <ul>
       <li>
-        <Link to="/" className="active">
-          Home
+        <Link to="/" className="active imgs">
+          <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/shopping-bags-8-859849.png" />
+          {/* Home */}
         </Link>
       </li>
       <li>
@@ -25,10 +26,8 @@ const NavBar = () => {
         <Link to="/5">Shoes</Link>
       </li>
       <li className="float">
-        <div className="search-bar">
-          <input type="text"></input>
-          <button>Search</button>
-        </div>
+        <input className="search-text" type="text"></input>
+        <div className="fa fa-search search-button"></div>
       </li>
     </ul>
   );

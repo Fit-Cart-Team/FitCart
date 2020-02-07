@@ -22,6 +22,19 @@ li {
   float: left;
 }
 
+.imgs {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li img {
+  height: 25px;
+  width: 25px;
+}
+
 li a {
   display: block;
   color: white;
@@ -29,6 +42,7 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
+
 .logo {
   display: block;
   color: white;
@@ -48,10 +62,41 @@ li a:hover:not(.active) {
 }
 
 .float {
-  margin: 12px 20px 13px 0px;
   position: relative;
   top: 70%;
   float: right;
+  background: none;
+  border-radius: 50px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-button {
+  color: #bdc3c7;
+  float: right;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.search-text {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid #bdc3c7;
+  float: left;
+  padding: 0;
+  color: #bdc3c7;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 200px;
 }
 
 .overview {
@@ -78,9 +123,84 @@ li a:hover:not(.active) {
   min-height: 60vh;
 }
 
-.image-gallery > img {
+.image-gallery img {
   max-width: 50vw;
   max-height: 60vh;
+  width: 100%;
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.image-gallery {
+  position: relative;
+}
+
+/* Hide the images by default */
+.image-slides {
+  display: block;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Actual column attempt */
+/* .column::before {
+  content: '';
+  display: table;
+  clear: both;
+} */
+
+/* From Tutorial */
+.column::before {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* Six columns side by side */
+.row {
+  float: center;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
 }
 
 .right-hand-overview {
@@ -146,6 +266,7 @@ li a:hover:not(.active) {
   border-radius: 50%;
   width: 80px;
   height: 80px;
+  cursor: pointer;
 }
 
 .style-tooltip {
@@ -174,16 +295,54 @@ li a:hover:not(.active) {
   margin: 10px;
 }
 
+.size-selector {
+  flex-grow: 3;
+  appearance: none;
+  height: 75px;
+  padding: 20px;
+  font-size: 20px;
+  background-color: white;
+  color: black;
+  border: 2px solid #525252;
+}
+
+.quantity-selector {
+  flex-grow: 2;
+  padding: 20px;
+  font-size: 20px;
+  background-color: white;
+  color: black;
+  border: 2px solid #525252;
+}
+
 .cart-buttons {
   display: flex;
 }
 
-.cart-buttons > select {
+.cart-buttons > button {
   margin: 10px;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
-.size-selector {
-  flex-grow: 1;
+.cart-buttons > button:hover {
+  background-color: rgb(236, 234, 234);
+}
+
+.add-to-bag {
+  flex-grow: 5;
+  padding: 20px;
+  font-size: 20px;
+  background-color: white;
+  color: black;
+  border: 2px solid #525252;
+}
+.add-to-favorites {
+  flex-grow: 2;
+  font-size: 50px;
+  background-color: white;
+  color: black;
+  border: 2px solid #525252;
 }
 
 .overview-bottom {
@@ -208,7 +367,7 @@ li a:hover:not(.active) {
 }
 
 .divider {
-  width: 2px;
+  width: 1px;
   height: 100px;
   background: #525252;
 }
