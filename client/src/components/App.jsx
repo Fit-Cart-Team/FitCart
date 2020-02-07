@@ -17,10 +17,14 @@ class App extends React.Component {
       <React.Fragment>
         <NavBar />
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <Homepage />
           </Route>
-          <Route path='/:id'>
+          <Route path="/:id">
+            <div className="announcement">
+              <i>SITE-WIDE ANNOUNCEMENT MESSAGE!</i> - SALE / DISCOUNT{' '}
+              <b>OFFER</b> - <a href="#">NEW PRODUCT HIGHLIGHT</a>
+            </div>
             <Overview />
             <QuestionsAnswers />
             <RatingsReviews />

@@ -62,13 +62,14 @@ const Overview = () => {
             styleInfo={styleInfo}
             selectedStyle={selectedStyle}
           />
-          <p>
+          <p className="style-label">
             <b>Style > </b>
             {selectedStyle.name}
           </p>
           <StyleSelector
             styleInfo={styleInfo}
             setSelectedStyle={setSelectedStyle}
+            selectedStyle={selectedStyle}
           />
           <AddCart styleInfo={styleInfo} selectedStyle={selectedStyle} />
         </div>

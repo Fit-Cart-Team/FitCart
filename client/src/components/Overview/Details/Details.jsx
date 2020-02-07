@@ -7,21 +7,23 @@ const Details = ({ productInfo, styleInfo, selectedStyle }) => {
   if (currStyle) {
     currPrice =
       currStyle.sale_price === '0' ? (
-        <p>$ {currStyle.original_price}</p>
+        <p>${currStyle.original_price}</p>
       ) : (
         <div className="prices">
-          <p className="sale-price">$ {currStyle.sale_price}</p>
-          <p className="original-price">$ {currStyle.original_price}</p>{' '}
+          <p className="sale-price">${currStyle.sale_price}</p>
+          <p className="original-price">${currStyle.original_price}</p>{' '}
         </div>
       );
   }
+
+  let prodCat = productInfo.category ? productInfo.category.toUpperCase() : '';
   return (
     <div className="product-info">
-      <Stars avg={0.6} />
+      <Stars avg={3.9} />
       <span>
         <a href="#ratings-reviews">See all reviews!</a>
       </span>
-      <div className="product-category">{productInfo.category}</div>
+      <div className="product-category">{prodCat}</div>
       <div className="product-title">{productInfo.name}</div>
       <div className="product-price">{currPrice}</div>
     </div>

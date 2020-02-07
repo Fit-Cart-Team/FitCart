@@ -6,7 +6,6 @@ const ImageGallery = ({ styleInfo, selectedStyle }) => {
   let currStyle = styleInfo[selectedStyle.index];
   let photos = currStyle ? currStyle.photos : [];
   let temp = photos[0] ? photos[0].url : '';
-  console.log(photos, temp);
   const [slideIndex, setslideIndex] = useState(1);
 
   // useEffect(() => {
