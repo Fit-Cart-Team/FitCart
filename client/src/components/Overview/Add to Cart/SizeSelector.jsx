@@ -22,7 +22,7 @@ const SizeSelector = ({ selectedStyle, setSize }) => {
       }}
     >
       <option value="" selected disabled hidden>
-        Select Size
+        SELECT SIZE
       </option>
       {sizeOptions}
     </select>

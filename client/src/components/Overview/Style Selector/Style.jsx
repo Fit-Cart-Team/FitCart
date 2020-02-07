@@ -27,7 +27,7 @@ const Style = ({ style, setSelectedStyle, index, selectedStyle }) => {
     >
       {checked}
       {photoIMG}
-      <span className="style-tooltip">{style.name}</span>
+      <div className="style-tooltip">{style.name}</div>
     </div>
   );
 };
