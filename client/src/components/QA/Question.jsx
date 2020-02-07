@@ -27,7 +27,8 @@ const Question = ({ q }) => {
       <p>
         <b>Q: {q.question_body} </b>
         <small>
-          <Helpful question={q} /> | <u>Add Answer</u>
+          <Helpful question={q} /> |{' '}
+          <u style={{ cursor: 'pointer' }}>Add Answer</u>
         </small>
       </p>
       {alist.length > 0 ? (
