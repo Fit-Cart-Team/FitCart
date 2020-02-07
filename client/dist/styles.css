@@ -339,6 +339,7 @@ li a:hover:not(.active) {
   height: 60px;
   padding: 20px;
   font-size: medium;
+  font-weight: bold;
   background-color: white;
   color: black;
   border: 1px solid #525252;
@@ -374,6 +375,7 @@ li a:hover:not(.active) {
   height: 60px;
   padding: 20px;
   font-size: medium;
+  font-weight: bold;
   background-color: white;
   color: black;
   border: 1px solid black;
