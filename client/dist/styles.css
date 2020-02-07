@@ -22,6 +22,19 @@ li {
   float: left;
 }
 
+.imgs {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li img {
+  height: 25px;
+  width: 25px;
+}
+
 li a {
   display: block;
   color: white;
@@ -29,6 +42,7 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
+
 .logo {
   display: block;
   color: white;
@@ -174,16 +188,54 @@ li a:hover:not(.active) {
   margin: 10px;
 }
 
+.size-selector {
+  flex-grow: 3;
+  appearance: none;
+  height: 75px;
+  padding: 20px;
+  font-size: 20px;
+  background-color: white;
+  color: black;
+  border: 2px solid #525252;
+}
+
+.quantity-selector {
+  flex-grow: 2;
+  padding: 20px;
+  font-size: 20px;
+  background-color: white;
+  color: black;
+  border: 2px solid #525252;
+}
+
 .cart-buttons {
   display: flex;
 }
 
-.cart-buttons > select {
+.cart-buttons > button {
   margin: 10px;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
-.size-selector {
-  flex-grow: 1;
+.cart-buttons > button:hover {
+  background-color: rgb(236, 234, 234);
+}
+
+.add-to-bag {
+  flex-grow: 5;
+  padding: 20px;
+  font-size: 20px;
+  background-color: white;
+  color: black;
+  border: 2px solid #525252;
+}
+.add-to-favorites {
+  flex-grow: 2;
+  font-size: 50px;
+  background-color: white;
+  color: black;
+  border: 2px solid #525252;
 }
 
 .overview-bottom {
@@ -208,7 +260,7 @@ li a:hover:not(.active) {
 }
 
 .divider {
-  width: 2px;
+  width: 1px;
   height: 100px;
   background: #525252;
 }
