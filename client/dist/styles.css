@@ -268,21 +268,39 @@ li a:hover:not(.active) {
 
 .style-list {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 700px;
+}
+
+.style-container {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  min-width: 450px;
+  max-width: 450px;
 }
 
 .style-item {
   flex: 0 1 calc(20% - 8px);
-  margin: 5px;
-  width: 80px;
-  height: 80px;
+  border: 2px black;
+  margin: 10px;
+  margin-bottom: 4px;
+  width: 76px;
+  height: 76px;
+}
+
+.fa-check-circle {
+  float: right;
+  background-color: white;
+  color: black;
 }
 
 .thumbnail-img {
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  border: 2px black;
+  width: 75px;
+  height: 75px;
   cursor: pointer;
 }
 

@@ -69,6 +69,7 @@ const Overview = () => {
           <StyleSelector
             styleInfo={styleInfo}
             setSelectedStyle={setSelectedStyle}
+            selectedStyle={selectedStyle}
           />
           <AddCart styleInfo={styleInfo} selectedStyle={selectedStyle} />
         </div>
