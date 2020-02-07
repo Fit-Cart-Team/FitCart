@@ -4,9 +4,10 @@ const RatingHelpfulness = (props) => {
 
   return (
     <div>
-      <p>
-        Rating Helpfulness Component
-      </p>   
+      <span>Was this review helpful? </span>
+      <span>Yes</span>
+      <span>({props.helpfulness}) | </span>   
+      <span>Report</span>
     </div>
   );
 };
