@@ -30,7 +30,13 @@ const Helpful = props => {
   return (
     <span>
       <span>Helpful? </span>
-      {yesButton ? <u onClick={handleYesClick}>Yes</u> : <u>Yes</u>}
+      {yesButton ? (
+        <u onClick={handleYesClick} style={{ cursor: 'pointer' }}>
+          Yes
+        </u>
+      ) : (
+        <u style={{ cursor: 'pointer' }}>Yes</u>
+      )}
       {yesButton ? (
         <span> ({helpfulness})</span>
       ) : (
