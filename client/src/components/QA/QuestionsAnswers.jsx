@@ -6,20 +6,22 @@ import Qlist from './Qlist';
 
 const QuestionsAnswers = () => {
   const { id } = useParams();
-  const [qlist, setqlist] = useState([]);
+  const [url, setUrl] = useState(id);
+  if (url !== id) setUrl(id);
+  const [qlist, setList] = useState([]);
 
   const getList = () => {
     axios
-      .get(`http://3.134.102.30/qa/${id}?page=${1}&count=${100}`)
+      .get(`http://3.134.102.30/qa/${url}?page=${1}&count=${100}`)
       .then(res => {
-        setqlist(res.data.results);
+        setList(res.data.results);
       })
       .catch(err => console.error(err));
   };
 
   useEffect(() => {
     getList();
-  }, []);
+  }, [url]);
 
   return (
     <div>
