@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Alist from './Alist';
+import Helpful from './Helpful';
 
 const Question = ({ q }) => {
   const [alist, setalist] = useState([]);
@@ -24,7 +25,10 @@ const Question = ({ q }) => {
   return (
     <div>
       <p>
-        <b>Q: {q.question_body}</b>
+        <b>Q: {q.question_body} </b>
+        <small>
+          <Helpful question={q} />
+        </small>
       </p>
       <div>
         <b>A: </b>

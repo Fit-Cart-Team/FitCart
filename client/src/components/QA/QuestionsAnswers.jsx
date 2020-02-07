@@ -25,7 +25,7 @@ const QuestionsAnswers = () => {
 
   return (
     <div>
-      Questions and Answers
+      <p>Questions and Answers</p>
       <Qlist list={qlist} />
     </div>
   );
