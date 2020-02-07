@@ -5,7 +5,7 @@ const ReviewSummary = (props) => {
   return (
     <div>
       <h3>
-        Summary: {(props.summary.length > 60) ? (`${props.summary.slice(0, 60)}...`) : (`${props.summary}`)}
+        {(props.summary.length > 60) ? (`${props.summary.slice(0, 60)}...`) : (`${props.summary}`)}
       </h3>   
     </div>
   );

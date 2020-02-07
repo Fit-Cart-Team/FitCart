@@ -23,12 +23,14 @@ const RatingHelpfulness = (props) => {
       })
   }
 
+  const style = {"text-decoration": "underline"};
+
   return (
     <div>
       <span>Was this review helpful? </span>
-      { markable ? <span onClick={markHelpful} >Yes</span> : <span>Yes</span> }
+      { markable ? <span onClick={markHelpful} style={style} >Yes</span> : <span style={style} >Yes</span> }
       <span>({helpfulness}) | </span>   
-      { reportable ? <span onClick={sendReport} >Report</span> : <span>Reported</span> }
+      { reportable ? <span onClick={sendReport} style={style} >Report</span> : <span style={style} >Reported</span> }
     </div>
   );
 };

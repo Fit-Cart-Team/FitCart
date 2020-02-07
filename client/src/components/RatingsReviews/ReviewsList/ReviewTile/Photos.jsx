@@ -9,9 +9,6 @@ const Photos = (props) => {
 
   return (
     <div>
-      <p>
-        Photos
-      </p>
       {props.photos.map((photo => {
         return (
           <span key={photo.id} >
