@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Qform from './Qform';
 import Qlist from './Qlist';
+import SearchQuestions from './SearchQuestions';
 
 const QuestionsAnswers = () => {
   const { id } = useParams();
@@ -26,6 +27,7 @@ const QuestionsAnswers = () => {
   return (
     <div>
       <p>Questions and Answers</p>
+      <SearchQuestions />
       <Qlist list={qlist} />
     </div>
   );
