@@ -61,7 +61,7 @@ li a:hover:not(.active) {
   background-color: #457447;
 }
 
-.float {
+.search-bar {
   position: relative;
   top: 70%;
   float: right;
@@ -99,6 +99,15 @@ li a:hover:not(.active) {
   width: 200px;
 }
 
+.announcement {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: small;
+}
+.announcement a {
+  color: #525252;
+}
 .overview {
   display: flex;
   flex-direction: column;

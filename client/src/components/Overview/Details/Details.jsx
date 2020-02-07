@@ -17,7 +17,7 @@ const Details = ({ productInfo, styleInfo, selectedStyle }) => {
   }
   return (
     <div className="product-info">
-      <Stars avg={0.6} />
+      <Stars avg={3.9} />
       <span>
         <a href="#ratings-reviews">See all reviews!</a>
       </span>
