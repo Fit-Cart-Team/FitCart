@@ -9,18 +9,15 @@ const RatingsReviews = () => {
   const [reviewsList, setReviewsList] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://3.134.102.30/reviews/${id}/list`)
-      .then(( {data} ) => {
-        console.log(data);
-        setReviewsList(data.results);
-      })
+    axios.get(`http://3.134.102.30/reviews/${id}/list`).then(({ data }) => {
+      console.log(data);
+      setReviewsList(data.results);
+    });
   }, []);
 
   return (
-    <div>
-      <h1>
-        From Ratings & Reviews: {id}
-      </h1>
+    <div id="ratings-reviews">
+      <h1>From Ratings & Reviews: {id}</h1>
       <ReviewsList id={id} reviewsList={reviewsList} />
     </div>
   );

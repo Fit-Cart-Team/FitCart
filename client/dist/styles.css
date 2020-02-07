@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0px 10vh 0px 10vh;
 }
@@ -83,6 +87,28 @@ li a:hover:not(.active) {
   display: flex;
   width: 45vw;
   flex-direction: column;
+}
+
+.stars {
+  --percent: calc(((var(--rating) / 5) - 0.01) * 100%);
+
+  display: inline-block;
+  font-size: 20px;
+  font-family: Times;
+  line-height: 1;
+}
+
+.stars:before {
+  content: '★★★★★';
+  letter-spacing: 3px;
+  background: linear-gradient(
+    90deg,
+    #fc0 var(--percent),
+    rgb(99, 97, 97) var(--percent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .product-title {

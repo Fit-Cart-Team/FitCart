@@ -1,4 +1,5 @@
 import React from 'react';
+import Stars from '../../Stars';
 
 const Details = ({ productInfo, styleInfo, selectedStyle }) => {
   let currStyle = styleInfo[selectedStyle.index];
@@ -16,7 +17,10 @@ const Details = ({ productInfo, styleInfo, selectedStyle }) => {
   }
   return (
     <div className="product-info">
-      <div className="stars">S T A R S</div>
+      <Stars avg={0.6} />
+      <span>
+        <a href="#ratings-reviews">See all reviews!</a>
+      </span>
       <div className="product-category">{productInfo.category}</div>
       <div className="product-title">{productInfo.name}</div>
       <div className="product-price">{currPrice}</div>
