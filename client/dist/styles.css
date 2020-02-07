@@ -291,9 +291,9 @@ li a:hover:not(.active) {
 }
 
 .fa-check-circle {
-  float: right;
-  background-color: white;
-  color: black;
+  color: white;
+  position: absolute;
+  border-radius: 50%;
 }
 
 .thumbnail-img {
@@ -302,6 +302,7 @@ li a:hover:not(.active) {
   width: 75px;
   height: 75px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .style-tooltip {
