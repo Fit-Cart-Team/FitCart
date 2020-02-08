@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Qform from './Qform';
-import QList from './QList';
+import QList from './Qlist';
 import SearchQuestions from './SearchQuestions';
 
 const QuestionsAnswers = () => {

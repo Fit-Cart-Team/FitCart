@@ -4,7 +4,6 @@ import axios from 'axios';
 
 const AList = ({ question }) => {
   const [aList, setAList] = useState([]);
-
   const getAnswers = () => {
     axios
       .get(
@@ -20,7 +19,7 @@ const AList = ({ question }) => {
 
   useEffect(() => {
     getAnswers();
-  }, []);
+  }, [question]);
 
   if (aList.length > 0) {
     return (
