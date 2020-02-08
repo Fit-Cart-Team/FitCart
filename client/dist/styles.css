@@ -192,7 +192,6 @@ li a {
   display: inline-block;
   font-size: 20px;
   font-family: Times;
-  line-height: 1;
 }
 
 .stars:before {
@@ -200,12 +199,16 @@ li a {
   letter-spacing: 3px;
   background: linear-gradient(
     90deg,
-    #fc0 var(--percent),
-    rgb(99, 97, 97) var(--percent)
+    #525252 var(--percent),
+    rgb(192, 188, 188) var(--percent)
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.product-info a {
+  color: #525252;
 }
 
 .product-category {

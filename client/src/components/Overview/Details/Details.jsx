@@ -21,7 +21,9 @@ const Details = ({ productInfo, styleInfo, selectedStyle }) => {
     <div className="product-info">
       <Stars avg={3.9} />
       <span>
-        <a href="#ratings-reviews">See all reviews!</a>
+        <a href="#ratings-reviews" style={{ fontSize: 'small' }}>
+          Read all reviews
+        </a>
       </span>
       <div className="product-category">{prodCat}</div>
       <div className="product-title">{productInfo.name}</div>
