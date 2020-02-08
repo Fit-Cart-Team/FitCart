@@ -1,33 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 const NavBar = () => {
+  const history = useHistory();
+  const [searchVal, setsearchVal] = useState('');
+
+  const keyChange = e => {
+    if (e.key === 'Enter' || e.key === 'Return') {
+      history.push(searchVal);
+    }
+  };
+  const clickChange = e => {
+    history.push(searchVal);
+  };
   return (
     <ul>
       <li>
         <Link to="/" className="active imgs">
           <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/shopping-bags-8-859849.png" />
-          {/* Home */}
         </Link>
       </li>
-      <li>
-        <Link to="/1">Onesie</Link>
-      </li>
-      <li>
-        <Link to="/2">Sunglasses</Link>
-      </li>
-      <li>
-        <Link to="/3">Joggers</Link>
-      </li>
-      <li>
-        <Link to="/4">Slacks</Link>
-      </li>
-      <li>
-        <Link to="/5">Shoes</Link>
-      </li>
       <li className="search-bar">
-        <input className="search-text" type="text"></input>
-        <div className="fa fa-search search-button"></div>
+        <input
+          className="search-text"
+          type="text"
+          onChange={e => {
+            setsearchVal(e.target.value);
+          }}
+          onKeyPress={keyChange}
+        ></input>
+        <div className="fa fa-search search-button" onClick={clickChange}></div>
       </li>
     </ul>
   );
