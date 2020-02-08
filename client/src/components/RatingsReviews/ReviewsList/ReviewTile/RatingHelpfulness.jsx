@@ -23,7 +23,7 @@ const RatingHelpfulness = props => {
       })
   }
 
-  const style = {"text-decoration": "underline", "cursor": "pointer"};
+  const style = {"textDecoration": "underline", "cursor": "pointer"};
 
   return (
     <div>
