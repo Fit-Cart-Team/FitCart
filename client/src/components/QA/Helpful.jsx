@@ -18,13 +18,9 @@ const Helpful = props => {
     axios
       .put(route)
       .then(() => {
-        increment();
+        return setYesButton(false);
       })
       .catch(err => console.error(err));
-  };
-
-  const increment = () => {
-    setYesButton(false);
   };
 
   return (

@@ -20,7 +20,7 @@ const AList = ({ question }) => {
 
   useEffect(() => {
     getAnswers();
-  }, [question]);
+  }, []);
 
   if (aList.length > 0) {
     return (

@@ -7,14 +7,10 @@ const Report = ({ answer_id }) => {
   const handleReportClick = () => {
     axios
       .put(`http://3.134.102.30/qa/answer/${answer_id}/report`)
-      .then(() => {
-        disableButton();
+      .then(res => {
+        return setReportButtonOn(false);
       })
       .catch(err => console.error(err));
-  };
-
-  const disableButton = () => {
-    setReportButtonOn(false);
   };
 
   if (reportButtonOn) {

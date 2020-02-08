@@ -4,7 +4,7 @@ import Report from './Report';
 import dateFormatter from './dateFormatter';
 
 const Answer = ({ a }) => {
-  const formattedDate = dateFormatter(a.date);
+  let formattedDate = dateFormatter(a.date);
 
   return (
     <span>
@@ -13,7 +13,8 @@ const Answer = ({ a }) => {
         <small>
           by <b> {a.answerer_name}</b>,{' '}
           <span>
-            {formattedDate} | <Helpful answer={a} /> | <Report answer={a} />
+            {formattedDate} | <Helpful answer={a} /> |{' '}
+            <Report answer_id={a.answer_id} />
           </span>
         </small>
       </p>
