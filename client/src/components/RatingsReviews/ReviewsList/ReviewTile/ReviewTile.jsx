@@ -30,7 +30,6 @@ const ReviewTile = (props) => {
       <div>
         <div style={{display: "inline-block", "float": "left"}} >
           <Stars avg={review.rating} />
-          {/* <StarRating rating={review.rating} /> */}
         </div>
         <div style={{display: "inline-block", "float": "right"}} >
           <ReviewerName reviewerName={review.reviewer_name} />
