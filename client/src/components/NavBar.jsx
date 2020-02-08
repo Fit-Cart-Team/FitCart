@@ -16,8 +16,9 @@ const NavBar = () => {
   return (
     <ul>
       <li>
-        <Link to="/" className="active imgs">
-          <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/shopping-bags-8-859849.png" />
+        <Link to="/" className="active">
+          {/* <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/shopping-bags-8-859849.png" /> */}
+          <u>Lo</u>g<u>o</u>
         </Link>
       </li>
       <li className="search-bar">
