@@ -14,7 +14,7 @@ const ReviewsList = (props) => {
           </div>
         );
       })}
-      <div>
+      <div style={{margin: "10px"}} >
         <MoreReviews />
         <AddReview />
       </div>
