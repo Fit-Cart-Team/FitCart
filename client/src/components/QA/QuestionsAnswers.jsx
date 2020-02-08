@@ -1,34 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import Qform from './Qform';
-import Qlist from './Qlist';
+import QList from './QList';
 import SearchQuestions from './SearchQuestions';
 
 const QuestionsAnswers = () => {
   const { id } = useParams();
-  const [url, setUrl] = useState(id);
-  if (url !== id) setUrl(id);
-  const [qlist, setList] = useState([]);
-
-  const getList = () => {
-    axios
-      .get(`http://3.134.102.30/qa/${url}?page=${1}&count=${100}`)
-      .then(res => {
-        setList(res.data.results);
-      })
-      .catch(err => console.error(err));
-  };
-
-  useEffect(() => {
-    getList();
-  }, [url]);
-
   return (
     <div>
       <p>Questions and Answers</p>
       <SearchQuestions />
-      <Qlist list={qlist} />
+      <QList product_id={id} />
     </div>
   );
 };

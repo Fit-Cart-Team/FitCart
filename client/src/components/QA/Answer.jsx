@@ -1,18 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Helpful from './Helpful';
 import Report from './Report';
+import dateFormatter from './dateFormatter';
 
 const Answer = ({ a }) => {
-  let date = new Date(a.date);
-
-  let options = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
-
-  let dateTimeFormat = new Intl.DateTimeFormat('en-US', options);
-  let formattedDate = dateTimeFormat.format(date);
+  const formattedDate = dateFormatter(a.date);
 
   return (
     <span>
