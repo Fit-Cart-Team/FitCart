@@ -52,7 +52,6 @@ const RatingsReviews = (props) => {
   useEffect(() => {
     axios.get(`http://3.134.102.30/reviews/${url}/meta`)
       .then(( {data} ) => {
-        console.log(data);
         setMeta(data);
         return data;
       })
@@ -60,23 +59,18 @@ const RatingsReviews = (props) => {
         let totalQuantity = 0;
         let ratingSum = 0;
 
-        console.log(data);
-
         for (let rating in data.ratings) {
-          console.log('Rating: ', rating)
           totalQuantity += data.ratings[rating];
           ratingSum += rating * data.ratings[rating];
         }
 
-        console.log('Total quantity of ratings: ', totalQuantity)
-
         setTotalRatings(totalQuantity);
 
         let ratingAvg = ratingSum / totalQuantity;
-
-        console.log('Rating Average: ', ratingAvg);
-        
         setRatingAvg(ratingAvg);
+
+        props.setAppAvg(ratingAvg);
+        props.setAppTotal(totalQuantity);
       })
   }, [url]);
 
