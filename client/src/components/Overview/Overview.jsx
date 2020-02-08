@@ -19,7 +19,7 @@ import Information from './Information/Information';
 
 const Context = React.createContext('lol');
 
-const Overview = () => {
+const Overview = ({ avg, total }) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
   const [productInfo, setProductInfo] = useState({});
@@ -66,6 +66,8 @@ const Overview = () => {
             productInfo={productInfo}
             styleInfo={styleInfo}
             selectedStyle={selectedStyle}
+            avg={avg}
+            total={total}
           />
           <p className="style-label">
             <b>Style > </b>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Stars from '../../Stars';
 
-const Details = ({ productInfo, styleInfo, selectedStyle }) => {
+const Details = ({ productInfo, styleInfo, selectedStyle, avg, total }) => {
   let currStyle = styleInfo[selectedStyle.index];
   let currPrice;
   if (currStyle) {
@@ -19,11 +19,9 @@ const Details = ({ productInfo, styleInfo, selectedStyle }) => {
   let prodCat = productInfo.category ? productInfo.category.toUpperCase() : '';
   return (
     <div className="product-info">
-      <Stars avg={3.9} />
+      <Stars avg={avg} />
       <span>
-        <a href="#ratings-reviews" style={{ fontSize: 'small' }}>
-          Read all reviews
-        </a>
+        <a href="#ratings-reviews" style={{ fontSize: 'small' }}>Read all {total} reviews!</a>
       </span>
       <div className="product-category">{prodCat}</div>
       <div className="product-title">{productInfo.name}</div>

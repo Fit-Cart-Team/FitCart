@@ -5,7 +5,7 @@ const Recommend = (props) => {
   return (
     <div>
       <p>
-        I recommend this product
+        ✓ I recommend this product
       </p>   
     </div>
   );
