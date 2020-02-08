@@ -1,5 +1,7 @@
 import React from 'react';
 import ReviewTile from './ReviewTile/ReviewTile';
+import MoreReviews from './MoreReviews/MoreReviews';
+import AddReview from './AddReview/AddReview';
 
 const ReviewsList = (props) => {
 
@@ -12,6 +14,10 @@ const ReviewsList = (props) => {
           </div>
         );
       })}
+      <div style={{margin: "10px"}} >
+        <MoreReviews />
+        <AddReview />
+      </div>
     </div>
   );
 };
