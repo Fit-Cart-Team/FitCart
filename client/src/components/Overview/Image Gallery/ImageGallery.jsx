@@ -30,37 +30,17 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
       }
     }
   };
-  // const showSlide = n => {
-  //   var i;
-  //   var slides = document.getElementsByClassName('image-slides');
-  //   var dots = document.getElementsByClassName('demo');
-  //   if (n > slides.length) {
-  //     setslideIndex(1);
-  //   }
-  //   if (n < 1) {
-  //     setslideIndex(slides.length);
-  //   }
-  //   for (i = 0; i < slides.length; i++) {
-  //     slides[i].style.display = 'none';
-  //   }
-  //   for (i = 0; i < dots.length; i++) {
-  //     dots[i].className = dots[i].className.replace(' active', '');
-  //   }
-  //   slides[slideIndex - 1].style.display = 'block';
-  //   dots[slideIndex - 1].className += ' active';
-  // };
 
   return (
-    <div className="image-gallery">
+    <div
+      className="image-gallery"
+      style={{ backgroundImage: `url(${photoSlides[currSlide]})` }}
+    >
       <ImagePreviews
         photos={photos}
         setSlide={setSlide}
         currSlide={currSlide}
       />
-      {/* {photoSlides} */}
-      <div className="image-slides">
-        <img src={photoSlides[currSlide]} />
-      </div>
       {currSlide > 0 ? (
         <a
           className="prev"

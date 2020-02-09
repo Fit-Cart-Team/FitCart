@@ -83,7 +83,7 @@ li a {
 .overview-top {
   display: flex;
   justify-content: center;
-  margin: 10px;
+  margin-bottom: 2%;
 }
 
 .overview-top > div {
@@ -91,35 +91,20 @@ li a {
 }
 
 .image-gallery {
+  position: relative;
+  /* background-image: url('https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'); */
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
-  width: 50vw;
-  max-width: 50vw;
-  min-width: 50vw;
+  cursor: zoom-in;
+  margin: 0;
+
+  /* max-width: 55vw;
+  min-width: 55vw; */
   max-height: 60vh;
   min-height: 60vh;
-}
 
-.image-gallery img {
-  max-width: 50vw;
-  max-height: 60vh;
-  width: 100%;
-  vertical-align: middle;
-  object-fit: cover;
-}
-
-/* Position the image container (needed to position the left and right arrows) */
-.image-gallery {
-  position: relative;
-}
-
-/* Hide the images by default */
-.image-slides {
-  display: block;
-}
-
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
+  width: 60%;
 }
 
 /* Next & previous buttons */
@@ -127,13 +112,12 @@ li a {
 .next {
   cursor: pointer;
   position: absolute;
-  top: 40%;
+  top: 50%;
   width: auto;
-  padding: 16px;
+  padding: 10px;
   margin-top: -50px;
   color: white;
-  font-weight: bold;
-  font-size: 20px;
+  font-size: 30px;
   border-radius: 0 3px 3px 0;
   user-select: none;
   -webkit-user-select: none;
@@ -145,18 +129,16 @@ li a {
   border-radius: 3px 0 0 3px;
 }
 
+.prev {
+  border-radius: 3px 0 0 3px;
+  left: 6vw;
+}
+
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover,
 .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-
-/* Actual column attempt */
-/* .column::before {
-  content: '';
-  display: table;
-  clear: both;
-} */
 
 /* From Tutorial */
 .column::before {
@@ -164,20 +146,32 @@ li a {
   display: table;
   clear: both;
 }
+
+.column {
+  margin-top: 2vh;
+}
 /* Six columns side by side */
 .row {
   float: center;
   width: 16.66%;
 }
 
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.3;
+.thumbnail-preview {
+  cursor: pointer;
+  margin: 1vh;
+  border: medium solid black;
+  max-width: 4vw;
+  min-width: 4vw;
+  max-height: 4vw;
+  min-height: 4vw;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  object-fit: cover;
 }
 
-.active-img,
-.demo:hover {
-  opacity: 1;
+.thumbnail-preview:hover {
+  opacity: 0.5;
 }
 
 .right-hand-overview {

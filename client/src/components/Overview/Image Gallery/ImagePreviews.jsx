@@ -3,7 +3,9 @@ import React from 'react';
 const ImagePreviews = ({ photos, setSlide, currSlide }) => {
   const photoThumbnails = photos.map((photo, index) => {
     const classes =
-      currSlide === index ? 'demo cursor active-img' : 'demo cursor';
+      currSlide === index
+        ? 'thumbnail-preview active-img'
+        : 'thumbnail-preview';
     return (
       <div key={photo.url} className="row">
         <img
@@ -15,6 +17,7 @@ const ImagePreviews = ({ photos, setSlide, currSlide }) => {
           }}
           alt="Loading"
         />
+        {currSlide === index ? <div className="active-bar"></div> : <div></div>}
       </div>
     );
   });
