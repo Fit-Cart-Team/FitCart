@@ -11,7 +11,13 @@ const Answer = ({ a }) => {
       {a.body}
       <p>
         <small>
-          by <b> {a.answerer_name}</b>,{' '}
+          by{' '}
+          {a.answerer_name.includes('Seller') ? (
+            <b>{a.answerer_name}</b>
+          ) : (
+            <span>{a.answerer_name}</span>
+          )}
+          ,{' '}
           <span>
             {formattedDate} | <Helpful answer={a} /> |{' '}
             <Report answer_id={a.answer_id} />
