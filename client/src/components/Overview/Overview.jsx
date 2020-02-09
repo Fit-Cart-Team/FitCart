@@ -73,10 +73,10 @@ const Overview = ({ avg, total }) => {
             avg={avg}
             total={total}
           />
-          <p className="style-label">
+          <div className="style-label">
             <b>Style > </b>
             {selectedStyle.name}
-          </p>
+          </div>
           <StyleSelector
             styleInfo={styleInfo}
             setSelectedStyle={setSelectedStyle}
