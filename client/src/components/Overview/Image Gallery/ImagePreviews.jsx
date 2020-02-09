@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ImagePreviews = ({ photos, setSlide, currSlide }) => {
+  const [shownThumbnails, setshownThumbnails] = useState(0);
   const photoThumbnails = photos.map((photo, index) => {
     const classes =
       currSlide === index
@@ -20,7 +21,56 @@ const ImagePreviews = ({ photos, setSlide, currSlide }) => {
       </div>
     );
   });
-  return <div className="column">{photoThumbnails}</div>;
+
+  const toggleShownThumbnails = dir => {
+    if (dir === -1) {
+      if (shownThumbnails > 0) {
+        setshownThumbnails(prev => prev - 1);
+      }
+    } else {
+      if (shownThumbnails < photoThumbnails.length - 8) {
+        setshownThumbnails(prev => prev + 1);
+      }
+    }
+  };
+
+  if (photoThumbnails.length > 7) {
+    return (
+      <div className="column">
+        {shownThumbnails > 0 ? (
+          <div
+            className="up"
+            onClick={() => {
+              toggleShownThumbnails(-1);
+            }}
+          >
+            {'▲'}
+          </div>
+        ) : (
+          <div className="up" style={{ color: 'black' }}>
+            {'▲'}
+          </div>
+        )}
+        {photoThumbnails.slice(shownThumbnails, shownThumbnails + 7)}
+        {shownThumbnails < photoThumbnails.length - 8 ? (
+          <div
+            className="down"
+            onClick={() => {
+              toggleShownThumbnails(1);
+            }}
+          >
+            {'▼'}
+          </div>
+        ) : (
+          <div className="up" style={{ color: 'black' }}>
+            {'▼'}
+          </div>
+        )}
+      </div>
+    );
+  } else {
+    return <div className="column">{photoThumbnails}</div>;
+  }
 };
 
 export default ImagePreviews;

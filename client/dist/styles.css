@@ -86,7 +86,7 @@ li a {
 
 .image-gallery {
   /* position: relative; */
-  background-image: url('https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80');
+  /* background-image: url('https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'); */
   background-repeat: no-repeat;
   background-color: black;
   /* Black space around the image */
@@ -111,7 +111,7 @@ li a {
 /* .expanded:hover {
   transform: scale(1.5);
 } */
-/* Next & previous buttons */
+
 .prev,
 .next {
   cursor: pointer;
@@ -127,7 +127,6 @@ li a {
   -webkit-user-select: none;
 }
 
-/* Position the "next button" to the right */
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
@@ -135,16 +134,14 @@ li a {
 
 .prev {
   border-radius: 3px 0 0 3px;
-  left: 6vw;
+  left: 7.5vw;
 }
 
-/* On hover, add a black background color with a little bit see-through */
 .prev:hover,
 .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* From Tutorial */
 .column::before {
   content: '';
   display: table;
@@ -153,11 +150,25 @@ li a {
 
 .column {
   margin-top: 2vh;
+  margin-left: 2vw;
+  position: relative;
 }
 /* Six columns side by side */
 .row {
   float: center;
   width: 16.66%;
+}
+
+.up,
+.down {
+  cursor: pointer;
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .thumbnail-preview {
