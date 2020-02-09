@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import ReviewsList from './ReviewsList/ReviewsList';
+import SortOptions from './SortOptions/SortOptions';
+import RatingBreakdown from './RatingBreakdown/RatingBreakdown';
 
 //setAppAvg(value)
 //setAppTotal(value)
@@ -44,6 +46,7 @@ const RatingsReviews = (props) => {
   const [meta, setMeta] = useState({});
   const [totalRatings, setTotalRatings] = useState(0);
   const [ratingAvg, setRatingAvg] = useState(0);
+  const [sortParameter, setSortParameter] = useState('relevant');
 
   if (url !== id) {
     seturl(id);
@@ -52,10 +55,9 @@ const RatingsReviews = (props) => {
   useEffect(() => {
     axios.get(`http://3.134.102.30/reviews/${url}/meta`)
       .then(( {data} ) => {
+        console.log(data.recommended);
         setMeta(data);
-        return data;
-      })
-      .then((data) => {
+        
         let totalQuantity = 0;
         let ratingSum = 0;
 
@@ -64,29 +66,42 @@ const RatingsReviews = (props) => {
           ratingSum += rating * data.ratings[rating];
         }
 
-        setTotalRatings(totalQuantity);
+        // setTotalRatings(totalQuantity);
 
         let ratingAvg = ratingSum / totalQuantity;
-        setRatingAvg(ratingAvg);
+        // setRatingAvg(ratingAvg);
 
         props.setAppAvg(ratingAvg);
-        props.setAppTotal(totalQuantity);
-      })
+
+        axios.get(`http://3.134.102.30/reviews/${url}/list?page=1&count=${totalQuantity}&sort=${sortParameter}`)
+          .then(( {data} ) => {
+            props.setAppTotal(data.results.length)
+            setReviewsList(data.results);
+          });
+      });
   }, [url]);
 
-  // useEffect(() => {
-  //   axios.get(`http://3.134.102.30/reviews/${url}/list`)
-  //     .then(( {data} ) => {
-  //       setReviewsList(data.results);
-  //     })
-  // }, [url]);
+  useEffect(() => {
+    axios.get(`http://3.134.102.30/reviews/${url}/list?page=1&count=${props.totalReviews}&sort=${sortParameter}`)
+      .then(( {data} ) => {
+        setReviewsList(data.results);
+      });
+  }, [sortParameter]);
+
+  const changeSortParameter = (parameter) => {
+    if (parameter !== undefined || parameter !== null) {
+      setSortParameter(parameter);
+    }
+  }
 
   return (
     <div id="ratings-reviews" >
       <h1>
         Ratings & Reviews
       </h1>
-      {/* <ReviewsList id={id} reviewsList={reviewsList} /> */}
+      <RatingBreakdown recommended={meta.recommended} ratings={meta.ratings} ratingAverage={props.ratingAverage} />
+      <SortOptions totalReviews={props.totalReviews} changeSortParameter={changeSortParameter} />
+      <ReviewsList id={id} reviewsList={reviewsList} />
     </div>
   );
 };
