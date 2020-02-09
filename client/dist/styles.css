@@ -142,18 +142,18 @@ li a {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.column::before {
+.thumbnail-column::before {
   content: '';
   display: table;
   clear: both;
 }
 
-.column {
+.thumbnail-column {
   margin-top: 2vh;
-  margin-left: 2vw;
+  margin-left: 1.2vw;
   position: relative;
 }
-/* Six columns side by side */
+
 .row {
   float: center;
   width: 16.66%;

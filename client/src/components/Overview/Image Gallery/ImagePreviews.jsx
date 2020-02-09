@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 
-const ImagePreviews = ({ photos, setSlide, currSlide }) => {
-  const [shownThumbnails, setshownThumbnails] = useState(0);
+const ImagePreviews = ({
+  photos,
+  setSlide,
+  currSlide,
+  shownThumbnails,
+  setshownThumbnails
+}) => {
+  const defaultIMG = 'https://img.moglimg.com/p/I/P/N/d/MINIPN3LI0NZS.jpg';
   const photoThumbnails = photos.map((photo, index) => {
     const classes =
       currSlide === index
@@ -11,7 +17,7 @@ const ImagePreviews = ({ photos, setSlide, currSlide }) => {
       <div key={photo.url} className="row">
         <img
           className={classes}
-          src={photo.thumbnail_url}
+          src={photo.thumbnail_url || defaultIMG}
           onClick={() => {
             setSlide(index);
           }}
@@ -36,7 +42,7 @@ const ImagePreviews = ({ photos, setSlide, currSlide }) => {
 
   if (photoThumbnails.length > 7) {
     return (
-      <div className="column">
+      <div className="thumbnail-column">
         {shownThumbnails > 0 ? (
           <div
             className="up"
@@ -69,7 +75,7 @@ const ImagePreviews = ({ photos, setSlide, currSlide }) => {
       </div>
     );
   } else {
-    return <div className="column">{photoThumbnails}</div>;
+    return <div className="thumbnail-column">{photoThumbnails}</div>;
   }
 };
 

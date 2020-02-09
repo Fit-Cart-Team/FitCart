@@ -7,12 +7,14 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   let photos = currStyle ? currStyle.photos : [];
   const [currSlide, setSlideIndex] = useState(0);
   const [expanded, setexpanded] = useState(false);
+  const [shownThumbnails, setshownThumbnails] = useState(0);
+
+  const defaultIMG = 'https://img.moglimg.com/p/I/P/N/d/MINIPN3LI0NZS.jpg';
 
   const photoSlides = photos.map(photo => {
     return photo.url;
   });
   const [imgStyles, setimgStyles] = useState({
-    // backgroundImage: `url(${photoSlides[currSlide]})`,
     backgroundSize: 'contain',
     position: 'relative',
     width: '60%',
@@ -29,10 +31,16 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   const incrementSlide = dir => {
     if (dir === -1) {
       if (currSlide > 0) {
+        if (currSlide - 1 < shownThumbnails) {
+          setshownThumbnails(prev => prev - 1);
+        }
         setSlideIndex(prev => prev + dir);
       }
     } else {
       if (currSlide < photos.length - 1) {
+        if (currSlide + 1 > shownThumbnails + 6) {
+          setshownThumbnails(prev => prev + 1);
+        }
         setSlideIndex(prev => prev + dir);
       }
     }
@@ -76,7 +84,10 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   return (
     <div
       className={expanded ? 'image-gallery expanded' : 'image-gallery'}
-      style={imgStyles}
+      style={{
+        ...imgStyles,
+        backgroundImage: `url(${photoSlides[currSlide] || defaultIMG})`
+      }}
       onClick={expandView}
       onMouseMove={e => {
         if (expanded) {
@@ -88,6 +99,8 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
         photos={photos}
         setSlide={setSlide}
         currSlide={currSlide}
+        shownThumbnails={shownThumbnails}
+        setshownThumbnails={setshownThumbnails}
       />
       {currSlide > 0 ? (
         <a
