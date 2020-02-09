@@ -61,22 +61,30 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
       <div className="image-slides">
         <img src={photoSlides[currSlide]} />
       </div>
-      <a
-        className="prev"
-        onClick={() => {
-          incrementSlide(-1);
-        }}
-      >
-        {'<'}
-      </a>
-      <a
-        className="next"
-        onClick={() => {
-          incrementSlide(1);
-        }}
-      >
-        {'>'}
-      </a>
+      {currSlide > 0 ? (
+        <a
+          className="prev"
+          onClick={() => {
+            incrementSlide(-1);
+          }}
+        >
+          {'←'}
+        </a>
+      ) : (
+        <div></div>
+      )}
+      {currSlide < photos.length - 1 ? (
+        <a
+          className="next"
+          onClick={() => {
+            incrementSlide(1);
+          }}
+        >
+          {'→'}
+        </a>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };
