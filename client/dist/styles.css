@@ -83,21 +83,16 @@ li a {
 .overview-top {
   display: flex;
   justify-content: center;
-  margin-bottom: 2%;
-}
-
-.overview-top > div {
-  margin: 10px;
+  margin: 1% 0 2% 0;
 }
 
 .image-gallery {
   position: relative;
-  /* background-image: url('https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'); */
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   cursor: zoom-in;
-  margin: 0;
+  margin: 0px;
 
   /* max-width: 55vw;
   min-width: 55vw; */
@@ -178,6 +173,7 @@ li a {
   display: flex;
   width: 45vw;
   flex-direction: column;
+  margin: 0 2% 0 2%;
 }
 
 .stars {
