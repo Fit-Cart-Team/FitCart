@@ -15,7 +15,6 @@ const StyleSelector = ({ styleInfo, setSelectedStyle, selectedStyle }) => {
   return (
     <div className="style-list">
       <div className="style-container">{styles}</div>
-      {/* {styles} */}
     </div>
   );
 };

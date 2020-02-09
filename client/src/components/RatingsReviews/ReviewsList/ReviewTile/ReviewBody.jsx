@@ -21,7 +21,7 @@ const ReviewBody = (props) => {
     return (
       <div>
         <p>
-          Body: { (!showMore) ? (`${props.body.slice(0, 250)}...`) : (`${props.body}`) }
+          { (!showMore) ? (`${props.body.slice(0, 250)}...`) : (`${props.body}`) }
         </p>
         <button onClick={toggleShowMore} >{ (!showMore) ? 'Show more' : 'Show less' }</button>
         { (props.photos.length) ? (<Photos photos={props.photos} />) : (<div></div>) }

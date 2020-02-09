@@ -67,8 +67,7 @@ li a {
 
 .announcement {
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin: 1% 0 1% 0;
   font-size: small;
 }
 
@@ -82,108 +81,126 @@ li a {
 
 .overview-top {
   display: flex;
-  justify-content: center;
-  margin: 10px;
-}
-
-.overview-top > div {
-  margin: 10px;
-}
-
-.image-gallery {
-  display: flex;
-  width: 50vw;
-  max-width: 50vw;
-  min-width: 50vw;
-  max-height: 60vh;
-  min-height: 60vh;
-}
-
-.image-gallery img {
-  max-width: 50vw;
-  max-height: 60vh;
-  width: 100%;
-  vertical-align: middle;
-  object-fit: cover;
-}
-
-/* Position the image container (needed to position the left and right arrows) */
-.image-gallery {
   position: relative;
 }
 
-/* Hide the images by default */
-.image-slides {
-  display: block;
+.image-gallery {
+  /* position: relative; */
+  /* background-image: url('https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'); */
+  background-repeat: no-repeat;
+  background-color: black;
+  /* Black space around the image */
+  /* background-size: contain;*/
+  background-position: center center;
+  /* Fill container with image */
+  /* background-size: cover; */
+  display: flex;
+  margin: 0px;
+
+  /* max-width: 40vw;
+  min-width: 40vw;
+  max-height: 40vw;
+  min-height: 40vw; */
+
+  /* width: 60%; */
+  height: 50vw;
+  z-index: 3;
+  overflow: hidden;
 }
 
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-}
+/* .expanded:hover {
+  transform: scale(1.5);
+} */
 
-/* Next & previous buttons */
 .prev,
 .next {
   cursor: pointer;
   position: absolute;
-  top: 40%;
+  top: 50%;
   width: auto;
-  padding: 16px;
+  padding: 10px;
   margin-top: -50px;
   color: white;
-  font-weight: bold;
-  font-size: 20px;
+  font-size: 30px;
   border-radius: 0 3px 3px 0;
   user-select: none;
   -webkit-user-select: none;
 }
 
-/* Position the "next button" to the right */
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
-/* On hover, add a black background color with a little bit see-through */
+.prev {
+  border-radius: 3px 0 0 3px;
+  left: 7.5vw;
+}
+
 .prev:hover,
 .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Actual column attempt */
-/* .column::before {
-  content: '';
-  display: table;
-  clear: both;
-} */
-
-/* From Tutorial */
-.column::before {
+.thumbnail-column::before {
   content: '';
   display: table;
   clear: both;
 }
-/* Six columns side by side */
+
+.thumbnail-column {
+  margin-top: 2vh;
+  margin-left: 1.2vw;
+  position: relative;
+}
+
 .row {
   float: center;
   width: 16.66%;
 }
 
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
+.up,
+.down {
+  cursor: pointer;
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.active,
-.demo:hover {
+.thumbnail-preview {
+  cursor: pointer;
+  margin: 1vh;
+  border: medium solid black;
+  max-width: 4vw;
+  min-width: 4vw;
+  max-height: 4vw;
+  min-height: 4vw;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.active-img,
+.thumbnail-preview:hover {
   opacity: 1;
 }
 
 .right-hand-overview {
   display: flex;
-  width: 45vw;
+  width: 40%;
+  height: 50vw;
   flex-direction: column;
+  justify-content: center;
+  margin: 0 2% 0 2%;
+}
+.right-hand-overview > div {
+  margin: 3%;
 }
 
 .stars {
@@ -256,7 +273,6 @@ li a {
 .style-item {
   position: relative;
   flex: 0 0 20%;
-  border: 2px black;
   margin: 10px;
   margin-bottom: 4px;
   width: 75px;
@@ -275,7 +291,7 @@ li a {
 
 .thumbnail-img {
   border-radius: 50%;
-  border: 2px black;
+  border: 1.5px solid black;
   width: 75px;
   height: 75px;
   cursor: pointer;
@@ -388,6 +404,7 @@ li a {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin-top: 1%;
 }
 
 .product-description > div {

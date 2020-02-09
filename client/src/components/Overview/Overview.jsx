@@ -60,7 +60,11 @@ const Overview = ({ avg, total }) => {
   return (
     <div className="overview">
       <div className="overview-top">
-        <ImageGallery styleInfo={styleInfo} selectedStyle={selectedStyle} />
+        <ImageGallery
+          styleInfo={styleInfo}
+          selectedStyle={selectedStyle}
+          url={url}
+        />
         <div className="right-hand-overview">
           <Details
             productInfo={productInfo}
@@ -69,10 +73,10 @@ const Overview = ({ avg, total }) => {
             avg={avg}
             total={total}
           />
-          <p className="style-label">
+          <div className="style-label">
             <b>Style > </b>
             {selectedStyle.name}
-          </p>
+          </div>
           <StyleSelector
             styleInfo={styleInfo}
             setSelectedStyle={setSelectedStyle}
