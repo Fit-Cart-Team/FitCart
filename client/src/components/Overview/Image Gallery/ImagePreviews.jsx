@@ -40,38 +40,33 @@ const ImagePreviews = ({
     }
   };
 
+  const upStyles = shownThumbnails > 0 ? {} : { color: 'black' };
+  const downStyles =
+    shownThumbnails < photoThumbnails.length - 8 ? {} : { color: 'black' };
+
   if (photoThumbnails.length > 7) {
     return (
       <div className="thumbnail-column">
-        {shownThumbnails > 0 ? (
-          <div
-            className="up"
-            onClick={() => {
-              toggleShownThumbnails(-1);
-            }}
-          >
-            {'▲'}
-          </div>
-        ) : (
-          <div className="up" style={{ color: 'black' }}>
-            {'▲'}
-          </div>
-        )}
+        <div
+          className="up"
+          onClick={() => {
+            toggleShownThumbnails(-1);
+          }}
+          style={upStyles}
+        >
+          {'▲'}
+        </div>
+
         {photoThumbnails.slice(shownThumbnails, shownThumbnails + 7)}
-        {shownThumbnails < photoThumbnails.length - 8 ? (
-          <div
-            className="down"
-            onClick={() => {
-              toggleShownThumbnails(1);
-            }}
-          >
-            {'▼'}
-          </div>
-        ) : (
-          <div className="up" style={{ color: 'black' }}>
-            {'▼'}
-          </div>
-        )}
+        <div
+          className="down"
+          onClick={() => {
+            toggleShownThumbnails(1);
+          }}
+          style={downStyles}
+        >
+          {'▼'}
+        </div>
       </div>
     );
   } else {
