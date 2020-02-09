@@ -1,9 +1,10 @@
 html {
   scroll-behavior: smooth;
+  font-family: 'Helvetica Neue', sans-serif;
 }
 
 body {
-  margin: 0px 10vh 0px 10vh;
+  margin: 0px 8% 0px 8%;
 }
 
 .nav-bar {
@@ -14,6 +15,7 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  padding-left: 1.5%;
   overflow: hidden;
   background-color: #525252;
 }
@@ -22,43 +24,13 @@ li {
   float: left;
 }
 
-.imgs {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li img {
-  height: 25px;
-  width: 25px;
-}
-
 li a {
   display: block;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-}
-
-.logo {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  height: 50px;
-  width: 50px;
-}
-
-li a:hover:not(.active) {
-  background-color: #3b3b3b;
-}
-
-.active {
-  background-color: #457447;
+  font-size: xx-large;
 }
 
 .search-bar {
@@ -67,7 +39,7 @@ li a:hover:not(.active) {
   float: right;
   background: none;
   border-radius: 50px;
-  padding-right: 10px;
+  padding-right: 1.5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,13 +48,6 @@ li a:hover:not(.active) {
 .search-button {
   color: #bdc3c7;
   float: right;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
 }
 
 .search-text {
@@ -92,11 +57,12 @@ li a:hover:not(.active) {
   border-bottom: 2px solid #bdc3c7;
   float: left;
   padding: 0;
+  margin-right: 10%;
   color: #bdc3c7;
   font-size: 16px;
   transition: 0.4s;
   line-height: 40px;
-  width: 200px;
+  width: 60%;
 }
 
 .announcement {
@@ -105,6 +71,7 @@ li a:hover:not(.active) {
   margin-bottom: 10px;
   font-size: small;
 }
+
 .announcement a {
   color: #525252;
 }
@@ -137,6 +104,7 @@ li a:hover:not(.active) {
   max-height: 60vh;
   width: 100%;
   vertical-align: middle;
+  object-fit: cover;
 }
 
 /* Position the image container (needed to position the left and right arrows) */
@@ -224,7 +192,6 @@ li a:hover:not(.active) {
   display: inline-block;
   font-size: 20px;
   font-family: Times;
-  line-height: 1;
 }
 
 .stars:before {
@@ -232,16 +199,21 @@ li a:hover:not(.active) {
   letter-spacing: 3px;
   background: linear-gradient(
     90deg,
-    #fc0 var(--percent),
-    rgb(99, 97, 97) var(--percent)
+    #525252 var(--percent),
+    rgb(192, 188, 188) var(--percent)
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+.product-info a {
+  color: #525252;
+}
+
 .product-category {
   font-size: large;
+  margin-top: 2%;
 }
 
 .product-title {
@@ -282,17 +254,22 @@ li a:hover:not(.active) {
 }
 
 .style-item {
-  flex: 0 1 calc(20% - 8px);
+  position: relative;
+  flex: 0 0 20%;
   border: 2px black;
   margin: 10px;
   margin-bottom: 4px;
-  width: 76px;
-  height: 76px;
+  width: 75px;
+  height: 75px;
 }
 
 .fa-check-circle {
-  color: rgb(75, 179, 106);
+  color: white;
+  background-color: black;
   position: absolute;
+  float: right;
+  right: 20%;
+  top: 0%;
   border-radius: 50%;
 }
 
@@ -302,6 +279,7 @@ li a:hover:not(.active) {
   width: 75px;
   height: 75px;
   cursor: pointer;
+  object-fit: cover;
 }
 
 .style-tooltip {
@@ -318,7 +296,7 @@ li a:hover:not(.active) {
   transition: opacity 0.8s;
 }
 
-.style-item:hover .style-tooltip {
+.thumbnail-img:hover + .style-tooltip {
   display: block;
   opacity: 1;
 }
@@ -433,14 +411,13 @@ li a:hover:not(.active) {
 }
 
 .social-media > a {
-  /* padding: 30px; */
+  text-align: center;
+  text-decoration: none;
   border-radius: 50%;
   font-size: 30px;
   width: 50px;
   height: 40px;
-  text-align: center;
-  text-decoration: none;
-  margin: 2px 2px;
+  margin: 1%;
 }
 
 .fa:hover {
@@ -448,19 +425,19 @@ li a:hover:not(.active) {
 }
 
 .fa-facebook {
-  padding-top: 10px;
+  padding-top: 1%;
   background: #3b5998;
   color: white;
 }
 
 .fa-twitter {
-  padding-top: 10px;
+  padding-top: 1%;
   background: #55acee;
   color: white;
 }
 
 .fa-pinterest {
-  padding-top: 10px;
+  padding-top: 1%;
   background: #cb2027;
   color: white;
 }
