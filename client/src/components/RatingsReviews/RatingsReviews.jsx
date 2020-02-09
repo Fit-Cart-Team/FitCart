@@ -11,31 +11,36 @@ import RatingBreakdown from './RatingBreakdown/RatingBreakdown';
 // Meta Data:
 //
 // {
-//   "product_id": "2",
+//   "product_id": "1",
 //   "ratings": {
-//     2: 1,
-//     3: 1,
-//     4: 2,
-//     // ...
+//       "1": 15,
+//       "2": 2,
+//       "3": 9,
+//       "4": 12,
+//       "5": 19
 //   },
 //   "recommended": {
-//     0: 5
-//     // ...
+//       "0": 23,
+//       "1": 34
 //   },
 //   "characteristics": {
-//     "Size": {
-//       "id": 14,
-//       "value": "4.0000"
-//     },
-//     "Width": {
-//       "id": 15,
-//       "value": "3.5000"
-//     },
-//     "Comfort": {
-//       "id": 16,
-//       "value": "4.0000"
-//     },
-//     // ...
+//       "Fit": {
+//           "id": 1,
+//           "value": "2.8158"
+//       },
+//       "Length": {
+//           "id": 2,
+//           "value": "2.8462"
+//       },
+//       "Comfort": {
+//           "id": 3,
+//           "value": "2.7949"
+//       },
+//       "Quality": {
+//           "id": 4,
+//           "value": "2.9231"
+//       }
+//   }
 // }
 
 const RatingsReviews = (props) => {
