@@ -14,9 +14,9 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   const [imgStyles, setimgStyles] = useState({
     // backgroundImage: `url(${photoSlides[currSlide]})`,
     backgroundSize: 'contain',
-    backgroundPosition: 'center',
     position: 'relative',
-    width: '60%'
+    width: '60%',
+    cursor: 'zoom-in'
   });
 
   useEffect(() => {
@@ -39,31 +39,49 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   };
 
   const expandView = e => {
-    if (e.target.className === 'image-gallery') {
+    if (
+      e.target.className === 'image-gallery' ||
+      e.target.className === 'image-gallery expanded'
+    ) {
       if (!expanded) {
         setimgStyles({
           backgroundSize: 'cover',
           position: 'absolute',
-          width: '100%'
+          width: '100%',
+          cursor: 'zoom-out'
         });
       } else {
         setimgStyles({
           backgroundSize: 'contain',
-          backgroundPosition: 'center',
           position: 'relative',
-          width: '60%'
+          width: '60%',
+          cursor: 'zoom-in'
         });
       }
       setexpanded(expanded => !expanded);
     }
   };
 
+  const handleZoom = e => {
+    const { left, top, width, height } = e.target.getBoundingClientRect();
+    const x = ((e.pageX - left) / width) * 100;
+    const y = ((e.pageY - top) / height) * 100;
+
+    console.log(x, y);
+    setimgStyles(prev => {
+      return { ...prev, backgroundPosition: `${x}% ${y}%` };
+    });
+  };
+
   return (
     <div
-      className="image-gallery"
+      className={expanded ? 'image-gallery expanded' : 'image-gallery'}
       style={imgStyles}
-      onClick={e => {
-        expandView(e);
+      onClick={expandView}
+      onMouseMove={e => {
+        if (expanded) {
+          handleZoom(e);
+        }
       }}
     >
       <ImagePreviews

@@ -90,12 +90,11 @@ li a {
   background-repeat: no-repeat;
   background-color: black;
   /* Black space around the image */
-  /* background-size: contain;
-  background-position: center; */
+  /* background-size: contain;*/
+  background-position: center center;
   /* Fill container with image */
   /* background-size: cover; */
   display: flex;
-  cursor: zoom-in;
   margin: 0px;
 
   /* max-width: 40vw;
@@ -106,8 +105,12 @@ li a {
   /* width: 60%; */
   height: 50vw;
   z-index: 3;
+  overflow: hidden;
 }
 
+/* .expanded:hover {
+  transform: scale(1.5);
+} */
 /* Next & previous buttons */
 .prev,
 .next {
@@ -259,7 +262,6 @@ li a {
 .style-item {
   position: relative;
   flex: 0 0 20%;
-  border: 2px black;
   margin: 10px;
   margin-bottom: 4px;
   width: 75px;
@@ -278,7 +280,7 @@ li a {
 
 .thumbnail-img {
   border-radius: 50%;
-  border: 2px black;
+  border: 1.5px solid black;
   width: 75px;
   height: 75px;
   cursor: pointer;
