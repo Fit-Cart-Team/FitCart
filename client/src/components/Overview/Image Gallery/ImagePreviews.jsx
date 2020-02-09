@@ -12,7 +12,6 @@ const ImagePreviews = ({ photos, setSlide, currSlide }) => {
           className={classes}
           src={photo.thumbnail_url}
           onClick={() => {
-            console.log(index);
             setSlide(index);
           }}
           alt="Loading"

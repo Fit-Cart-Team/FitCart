@@ -67,8 +67,7 @@ li a {
 
 .announcement {
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin: 1% 0 1% 0;
   font-size: small;
 }
 
@@ -82,24 +81,31 @@ li a {
 
 .overview-top {
   display: flex;
-  justify-content: center;
-  margin: 1% 0 2% 0;
+  position: relative;
 }
 
 .image-gallery {
-  position: relative;
-  background-size: cover;
+  /* position: relative; */
+  background-image: url('https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80');
   background-repeat: no-repeat;
+  background-color: black;
+  /* Black space around the image */
+  /* background-size: contain;
+  background-position: center; */
+  /* Fill container with image */
+  /* background-size: cover; */
   display: flex;
   cursor: zoom-in;
   margin: 0px;
 
-  /* max-width: 55vw;
-  min-width: 55vw; */
-  max-height: 60vh;
-  min-height: 60vh;
+  /* max-width: 40vw;
+  min-width: 40vw;
+  max-height: 40vw;
+  min-height: 40vw; */
 
-  width: 60%;
+  /* width: 60%; */
+  height: 50vw;
+  z-index: 3;
 }
 
 /* Next & previous buttons */
@@ -163,17 +169,24 @@ li a {
   height: 100%;
   vertical-align: middle;
   object-fit: cover;
+  opacity: 0.5;
 }
 
+.active-img,
 .thumbnail-preview:hover {
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .right-hand-overview {
   display: flex;
-  width: 45vw;
+  width: 40%;
+  height: 50vw;
   flex-direction: column;
+  justify-content: center;
   margin: 0 2% 0 2%;
+}
+.right-hand-overview > div {
+  margin: 3%;
 }
 
 .stars {
@@ -378,6 +391,7 @@ li a {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin-top: 1%;
 }
 
 .product-description > div {

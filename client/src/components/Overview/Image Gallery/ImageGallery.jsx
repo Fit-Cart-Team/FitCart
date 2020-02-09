@@ -5,16 +5,23 @@ import ImagePreviews from './ImagePreviews';
 const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   let currStyle = styleInfo[selectedStyle.index];
   let photos = currStyle ? currStyle.photos : [];
-  let temp = photos[0] ? photos[0].url : '';
   const [currSlide, setSlideIndex] = useState(0);
-
-  useEffect(() => {
-    setSlide(0);
-  }, [url, selectedStyle]);
+  const [expanded, setexpanded] = useState(false);
 
   const photoSlides = photos.map(photo => {
     return photo.url;
   });
+  const [imgStyles, setimgStyles] = useState({
+    // backgroundImage: `url(${photoSlides[currSlide]})`,
+    backgroundSize: 'contain',
+    backgroundPosition: 'center',
+    position: 'relative',
+    width: '60%'
+  });
+
+  useEffect(() => {
+    setSlide(0);
+  }, [url, selectedStyle]);
 
   const setSlide = index => {
     setSlideIndex(index);
@@ -31,10 +38,33 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
     }
   };
 
+  const expandView = e => {
+    if (e.target.className === 'image-gallery') {
+      if (!expanded) {
+        setimgStyles({
+          backgroundSize: 'cover',
+          position: 'absolute',
+          width: '100%'
+        });
+      } else {
+        setimgStyles({
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
+          position: 'relative',
+          width: '60%'
+        });
+      }
+      setexpanded(expanded => !expanded);
+    }
+  };
+
   return (
     <div
       className="image-gallery"
-      style={{ backgroundImage: `url(${photoSlides[currSlide]})` }}
+      style={imgStyles}
+      onClick={e => {
+        expandView(e);
+      }}
     >
       <ImagePreviews
         photos={photos}
