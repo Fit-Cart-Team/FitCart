@@ -7,7 +7,7 @@ const RatingBreakdown = (props) => {
 
   return (
     <div>
-      <h2>Rating Breakdown Component {bobs}</h2>
+      <h2>Rating Breakdown Component</h2>
       <RatingSummary ratingAverage={props.ratingAverage} />
       <Recommendations recommended={props.recommended} />
       <Breakdown ratings={props.ratings} />
