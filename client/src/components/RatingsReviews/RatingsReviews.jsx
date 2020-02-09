@@ -70,8 +70,8 @@ const RatingsReviews = (props) => {
           ratingSum += rating * data.ratings[rating];
         }
 
-        // setTotalRatings(totalQuantity);
-
+        setTotalRatings(totalQuantity);
+        
         let ratingAvg = ratingSum / totalQuantity;
         // setRatingAvg(ratingAvg);
 
@@ -103,7 +103,7 @@ const RatingsReviews = (props) => {
       <h1>
         Ratings & Reviews
       </h1>
-      <RatingBreakdown recommended={meta.recommended} ratings={meta.ratings} ratingAverage={props.ratingAverage} />
+      <RatingBreakdown recommended={meta.recommended} ratings={meta.ratings} ratingAverage={props.ratingAverage} totalRatings={totalRatings} />
       <SortOptions totalReviews={props.totalReviews} changeSortParameter={changeSortParameter} />
       <ReviewsList id={id} reviewsList={reviewsList} />
     </div>
