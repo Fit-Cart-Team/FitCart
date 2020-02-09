@@ -23,7 +23,7 @@ const App = () => {
           </div>
           <Overview avg={avg} total={total} />
           <QuestionsAnswers />
-          <RatingsReviews setAppAvg={setAppAvg} setAppTotal={setAppTotal} />
+          <RatingsReviews ratingAverage={avg} totalReviews={total} setAppAvg={setAppAvg} setAppTotal={setAppTotal} />
         </Route>
       </Switch>
     </React.Fragment>
