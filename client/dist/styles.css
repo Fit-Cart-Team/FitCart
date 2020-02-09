@@ -172,10 +172,10 @@ li a {
 
 /* Add a transparency effect for thumnbail images */
 .demo {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
-.active,
+.active-img,
 .demo:hover {
   opacity: 1;
 }

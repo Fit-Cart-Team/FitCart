@@ -60,7 +60,11 @@ const Overview = ({ avg, total }) => {
   return (
     <div className="overview">
       <div className="overview-top">
-        <ImageGallery styleInfo={styleInfo} selectedStyle={selectedStyle} />
+        <ImageGallery
+          styleInfo={styleInfo}
+          selectedStyle={selectedStyle}
+          url={url}
+        />
         <div className="right-hand-overview">
           <Details
             productInfo={productInfo}
