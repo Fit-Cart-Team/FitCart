@@ -5,8 +5,8 @@ const ProductBreakdown = (props) => {
 
   if (props.characteristics) {
     let characteristicNames = Object.keys(props.characteristics);
-    console.log(props.characteristics);
-    console.log(characteristicNames);
+    // console.log(props.characteristics);
+    // console.log(characteristicNames);
 
     return (
       <div>
