@@ -1,0 +1,71 @@
+.characteristic {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.characteristic-bar-container {
+  position: relative;
+  display: flex;
+}
+
+.fa-caret-down {
+  position: absolute;
+  top: -1vh;
+  color: #525252;
+  font-size: 3vh;
+}
+
+.characteristic-bar-container > div {
+  position: absolute;
+  height: 1vh;
+  background-color: #ebebeb;
+}
+
+.child-bar-1 {
+  width: 32%;
+}
+
+.child-bar-2 {
+  left: 34%;
+  width: 32%;
+}
+.child-bar-3 {
+  left: 68%;
+  width: 32%;
+}
+
+.child-bar-1a {
+  width: 23.5%;
+}
+
+.child-bar-2a {
+  left: 25.5%;
+  width: 23.5%;
+}
+.child-bar-3a {
+  left: 51%;
+  width: 23.5%;
+}
+.child-bar-4a {
+  left: 76.5%;
+  width: 23.5%;
+}
+
+.ratings-breakdown {
+  width: 100%;
+}
+
+.ratings-bar {
+  --barpercent: calc(var(--ratingval) * 100%);
+  margin-left: 1vw;
+  display: inline-block;
+  height: 1vh;
+  width: 90%;
+  background: linear-gradient(
+    90deg,
+    #525252 var(--barpercent),
+    #ebebeb var(--barpercent)
+  );
+}
