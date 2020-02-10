@@ -66,7 +66,9 @@ const Overview = ({ avg, total }) => {
             let emptyStyle = true;
             setStyleInfo(styles);
             styles.forEach((style, index) => {
+              console.log(style, index);
               if (style['default?'] === 1) {
+                console.log(style);
                 setSelectedStyle({ index: index, name: style.name });
                 emptyStyle = false;
               }
@@ -77,7 +79,6 @@ const Overview = ({ avg, total }) => {
           });
       });
   }, [url]);
-
   return (
     <div className="overview">
       <div className="overview-top">
