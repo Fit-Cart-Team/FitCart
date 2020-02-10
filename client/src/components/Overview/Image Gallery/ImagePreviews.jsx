@@ -17,8 +17,9 @@ const ImagePreviews = ({
         ? 'thumbnail-preview active-img'
         : 'thumbnail-preview';
     return (
-      <div key={photo.url} className="row">
+      <div key={photo.url} className="thumbnail-container">
         <img
+          key={photo.url}
           className={classes}
           src={photo.thumbnail_url || defaultIMG}
           onClick={() => {
@@ -70,7 +71,8 @@ const ImagePreviews = ({
           }}
           style={upStyles}
         >
-          {'⮝'}
+          {/* {'⮝'} */}
+          &#11165;
         </div>
 
         {photoThumbnails.slice(shownThumbnails, shownThumbnails + 7)}
@@ -81,7 +83,8 @@ const ImagePreviews = ({
           }}
           style={downStyles}
         >
-          {'⮟'}
+          {/* {'⮟'} */}
+          &#11167;
         </div>
       </div>
     );

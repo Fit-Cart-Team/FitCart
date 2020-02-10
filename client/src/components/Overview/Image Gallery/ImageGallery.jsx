@@ -163,7 +163,8 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
                 incrementSlide(-1);
               }}
             >
-              {'🡠'}
+              {/* {'🡠'} */}
+              &#129120;
             </a>
           ) : (
             <div></div>
@@ -175,7 +176,8 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
                 incrementSlide(1);
               }}
             >
-              {'🡢'}
+              {/* {'🡢'} */}
+              &#129122;
             </a>
           ) : (
             <div></div>
