@@ -61,7 +61,6 @@ const RatingsReviews = (props) => {
   useEffect(() => {
     axios.get(`http://3.134.102.30/reviews/${url}/meta`)
       .then(( {data} ) => {
-        console.log(data.characteristics);
         setMeta(data);
         
         let totalQuantity = 0;
