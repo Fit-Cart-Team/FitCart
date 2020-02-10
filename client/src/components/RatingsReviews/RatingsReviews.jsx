@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import ReviewsList from './ReviewsList/ReviewsList';
 import SortOptions from './SortOptions/SortOptions';
 import RatingBreakdown from './RatingBreakdown/RatingBreakdown';
+import ProductBreakdown from './ProductBreakdown/ProductBreakdown';
 
 //setAppAvg(value)
 //setAppTotal(value)
@@ -60,6 +61,7 @@ const RatingsReviews = (props) => {
   useEffect(() => {
     axios.get(`http://3.134.102.30/reviews/${url}/meta`)
       .then(( {data} ) => {
+        console.log(data.characteristics);
         setMeta(data);
         
         let totalQuantity = 0;
@@ -104,6 +106,7 @@ const RatingsReviews = (props) => {
         Ratings & Reviews
       </h1>
       <RatingBreakdown recommended={meta.recommended} ratings={meta.ratings} ratingAverage={props.ratingAverage} totalRatings={totalRatings} />
+      <ProductBreakdown characteristics={meta.characteristics} />
       <SortOptions totalReviews={props.totalReviews} changeSortParameter={changeSortParameter} />
       <ReviewsList id={id} reviewsList={reviewsList} />
     </div>
