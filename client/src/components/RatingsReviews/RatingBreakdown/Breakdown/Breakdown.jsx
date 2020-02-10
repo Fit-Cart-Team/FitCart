@@ -4,7 +4,7 @@ import Rating from './Rating';
 const Breakdown = (props) => {
 
   if (props.ratings) {
-    let ratings = Object.keys(props.ratings);
+    let ratings = Object.keys(props.ratings).reverse();
 
     return (
       <div>
