@@ -434,7 +434,7 @@ li a {
   margin: 1%;
 }
 
-.fa:hover {
+.fab:hover {
   opacity: 0.7;
 }
 
@@ -452,6 +452,7 @@ li a {
 }
 
 .fa-pinterest {
+  cursor: pointer;
   padding-top: 0.6%;
   background: #cb2027;
   color: white;
