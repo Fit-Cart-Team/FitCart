@@ -85,15 +85,9 @@ li a {
 }
 
 .image-gallery {
-  /* position: relative; */
-  /* background-image: url('https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'); */
   background-repeat: no-repeat;
   background-color: black;
-  /* Black space around the image */
-  /* background-size: contain;*/
   background-position: center center;
-  /* Fill container with image */
-  /* background-size: cover; */
   display: flex;
   margin: 0px;
 
@@ -108,9 +102,18 @@ li a {
   overflow: hidden;
 }
 
-/* .expanded:hover {
-  transform: scale(1.5);
+/* .zoom:hover {
+  transform: scale(2.5);
 } */
+
+.fa-expand {
+  position: absolute;
+  right: 3%;
+  top: 5%;
+  font-size: 30px;
+  color: #aaaaaa;
+  cursor: pointer;
+}
 
 .prev,
 .next {
@@ -280,8 +283,8 @@ li a {
 }
 
 .fa-check-circle {
-  color: white;
-  background-color: black;
+  color: black;
+  background: white;
   position: absolute;
   float: right;
   right: 20%;
@@ -354,7 +357,6 @@ li a {
 }
 
 .cart-buttons > button {
-  /* margin: 10px; */
   cursor: pointer;
   transition: 0.5s;
 }
@@ -379,10 +381,9 @@ li a {
   float: left;
 }
 
-.fa-plus {
+.plus-sign {
   float: right;
   font-size: large;
-  font-weight: lighter;
 }
 .add-to-favorites {
   flex-grow: 2;

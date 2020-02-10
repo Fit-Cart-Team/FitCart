@@ -63,7 +63,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
           position: 'absolute',
           width: '100%',
           cursor:
-            "url('https://img.favpng.com/25/5/7/plus-and-minus-signs-plus-minus-sign-meno-symbol-subtraction-png-favpng-n3rJx6vfxeeb6iWSv4BvaP2pt.jpg'), auto"
+            'url(https://cdn2.iconfinder.com/data/icons/metroicons/48/minus.png), pointer'
         });
         setview('zoom');
       }
@@ -90,6 +90,24 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
     });
   };
 
+  const compressIcon =
+    view === 'expanded' ? (
+      <i
+        className="fa fa-expand"
+        onClick={() => {
+          setimgStyles({
+            backgroundSize: 'contain',
+            position: 'relative',
+            width: '60%',
+            cursor: 'zoom-in'
+          });
+          setview('default');
+        }}
+      ></i>
+    ) : (
+      <></>
+    );
+
   return (
     <div
       className={view === 'default' ? 'image-gallery' : 'image-gallery ' + view}
@@ -104,6 +122,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
         }
       }}
     >
+      {compressIcon}
       {view === 'default' ? (
         <ImagePreviews
           photos={photos}
