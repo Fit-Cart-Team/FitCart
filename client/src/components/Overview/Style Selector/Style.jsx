@@ -13,8 +13,8 @@ const Style = ({ style, setSelectedStyle, index, selectedStyle }) => {
   );
 
   const checked =
-    selectedStyle.name === style.name ? (
-      <div className="fa fa-check-circle"></div>
+    selectedStyle.index === index ? (
+      <div className="far fa-check-circle"></div>
     ) : (
       <div></div>
     );
