@@ -4,9 +4,11 @@
 
 .product-card {
   /* Add shadows to create the "card" effect */
+  cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 0.1vw solid black;
   transition: 0.3s;
-  margin: 2px;
+  margin: 1vw;
   display: grid;
 }
 
