@@ -5,8 +5,6 @@ const ProductBreakdown = (props) => {
 
   if (props.characteristics) {
     let characteristicNames = Object.keys(props.characteristics);
-    // console.log(props.characteristics);
-    // console.log(characteristicNames);
 
     return (
       <div>
@@ -14,7 +12,7 @@ const ProductBreakdown = (props) => {
         {characteristicNames.map((characteristicName) => {
           return (
             <Characteristic key={props.characteristics[characteristicName].id} name={characteristicName} rating={props.characteristics[characteristicName].value} />
-          )
+          );
         })}
         <br/>
       </div>
