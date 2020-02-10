@@ -50,7 +50,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
     if (e.target.className.includes('image-gallery')) {
       if (view === 'default') {
         setimgStyles({
-          backgroundSize: 'cover',
+          backgroundSize: 'contain',
           position: 'absolute',
           width: '100%',
           cursor: 'crosshair'
@@ -69,7 +69,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
       }
       if (view === 'zoom') {
         setimgStyles({
-          backgroundSize: 'cover',
+          backgroundSize: 'contain',
           position: 'absolute',
           width: '100%',
           cursor: 'crosshair'
