@@ -6,7 +6,7 @@ const Recommendations = (props) => {
     let yes = props.recommended["1"];
     let no = props.recommended["0"];
     let decimal = yes / (yes + no);
-    let percentage = Math.round(decimal * 100).toFixed(0);
+    let percentage = Math.round(decimal * 100);
 
     if (!props.recommended["1"]) {
       percentage = 0;

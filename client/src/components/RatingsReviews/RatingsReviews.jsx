@@ -53,6 +53,42 @@ const RatingsReviews = (props) => {
   const [totalRatings, setTotalRatings] = useState(0);
   const [ratingAvg, setRatingAvg] = useState(0);
   const [sortParameter, setSortParameter] = useState('relevant');
+  const [filter, setFilter] = useState(false);
+  const [filterBy, setFilterBy] = useState({ 5: false, 4: false, 3: false, 2: false, 1: false });
+
+  // Returns false if any of the filterBy's are true
+  const allFiltersAreFalse = (filters) => {
+    let allAreFalse = true;
+    
+    for (let rating in filters) {
+      if (filters[rating]) {
+        allAreFalse = false;
+      }
+    }
+    
+    return allAreFalse;
+  }
+  
+  // When a rating is clicked, toggle FilterBy
+  const toggleFilterBy = (num) => {
+    
+    let tempFilters = {...filterBy, [num]: !filterBy[num]};
+    
+    setFilterBy({...filterBy, [num]: !filterBy[num]});
+
+    // If any of the filterBy's are true, set the filter to false
+    if (allFiltersAreFalse(tempFilters)) {
+      setFilter(false);
+    } else {
+      setFilter(true);
+    }
+  }
+
+  // Sets all the filters to false
+  const clearFilters = () => {
+    setFilter(false);
+    setFilterBy({ 5: false, 4: false, 3: false, 2: false, 1: false });
+  }
 
   if (url !== id) {
     seturl(id);
@@ -89,6 +125,7 @@ const RatingsReviews = (props) => {
   useEffect(() => {
     axios.get(`http://3.134.102.30/reviews/${url}/list?page=1&count=${props.totalReviews}&sort=${sortParameter}`)
       .then(( {data} ) => {
+        props.setAppTotal(data.results.length);
         setReviewsList(data.results);
       });
   }, [sortParameter]);
@@ -104,10 +141,10 @@ const RatingsReviews = (props) => {
       <h1>
         Ratings & Reviews
       </h1>
-      <RatingBreakdown recommended={meta.recommended} ratings={meta.ratings} ratingAverage={props.ratingAverage} totalRatings={totalRatings} />
+      <RatingBreakdown recommended={meta.recommended} ratings={meta.ratings} ratingAverage={props.ratingAverage} totalRatings={totalRatings} toggleFilterBy={toggleFilterBy} clearFilters={clearFilters} />
       <ProductBreakdown characteristics={meta.characteristics} />
       <SortOptions totalReviews={props.totalReviews} changeSortParameter={changeSortParameter} />
-      <ReviewsList id={id} reviewsList={reviewsList} />
+      <ReviewsList reviewsList={reviewsList} filter={filter} filterBy={filterBy} />
     </div>
   );
 };

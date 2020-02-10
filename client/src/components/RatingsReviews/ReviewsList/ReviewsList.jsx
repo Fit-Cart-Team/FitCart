@@ -4,26 +4,40 @@ import MoreReviews from './MoreReviews/MoreReviews';
 import AddReview from './AddReview/AddReview';
 
 const ReviewsList = (props) => {
+  const { reviewsList, filter, filterBy } = props;
   const [reviewsCount, setReviewsCount] = useState(2);
 
+  let filteredList = reviewsList.filter((review) => {
+    if (filter) {
+      for (let rating in filterBy) {
+        if (review.rating === parseInt(rating)) {
+          return filterBy[rating];
+        }
+      }
+      return false;
+    } else {
+      return true;
+    }
+  });
+
   const incrementReviewsCount = () => {
-    if (reviewsCount + 2 >= props.reviewsList.length) {
-      setReviewsCount(props.reviewsList.length);
+    if (reviewsCount + 2 >= filteredList.length) {
+      setReviewsCount(filteredList.length);
     } else {
       setReviewsCount(reviewsCount + 2);
     }
   }
   
-  if (props.reviewsList.length > 0) {
+  if (filteredList.length > 0) {
     return (
       <div>
-        {props.reviewsList.slice(0, reviewsCount).map((review) => {
+        {filteredList.slice(0, reviewsCount).map((review) => {
           return (
             <ReviewTile key={review.review_id} review={review} />
           );
         })}
         <div style={{margin: "10px"}} >
-          {(reviewsCount === props.reviewsList.length) ? <div></div> : (<MoreReviews incrementReviewsCount={incrementReviewsCount} />)}
+          {(reviewsCount === filteredList.length) ? <div></div> : (<MoreReviews incrementReviewsCount={incrementReviewsCount} />)}
           <AddReview />
         </div>
       </div>
