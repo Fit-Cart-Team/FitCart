@@ -130,6 +130,8 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
           currSlide={currSlide}
           shownThumbnails={shownThumbnails}
           setshownThumbnails={setshownThumbnails}
+          url={url}
+          selectedStyle={selectedStyle}
         />
       ) : view === 'expanded' ? (
         <ImagePreviews
@@ -138,6 +140,8 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
           currSlide={currSlide}
           shownThumbnails={shownThumbnails}
           setshownThumbnails={setshownThumbnails}
+          url={url}
+          selectedStyle={selectedStyle}
           size="small"
         />
       ) : (

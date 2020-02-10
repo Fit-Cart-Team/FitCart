@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
 const ImagePreviews = ({
   photos,
@@ -6,6 +6,8 @@ const ImagePreviews = ({
   currSlide,
   shownThumbnails,
   setshownThumbnails,
+  url,
+  selectedStyle,
   size
 }) => {
   const defaultIMG = 'https://img.moglimg.com/p/I/P/N/d/MINIPN3LI0NZS.jpg';
@@ -53,7 +55,11 @@ const ImagePreviews = ({
   const upStyles = shownThumbnails > 0 ? {} : { opacity: '0' };
   const downStyles =
     shownThumbnails < photoThumbnails.length - 7 ? {} : { opacity: '0' };
-  console.log(shownThumbnails, photoThumbnails.length);
+
+  useEffect(() => {
+    setshownThumbnails(0);
+  }, [url, selectedStyle]);
+
   if (photoThumbnails.length > 7) {
     return (
       <div className="thumbnail-column">
