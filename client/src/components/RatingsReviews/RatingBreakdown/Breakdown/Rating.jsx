@@ -5,7 +5,7 @@ const Rating = (props) => {
 
   return (
     <div>
-      <h4>{props.rating} stars: {barVal}</h4>
+      <h4>{props.rating} stars: {barVal}, {props.quantity}</h4>
     </div>
   );
 }
