@@ -13,20 +13,28 @@ const ReviewsList = (props) => {
       setReviewsCount(reviewsCount + 2);
     }
   }
-
-  return (
-    <div>
-      {props.reviewsList.slice(0, reviewsCount).map((review) => {
-        return (
-          <ReviewTile key={review.review_id} review={review} />
-        );
-      })}
-      <div style={{margin: "10px"}} >
-        <MoreReviews incrementReviewsCount={incrementReviewsCount} />
+  
+  if (props.reviewsList.length > 0) {
+    return (
+      <div>
+        {props.reviewsList.slice(0, reviewsCount).map((review) => {
+          return (
+            <ReviewTile key={review.review_id} review={review} />
+          );
+        })}
+        <div style={{margin: "10px"}} >
+          {(reviewsCount === props.reviewsList.length) ? <div></div> : (<MoreReviews incrementReviewsCount={incrementReviewsCount} />)}
+          <AddReview />
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div>
         <AddReview />
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default ReviewsList;
