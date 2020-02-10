@@ -21,6 +21,7 @@ const QList = ({ product_id }) => {
   if (qList.length > 0) {
     return (
       <div>
+        {/* <div style={{ height: '50vw', overflow: 'auto' }}></div> */}
         {qList.map((q, index) => {
           return <Question q={q} key={index} />;
         })}
