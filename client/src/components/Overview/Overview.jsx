@@ -54,7 +54,6 @@ const Overview = ({ avg, total }) => {
     axios
       .get(`http://3.134.102.30/products/${url}`)
       .then(results => {
-        // console.log(results.data);
         setProductInfo(results.data);
       })
       .then(() => {
@@ -66,9 +65,7 @@ const Overview = ({ avg, total }) => {
             let emptyStyle = true;
             setStyleInfo(styles);
             styles.forEach((style, index) => {
-              console.log(style, index);
               if (style['default?'] === 1) {
-                console.log(style);
                 setSelectedStyle({ index: index, name: style.name });
                 emptyStyle = false;
               }
