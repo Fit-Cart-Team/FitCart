@@ -17,12 +17,19 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   const [imgStyles, setimgStyles] = useState({
     backgroundSize: 'contain',
     position: 'relative',
-    width: '60%',
+    width: '70%',
     cursor: 'zoom-in'
   });
 
   useEffect(() => {
     setSlide(0);
+    setview('default');
+    setimgStyles({
+      backgroundSize: 'contain',
+      position: 'relative',
+      width: '70%',
+      cursor: 'zoom-in'
+    });
   }, [url, selectedStyle]);
 
   const setSlide = index => {
@@ -98,7 +105,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
           setimgStyles({
             backgroundSize: 'contain',
             position: 'relative',
-            width: '60%',
+            width: '70%',
             cursor: 'zoom-in'
           });
           setview('default');

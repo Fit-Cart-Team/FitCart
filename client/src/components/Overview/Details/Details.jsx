@@ -18,15 +18,23 @@ const Details = ({ productInfo, styleInfo, selectedStyle, avg, total }) => {
 
   let prodCat = productInfo.category ? productInfo.category.toUpperCase() : '';
   return (
-    <div className="product-info">
-      <Stars avg={avg} />
-      <span>
-        <a href="#ratings-reviews" style={{ fontSize: 'small' }}>Read all {total} reviews!</a>
-      </span>
+    // < className="product-info">
+    <>
+      <div>
+        <Stars avg={avg} />
+        <span>
+          <a
+            href="#ratings-reviews"
+            style={{ fontSize: 'small', color: '#525252' }}
+          >
+            Read all {total} reviews!
+          </a>
+        </span>
+      </div>
       <div className="product-category">{prodCat}</div>
       <div className="product-title">{productInfo.name}</div>
       <div className="product-price">{currPrice}</div>
-    </div>
+    </>
   );
 };
 
