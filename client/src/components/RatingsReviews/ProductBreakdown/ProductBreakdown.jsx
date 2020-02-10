@@ -12,8 +12,11 @@ const ProductBreakdown = (props) => {
       <div>
         <h2>Product Breakdown Component</h2>
         {characteristicNames.map((characteristicName) => {
-          <Characteristic name={characteristicName} rating={props.characteristics[characteristicName].value} />
+          return (
+            <Characteristic key={props.characteristics[characteristicName].id} name={characteristicName} rating={props.characteristics[characteristicName].value} />
+          )
         })}
+        <br/>
       </div>
     );
   } else {

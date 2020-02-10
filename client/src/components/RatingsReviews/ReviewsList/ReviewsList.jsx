@@ -9,9 +9,7 @@ const ReviewsList = (props) => {
     <div>
       {props.reviewsList.map((review) => {
         return (
-          <div key={review.review_id} >
-            <ReviewTile review={review} />
-          </div>
+          <ReviewTile key={review.review_id} review={review} />
         );
       })}
       <div style={{margin: "10px"}} >
