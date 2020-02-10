@@ -8,6 +8,14 @@ const Recommendations = (props) => {
     let decimal = yes / (yes + no);
     let percentage = Math.round(decimal * 100).toFixed(0);
 
+    if (!props.recommended["1"]) {
+      percentage = 0;
+    }
+
+    if (!props.recommended["0"]) {
+      percentage = 100;
+    }
+
     return (
       <div>
         <h3>{percentage}% of reviews recommend this product</h3>
