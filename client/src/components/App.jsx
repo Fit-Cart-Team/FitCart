@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Homepage from './Homepage';
 import Overview from './Overview/Overview';
+import RelatedProducts from './RelatedProducts/RelatedProducts';
 import RatingsReviews from './RatingsReviews/RatingsReviews';
 import QuestionsAnswers from './QA/QuestionsAnswers';
 import NavBar from './NavBar';
@@ -22,8 +23,14 @@ const App = () => {
             <b>OFFER</b> - <a href="#">NEW PRODUCT HIGHLIGHT</a>
           </div>
           <Overview avg={avg} total={total} />
+          <RelatedProducts avg={avg} />
           <QuestionsAnswers />
-          <RatingsReviews ratingAverage={avg} totalReviews={total} setAppAvg={setAppAvg} setAppTotal={setAppTotal} />
+          <RatingsReviews
+            ratingAverage={avg}
+            totalReviews={total}
+            setAppAvg={setAppAvg}
+            setAppTotal={setAppTotal}
+          />
         </Route>
       </Switch>
     </React.Fragment>
