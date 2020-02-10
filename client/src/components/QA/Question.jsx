@@ -1,5 +1,5 @@
 import React from 'react';
-import AList from './Alist';
+import AList from './Answers/Alist';
 import Helpful from './Helpful';
 
 const Question = ({ q }) => {
