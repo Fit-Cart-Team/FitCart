@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import Answer from './Answer';
 import axios from 'axios';
 
@@ -13,25 +13,26 @@ const AList = ({ question }) => {
         }/answers?page=${1}&count=${100}`
       )
       .then(res => {
-        console.log('orig ', res.data.results);
-        // sorter(res.data.results);
-        filter(res.data.results);
-        return setAList(res.data.results);
+        return sorter(res.data.results);
+      })
+      .then(sortedArray => {
+        return filter(sortedArray);
+      })
+      .then(filteredArray => {
+        return setAList(filteredArray);
       })
       .catch(err => console.error(err));
   };
 
-  // const sorter = array => {
-  //   array.sort((a, b) => b.helpfulness - a.helpfulness);
-  //   // console.log('sorted ', array);
-  // };
+  const sorter = array => {
+    return array.sort((a, b) => b.helpfulness - a.helpfulness);
+  };
 
   const filter = array => {
-    array.sort(
+    return array.sort(
       (a, b) =>
         b.answerer_name.includes('Seller') - a.answerer_name.includes('Seller')
     );
-    console.log('filtered ', array);
   };
 
   useEffect(() => {
@@ -40,12 +41,14 @@ const AList = ({ question }) => {
 
   if (aList.length > 0) {
     return (
-      <span>
-        <b>A: </b>
-        {aList.map((a, index) => {
-          return <Answer a={a} key={index} />;
-        })}
-      </span>
+      <Fragment>
+        <span>
+          <b>A: </b>
+          {aList.map((a, index) => {
+            return <Answer a={a} key={index} />;
+          })}
+        </span>
+      </Fragment>
     );
   } else {
     return <div></div>;
