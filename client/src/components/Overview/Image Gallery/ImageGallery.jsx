@@ -6,7 +6,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   let currStyle = styleInfo[selectedStyle.index];
   let photos = currStyle ? currStyle.photos : [];
   const [currSlide, setSlideIndex] = useState(0);
-  const [expanded, setexpanded] = useState(false);
+  const [view, setview] = useState('default');
   const [shownThumbnails, setshownThumbnails] = useState(0);
 
   const defaultIMG = 'https://img.moglimg.com/p/I/P/N/d/MINIPN3LI0NZS.jpg';
@@ -47,26 +47,35 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   };
 
   const expandView = e => {
-    if (
-      e.target.className === 'image-gallery' ||
-      e.target.className === 'image-gallery expanded'
-    ) {
-      if (!expanded) {
+    if (e.target.className.includes('image-gallery')) {
+      if (view === 'default') {
         setimgStyles({
           backgroundSize: 'cover',
           position: 'absolute',
           width: '100%',
-          cursor: 'zoom-out'
+          cursor: 'crosshair'
         });
-      } else {
-        setimgStyles({
-          backgroundSize: 'contain',
-          position: 'relative',
-          width: '60%',
-          cursor: 'zoom-in'
-        });
+        setview('expanded');
       }
-      setexpanded(expanded => !expanded);
+      if (view === 'expanded') {
+        setimgStyles({
+          backgroundSize: 'cover',
+          position: 'absolute',
+          width: '100%',
+          cursor:
+            "url('https://img.favpng.com/25/5/7/plus-and-minus-signs-plus-minus-sign-meno-symbol-subtraction-png-favpng-n3rJx6vfxeeb6iWSv4BvaP2pt.jpg'), auto"
+        });
+        setview('zoom');
+      }
+      if (view === 'zoom') {
+        setimgStyles({
+          backgroundSize: 'cover',
+          position: 'absolute',
+          width: '100%',
+          cursor: 'crosshair'
+        });
+        setview('expanded');
+      }
     }
   };
 
@@ -83,25 +92,38 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
 
   return (
     <div
-      className={expanded ? 'image-gallery expanded' : 'image-gallery'}
+      className={view === 'default' ? 'image-gallery' : 'image-gallery ' + view}
       style={{
         ...imgStyles,
         backgroundImage: `url(${photoSlides[currSlide] || defaultIMG})`
       }}
       onClick={expandView}
       onMouseMove={e => {
-        if (expanded) {
+        if (view === 'zoom') {
           handleZoom(e);
         }
       }}
     >
-      <ImagePreviews
-        photos={photos}
-        setSlide={setSlide}
-        currSlide={currSlide}
-        shownThumbnails={shownThumbnails}
-        setshownThumbnails={setshownThumbnails}
-      />
+      {view === 'default' ? (
+        <ImagePreviews
+          photos={photos}
+          setSlide={setSlide}
+          currSlide={currSlide}
+          shownThumbnails={shownThumbnails}
+          setshownThumbnails={setshownThumbnails}
+        />
+      ) : view === 'expanded' ? (
+        <ImagePreviews
+          photos={photos}
+          setSlide={setSlide}
+          currSlide={currSlide}
+          shownThumbnails={shownThumbnails}
+          setshownThumbnails={setshownThumbnails}
+          size="small"
+        />
+      ) : (
+        <></>
+      )}
       {currSlide > 0 ? (
         <a
           className="prev"

@@ -5,7 +5,8 @@ const ImagePreviews = ({
   setSlide,
   currSlide,
   shownThumbnails,
-  setshownThumbnails
+  setshownThumbnails,
+  size
 }) => {
   const defaultIMG = 'https://img.moglimg.com/p/I/P/N/d/MINIPN3LI0NZS.jpg';
   const photoThumbnails = photos.map((photo, index) => {
@@ -21,9 +22,18 @@ const ImagePreviews = ({
           onClick={() => {
             setSlide(index);
           }}
+          style={
+            size
+              ? {
+                  maxWidth: '2vw',
+                  minWidth: '2vw',
+                  maxHeight: '2vw',
+                  minHeight: '2vw'
+                }
+              : {}
+          }
           alt="Loading"
         />
-        {currSlide === index ? <div className="active-bar"></div> : <div></div>}
       </div>
     );
   });
