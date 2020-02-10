@@ -104,7 +104,7 @@ const Overview = ({ avg, total }) => {
           <AddCart styleInfo={styleInfo} selectedStyle={selectedStyle} />
         </div>
       </div>
-      <Information productInfo={productInfo} />
+      <Information productInfo={productInfo} url={url} />
     </div>
   );
 };
