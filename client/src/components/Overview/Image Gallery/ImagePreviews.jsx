@@ -44,16 +44,16 @@ const ImagePreviews = ({
         setshownThumbnails(prev => prev - 1);
       }
     } else {
-      if (shownThumbnails < photoThumbnails.length - 8) {
+      if (shownThumbnails <= photoThumbnails.length - 8) {
         setshownThumbnails(prev => prev + 1);
       }
     }
   };
 
-  const upStyles = shownThumbnails > 0 ? {} : { color: 'black' };
+  const upStyles = shownThumbnails > 0 ? {} : { opacity: '0' };
   const downStyles =
-    shownThumbnails < photoThumbnails.length - 8 ? {} : { color: 'black' };
-
+    shownThumbnails < photoThumbnails.length - 7 ? {} : { opacity: '0' };
+  console.log(shownThumbnails, photoThumbnails.length);
   if (photoThumbnails.length > 7) {
     return (
       <div className="thumbnail-column">
@@ -64,7 +64,7 @@ const ImagePreviews = ({
           }}
           style={upStyles}
         >
-          {'▲'}
+          {'⮝'}
         </div>
 
         {photoThumbnails.slice(shownThumbnails, shownThumbnails + 7)}
@@ -75,7 +75,7 @@ const ImagePreviews = ({
           }}
           style={downStyles}
         >
-          {'▼'}
+          {'⮟'}
         </div>
       </div>
     );

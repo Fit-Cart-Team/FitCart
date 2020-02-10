@@ -143,29 +143,35 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
       ) : (
         <></>
       )}
-      {currSlide > 0 ? (
-        <a
-          className="prev"
-          onClick={() => {
-            incrementSlide(-1);
-          }}
-        >
-          {'←'}
-        </a>
+      {view !== 'zoom' ? (
+        <>
+          {currSlide > 0 ? (
+            <a
+              className="prev"
+              onClick={() => {
+                incrementSlide(-1);
+              }}
+            >
+              {'🡠'}
+            </a>
+          ) : (
+            <div></div>
+          )}
+          {currSlide < photos.length - 1 ? (
+            <a
+              className="next"
+              onClick={() => {
+                incrementSlide(1);
+              }}
+            >
+              {'🡢'}
+            </a>
+          ) : (
+            <div></div>
+          )}{' '}
+        </>
       ) : (
-        <div></div>
-      )}
-      {currSlide < photos.length - 1 ? (
-        <a
-          className="next"
-          onClick={() => {
-            incrementSlide(1);
-          }}
-        >
-          {'→'}
-        </a>
-      ) : (
-        <div></div>
+        <></>
       )}
     </div>
   );

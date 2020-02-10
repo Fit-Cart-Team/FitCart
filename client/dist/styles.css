@@ -115,6 +115,10 @@ li a {
   cursor: pointer;
 }
 
+.fa-expand:hover {
+  color: black;
+}
+
 .prev,
 .next {
   cursor: pointer;
@@ -122,16 +126,15 @@ li a {
   top: 50%;
   width: auto;
   padding: 10px;
-  margin-top: -50px;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   border-radius: 0 3px 3px 0;
   user-select: none;
   -webkit-user-select: none;
 }
 
 .next {
-  right: 0;
+  right: 1vw;
   border-radius: 3px 0 0 3px;
 }
 
@@ -142,7 +145,7 @@ li a {
 
 .prev:hover,
 .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .thumbnail-column::before {
@@ -157,10 +160,10 @@ li a {
   position: relative;
 }
 
-.row {
+/* .row {
   float: center;
   width: 16.66%;
-}
+} */
 
 .up,
 .down {
@@ -170,8 +173,6 @@ li a {
   font-size: 20px;
   border-radius: 0 3px 3px 0;
   text-align: center;
-  user-select: none;
-  -webkit-user-select: none;
 }
 
 .thumbnail-preview {
