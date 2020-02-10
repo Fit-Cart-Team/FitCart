@@ -29,11 +29,31 @@ const Overview = ({ avg, total }) => {
     seturl(id);
   }
 
+  // Async Attempt
+  // const getData = async () => {
+  //   const products = await axios.get(`http://3.134.102.30/products/${url}`);
+  //   const styles = await axios.get(
+  //     `http://3.134.102.30/products/${url}/styles`
+  //   );
+
+  //   setProductInfo(products.data);
+  //   let styleReturn = styles.data.results;
+  //   let emptyStyle = true;
+  //   setStyleInfo(styles);
+  //   styles.forEach((style, index) => {
+  //     if (style['default?'] === 1) {
+  //       setSelectedStyle({ index: index, name: style.name });
+  //       emptyStyle = false;
+  //     }
+  //   });
+  //   if (emptyStyle) {
+  //     setSelectedStyle({ index: 0, name: styles[0].name });
+  //   }
+  // };
   useEffect(() => {
     axios
       .get(`http://3.134.102.30/products/${url}`)
       .then(results => {
-        // console.log(results.data);
         setProductInfo(results.data);
       })
       .then(() => {
@@ -56,7 +76,6 @@ const Overview = ({ avg, total }) => {
           });
       });
   }, [url]);
-
   return (
     <div className="overview">
       <div className="overview-top">

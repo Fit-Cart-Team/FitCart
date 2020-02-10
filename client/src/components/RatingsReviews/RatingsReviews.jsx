@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import ReviewsList from './ReviewsList/ReviewsList';
 import SortOptions from './SortOptions/SortOptions';
 import RatingBreakdown from './RatingBreakdown/RatingBreakdown';
+import ProductBreakdown from './ProductBreakdown/ProductBreakdown';
 
 //setAppAvg(value)
 //setAppTotal(value)
@@ -104,6 +105,7 @@ const RatingsReviews = (props) => {
         Ratings & Reviews
       </h1>
       <RatingBreakdown recommended={meta.recommended} ratings={meta.ratings} ratingAverage={props.ratingAverage} totalRatings={totalRatings} />
+      <ProductBreakdown characteristics={meta.characteristics} />
       <SortOptions totalReviews={props.totalReviews} changeSortParameter={changeSortParameter} />
       <ReviewsList id={id} reviewsList={reviewsList} />
     </div>

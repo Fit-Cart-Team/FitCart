@@ -5,7 +5,7 @@ const ProductOverview = ({ productInfo }) => {
   const displayFeatures = features ? (
     features.map(feature => (
       <p key={feature.feature}>
-        {feature.feature} | {feature.value || ''}
+        <b>✓</b> {feature.feature}: {feature.value || ''}
       </p>
     ))
   ) : (
@@ -17,7 +17,6 @@ const ProductOverview = ({ productInfo }) => {
         <div className="slogan">{slogan}</div>
         <div className="description">{description}</div>
       </div>
-      <div className="divider"></div>
       <div className="product-description-right">{displayFeatures}</div>
     </div>
   );
