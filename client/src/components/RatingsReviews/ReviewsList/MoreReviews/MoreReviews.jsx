@@ -4,7 +4,7 @@ const MoreReviews = (props) => {
 
   return (
     <span style={{margin: "5px"}} >
-      <button>More Reviews Component</button>
+      <button onClick={props.incrementReviewsCount} >More Reviews</button>
     </span>
   );
 }
