@@ -66,7 +66,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
       }
       if (view === 'expanded') {
         setimgStyles({
-          backgroundSize: 'cover',
+          backgroundSize: '250% 250%',
           position: 'absolute',
           width: '100%',
           cursor:
@@ -88,11 +88,12 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
 
   const handleZoom = e => {
     const { left, top, width, height } = e.target.getBoundingClientRect();
-    const x = ((e.pageX - left) / width) * 100;
+    // const x = -((e.pageX - left) / width) * 100;
+    const x = e.pageX - left;
     const y = ((e.pageY - top) / height) * 100;
-
+    console.log(x, y);
     setimgStyles(prev => {
-      return { ...prev, backgroundPosition: `${x}% ${y}%` };
+      return { ...prev, backgroundPosition: `${-x}px ${y}%` };
     });
   };
 
@@ -162,7 +163,8 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
                 incrementSlide(-1);
               }}
             >
-              {'🡠'}
+              {/* {'🡠'} */}
+              &#129120;
             </a>
           ) : (
             <div></div>
@@ -174,7 +176,8 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
                 incrementSlide(1);
               }}
             >
-              {'🡢'}
+              {/* {'🡢'} */}
+              &#129122;
             </a>
           ) : (
             <div></div>
