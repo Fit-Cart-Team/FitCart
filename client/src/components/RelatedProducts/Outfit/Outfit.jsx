@@ -12,6 +12,7 @@ const Outfit = ({ prodInfo, styleInfo }) => {
 
   const addProduct = () => {
     const product = [prodInfo, styleInfo];
+    console.log(product);
     let currOutfit = [...outfit];
     let addable = true;
 
@@ -30,10 +31,10 @@ const Outfit = ({ prodInfo, styleInfo }) => {
     }
   };
 
-  const removeProduct = () => {
+  const removeProduct = currProduct => {
     let currOutfit = JSON.parse(localStorage.getItem('outfit'));
     currOutfit = currOutfit.filter((prod, index) => {
-      return prod[0].id !== prodInfo.id;
+      return prod[0].id !== currProduct.id;
     });
     localStorage.setItem('outfit', JSON.stringify(currOutfit));
     setoutfit(currOutfit);

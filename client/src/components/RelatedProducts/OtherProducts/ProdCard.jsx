@@ -81,7 +81,11 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
       <div
         className="product-card"
         onClick={e => {
-          if (e.target.className !== 'far fa-star card-icon') {
+          if (
+            // e.target.className !== 'far fa-star card-icon' &&
+            // e.target.className !== 'far fa-times-circle card-icon'
+            !e.target.className.includes('card-icon')
+          ) {
             history.push(`${product.id}`);
           }
         }}
@@ -93,7 +97,7 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
             className="far fa-times-circle card-icon"
             onClick={() => {
               if (type === 'outfit') {
-                removeProduct();
+                removeProduct(product);
               }
             }}
           ></i>
@@ -108,7 +112,6 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
               : ''
           }
           alt="Avatar"
-          style={{ width: '100%' }}
         />
         <div className="card-container">
           <p>{product.category}</p>
