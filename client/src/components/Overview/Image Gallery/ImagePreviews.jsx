@@ -26,12 +26,12 @@ const ImagePreviews = ({
             setSlide(index);
           }}
           style={
-            size
+            size === 'small'
               ? {
-                  maxWidth: '2vw',
-                  minWidth: '2vw',
-                  maxHeight: '2vw',
-                  minHeight: '2vw'
+                  maxWidth: '2.5vw',
+                  minWidth: '2.5vw',
+                  maxHeight: '2.5vw',
+                  minHeight: '2.5vw'
                 }
               : {}
           }
