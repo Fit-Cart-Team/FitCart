@@ -9,7 +9,7 @@ const OtherProductList = ({ relatedProds, relatedStyles }) => {
   ));
   return (
     <div className="related-products">
-      {prodCards.slice(relatedProductsIndex, relatedProductsIndex + 5)}
+      {prodCards.slice(relatedProductsIndex, relatedProductsIndex + 4)}
     </div>
   );
 };

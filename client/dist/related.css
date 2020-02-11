@@ -1,5 +1,7 @@
 .related-products {
   display: flex;
+  justify-content: space-between;
+  margin: 2.5vw 0 2.5vw 0;
 }
 
 .product-card {
@@ -8,8 +10,18 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border: 0.1vw solid black;
   transition: 0.3s;
-  margin: 1vw;
-  display: grid;
+
+  min-height: 28vw;
+  max-height: 28vw;
+  min-width: 19vw;
+  max-width: 19vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card p {
+  margin: 0;
+  margin-top: 1vh;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -19,11 +31,16 @@
 
 .card-image {
   object-fit: cover;
-  grid-row: 1;
+  flex-grow: 3;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2);
+  min-height: 19vw;
+  max-height: 19vw;
+  min-width: 19vw;
+  max-width: 19vw;
 }
 
 /* Add some padding inside the card container */
 .card-container {
-  padding: 2px 16px;
-  grid-row: 2;
+  padding: 8px 16px;
+  flex-grow: 1;
 }
