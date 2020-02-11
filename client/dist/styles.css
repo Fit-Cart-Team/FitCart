@@ -93,7 +93,7 @@ li a {
   display: flex;
   margin: 0px;
 
-  min-height: 100%;
+  min-height: 57vh;
   max-height: 100%;
   z-index: 3;
   overflow: hidden;
@@ -172,6 +172,14 @@ li a {
   font-size: 1vw;
   border-radius: 0 3px 3px 0;
   text-align: center;
+}
+
+.up {
+  margin-top: 0.3vw;
+}
+
+.down {
+  margin-bottom: 0.3vw;
 }
 
 .thumbnail-preview {
@@ -330,7 +338,7 @@ li a {
   margin-right: 1vw;
   height: 6.5vh;
   padding: 1vw;
-  font-size: medium;
+  font-size: 2vh;
   font-weight: bold;
   background-color: white;
   color: black;
@@ -341,7 +349,7 @@ li a {
   flex-grow: 2;
   height: 6.5vh;
   padding: 1vw;
-  font-size: medium;
+  font-size: 2vh;
   background-color: white;
   color: black;
   border: 1px solid #525252;
@@ -364,7 +372,7 @@ li a {
   margin-right: 1vw;
   height: 6.5vh;
   padding: 1vw;
-  font-size: medium;
+  font-size: 2vh;
   font-weight: bold;
   background-color: white;
   color: black;
