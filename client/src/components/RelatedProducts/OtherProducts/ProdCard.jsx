@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Stars from '../../Stars';
 import { useHistory } from 'react-router-dom';
-// import { Button, Icon, Modal } from 'semantic-ui-react';
+import { Header, Button, Icon, Modal, Grid } from 'semantic-ui-react';
 import axios from 'axios';
 
 const ProdCard = ({ product, style, prodInfo, type }) => {
@@ -42,6 +42,31 @@ const ProdCard = ({ product, style, prodInfo, type }) => {
       );
   }
   console.log(prodInfo.features, product.features);
+  let prodFeatures = {};
+  let cardFeatures = {};
+  prodInfo.features.forEach(
+    feature => (prodFeatures[feature.feature] = feature.value)
+  );
+
+  product.features.forEach(
+    feature => (cardFeatures[feature.feature] = feature.value)
+  );
+  const featureSet = new Set(
+    Object.keys(prodFeatures).concat(Object.keys(cardFeatures))
+  );
+  const comparisonChart = [...featureSet].map(feature => {
+    return (
+      <Grid.Row>
+        <Grid.Column textAlign="right">
+          {prodFeatures[feature] ? '✓ ' + prodFeatures[feature] : ''}
+        </Grid.Column>
+        <Grid.Column textAlign="center">{feature}</Grid.Column>
+        <Grid.Column textAlign="left">
+          {cardFeatures[feature] ? '✓ ' + cardFeatures[feature] : ''}
+        </Grid.Column>
+      </Grid.Row>
+    );
+  });
 
   const handleClose = () => {
     setmodalOpen(false);
@@ -54,8 +79,10 @@ const ProdCard = ({ product, style, prodInfo, type }) => {
     <>
       <div
         className="product-card"
-        onClick={() => {
-          history.push(`${product.id}`);
+        onClick={e => {
+          if (e.target.className !== 'far fa-star card-icon') {
+            history.push(`${product.id}`);
+          }
         }}
       >
         {type === 'related' ? (
@@ -85,12 +112,15 @@ const ProdCard = ({ product, style, prodInfo, type }) => {
         </div>
       </div>
 
-      <Modal open={modalOpen} onClose={handleClose} basic size="small">
+      <Modal open={modalOpen} onClose={handleClose} size="small">
+        <Header content="Comparing" />
         <Modal.Content>
-          <h3>This website uses cookies to ensure the best user experience.</h3>
+          <Grid columns={3} relaxed>
+            {comparisonChart}
+          </Grid>
         </Modal.Content>
         <Modal.Actions>
-          <Button color="green" onClick={this.handleClose} inverted>
+          <Button color="green" onClick={handleClose} inverted>
             <Icon name="checkmark" /> Got it
           </Button>
         </Modal.Actions>
