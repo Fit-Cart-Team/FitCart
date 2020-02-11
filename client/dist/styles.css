@@ -13,6 +13,7 @@ body {
 
 ul {
   list-style-type: none;
+  height: 9vh;
   margin: 0;
   padding: 0;
   padding-left: 1.5%;
@@ -27,16 +28,17 @@ li {
 
 li a {
   display: block;
+  margin-top: 2vh;
   color: white;
   text-align: center;
   padding: 1vh 0.5vw;
   text-decoration: none;
-  font-size: 200%;
+  font-size: 250%;
 }
 
 .search-bar {
   position: absolute;
-  top: 0.75vh;
+  top: 3vh;
   right: 0;
   background: none;
   padding-right: 1.5%;
@@ -60,7 +62,7 @@ li a {
   margin-right: 10%;
   color: white;
   font-size: 1vw;
-  line-height: 4vh;
+  line-height: 3vh;
   width: 60%;
 }
 
@@ -72,6 +74,7 @@ li a {
 
 .announcement a {
   color: #525252;
+  text-decoration: underline;
 }
 .overview {
   display: flex;
