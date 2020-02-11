@@ -49,6 +49,7 @@ const Overview = ({ avg, total, setprodInfo, setstyledata }) => {
   //     setSelectedStyle({ index: 0, name: styles[0].name });
   //   }
   // };
+
   useEffect(() => {
     axios
       .get(`http://3.134.102.30/products/${url}`)
@@ -72,7 +73,7 @@ const Overview = ({ avg, total, setprodInfo, setstyledata }) => {
             });
             if (emptyStyle) {
               setSelectedStyle({ index: 0, name: styles[0].name });
-              setstyledata(style[0]);
+              setstyledata(styles[0]);
             }
           });
       });
