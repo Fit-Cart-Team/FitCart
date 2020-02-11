@@ -10,7 +10,6 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
 
   const [avg, setavg] = useState(0);
   const [modalOpen, setmodalOpen] = useState(false);
-
   useEffect(() => {
     axios
       .get(`http://3.134.102.30/reviews/${product.id}/meta`)
@@ -27,7 +26,7 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
 
         setavg(ratingAvg);
       });
-  }, []);
+  }, [product]);
 
   let currPrice;
   if (style) {
@@ -76,6 +75,7 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
   const handleOpen = () => {
     setmodalOpen(true);
   };
+
   return (
     <>
       <div

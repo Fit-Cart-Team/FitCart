@@ -10,11 +10,12 @@
 .related-next {
   cursor: pointer;
   position: absolute;
-  top: 45%;
   width: auto;
+  height: 100%;
   padding: 0.5vw;
   color: black;
-  background-color: #bebebe;
+  opacity: 0.5;
+  background: linear-gradient(90deg, white, rgb(156, 156, 156));
   font-size: 1.5vw;
   border-radius: 0 3px 3px 0;
   z-index: 5;
@@ -42,10 +43,10 @@
 }
 .card-icon {
   position: absolute;
-  right: 5%;
-  top: 3%;
+  right: 4%;
+  top: 2%;
   font-size: 150%;
-  color: black;
+  color: rgb(182, 182, 26);
   padding: 2%;
   border-radius: 10%;
 }
@@ -53,6 +54,10 @@
 .card-icon:hover {
   background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(2px);
+}
+
+.fa-times-circle {
+  color: rgb(160, 50, 50);
 }
 
 .product-card,
