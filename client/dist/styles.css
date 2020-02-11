@@ -14,6 +14,7 @@ body {
 
 ul {
   list-style-type: none;
+  height: 9vh;
   margin: 0;
   padding: 0;
   padding-left: 1.5%;
@@ -28,16 +29,17 @@ li {
 
 li a {
   display: block;
+  margin-top: 2vh;
   color: white;
   text-align: center;
   padding: 1vh 0.5vw;
   text-decoration: none;
-  font-size: 200%;
+  font-size: 250%;
 }
 
 .search-bar {
   position: absolute;
-  top: 0.75vh;
+  top: 3vh;
   right: 0;
   background: none;
   padding-right: 1.5%;
@@ -61,7 +63,7 @@ li a {
   margin-right: 10%;
   color: white;
   font-size: 1vw;
-  line-height: 4vh;
+  line-height: 3vh;
   width: 60%;
 }
 
@@ -73,6 +75,7 @@ li a {
 
 .announcement a {
   color: #525252;
+  text-decoration: underline;
 }
 .overview {
   display: flex;
@@ -91,7 +94,7 @@ li a {
   display: flex;
   margin: 0px;
 
-  min-height: 100%;
+  min-height: 57vh;
   max-height: 100%;
   z-index: 3;
   overflow: hidden;
@@ -172,6 +175,14 @@ li a {
   text-align: center;
 }
 
+.up {
+  margin-top: 0.3vw;
+}
+
+.down {
+  margin-bottom: 0.3vw;
+}
+
 .thumbnail-preview {
   cursor: pointer;
   border: 0.08vw solid black;
@@ -193,12 +204,12 @@ li a {
 
 .right-hand-overview {
   display: flex;
-  width: 30%;
+  width: 35%;
   min-height: 100%;
   max-height: 100%;
   flex-direction: column;
   justify-content: space-between;
-  margin: 2%;
+  margin: 1.5%;
 }
 .right-hand-overview > div {
   margin: 2%;
@@ -275,8 +286,8 @@ li a {
   flex: 0 0 20%;
   margin: 0.5vw;
   margin-bottom: 0.25vw;
-  width: 4vw;
-  height: 4vw;
+  width: 4.5vw;
+  height: 4.5vw;
 }
 
 .fa-check-circle {
@@ -284,16 +295,17 @@ li a {
   background: white;
   position: absolute;
   float: right;
-  right: 20%;
-  top: 0%;
+  right: 6%;
+  top: 0;
   border-radius: 50%;
+  font-size: 130%;
 }
 
 .thumbnail-img {
   border-radius: 50%;
   border: 0.08vw solid black;
-  width: 4vw;
-  height: 4vw;
+  width: 4.5vw;
+  height: 4.5vw;
   cursor: pointer;
   object-fit: cover;
 }
@@ -327,7 +339,7 @@ li a {
   margin-right: 1vw;
   height: 6.5vh;
   padding: 1vw;
-  font-size: medium;
+  font-size: 1vw;
   font-weight: bold;
   background-color: white;
   color: black;
@@ -338,7 +350,7 @@ li a {
   flex-grow: 2;
   height: 6.5vh;
   padding: 1vw;
-  font-size: medium;
+  font-size: 1vw;
   background-color: white;
   color: black;
   border: 1px solid #525252;
@@ -361,7 +373,7 @@ li a {
   margin-right: 1vw;
   height: 6.5vh;
   padding: 1vw;
-  font-size: medium;
+  font-size: 1vw;
   font-weight: bold;
   background-color: white;
   color: black;
@@ -380,48 +392,10 @@ li a {
   flex-grow: 2;
   height: 6.5vh;
   max-width: 4vw;
-  font-size: 1.5vw;
+  font-size: 2vw;
   background-color: white;
   color: black;
   border: 1px solid black;
-}
-
-.overview-bottom {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.product-description {
-  color: #525252;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-top: 4%;
-  padding-left: 10%;
-  padding-right: 10%;
-  position: relative;
-}
-
-.product-description-left {
-  position: absolute;
-  width: 58%;
-  height: 100%;
-  border-right: 0.1vw solid #525252;
-  padding-right: 1%;
-  display: flex;
-  flex-direction: column;
-}
-
-.product-description-right {
-  position: relative;
-  left: 77%;
-}
-
-.slogan {
-  margin-bottom: 2.5%;
-  font-size: 175%;
-  font-weight: bolder;
 }
 
 .social-media {
@@ -435,7 +409,7 @@ li a {
   border-radius: 50%;
   font-size: 1.5vw;
   width: 2.5vw;
-  height: 2vw;
+  height: 2.5vw;
   margin: 1%;
 }
 
@@ -444,23 +418,58 @@ li a {
 }
 
 .fa-facebook {
-  padding-top: 0.6%;
+  padding: 2%;
 
   background: #3b5998;
   color: white;
 }
 
 .fa-twitter {
-  padding-top: 0.6%;
+  padding: 2%;
   background: #55acee;
   color: white;
 }
 
 .fa-pinterest {
+  padding: 2%;
   cursor: pointer;
-  padding-top: 0.6%;
   background: #cb2027;
   color: white;
+}
+
+
+.product-description {
+  margin-top: 4%;
+  margin-bottom: 4%;
+  color: #525252;
+  overflow: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  /* position: relative; */
+}
+
+.product-description-left {
+  justify-content: center;
+  position: relative;
+  width: 70%;
+  height: 100%;
+  border-right: 0.1vw solid #525252;
+  padding-right: 1%;
+}
+
+.product-description-right {
+  position: absolute;
+  left: 70%;
+  height: auto;
+}
+
+.slogan {
+  margin-bottom: 2%;
+  font-size: 175%;
+  font-weight: bolder;
 }
 
 #app {

@@ -15,7 +15,8 @@ import StyleSelector from './Style Selector/StyleSelector';
 import AddCart from './Add to Cart/AddCart';
 
 // Description Information
-import Information from './Information/Information';
+import ProductOverview from './Information/ProductOverview';
+import SocialMedia from './SocialMedia';
 
 const Overview = ({ avg, total, setprodInfo, setstyledata }) => {
   const { id } = useParams();
@@ -102,9 +103,10 @@ const Overview = ({ avg, total, setprodInfo, setstyledata }) => {
             selectedStyle={selectedStyle}
           />
           <AddCart styleInfo={styleInfo} selectedStyle={selectedStyle} />
+          <SocialMedia url={url} />
         </div>
       </div>
-      <Information productInfo={productInfo} url={url} />
+      <ProductOverview productInfo={productInfo} />
     </div>
   );
 };

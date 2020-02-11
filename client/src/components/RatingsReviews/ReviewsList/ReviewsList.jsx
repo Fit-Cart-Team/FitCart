@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReviewTile from './ReviewTile/ReviewTile';
 import MoreReviews from './MoreReviews/MoreReviews';
 import AddReview from './AddReview/AddReview';
+import ReviewModal from './AddReview/ReviewModal';
 
 const ReviewsList = (props) => {
   const { reviewsList, filter, filterBy } = props;
@@ -38,14 +39,14 @@ const ReviewsList = (props) => {
         })}
         <div style={{margin: "10px"}} >
           {(reviewsCount === filteredList.length) ? <div></div> : (<MoreReviews incrementReviewsCount={incrementReviewsCount} />)}
-          <AddReview />
+          <ReviewModal />
         </div>
       </div>
     );
   } else {
     return (
       <div>
-        <AddReview />
+        <ReviewModal />
       </div>
     );
   }
