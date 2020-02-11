@@ -3,7 +3,6 @@ import ProdCard from './ProdCard';
 
 const OtherProductList = ({ relatedProds, relatedStyles }) => {
   const [relatedProductsIndex, setrelatedProductsIndex] = useState(0);
-  console.log(relatedProds, relatedStyles);
   const prodCards = relatedProds.map((product, index) => (
     <ProdCard
       key={index}
@@ -14,7 +13,36 @@ const OtherProductList = ({ relatedProds, relatedStyles }) => {
   ));
   return (
     <div className="related-products">
+      {relatedProductsIndex > 0 ? (
+        <a
+          className="related-prev"
+          onClick={() => {
+            if (relatedProductsIndex > 0) {
+              setrelatedProductsIndex(prev => prev - 1);
+            }
+          }}
+        >
+          {/* {'🡠'} */}
+          &#129120;
+        </a>
+      ) : (
+        <></>
+      )}
       {prodCards.slice(relatedProductsIndex, relatedProductsIndex + 4)}
+      {relatedProductsIndex < relatedProds.length - 4 ? (
+        <a
+          className="related-next"
+          onClick={() => {
+            if (relatedProductsIndex < relatedProds.length - 4)
+              setrelatedProductsIndex(prev => prev + 1);
+          }}
+        >
+          {/* {'🡢'} */}
+          &#129122;
+        </a>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

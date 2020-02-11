@@ -2,18 +2,51 @@
   display: flex;
   justify-content: space-between;
   margin: 1.5vw 0 1.5vw 0;
+  position: relative;
 }
 
+.related-prev,
+.related-next {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  width: auto;
+  padding: 0.5vw;
+  color: black;
+  font-size: 1.5vw;
+  border-radius: 0 3px 3px 0;
+  z-index: 5;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.related-next {
+  right: 0.5vw;
+  border-radius: 3px 0 0 3px;
+}
+
+.related-prev {
+  left: 0.3vw;
+  border-radius: 3px 0 0 3px;
+}
+
+.related-prev:hover,
+.related-next:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
 .card-icon {
   position: absolute;
   right: 5%;
   top: 3%;
   font-size: 150%;
   color: black;
+  padding: 2%;
+  border-radius: 10%;
 }
 
 .card-icon:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
 }
 
 .product-card {
