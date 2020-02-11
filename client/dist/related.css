@@ -14,6 +14,7 @@
   width: auto;
   padding: 0.5vw;
   color: black;
+  background-color: #bebebe;
   font-size: 1.5vw;
   border-radius: 0 3px 3px 0;
   z-index: 5;
@@ -22,13 +23,17 @@
 }
 
 .related-next {
-  right: 1.5vw;
+  right: 2vw;
   border-radius: 3px 0 0 3px;
 }
 
 .related-prev {
-  left: 0.3vw;
+  left: 0.2vw;
   border-radius: 3px 0 0 3px;
+}
+
+.outfit-prev {
+  left: 20.7vw;
 }
 
 .related-prev:hover,

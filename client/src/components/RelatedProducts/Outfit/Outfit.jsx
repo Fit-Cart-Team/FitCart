@@ -58,7 +58,7 @@ const Outfit = ({ prodInfo, styleInfo }) => {
       </div>
       {outfitIndex > 0 ? (
         <a
-          className="related-prev"
+          className="related-prev outfit-prev"
           onClick={() => {
             if (outfitIndex > 0) {
               setoutfitIndex(prev => prev - 1);
@@ -71,12 +71,12 @@ const Outfit = ({ prodInfo, styleInfo }) => {
       ) : (
         <></>
       )}
-      {outfitCards.slice(outfitIndex, outfitIndex + 4)}
-      {outfitIndex < outfit.length - 4 ? (
+      {outfitCards.slice(outfitIndex, outfitIndex + 3)}
+      {outfitIndex < outfit.length - 3 ? (
         <a
           className="related-next"
           onClick={() => {
-            if (outfitIndex < relatedProds.length - 4)
+            if (outfitIndex < outfit.length - 2)
               setoutfitIndex(prev => prev + 1);
           }}
         >
