@@ -8,7 +8,10 @@ const PhotoModal = ({ photo }) => {
     height: '4rem',
   };
   return (
-    <Modal trigger={<img src={photo.url} style={style} id={photo.id}></img>}>
+    <Modal
+      trigger={<img src={photo.url} style={style} id={photo.id}></img>}
+      closeIcon='window close'
+    >
       <Modal.Content image>
         <Image fluid src={photo.url} />
       </Modal.Content>
