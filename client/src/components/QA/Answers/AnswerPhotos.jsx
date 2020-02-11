@@ -1,18 +1,13 @@
 import React from 'react';
+import PhotoModal from './PhotoModal';
 
 const AnswerPhotos = ({ photos }) => {
-  let style = {
-    margin: '20px',
-    width: '5rem',
-    height: '4rem',
-  };
-
   return (
     <div>
       {photos.map(photo => {
         return (
           <span key={photo.id}>
-            <img src={photo.url} style={style} id={photo.id}></img>
+            <PhotoModal photo={photo} />
           </span>
         );
       })}
