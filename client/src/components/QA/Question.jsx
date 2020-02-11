@@ -13,6 +13,7 @@ const Question = ({ q }) => {
         </small>
       </p>
       <AList question={q} />
+      <br />
     </div>
   );
 };

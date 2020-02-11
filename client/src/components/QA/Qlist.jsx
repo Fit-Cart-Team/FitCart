@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const QList = ({ product_id }) => {
   const [qList, setQList] = useState([]);
+  const [showMoreQuestions, setShowMoreQuestions] = useState(true);
 
   const getQList = () => {
     axios
@@ -18,17 +19,61 @@ const QList = ({ product_id }) => {
     getQList();
   }, [product_id]);
 
-  if (qList.length > 0) {
+  const handleClick = isOn => {
+    setShowMoreQuestions(isOn);
+  };
+
+  if (qList.length === 0) {
+    return <div></div>;
+  } else if (qList.length === 1) {
+    return (
+      <span>
+        <b>Q: </b>
+        <span>
+          <Question q={qList[0]} key={qList[0].question_id} />;
+        </span>
+      </span>
+    );
+  } else if (qList.length === 2) {
+    return (
+      <span>
+        <Question q={qList[0]} key={qList[0].question_id} />
+        <Question q={qList[1]} key={qList[1].question_id} />
+      </span>
+    );
+  } else if (qList.length > 2 && showMoreQuestions) {
     return (
       <div>
-        {/* <div style={{ height: '50vw', overflow: 'auto' }}></div> */}
-        {qList.map((q, index) => {
-          return <Question q={q} key={index} />;
-        })}
+        <span>
+          <Question q={qList[0]} key={qList[0].question_id} />
+          <Question q={qList[1]} key={qList[1].question_id} />
+          <button onClick={() => handleClick(false)}>
+            MORE ANSWERED QUESTIONS
+          </button>
+        </span>
       </div>
     );
   } else {
-    return <div></div>;
+    return (
+      <div>
+        <div
+          style={{
+            maxHeight: '35vw',
+            overflow: 'auto',
+            border: '1px solid red',
+          }}
+        >
+          <span>
+            {qList.map(q => {
+              return <Question q={q} key={q.question_id} />;
+            })}
+          </span>
+        </div>
+        <button onClick={() => handleClick(true)}>
+          LESS ANSWERED QUESTIONS
+        </button>
+      </div>
+    );
   }
 };
 export default QList;

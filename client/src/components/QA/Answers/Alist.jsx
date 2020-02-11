@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const AList = ({ question }) => {
   const [aList, setAList] = useState([]);
+  const [showMoreAnswers, setShowMoreAnswers] = useState(true);
 
   const getAnswers = () => {
     axios
@@ -39,19 +40,67 @@ const AList = ({ question }) => {
     getAnswers();
   }, [question]);
 
-  if (aList.length > 0) {
+  const handleClick = isOn => {
+    setShowMoreAnswers(isOn);
+  };
+
+  if (aList.length === 0) {
+    return <div></div>;
+  } else if (aList.length === 1) {
     return (
-      <Fragment>
+      <span>
+        <b>A: </b>
+        <span>
+          <Answer a={aList[0]} key={aList[0].answer_id} />
+        </span>
+      </span>
+    );
+  } else if (aList.length === 2) {
+    return (
+      <span>
+        <b>A: </b>
+        <Answer a={aList[0]} key={aList[0].answer_id} />
+        <Answer a={aList[1]} key={aList[1].answer_id} />
+      </span>
+    );
+  } else if (aList.length > 2 && showMoreAnswers) {
+    return (
+      <div>
         <span>
           <b>A: </b>
-          {aList.map((a, index) => {
-            return <Answer a={a} key={index} />;
-          })}
+          <span>
+            <Answer a={aList[0]} key={aList[0].answer_id} />
+            <Answer a={aList[1]} key={aList[1].answer_id} />
+            <u onClick={() => handleClick(false)} style={{ cursor: 'pointer' }}>
+              LOAD MORE ANSWERS
+            </u>
+          </span>
         </span>
-      </Fragment>
+      </div>
     );
   } else {
-    return <div></div>;
+    return (
+      <div>
+        <div
+          style={{
+            maxHeight: '20vh',
+            overflow: 'auto',
+            border: '1px solid red',
+          }}
+        >
+          <b>A: </b>
+          <span>
+            {aList.map(a => {
+              return <Answer a={a} key={a.answer_id} />;
+            })}
+          </span>
+        </div>
+        <u onClick={() => handleClick(true)} style={{ cursor: 'pointer' }}>
+          LESS ANSWERS
+        </u>
+      </div>
+    );
   }
 };
+
 export default AList;
