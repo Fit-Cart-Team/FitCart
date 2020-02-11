@@ -10,6 +10,7 @@ import { Route, Switch } from 'react-router-dom';
 const App = () => {
   const [avg, setAppAvg] = useState(0);
   const [total, setAppTotal] = useState(0);
+  const [prodInfo, setprodInfo] = useState();
   return (
     <React.Fragment>
       <NavBar />
@@ -22,8 +23,8 @@ const App = () => {
             <i>SITE-WIDE ANNOUNCEMENT MESSAGE!</i> - SALE / DISCOUNT{' '}
             <b>OFFER</b> - <a href="#">NEW PRODUCT HIGHLIGHT</a>
           </div>
-          <Overview avg={avg} total={total} />
-          <RelatedProducts avg={avg} />
+          <Overview avg={avg} total={total} setprodInfo={setprodInfo} />
+          <RelatedProducts avg={avg} prodInfo={prodInfo} />
           <QuestionsAnswers />
           <RatingsReviews
             ratingAverage={avg}

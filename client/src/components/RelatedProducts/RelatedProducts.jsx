@@ -5,7 +5,7 @@ import axios from 'axios';
 import OtherProductList from './OtherProducts/OtherProductList';
 import Outfit from './Outfit/Outfit';
 
-const RelatedProducts = ({ avg }) => {
+const RelatedProducts = ({ prodInfo }) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
   const [relatedProds, setrelatedProds] = useState([]);
@@ -54,6 +54,7 @@ const RelatedProducts = ({ avg }) => {
       <OtherProductList
         relatedProds={relatedProds}
         relatedStyles={relatedStyles}
+        prodInfo={prodInfo}
       />
       <div style={{ fontSize: '1.2vw' }}>MY OUTFIT</div>
       <Outfit />

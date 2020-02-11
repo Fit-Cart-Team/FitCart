@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import ProdCard from './ProdCard';
 
-const OtherProductList = ({ relatedProds, relatedStyles }) => {
+const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
   const [relatedProductsIndex, setrelatedProductsIndex] = useState(0);
+
+  useEffect(() => {
+    setrelatedProductsIndex(0);
+  }, [relatedProds]);
+
   const prodCards = relatedProds.map((product, index) => (
     <ProdCard
       key={index}
       product={product}
       style={relatedStyles[index]}
+      prodInfo={prodInfo}
       type="related"
     />
   ));
 
-  useEffect(() => {
-    setrelatedProductsIndex(0);
-  }, [relatedProds]);
   return (
     <div className="related-products">
       {relatedProductsIndex > 0 ? (

@@ -17,9 +17,7 @@ import AddCart from './Add to Cart/AddCart';
 // Description Information
 import Information from './Information/Information';
 
-const Context = React.createContext('lol');
-
-const Overview = ({ avg, total }) => {
+const Overview = ({ avg, total, setprodInfo }) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
   const [productInfo, setProductInfo] = useState({});
@@ -55,6 +53,7 @@ const Overview = ({ avg, total }) => {
       .get(`http://3.134.102.30/products/${url}`)
       .then(results => {
         setProductInfo(results.data);
+        setprodInfo(results.data);
       })
       .then(() => {
         axios
