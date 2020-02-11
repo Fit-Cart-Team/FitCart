@@ -1,6 +1,7 @@
 html {
   scroll-behavior: smooth;
   font-family: 'Helvetica Neue', sans-serif;
+  color: #525252;
 }
 
 body {
@@ -436,9 +437,6 @@ li a {
   color: white;
 }
 
-/* .overview-bottom {
-  position: relative;
-} */
 
 .product-description {
   margin-top: 4%;

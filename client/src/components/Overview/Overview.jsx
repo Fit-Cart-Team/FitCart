@@ -16,10 +16,9 @@ import AddCart from './Add to Cart/AddCart';
 
 // Description Information
 import ProductOverview from './Information/ProductOverview';
-
 import SocialMedia from './SocialMedia';
 
-const Overview = ({ avg, total }) => {
+const Overview = ({ avg, total, setprodInfo, setstyledata }) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
   const [productInfo, setProductInfo] = useState({});
@@ -55,23 +54,25 @@ const Overview = ({ avg, total }) => {
       .get(`http://3.134.102.30/products/${url}`)
       .then(results => {
         setProductInfo(results.data);
+        setprodInfo(results.data);
       })
       .then(() => {
         axios
           .get(`http://3.134.102.30/products/${url}/styles`)
           .then(results => {
-            // console.log(results.data.results);
             let styles = results.data.results;
             let emptyStyle = true;
             setStyleInfo(styles);
             styles.forEach((style, index) => {
               if (style['default?'] === 1) {
                 setSelectedStyle({ index: index, name: style.name });
+                setstyledata(style);
                 emptyStyle = false;
               }
             });
             if (emptyStyle) {
               setSelectedStyle({ index: 0, name: styles[0].name });
+              setstyledata(style[0]);
             }
           });
       });
