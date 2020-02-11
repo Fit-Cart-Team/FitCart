@@ -3,7 +3,7 @@ import Stars from '../../Stars';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const ProdCard = ({ product, style }) => {
+const ProdCard = ({ product, style, type }) => {
   let history = useHistory();
   const defaultIMG = 'https://img.moglimg.com/p/I/P/N/d/MINIPN3LI0NZS.jpg';
 
@@ -46,6 +46,11 @@ const ProdCard = ({ product, style }) => {
         history.push(`${product.id}`);
       }}
     >
+      {type === 'related' ? (
+        <i className="far fa-star card-icon"></i>
+      ) : (
+        <i className="far fa-times-circle card-icon"></i>
+      )}
       <img
         className="card-image"
         src={

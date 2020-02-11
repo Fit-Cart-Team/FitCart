@@ -50,12 +50,12 @@ const RelatedProducts = ({ avg }) => {
 
   return (
     <>
-      <div>Related Products</div>
+      <div style={{ fontSize: '1.2vw' }}>RELATED PRODUCTS</div>
       <OtherProductList
         relatedProds={relatedProds}
         relatedStyles={relatedStyles}
       />
-      <div>My Outfit</div>
+      <div style={{ fontSize: '1.2vw' }}>MY OUTFIT</div>
       <Outfit />
     </>
   );

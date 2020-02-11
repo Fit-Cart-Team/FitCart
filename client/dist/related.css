@@ -1,7 +1,19 @@
 .related-products {
   display: flex;
   justify-content: space-between;
-  margin: 2.5vw 0 2.5vw 0;
+  margin: 1.5vw 0 1.5vw 0;
+}
+
+.card-icon {
+  position: absolute;
+  right: 5%;
+  top: 3%;
+  font-size: 150%;
+  color: black;
+}
+
+.card-icon:hover {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .product-card {
@@ -15,6 +27,8 @@
   max-height: 28vw;
   min-width: 19vw;
   max-width: 19vw;
+
+  position: relative;
   display: flex;
   flex-direction: column;
 }
