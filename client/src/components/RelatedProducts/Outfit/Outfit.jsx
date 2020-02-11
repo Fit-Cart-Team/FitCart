@@ -12,7 +12,7 @@ const Outfit = ({ prodInfo, styleInfo }) => {
 
   const addProduct = () => {
     const product = [prodInfo, styleInfo];
-    let currOutfit = outfit;
+    let currOutfit = [...outfit];
     let addable = true;
 
     for (let prod of currOutfit) {
