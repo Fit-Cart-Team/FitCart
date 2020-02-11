@@ -83,9 +83,8 @@ const AList = ({ question }) => {
       <div>
         <div
           style={{
-            maxHeight: '20vh',
+            maxHeight: '35vh',
             overflow: 'auto',
-            border: '1px solid red',
           }}
         >
           <b>A: </b>

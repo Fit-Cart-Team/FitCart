@@ -58,9 +58,8 @@ const QList = ({ product_id }) => {
       <div>
         <div
           style={{
-            maxHeight: '35vw',
+            maxHeight: '75vh',
             overflow: 'auto',
-            border: '1px solid red',
           }}
         >
           <span>
