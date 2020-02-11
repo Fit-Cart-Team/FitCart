@@ -11,6 +11,7 @@ const App = () => {
   const [avg, setAppAvg] = useState(0);
   const [total, setAppTotal] = useState(0);
   const [prodInfo, setprodInfo] = useState();
+  const [styleInfo, setstyledata] = useState();
   return (
     <React.Fragment>
       <NavBar />
@@ -23,8 +24,17 @@ const App = () => {
             <i>SITE-WIDE ANNOUNCEMENT MESSAGE!</i> - SALE / DISCOUNT{' '}
             <b>OFFER</b> - <a href="#">NEW PRODUCT HIGHLIGHT</a>
           </div>
-          <Overview avg={avg} total={total} setprodInfo={setprodInfo} />
-          <RelatedProducts avg={avg} prodInfo={prodInfo} />
+          <Overview
+            avg={avg}
+            total={total}
+            setprodInfo={setprodInfo}
+            setstyledata={setstyledata}
+          />
+          <RelatedProducts
+            avg={avg}
+            prodInfo={prodInfo}
+            styleInfo={styleInfo}
+          />
           <QuestionsAnswers />
           <RatingsReviews
             ratingAverage={avg}

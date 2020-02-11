@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Header, Button, Icon, Modal, Grid } from 'semantic-ui-react';
 import axios from 'axios';
 
-const ProdCard = ({ product, style, prodInfo, type }) => {
+const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
   let history = useHistory();
   const defaultIMG = 'https://img.moglimg.com/p/I/P/N/d/MINIPN3LI0NZS.jpg';
 
@@ -41,33 +41,34 @@ const ProdCard = ({ product, style, prodInfo, type }) => {
         </div>
       );
   }
-  console.log(prodInfo.features, product.features);
-  let prodFeatures = {};
-  let cardFeatures = {};
-  prodInfo.features.forEach(
-    feature => (prodFeatures[feature.feature] = feature.value)
-  );
-
-  product.features.forEach(
-    feature => (cardFeatures[feature.feature] = feature.value)
-  );
-  const featureSet = new Set(
-    Object.keys(prodFeatures).concat(Object.keys(cardFeatures))
-  );
-  const comparisonChart = [...featureSet].map(feature => {
-    return (
-      <Grid.Row>
-        <Grid.Column textAlign="right">
-          {prodFeatures[feature] ? '✓ ' + prodFeatures[feature] : ''}
-        </Grid.Column>
-        <Grid.Column textAlign="center">{feature}</Grid.Column>
-        <Grid.Column textAlign="left">
-          {cardFeatures[feature] ? '✓ ' + cardFeatures[feature] : ''}
-        </Grid.Column>
-      </Grid.Row>
+  let comparisonChart;
+  if (type === 'related') {
+    let prodFeatures = {};
+    let cardFeatures = {};
+    prodInfo.features.forEach(
+      feature => (prodFeatures[feature.feature] = feature.value)
     );
-  });
 
+    product.features.forEach(
+      feature => (cardFeatures[feature.feature] = feature.value)
+    );
+    const featureSet = new Set(
+      Object.keys(prodFeatures).concat(Object.keys(cardFeatures))
+    );
+    comparisonChart = [...featureSet].map(feature => {
+      return (
+        <Grid.Row key={feature}>
+          <Grid.Column textAlign="right">
+            {prodFeatures[feature] ? '✓ ' + prodFeatures[feature] : ''}
+          </Grid.Column>
+          <Grid.Column textAlign="center">{feature}</Grid.Column>
+          <Grid.Column textAlign="left">
+            {cardFeatures[feature] ? '✓ ' + cardFeatures[feature] : ''}
+          </Grid.Column>
+        </Grid.Row>
+      );
+    });
+  }
   const handleClose = () => {
     setmodalOpen(false);
   };
@@ -88,7 +89,14 @@ const ProdCard = ({ product, style, prodInfo, type }) => {
         {type === 'related' ? (
           <i className="far fa-star card-icon" onClick={handleOpen}></i>
         ) : (
-          <i className="far fa-times-circle card-icon"></i>
+          <i
+            className="far fa-times-circle card-icon"
+            onClick={() => {
+              if (type === 'outfit') {
+                removeProduct();
+              }
+            }}
+          ></i>
         )}
         <img
           className="card-image"
@@ -111,20 +119,21 @@ const ProdCard = ({ product, style, prodInfo, type }) => {
           <Stars avg={avg} />
         </div>
       </div>
-
-      <Modal open={modalOpen} onClose={handleClose} size="small">
-        <Header content="Comparing" />
-        <Modal.Content>
-          <Grid columns={3} relaxed>
-            {comparisonChart}
-          </Grid>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button color="green" onClick={handleClose} inverted>
-            <Icon name="checkmark" /> Got it
-          </Button>
-        </Modal.Actions>
-      </Modal>
+      {type === 'related' && (
+        <Modal open={modalOpen} onClose={handleClose} size="small">
+          <Header content="Comparing" />
+          <Modal.Content>
+            <Grid columns={3} relaxed>
+              {type === 'related' && comparisonChart}
+            </Grid>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button color="green" onClick={handleClose} inverted>
+              <Icon name="checkmark" /> Got it
+            </Button>
+          </Modal.Actions>
+        </Modal>
+      )}
     </>
   );
 };

@@ -5,7 +5,7 @@ import axios from 'axios';
 import OtherProductList from './OtherProducts/OtherProductList';
 import Outfit from './Outfit/Outfit';
 
-const RelatedProducts = ({ prodInfo }) => {
+const RelatedProducts = ({ prodInfo, styleInfo }) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
   const [relatedProds, setrelatedProds] = useState([]);
@@ -57,7 +57,7 @@ const RelatedProducts = ({ prodInfo }) => {
         prodInfo={prodInfo}
       />
       <div style={{ fontSize: '1.2vw' }}>MY OUTFIT</div>
-      <Outfit />
+      <Outfit prodInfo={prodInfo} styleInfo={styleInfo} />
     </>
   );
 };
