@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProdCard from './ProdCard';
 
 const OtherProductList = ({ relatedProds, relatedStyles }) => {
@@ -11,6 +11,10 @@ const OtherProductList = ({ relatedProds, relatedStyles }) => {
       type="related"
     />
   ));
+
+  useEffect(() => {
+    setrelatedProductsIndex(0);
+  }, [relatedProds]);
   return (
     <div className="related-products">
       {relatedProductsIndex > 0 ? (

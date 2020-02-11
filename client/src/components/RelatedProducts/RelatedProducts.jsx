@@ -16,9 +16,9 @@ const RelatedProducts = ({ avg }) => {
   }
 
   useEffect(() => {
+    setrelatedProds([]);
+    setrelatedStyles([]);
     axios.get(`http://3.134.102.30/products/${url}/related`).then(results => {
-      setrelatedProds([]);
-      setrelatedStyles([]);
       Promise.all(
         results.data.map(product => {
           return axios

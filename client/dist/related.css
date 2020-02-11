@@ -1,6 +1,6 @@
 .related-products {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin: 1.5vw 0 1.5vw 0;
   position: relative;
 }
@@ -21,7 +21,7 @@
 }
 
 .related-next {
-  right: 0.5vw;
+  right: 1.5vw;
   border-radius: 3px 0 0 3px;
 }
 
@@ -55,6 +55,8 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border: 0.1vw solid black;
   transition: 0.3s;
+
+  margin-right: 2%;
 
   min-height: 28vw;
   max-height: 28vw;
