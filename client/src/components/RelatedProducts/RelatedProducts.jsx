@@ -17,15 +17,16 @@ const RelatedProducts = ({ prodInfo, styleInfo }) => {
 
   useEffect(() => {
     axios.get(`http://3.134.102.30/products/${url}/related`).then(results => {
+      let noDuplicateProducts = new Set(results.data);
       // Get all the product information for each related product
       const prodPromises = [];
-      results.data.forEach(product => {
+      noDuplicateProducts.forEach(product => {
         prodPromises.push(axios.get(`http://3.134.102.30/products/${product}`));
       });
 
       // Get all the style information for each related product
       const stylePromises = [];
-      results.data.forEach(product => {
+      noDuplicateProducts.forEach(product => {
         stylePromises.push(
           axios.get(`http://3.134.102.30/products/${product}/styles`)
         );
