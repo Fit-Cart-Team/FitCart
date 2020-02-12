@@ -107,7 +107,7 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
                 : defaultIMG
               : ''
           }
-          alt="Avatar"
+          alt="Related Product"
           style={{ width: '100%' }}
         />
         <div className="card-container">
