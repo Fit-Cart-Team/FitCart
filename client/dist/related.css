@@ -90,8 +90,8 @@
 
   margin-right: 2%;
 
-  min-height: 28vw;
-  max-height: 28vw;
+  min-height: 27vw;
+  max-height: 27vw;
   min-width: 19vw;
   max-width: 19vw;
 
@@ -116,8 +116,8 @@
   object-fit: cover;
   flex-grow: 3;
   /* box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2); */
-  min-height: 19vw;
-  max-height: 19vw;
+  min-height: 18vw;
+  max-height: 18vw;
   /* min-width: 19vw;
   max-width: 19vw; */
   width: 105%;

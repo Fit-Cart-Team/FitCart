@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Header, Button, Icon, Modal, Grid } from 'semantic-ui-react';
 import axios from 'axios';
 
-const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
+const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
   let history = useHistory();
   const defaultIMG =
     'https://avatars0.githubusercontent.com/u/5233442?s=400&v=4';
@@ -45,7 +45,7 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
   if (type === 'related') {
     let prodFeatures = {};
     let cardFeatures = {};
-    prodInfo.features.forEach(
+    globalProdInfo.features.forEach(
       feature => (prodFeatures[feature.feature] = feature.value)
     );
 

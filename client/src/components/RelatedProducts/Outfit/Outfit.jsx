@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProdCard from '../OtherProducts/ProdCard';
 
-const Outfit = ({ prodInfo, styleInfo }) => {
+const Outfit = ({ globalProdInfo, globalStyleInfo }) => {
   const [outfit, setoutfit] = useState([]);
   const [outfitIndex, setoutfitIndex] = useState(0);
   useEffect(() => {
@@ -10,12 +10,12 @@ const Outfit = ({ prodInfo, styleInfo }) => {
   }, []);
 
   const addProduct = () => {
-    const product = [prodInfo, styleInfo];
+    const product = [globalProdInfo, globalStyleInfo];
     let currOutfit = [...outfit];
     let addable = true;
 
     for (let prod of currOutfit) {
-      if (prod[0].id === prodInfo.id) {
+      if (prod[0].id === globalProdInfo.id) {
         addable = false;
         break;
       }
@@ -51,8 +51,8 @@ const Outfit = ({ prodInfo, styleInfo }) => {
   return (
     <div className="outfit">
       <div className="add-card" onClick={addProduct}>
-        <h2 style={{ textAlign: 'center', marginTop: '5%' }}>
-          {prodInfo ? prodInfo.name : ''}
+        <h2 style={{ textAlign: 'center', marginTop: '5%', marginBottom: '0' }}>
+          {globalProdInfo ? globalProdInfo.name : ''}
         </h2>
         <img
           className="card-image"

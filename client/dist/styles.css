@@ -404,9 +404,9 @@ li a {
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
-  font-size: 1.5vw;
-  width: 2.5vw;
-  height: 2.5vw;
+  font-size: 2vw;
+  width: 2vw;
+  height: 2vw;
   margin: 1%;
 }
 
@@ -416,6 +416,7 @@ li a {
 
 .fa-facebook {
   padding: 2%;
+  padding-top: 2.5%;
 
   background: #3b5998;
   color: white;
@@ -423,12 +424,14 @@ li a {
 
 .fa-twitter {
   padding: 2%;
+  padding-top: 2.5%;
   background: #55acee;
   color: white;
 }
 
 .fa-pinterest {
   padding: 2%;
+  padding-top: 2.5%;
   cursor: pointer;
   background: #cb2027;
   color: white;
