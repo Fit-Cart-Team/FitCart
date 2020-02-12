@@ -89,9 +89,9 @@ const AList = ({ question }) => {
         >
           <b>A: </b>
           <span>
-            {aList.map(a => {
-              return <Answer a={a} key={a.answer_id} />;
-            })}
+            {aList.map(a => (
+              <Answer a={a} key={a.answer_id} />
+            ))}
           </span>
         </div>
         <u onClick={() => handleClick(true)} style={{ cursor: 'pointer' }}>
