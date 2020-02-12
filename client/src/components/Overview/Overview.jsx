@@ -81,7 +81,6 @@ const Overview = ({ avg, total, setGlobalProdInfo, setGlobalStyleInfo }) => {
   //         });
   //     });
   // }, [url]);
-  console.log(productInfo);
   return loading ? (
     <div className="overview">
       <div className="overview-top">
