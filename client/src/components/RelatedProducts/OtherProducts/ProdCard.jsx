@@ -6,7 +6,8 @@ import axios from 'axios';
 
 const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
   let history = useHistory();
-  const defaultIMG = 'https://img.moglimg.com/p/I/P/N/d/MINIPN3LI0NZS.jpg';
+  const defaultIMG =
+    'https://avatars0.githubusercontent.com/u/5233442?s=400&v=4';
 
   const [avg, setavg] = useState(0);
   const [modalOpen, setmodalOpen] = useState(false);
@@ -81,11 +82,7 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
       <div
         className="product-card"
         onClick={e => {
-          if (
-            // e.target.className !== 'far fa-star card-icon' &&
-            // e.target.className !== 'far fa-times-circle card-icon'
-            !e.target.className.includes('card-icon')
-          ) {
+          if (!e.target.className.includes('card-icon')) {
             history.push(`${product.id}`);
           }
         }}
