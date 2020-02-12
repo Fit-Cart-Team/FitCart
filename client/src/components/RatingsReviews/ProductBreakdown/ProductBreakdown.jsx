@@ -7,7 +7,7 @@ const ProductBreakdown = (props) => {
     let characteristicNames = Object.keys(props.characteristics);
 
     return (
-      <div>
+      <div className="product-breakdown" >
         <h2>Product Breakdown Component</h2>
         {characteristicNames.map((characteristicName) => {
           return (

@@ -8,9 +8,9 @@ const Breakdown = (props) => {
 
     return (
       <div>
-        {ratings.map((rating) => {
+        {ratings.map((rating, index) => {
           return (
-            <Rating rating={rating} quantity={( props.ratings.hasOwnProperty(rating) ? props.ratings[rating] : 0 )} total={props.totalRatings} toggleFilterBy={props.toggleFilterBy} clearFilters={props.clearFilters} />
+            <Rating key={index} rating={rating} quantity={( props.ratings.hasOwnProperty(rating) ? props.ratings[rating] : 0 )} total={props.totalRatings} toggleFilterBy={props.toggleFilterBy} clearFilters={props.clearFilters} />
           );
         })}
       </div>

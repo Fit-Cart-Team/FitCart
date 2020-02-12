@@ -6,7 +6,7 @@ import Breakdown from './Breakdown/Breakdown';
 const RatingBreakdown = (props) => {
 
   return (
-    <div>
+    <div className="rating-breakdown" >
       <h2>Rating Breakdown Component</h2>
       <RatingSummary ratingAverage={props.ratingAverage} />
       <Recommendations recommended={props.recommended} />

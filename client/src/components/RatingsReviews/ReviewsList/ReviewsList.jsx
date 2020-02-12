@@ -31,7 +31,7 @@ const ReviewsList = (props) => {
   
   if (filteredList.length > 0) {
     return (
-      <div>
+      <div className="reviews-list" >
         {filteredList.slice(0, reviewsCount).map((review) => {
           return (
             <ReviewTile key={review.review_id} review={review} />
@@ -45,7 +45,7 @@ const ReviewsList = (props) => {
     );
   } else {
     return (
-      <div>
+      <div className="reviews-list" >
         <ReviewModal />
       </div>
     );
