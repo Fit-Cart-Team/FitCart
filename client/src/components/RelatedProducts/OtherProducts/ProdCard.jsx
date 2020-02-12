@@ -12,6 +12,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
   const [avg, setavg] = useState(0);
   const [modalOpen, setmodalOpen] = useState(false);
   const [styleCardIndex, setstyleCardIndex] = useState(0);
+  const [thumbnailIndex, setthumbnailIndex] = useState(0);
   useEffect(() => {
     axios
       .get(`http://3.134.102.30/reviews/${product.id}/meta`)
@@ -29,8 +30,8 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         setavg(ratingAvg);
       });
   }, [product]);
-
   let currPrice;
+  let relatedThumbnails;
   if (style) {
     currPrice =
       style.sale_price === '0' ? (
@@ -41,6 +42,26 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
           <p className="original-price">${style.original_price}</p>{' '}
         </div>
       );
+
+    relatedThumbnails = style.photos.map((photo, index) => {
+      const classes =
+        styleCardIndex === index
+          ? 'related-thumbnail active-related-thumbnail'
+          : 'related-thumbnail';
+      return (
+        <div key={photo.url} className="related-thumbnail-container">
+          <img
+            key={photo.url}
+            className={classes}
+            src={photo.thumbnail_url || defaultIMG}
+            onClick={() => {
+              setstyleCardIndex(index);
+            }}
+            alt="Thumbnail"
+          />
+        </div>
+      );
+    });
   }
   let comparisonChart;
   if (type === 'related') {
@@ -85,7 +106,8 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         onClick={e => {
           if (
             !e.target.className.includes('card-icon') &&
-            !e.target.className.includes('arrow')
+            !e.target.className.includes('arrow') &&
+            !e.target.className.includes('thumbnail')
           ) {
             history.push(`${product.id}`);
           }
@@ -103,10 +125,24 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
             }}
           ></i>
         )}
+        <img
+          className="card-image"
+          src={
+            style
+              ? style.photos[styleCardIndex].thumbnail_url
+                ? style.photos[styleCardIndex].thumbnail_url
+                : defaultIMG
+              : ''
+          }
+          alt="Related Product"
+        />
         {styleCardIndex > 0 && (
           <a
             className="card-prev-arrow"
             onClick={() => {
+              if (styleCardIndex < thumbnailIndex + 1) {
+                setthumbnailIndex(prev => prev - 1);
+              }
               setstyleCardIndex(prev => {
                 if (prev >= 1) {
                   return prev - 1;
@@ -120,21 +156,13 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
             &#9668;
           </a>
         )}
-        <img
-          className="card-image"
-          src={
-            style
-              ? style.photos[styleCardIndex].thumbnail_url
-                ? style.photos[styleCardIndex].thumbnail_url
-                : defaultIMG
-              : ''
-          }
-          alt="Related Product"
-        />
         {styleCardIndex < style.photos.length - 1 && (
           <a
             className="card-next-arrow"
             onClick={() => {
+              if (styleCardIndex >= 3 - thumbnailIndex) {
+                setthumbnailIndex(prev => prev + 1);
+              }
               setstyleCardIndex(prev => {
                 if (prev < style.photos.length - 1) {
                   return prev + 1;
@@ -144,10 +172,12 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
               });
             }}
           >
-            {/* {'🡢'} */}
             &#9658;
           </a>
         )}
+        <div className="related-thumbnails-row">
+          {relatedThumbnails.slice(thumbnailIndex, thumbnailIndex + 4)}
+        </div>
         <div className="card-container">
           <p>{product.category}</p>
           <p>
