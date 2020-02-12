@@ -13,6 +13,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
   const [modalOpen, setmodalOpen] = useState(false);
   const [styleCardIndex, setstyleCardIndex] = useState(0);
   const [thumbnailIndex, setthumbnailIndex] = useState(0);
+  const [showThumbnails, setshowThumbnails] = useState(false);
   useEffect(() => {
     axios
       .get(`http://3.134.102.30/reviews/${product.id}/meta`)
@@ -99,6 +100,8 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
     setmodalOpen(true);
   };
 
+  const thumbnailStyles = !showThumbnails ? { opacity: '0' } : {};
+
   return style ? (
     <>
       <div
@@ -135,6 +138,12 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
               : ''
           }
           alt="Related Product"
+          onMouseEnter={() => {
+            setshowThumbnails(true);
+          }}
+          onMouseLeave={() => {
+            setshowThumbnails(false);
+          }}
         />
         {styleCardIndex > 0 && (
           <a
@@ -175,9 +184,20 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
             &#9658;
           </a>
         )}
-        <div className="related-thumbnails-row">
+        {/* {showThumbnails && ( */}
+        <div
+          className="related-thumbnails-row"
+          onMouseEnter={() => {
+            setshowThumbnails(true);
+          }}
+          onMouseLeave={() => {
+            setshowThumbnails(false);
+          }}
+          style={thumbnailStyles}
+        >
           {relatedThumbnails.slice(thumbnailIndex, thumbnailIndex + 4)}
         </div>
+        // )}
         <div className="card-container">
           <p>{product.category}</p>
           <p>
