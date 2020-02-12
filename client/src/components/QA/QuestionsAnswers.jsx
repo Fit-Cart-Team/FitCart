@@ -39,6 +39,7 @@ const QuestionsAnswers = () => {
       <SearchQuestions qList={questionList} onSearch={handleSearch} />
       <br />
       <QList list={searchList.length > 0 ? searchList : questionList} />
+      <Qform productName={'shoes'} />
       <br />
     </div>
   );

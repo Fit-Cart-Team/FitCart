@@ -5,17 +5,18 @@ const PhotoModal = ({ photo }) => {
   let style = {
     margin: '10px',
     width: '5rem',
-    height: '4rem'
+    height: '4rem',
   };
   let style2 = {
-    height: '75vh'
+    height: '75vh',
   };
   return (
     <Modal
       trigger={
-        <img src={photo.url} style={style} id={photo.id} alt="Photo"></img>
+        <img src={photo.url} style={style} id={photo.id} alt='Photo'></img>
       }
-      closeIcon="window close"
+      basic
+      closeIcon='window close'
     >
       <Modal.Content image>
         <Image src={photo.url} style={style2} centered />
