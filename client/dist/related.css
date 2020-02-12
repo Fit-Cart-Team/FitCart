@@ -150,8 +150,8 @@
 
 .related-thumbnails-row {
   position: absolute;
-  top: 57%;
-  left: 20%;
+  top: 56%;
+  left: 14%;
   display: flex;
 }
 
@@ -160,10 +160,11 @@
   margin-left: 0.5vw;
   margin-right: 0.5vw;
   opacity: 0.4;
-  min-width: 2vw;
-  max-width: 2vw;
-  min-height: 2vw;
-  max-height: 2vw;
+  min-width: 2.5vw;
+  max-width: 2.5vw;
+  min-height: 2.5vw;
+  max-height: 2.5vw;
+  object-fit: cover;
   border: 0.08vw solid black;
 }
 
