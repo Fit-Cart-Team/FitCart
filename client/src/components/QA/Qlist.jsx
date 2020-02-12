@@ -1,56 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import Question from './Question';
-import axios from 'axios';
 
-const QList = ({ product_id }) => {
-  const [qList, setQList] = useState([]);
+const QList = ({ list }) => {
   const [showMoreQuestions, setShowMoreQuestions] = useState(true);
-
-  const getQList = () => {
-    axios
-      .get(`http://3.134.102.30/qa/${product_id}?page=${1}&count=${100}`)
-      .then(res => {
-        return setQList(res.data.results);
-      })
-      .catch(err => console.error(err));
-  };
-
-  useEffect(() => {
-    getQList();
-  }, [product_id]);
 
   const handleClick = isOn => {
     setShowMoreQuestions(isOn);
   };
 
-  if (qList.length === 0) {
+  if (list.length === 0) {
     return <div></div>;
-  } else if (qList.length === 1) {
-    return (
-      <span>
-        <b>Q: </b>
-        <span>
-          <Question q={qList[0]} key={qList[0].question_id} />;
-        </span>
-      </span>
-    );
-  } else if (qList.length === 2) {
-    return (
-      <span>
-        <Question q={qList[0]} key={qList[0].question_id} />
-        <Question q={qList[1]} key={qList[1].question_id} />
-      </span>
-    );
-  } else if (qList.length > 2 && showMoreQuestions) {
+  } else if (list.length === 1) {
     return (
       <div>
+        <b>Q: </b>
         <span>
-          <Question q={qList[0]} key={qList[0].question_id} />
-          <Question q={qList[1]} key={qList[1].question_id} />
-          <button onClick={() => handleClick(false)}>
-            MORE ANSWERED QUESTIONS
-          </button>
+          <Question q={list[0]} key={list[0].question_id} />;
         </span>
+      </div>
+    );
+  } else if (list.length === 2) {
+    return (
+      <div>
+        <Question q={list[0]} key={list[0].question_id} />
+        <Question q={list[1]} key={list[1].question_id} />
+      </div>
+    );
+  } else if (list.length > 2 && showMoreQuestions) {
+    return (
+      <div>
+        <Question q={list[0]} key={list[0].question_id} />
+        <Question q={list[1]} key={list[1].question_id} />
+        <button onClick={() => handleClick(false)}>
+          MORE ANSWERED QUESTIONS
+        </button>
       </div>
     );
   } else {
@@ -63,7 +46,7 @@ const QList = ({ product_id }) => {
           }}
         >
           <span>
-            {qList.map(q => {
+            {list.map(q => {
               return <Question q={q} key={q.question_id} />;
             })}
           </span>

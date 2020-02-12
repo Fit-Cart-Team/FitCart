@@ -1,11 +1,14 @@
 import React from 'react';
-import { Divider, Header, Image, Modal } from 'semantic-ui-react';
+import { Image, Modal } from 'semantic-ui-react';
 
 const PhotoModal = ({ photo }) => {
   let style = {
-    margin: '20px',
+    margin: '10px',
     width: '5rem',
     height: '4rem',
+  };
+  let style2 = {
+    height: '75vh',
   };
   return (
     <Modal
@@ -13,7 +16,7 @@ const PhotoModal = ({ photo }) => {
       closeIcon='window close'
     >
       <Modal.Content image>
-        <Image fluid src={photo.url} />
+        <Image src={photo.url} style={style2} centered />
       </Modal.Content>
     </Modal>
   );
