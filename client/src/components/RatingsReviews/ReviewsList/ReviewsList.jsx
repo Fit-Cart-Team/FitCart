@@ -38,7 +38,7 @@ const ReviewsList = (props) => {
           );
         })}
         <div style={{margin: "10px"}} >
-          {(reviewsCount === filteredList.length) ? <div></div> : (<MoreReviews incrementReviewsCount={incrementReviewsCount} />)}
+          {(reviewsCount >= filteredList.length) ? <div></div> : (<MoreReviews incrementReviewsCount={incrementReviewsCount} />)}
           <ReviewModal />
         </div>
       </div>
