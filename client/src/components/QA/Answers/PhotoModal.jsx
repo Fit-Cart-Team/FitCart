@@ -14,6 +14,7 @@ const PhotoModal = ({ photo }) => {
     <Modal
       trigger={<img src={photo.url} style={style} id={photo.id}></img>}
       closeIcon='window close'
+      basic
     >
       <Modal.Content image>
         <Image src={photo.url} style={style2} centered />
