@@ -8,7 +8,7 @@ const ImagePreviews = ({
   setshownThumbnails,
   url,
   selectedStyle,
-  size
+  size,
 }) => {
   const defaultIMG =
     'https://avatars0.githubusercontent.com/u/5233442?s=400&v=4';
@@ -18,7 +18,7 @@ const ImagePreviews = ({
         ? 'thumbnail-preview active-img'
         : 'thumbnail-preview';
     return (
-      <div key={photo.url} className="thumbnail-container">
+      <div key={photo.url} className='thumbnail-container'>
         <img
           key={photo.url}
           className={classes}
@@ -32,11 +32,11 @@ const ImagePreviews = ({
                   maxWidth: '2.5vw',
                   minWidth: '2.5vw',
                   maxHeight: '2.5vw',
-                  minHeight: '2.5vw'
+                  minHeight: '2.5vw',
                 }
               : {}
           }
-          alt="Thumbnail"
+          alt='Thumbnail'
         />
       </div>
     );
@@ -64,33 +64,33 @@ const ImagePreviews = ({
 
   if (photoThumbnails.length > 7) {
     return (
-      <div className="thumbnail-column">
+      <div className='thumbnail-column'>
         <div
-          className="up"
+          className='up'
           onClick={() => {
             toggleShownThumbnails(-1);
           }}
           style={upStyles}
         >
           {/* {'⮝'} */}
-          &#11165;
+          &#8963;
         </div>
 
         {photoThumbnails.slice(shownThumbnails, shownThumbnails + 7)}
         <div
-          className="down"
+          className='down'
           onClick={() => {
             toggleShownThumbnails(1);
           }}
           style={downStyles}
         >
           {/* {'⮟'} */}
-          &#11167;
+          &#8964;
         </div>
       </div>
     );
   } else {
-    return <div className="thumbnail-column">{photoThumbnails}</div>;
+    return <div className='thumbnail-column'>{photoThumbnails}</div>;
   }
 };
 
