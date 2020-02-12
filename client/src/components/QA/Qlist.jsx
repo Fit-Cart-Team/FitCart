@@ -13,9 +13,8 @@ const QList = ({ list }) => {
   } else if (list.length === 1) {
     return (
       <div>
-        <b>Q: </b>
         <span>
-          <Question q={list[0]} key={list[0].question_id} />;
+          <Question q={list[0]} key={list[0].question_id} />
         </span>
       </div>
     );
@@ -46,9 +45,9 @@ const QList = ({ list }) => {
           }}
         >
           <span>
-            {list.map(q => {
-              return <Question q={q} key={q.question_id} />;
-            })}
+            {list.map(q => (
+              <Question q={q} key={q.question_id} />
+            ))}
           </span>
         </div>
         <button onClick={() => handleClick(true)}>

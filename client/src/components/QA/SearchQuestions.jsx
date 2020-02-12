@@ -21,7 +21,11 @@ const SearchQuestions = ({ qList, onSearch }) => {
     const filteredSearch = [];
     if (searchTerm.length > 2) {
       for (let i = 0; i < qList.length; i++) {
-        if (qList[i].question_body.includes(searchTerm)) {
+        if (
+          qList[i].question_body
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase())
+        ) {
           filteredSearch.push(qList[i]);
         }
       }
