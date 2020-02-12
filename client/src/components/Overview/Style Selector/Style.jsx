@@ -7,10 +7,10 @@ const Style = ({ style, setSelectedStyle, index, selectedStyle }) => {
     <img
       className="thumbnail-img"
       src={style.photos[0].thumbnail_url}
-      alt="loading"
+      alt="Style Thumbnail"
     ></img>
   ) : (
-    <img className="thumbnail-img" src={defaultIMG} alt="no image"></img>
+    <img className="thumbnail-img" src={defaultIMG} alt="No Image"></img>
   );
 
   const checked =

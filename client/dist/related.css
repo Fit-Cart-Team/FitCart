@@ -10,36 +10,57 @@
 .related-next {
   cursor: pointer;
   position: absolute;
-  width: auto;
-  height: 100%;
-  padding: 0.5vw;
+  width: 10vw;
+  top: -2%;
+  height: 105%;
   color: black;
-  opacity: 0.5;
-  background: linear-gradient(90deg, white, rgb(156, 156, 156));
+
   font-size: 1.5vw;
-  border-radius: 0 3px 3px 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   z-index: 5;
   user-select: none;
   -webkit-user-select: none;
 }
 
 .related-next {
-  right: 2vw;
-  border-radius: 3px 0 0 3px;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 10%,
+    rgb(255, 255, 255) 40%
+  );
 }
 
 .related-prev {
-  left: 0.2vw;
-  border-radius: 3px 0 0 3px;
+  left: -1%;
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0) 10%,
+    rgb(255, 255, 255) 40%
+  );
 }
 
 .outfit-prev {
-  left: 20.7vw;
+  left: 23.5%;
 }
 
-.related-prev:hover,
 .related-next:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 10%,
+    rgb(255, 255, 255) 60%
+  );
+}
+
+.related-prev:hover {
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0) 10%,
+    rgb(255, 255, 255) 60%
+  );
 }
 .card-icon {
   position: absolute;
@@ -64,8 +85,7 @@
 .add-card {
   /* Add shadows to create the "card" effect */
   cursor: pointer;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border: 0.1vw solid black;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 
   margin-right: 2%;
@@ -78,6 +98,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .product-card p {
@@ -88,21 +109,23 @@
 /* On mouse-over, add a deeper shadow */
 .product-card:hover,
 .add-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .card-image {
   object-fit: cover;
   flex-grow: 3;
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2); */
   min-height: 19vw;
   max-height: 19vw;
-  min-width: 19vw;
-  max-width: 19vw;
+  /* min-width: 19vw;
+  max-width: 19vw; */
+  width: 105%;
 }
 
 /* Add some padding inside the card container */
 .card-container {
   padding: 8px 16px;
   flex-grow: 1;
+  text-align: center;
 }

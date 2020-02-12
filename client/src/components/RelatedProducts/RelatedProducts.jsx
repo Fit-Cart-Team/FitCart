@@ -56,13 +56,13 @@ const RelatedProducts = ({ prodInfo, styleInfo }) => {
 
   return (
     <>
-      <div style={{ fontSize: '1.2vw' }}>RELATED PRODUCTS</div>
+      <div style={{ fontSize: '1.3vw' }}>RELATED PRODUCTS</div>
       <OtherProductList
         relatedProds={relatedProds}
         relatedStyles={relatedStyles}
         prodInfo={prodInfo}
       />
-      <div style={{ fontSize: '1.2vw' }}>MY OUTFIT</div>
+      <div style={{ fontSize: '1.3vw' }}>MY OUTFIT</div>
       <Outfit prodInfo={prodInfo} styleInfo={styleInfo} />
     </>
   );

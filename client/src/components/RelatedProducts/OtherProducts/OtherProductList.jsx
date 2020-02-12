@@ -30,7 +30,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
           }}
         >
           {/* {'🡠'} */}
-          &#129120;
+          <div className="prev-arrow-arrow">&#129120;</div>
         </a>
       ) : (
         <></>
@@ -45,7 +45,8 @@ const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
           }}
         >
           {/* {'🡢'} */}
-          &#129122;
+          {/* &#129122; */}
+          <div className="next-arrow-arrow">&#129122;</div>
         </a>
       ) : (
         <></>

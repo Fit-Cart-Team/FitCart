@@ -94,7 +94,7 @@ li a {
   display: flex;
   margin: 0px;
 
-  min-height: 57vh;
+  min-height: 100%;
   max-height: 100%;
   z-index: 3;
   overflow: hidden;
@@ -147,9 +147,6 @@ li a {
 }
 
 .thumbnail-column::before {
-  /* content: '';
-  display: table;
-  clear: both; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -436,7 +433,6 @@ li a {
   background: #cb2027;
   color: white;
 }
-
 
 .product-description {
   margin-top: 4%;
