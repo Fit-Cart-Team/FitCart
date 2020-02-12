@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProdCard from './ProdCard';
 
-const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
+const OtherProductList = ({ relatedProds, relatedStyles, globalProdInfo }) => {
   const [relatedProductsIndex, setrelatedProductsIndex] = useState(0);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
       key={index}
       product={product}
       style={relatedStyles[index]}
-      prodInfo={prodInfo}
+      globalProdInfo={globalProdInfo}
       type="related"
     />
   ));
