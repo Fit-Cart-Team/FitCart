@@ -17,7 +17,6 @@ const NavBar = () => {
     <ul>
       <li>
         <Link to="/" className="active">
-          {/* <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/shopping-bags-8-859849.png" /> */}
           <u>Lo</u>g<u>o</u>
         </Link>
       </li>
