@@ -51,7 +51,7 @@ const Outfit = ({ globalProdInfo, globalStyleInfo }) => {
   return (
     <div className="outfit">
       <div className="add-card" onClick={addProduct}>
-        <h2 style={{ textAlign: 'center', marginTop: '5%' }}>
+        <h2 style={{ textAlign: 'center', marginTop: '5%', marginBottom: '0' }}>
           {globalProdInfo ? globalProdInfo.name : ''}
         </h2>
         <img
