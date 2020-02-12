@@ -108,7 +108,7 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
                 : defaultIMG
               : ''
           }
-          alt="Avatar"
+          alt="Related Product"
         />
         <div className="card-container">
           <p>{product.category}</p>

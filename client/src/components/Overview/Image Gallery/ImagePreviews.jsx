@@ -36,7 +36,7 @@ const ImagePreviews = ({
                 }
               : {}
           }
-          alt="Loading"
+          alt="Thumbnail"
         />
       </div>
     );
