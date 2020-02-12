@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProdCard from './ProdCard';
 
-const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
+const OtherProductList = ({ relatedProds, relatedStyles, globalProdInfo }) => {
   const [relatedProductsIndex, setrelatedProductsIndex] = useState(0);
 
   useEffect(() => {
@@ -13,16 +13,16 @@ const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
       key={index}
       product={product}
       style={relatedStyles[index]}
-      prodInfo={prodInfo}
-      type="related"
+      globalProdInfo={globalProdInfo}
+      type='related'
     />
   ));
 
   return (
-    <div className="related-products">
+    <div className='related-products'>
       {relatedProductsIndex > 0 ? (
         <a
-          className="related-prev"
+          className='related-prev'
           onClick={() => {
             if (relatedProductsIndex > 0) {
               setrelatedProductsIndex(prev => prev - 1);
@@ -30,7 +30,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
           }}
         >
           {/* {'🡠'} */}
-          <div className="prev-arrow-arrow">&#129120;</div>
+          <div className='prev-arrow-arrow'>&#9668;</div>
         </a>
       ) : (
         <></>
@@ -38,7 +38,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
       {prodCards.slice(relatedProductsIndex, relatedProductsIndex + 4)}
       {relatedProductsIndex < relatedProds.length - 4 ? (
         <a
-          className="related-next"
+          className='related-next'
           onClick={() => {
             if (relatedProductsIndex < relatedProds.length - 4)
               setrelatedProductsIndex(prev => prev + 1);
@@ -46,7 +46,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
         >
           {/* {'🡢'} */}
           {/* &#129122; */}
-          <div className="next-arrow-arrow">&#129122;</div>
+          <div className='next-arrow-arrow'>&#9658;</div>
         </a>
       ) : (
         <></>

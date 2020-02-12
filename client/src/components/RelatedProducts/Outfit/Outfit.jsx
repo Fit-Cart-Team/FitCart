@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProdCard from '../OtherProducts/ProdCard';
 
-const Outfit = ({ prodInfo, styleInfo }) => {
+const Outfit = ({ globalProdInfo, globalStyleInfo }) => {
   const [outfit, setoutfit] = useState([]);
   const [outfitIndex, setoutfitIndex] = useState(0);
   useEffect(() => {
@@ -10,12 +10,12 @@ const Outfit = ({ prodInfo, styleInfo }) => {
   }, []);
 
   const addProduct = () => {
-    const product = [prodInfo, styleInfo];
+    const product = [globalProdInfo, globalStyleInfo];
     let currOutfit = [...outfit];
     let addable = true;
 
     for (let prod of currOutfit) {
-      if (prod[0].id === prodInfo.id) {
+      if (prod[0].id === globalProdInfo.id) {
         addable = false;
         break;
       }
@@ -44,29 +44,29 @@ const Outfit = ({ prodInfo, styleInfo }) => {
             product={prod[0]}
             style={prod[1]}
             removeProduct={removeProduct}
-            type="outfit"
+            type='outfit'
           />
         ))
       : [];
   return (
-    <div className="outfit">
-      <div className="add-card" onClick={addProduct}>
-        <h2 style={{ textAlign: 'center', marginTop: '5%' }}>
-          {prodInfo ? prodInfo.name : ''}
+    <div className='outfit'>
+      <div className='add-card' onClick={addProduct}>
+        <h2 style={{ textAlign: 'center', marginTop: '5%', marginBottom: '0' }}>
+          {globalProdInfo ? globalProdInfo.name : ''}
         </h2>
         <img
-          className="card-image"
-          src="https://printables.space/files/uploads/download-and-print/large-printable-numbers/plus-a4-1200x1697.jpg"
-          alt="Add to Outfit"
+          className='card-image'
+          src='https://printables.space/files/uploads/download-and-print/large-printable-numbers/plus-a4-1200x1697.jpg'
+          alt='Add to Outfit'
           style={{ width: '100%' }}
         />
-        <div className="card-container">
+        <div className='card-container'>
           <h1>Total: {outfit.length}</h1>
         </div>
       </div>
       {outfitIndex > 0 ? (
         <a
-          className="related-prev outfit-prev"
+          className='related-prev outfit-prev'
           onClick={() => {
             if (outfitIndex > 0) {
               setoutfitIndex(prev => prev - 1);
@@ -74,7 +74,7 @@ const Outfit = ({ prodInfo, styleInfo }) => {
           }}
         >
           {/* {'🡠'} */}
-          &#129120;
+          &#9668;
         </a>
       ) : (
         <></>
@@ -82,14 +82,14 @@ const Outfit = ({ prodInfo, styleInfo }) => {
       {outfitCards.slice(outfitIndex, outfitIndex + 3)}
       {outfitIndex < outfit.length - 3 ? (
         <a
-          className="related-next"
+          className='related-next'
           onClick={() => {
             if (outfitIndex < outfit.length - 2)
               setoutfitIndex(prev => prev + 1);
           }}
         >
           {/* {'🡢'} */}
-          &#129122;
+          &#9658;
         </a>
       ) : (
         <></>
