@@ -15,7 +15,6 @@ const Details = ({ productInfo, styleInfo, selectedStyle, avg, total }) => {
         </div>
       );
   }
-
   let prodCat = productInfo.category ? productInfo.category.toUpperCase() : '';
   return (
     // < className="product-info">
@@ -27,7 +26,11 @@ const Details = ({ productInfo, styleInfo, selectedStyle, avg, total }) => {
             href="#ratings-reviews"
             style={{ fontSize: 'small', color: '#525252' }}
           >
-            Read all {total} reviews!
+            {total === 0
+              ? 'Be the first to review this product!'
+              : total === 1
+              ? `Read 1 review`
+              : `Read all ${total} reviews`}
           </a>
         </span>
       </div>
