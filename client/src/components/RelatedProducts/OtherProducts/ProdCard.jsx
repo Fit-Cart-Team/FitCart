@@ -85,7 +85,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         onClick={e => {
           if (
             !e.target.className.includes('card-icon') &&
-            !e.target.className.includes('card-arrow')
+            !e.target.className.includes('arrow')
           ) {
             history.push(`${product.id}`);
           }
@@ -105,7 +105,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         )}
         {styleCardIndex > 0 && (
           <a
-            className="prev card-arrow"
+            className="card-prev-arrow"
             onClick={() => {
               setstyleCardIndex(prev => {
                 if (prev >= 1) {
@@ -133,7 +133,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         />
         {styleCardIndex < style.photos.length - 1 && (
           <a
-            className="next card-arrow"
+            className="card-next-arrow"
             onClick={() => {
               setstyleCardIndex(prev => {
                 if (prev < style.photos.length - 1) {

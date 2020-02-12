@@ -129,3 +129,21 @@
   flex-grow: 1;
   text-align: center;
 }
+
+.card-next-arrow,
+.card-prev-arrow {
+  cursor: pointer;
+  position: absolute;
+  top: 57%;
+  width: auto;
+  padding: 0.3vw;
+  color: white;
+  font-size: 1.2vw;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.card-next-arrow {
+  right: 1%;
+}
