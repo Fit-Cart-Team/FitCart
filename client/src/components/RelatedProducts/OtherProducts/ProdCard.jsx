@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Stars from '../../Stars';
 import { useHistory } from 'react-router-dom';
-import { Header, Button, Icon, Modal, Grid } from 'semantic-ui-react';
+import { Header, Modal, Grid } from 'semantic-ui-react';
 import axios from 'axios';
 
 const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
@@ -11,6 +11,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
 
   const [avg, setavg] = useState(0);
   const [modalOpen, setmodalOpen] = useState(false);
+  const [styleCardIndex, setstyleCardIndex] = useState(0);
   useEffect(() => {
     axios
       .get(`http://3.134.102.30/reviews/${product.id}/meta`)
@@ -77,12 +78,15 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
     setmodalOpen(true);
   };
 
-  return (
+  return style ? (
     <>
       <div
         className="product-card"
         onClick={e => {
-          if (!e.target.className.includes('card-icon')) {
+          if (
+            !e.target.className.includes('card-icon') &&
+            !e.target.className.includes('card-arrow')
+          ) {
             history.push(`${product.id}`);
           }
         }}
@@ -99,23 +103,57 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
             }}
           ></i>
         )}
+        {styleCardIndex > 0 && (
+          <a
+            className="prev card-arrow"
+            onClick={() => {
+              setstyleCardIndex(prev => {
+                if (prev >= 1) {
+                  return prev - 1;
+                } else {
+                  return prev;
+                }
+              });
+            }}
+            style={{ left: '1%' }}
+          >
+            &#9668;
+          </a>
+        )}
         <img
           className="card-image"
           src={
             style
-              ? style.photos[0].thumbnail_url
-                ? style.photos[0].thumbnail_url
+              ? style.photos[styleCardIndex].thumbnail_url
+                ? style.photos[styleCardIndex].thumbnail_url
                 : defaultIMG
               : ''
           }
           alt="Related Product"
         />
+        {styleCardIndex < style.photos.length - 1 && (
+          <a
+            className="next card-arrow"
+            onClick={() => {
+              setstyleCardIndex(prev => {
+                if (prev < style.photos.length - 1) {
+                  return prev + 1;
+                } else {
+                  return prev;
+                }
+              });
+            }}
+          >
+            {/* {'🡢'} */}
+            &#9658;
+          </a>
+        )}
         <div className="card-container">
           <p>{product.category}</p>
           <p>
             <b>{product.name}</b>
           </p>
-          <div>{currPrice}</div>
+          {currPrice}
           <Stars avg={avg} />
         </div>
       </div>
@@ -130,6 +168,8 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         </Modal>
       )}
     </>
+  ) : (
+    <div></div>
   );
 };
 

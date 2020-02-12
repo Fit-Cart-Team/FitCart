@@ -39,8 +39,7 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
         Promise.all(stylePromises).then(styles => {
           // Get default style for each product and set state
           const tempStyleData = styles.map(style => style.data);
-          console.log(styles);
-          console.log(tempStyleData);
+
           const styleData = tempStyleData.map(style => {
             let styleResults = style.results;
             let defaultStyle = styleResults[0];
@@ -50,6 +49,7 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
               }
             });
             return defaultStyle;
+            // return styleResults;
           });
           setrelatedStyles(styleData);
         });
@@ -57,7 +57,7 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
     });
   }, [url]);
 
-  return (
+  return globalProdInfo ? (
     <>
       <div style={{ fontSize: '1.3vw' }}>RELATED PRODUCTS</div>
       <OtherProductList
@@ -71,6 +71,8 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
         globalStyleInfo={globalStyleInfo}
       />
     </>
+  ) : (
+    <div></div>
   );
 };
 
