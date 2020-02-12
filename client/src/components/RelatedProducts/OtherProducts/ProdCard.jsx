@@ -184,7 +184,6 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
             &#9658;
           </a>
         )}
-        {/* {showThumbnails && ( */}
         <div
           className="related-thumbnails-row"
           onMouseEnter={() => {
@@ -197,7 +196,6 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         >
           {relatedThumbnails.slice(thumbnailIndex, thumbnailIndex + 4)}
         </div>
-        // )}
         <div className="card-container">
           <p>{product.category}</p>
           <p>
