@@ -120,18 +120,13 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
         </div>
       </div>
       {type === 'related' && (
-        <Modal open={modalOpen} onClose={handleClose} size="small">
+        <Modal open={modalOpen} onClose={handleClose} size="small" closeIcon>
           <Header content="Comparing" />
           <Modal.Content>
             <Grid columns={3} relaxed>
               {type === 'related' && comparisonChart}
             </Grid>
           </Modal.Content>
-          <Modal.Actions>
-            <Button color="green" onClick={handleClose} inverted>
-              <Icon name="checkmark" /> Got it
-            </Button>
-          </Modal.Actions>
         </Modal>
       )}
     </>
