@@ -51,7 +51,6 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
             });
             return defaultStyle;
           });
-          console.log(styleData);
           setrelatedStyles(styleData);
         });
       });
