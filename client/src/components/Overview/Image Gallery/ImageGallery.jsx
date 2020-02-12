@@ -9,7 +9,8 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   const [view, setview] = useState('default');
   const [shownThumbnails, setshownThumbnails] = useState(0);
 
-  const defaultIMG = 'https://img.moglimg.com/p/I/P/N/d/MINIPN3LI0NZS.jpg';
+  const defaultIMG =
+    'https://avatars0.githubusercontent.com/u/5233442?s=400&v=4';
 
   const photoSlides = photos.map(photo => {
     return photo.url;
@@ -69,8 +70,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
           backgroundSize: '250% 250%',
           position: 'absolute',
           width: '100%',
-          cursor:
-            'url(https://cdn2.iconfinder.com/data/icons/metroicons/48/minus.png), pointer'
+          cursor: 'zoom-out'
         });
         setview('zoom');
       }

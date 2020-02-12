@@ -10,7 +10,8 @@ const ImagePreviews = ({
   selectedStyle,
   size
 }) => {
-  const defaultIMG = 'https://img.moglimg.com/p/I/P/N/d/MINIPN3LI0NZS.jpg';
+  const defaultIMG =
+    'https://avatars0.githubusercontent.com/u/5233442?s=400&v=4';
   const photoThumbnails = photos.map((photo, index) => {
     const classes =
       currSlide === index
@@ -26,12 +27,12 @@ const ImagePreviews = ({
             setSlide(index);
           }}
           style={
-            size
+            size === 'small'
               ? {
-                  maxWidth: '2vw',
-                  minWidth: '2vw',
-                  maxHeight: '2vw',
-                  minHeight: '2vw'
+                  maxWidth: '2.5vw',
+                  minWidth: '2.5vw',
+                  maxHeight: '2.5vw',
+                  minHeight: '2.5vw'
                 }
               : {}
           }
