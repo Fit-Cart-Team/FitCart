@@ -39,15 +39,19 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
         Promise.all(stylePromises).then(styles => {
           // Get default style for each product and set state
           const tempStyleData = styles.map(style => style.data);
+          console.log(styles);
+          console.log(tempStyleData);
           const styleData = tempStyleData.map(style => {
             let styleResults = style.results;
+            let defaultStyle = styleResults[0];
             styleResults.forEach(style => {
               if (style['default?'] === 1) {
-                return style;
+                defaultStyle = style;
               }
             });
-            return styleResults[0];
+            return defaultStyle;
           });
+          console.log(styleData);
           setrelatedStyles(styleData);
         });
       });

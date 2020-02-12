@@ -335,7 +335,7 @@ li a {
   appearance: none;
   margin-right: 1vw;
   height: 6.5vh;
-  padding: 1vw;
+  padding: 0.5vw;
   font-size: 1vw;
   font-weight: bold;
   background-color: white;
@@ -346,7 +346,7 @@ li a {
 .quantity-selector {
   flex-grow: 2;
   height: 6.5vh;
-  padding: 1vw;
+  padding: 0.5vw;
   font-size: 1vw;
   background-color: white;
   color: black;
