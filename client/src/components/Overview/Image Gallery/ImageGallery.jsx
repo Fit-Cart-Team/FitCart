@@ -19,18 +19,25 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
     backgroundSize: 'contain',
     position: 'relative',
     width: '70%',
-    cursor: 'zoom-in',
+    cursor: 'zoom-in'
   });
 
   useEffect(() => {
     setSlide(0);
     setview('default');
-    setimgStyles({
-      backgroundSize: 'contain',
-      position: 'relative',
-      width: '70%',
-      cursor: 'zoom-in',
-    });
+    let defaultStyle = photoSlides[currSlide]
+      ? {
+          backgroundSize: 'contain',
+          position: 'relative',
+          width: '70%',
+          cursor: 'zoom-in'
+        }
+      : {
+          backgroundSize: 'contain',
+          position: 'relative',
+          width: '70%'
+        };
+    setimgStyles(defaultStyle);
   }, [url, selectedStyle]);
 
   const setSlide = index => {
@@ -55,13 +62,16 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   };
 
   const expandView = e => {
-    if (e.target.className.includes('image-gallery')) {
+    if (
+      e.target.className.includes('image-gallery') &&
+      photoSlides[currSlide]
+    ) {
       if (view === 'default') {
         setimgStyles({
           backgroundSize: 'contain',
           position: 'absolute',
           width: '100%',
-          cursor: 'crosshair',
+          cursor: 'crosshair'
         });
         setview('expanded');
       }
@@ -70,7 +80,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
           backgroundSize: '250% 250%',
           position: 'absolute',
           width: '100%',
-          cursor: 'zoom-out',
+          cursor: 'zoom-out'
         });
         setview('zoom');
       }
@@ -79,7 +89,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
           backgroundSize: 'contain',
           position: 'absolute',
           width: '100%',
-          cursor: 'crosshair',
+          cursor: 'crosshair'
         });
         setview('expanded');
       }
@@ -100,13 +110,13 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   const compressIcon =
     view === 'expanded' ? (
       <i
-        className='fa fa-expand'
+        className="fa fa-expand"
         onClick={() => {
           setimgStyles({
             backgroundSize: 'contain',
             position: 'relative',
             width: '70%',
-            cursor: 'zoom-in',
+            cursor: 'zoom-in'
           });
           setview('default');
         }}
@@ -120,7 +130,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
       className={view === 'default' ? 'image-gallery' : 'image-gallery ' + view}
       style={{
         ...imgStyles,
-        backgroundImage: `url(${photoSlides[currSlide] || defaultIMG})`,
+        backgroundImage: `url(${photoSlides[currSlide] || defaultIMG})`
       }}
       onClick={expandView}
       onMouseMove={e => {
@@ -149,7 +159,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
           setshownThumbnails={setshownThumbnails}
           url={url}
           selectedStyle={selectedStyle}
-          size='small'
+          size="small"
         />
       ) : (
         <></>
@@ -158,7 +168,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
         <>
           {currSlide > 0 ? (
             <a
-              className='prev'
+              className="prev"
               onClick={() => {
                 incrementSlide(-1);
               }}
@@ -171,7 +181,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
           )}
           {currSlide < photos.length - 1 ? (
             <a
-              className='next'
+              className="next"
               onClick={() => {
                 incrementSlide(1);
               }}
