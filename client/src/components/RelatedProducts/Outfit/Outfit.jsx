@@ -4,7 +4,6 @@ import ProdCard from '../OtherProducts/ProdCard';
 const Outfit = ({ prodInfo, styleInfo }) => {
   const [outfit, setoutfit] = useState([]);
   const [outfitIndex, setoutfitIndex] = useState(0);
-  console.log('huh');
   useEffect(() => {
     let cache = JSON.parse(localStorage.getItem('outfit')) || [];
     setoutfit(cache);
@@ -12,7 +11,6 @@ const Outfit = ({ prodInfo, styleInfo }) => {
 
   const addProduct = () => {
     const product = [prodInfo, styleInfo];
-    console.log(product);
     let currOutfit = [...outfit];
     let addable = true;
 
@@ -23,10 +21,8 @@ const Outfit = ({ prodInfo, styleInfo }) => {
       }
     }
     if (addable) {
-      console.log(currOutfit);
       currOutfit.push(product);
       localStorage.setItem('outfit', JSON.stringify(currOutfit));
-      console.log(currOutfit);
       setoutfit(currOutfit);
     }
   };
@@ -55,7 +51,18 @@ const Outfit = ({ prodInfo, styleInfo }) => {
   return (
     <div className="outfit">
       <div className="add-card" onClick={addProduct}>
-        ADD TO FAVORITES
+        <h2 style={{ textAlign: 'center', marginTop: '5%' }}>
+          {prodInfo ? prodInfo.name : ''}
+        </h2>
+        <img
+          className="card-image"
+          src="https://printables.space/files/uploads/download-and-print/large-printable-numbers/plus-a4-1200x1697.jpg"
+          alt="Add to Outfit"
+          style={{ width: '100%' }}
+        />
+        <div className="card-container">
+          <h1>Total: {outfit.length}</h1>
+        </div>
       </div>
       {outfitIndex > 0 ? (
         <a

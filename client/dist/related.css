@@ -127,4 +127,5 @@
 .card-container {
   padding: 8px 16px;
   flex-grow: 1;
+  text-align: center;
 }
