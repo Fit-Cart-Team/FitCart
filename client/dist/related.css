@@ -169,6 +169,10 @@
   border: 0.08vw solid black;
 }
 
+.related-thumbnail:hover {
+  opacity: 1;
+}
+
 .active-related-thumbnail {
   opacity: 1;
 }

@@ -82,11 +82,11 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
       return (
         <Grid.Row key={feature}>
           <Grid.Column textAlign="right">
-            {prodFeatures[feature] ? '✓ ' + prodFeatures[feature] : ''}
+            {prodFeatures[feature] ? prodFeatures[feature] : ''}
           </Grid.Column>
           <Grid.Column textAlign="center">{feature}</Grid.Column>
           <Grid.Column textAlign="left">
-            {cardFeatures[feature] ? '✓ ' + cardFeatures[feature] : ''}
+            {cardFeatures[feature] ? cardFeatures[feature] : ''}
           </Grid.Column>
         </Grid.Row>
       );
@@ -209,6 +209,13 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         <Modal open={modalOpen} onClose={handleClose} size="small" closeIcon>
           <Header content="Comparing" />
           <Modal.Content>
+            <Grid.Row>
+              <Grid.Column textAlign="center">{product.name}</Grid.Column>
+              <Grid.Column textAlign="center"></Grid.Column>
+              <Grid.Column textAlign="center">
+                {globalProdInfo.name}
+              </Grid.Column>
+            </Grid.Row>
             <Grid columns={3} relaxed>
               {type === 'related' && comparisonChart}
             </Grid>
