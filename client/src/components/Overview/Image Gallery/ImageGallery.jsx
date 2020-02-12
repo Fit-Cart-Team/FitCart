@@ -93,7 +93,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
     const y = ((e.pageY - top) / height) * 100;
     console.log(x, y);
     setimgStyles(prev => {
-      return { ...prev, backgroundPosition: `${-x}px ${y}%` };
+      return { ...prev, backgroundPosition: `${-x * 1.5}px ${y}%` };
     });
   };
 
