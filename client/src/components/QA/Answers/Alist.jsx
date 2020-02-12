@@ -71,9 +71,11 @@ const AList = ({ question }) => {
           <span>
             <Answer a={aList[0]} key={aList[0].answer_id} />
             <Answer a={aList[1]} key={aList[1].answer_id} />
-            <u onClick={() => handleClick(false)} style={{ cursor: 'pointer' }}>
-              LOAD MORE ANSWERS
-            </u>
+            <a onClick={() => handleClick(false)} style={{ cursor: 'pointer' }}>
+              <small>
+                <u>Load More Answers</u>
+              </small>
+            </a>
           </span>
         </span>
       </div>
@@ -94,9 +96,11 @@ const AList = ({ question }) => {
             ))}
           </span>
         </div>
-        <u onClick={() => handleClick(true)} style={{ cursor: 'pointer' }}>
-          LESS ANSWERS
-        </u>
+        <a onClick={() => handleClick(true)} style={{ cursor: 'pointer' }}>
+          <small>
+            <u>Less Answers</u>
+          </small>
+        </a>
       </div>
     );
   }

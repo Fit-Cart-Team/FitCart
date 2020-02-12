@@ -31,7 +31,7 @@ const QList = ({ list }) => {
         <Question q={list[0]} key={list[0].question_id} />
         <Question q={list[1]} key={list[1].question_id} />
         <button onClick={() => handleClick(false)}>
-          MORE ANSWERED QUESTIONS
+          More Answered Questions
         </button>
       </div>
     );
@@ -50,8 +50,9 @@ const QList = ({ list }) => {
             ))}
           </span>
         </div>
+        <br />
         <button onClick={() => handleClick(true)}>
-          LESS ANSWERED QUESTIONS
+          Less Answered Questions
         </button>
       </div>
     );

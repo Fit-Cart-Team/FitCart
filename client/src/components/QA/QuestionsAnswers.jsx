@@ -35,8 +35,11 @@ const QuestionsAnswers = () => {
   return (
     <div>
       <p>Questions and Answers</p>
+      <br />
       <SearchQuestions qList={questionList} onSearch={handleSearch} />
+      <br />
       <QList list={searchList.length > 0 ? searchList : questionList} />
+      <br />
     </div>
   );
 };
