@@ -150,7 +150,7 @@ const RatingsReviews = (props) => {
         </div>
         <div className="right-container" >
           <SortOptions totalReviews={props.totalReviews} changeSortParameter={changeSortParameter} />
-          <ReviewsList reviewsList={reviewsList} filter={filter} filterBy={filterBy} />
+          <ReviewsList reviewsList={reviewsList} filter={filter} filterBy={filterBy} characteristics={meta.characteristics} />
         </div>
       </div>
     </div>
