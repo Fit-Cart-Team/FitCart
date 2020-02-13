@@ -209,7 +209,16 @@ li a {
   margin: 1.5%;
 }
 .right-hand-overview > div {
-  margin: 2%;
+  margin: 2.5%;
+}
+
+.star-container {
+  position: relative;
+}
+
+.star-container > span {
+  position: absolute;
+  left: 35%;
 }
 
 .stars {
@@ -238,13 +247,18 @@ li a {
 }
 
 .product-category {
-  font-size: 120%;
+  font-size: 140%;
   margin-top: 2%;
 }
 
 .product-title {
   font-weight: bolder;
-  font-size: 200%;
+  font-size: 300%;
+}
+
+.product-price {
+  font-size: 140%;
+  margin-top: 4%;
 }
 
 .prices {
@@ -262,6 +276,7 @@ li a {
 
 .style-label {
   margin: 0 0 10px 0;
+  font-size: 140%;
 }
 
 .style-list {
@@ -318,7 +333,6 @@ li a {
   position: absolute;
 
   opacity: 0;
-  transition: opacity 0.8s;
 }
 
 .thumbnail-img:hover + .style-tooltip {
@@ -331,26 +345,35 @@ li a {
 }
 
 .size-selector {
+  cursor: pointer;
   flex-grow: 3;
-  appearance: none;
   margin-right: 1vw;
   height: 6.5vh;
-  padding: 0.5vw;
+  padding: 1vw;
   font-size: 1vw;
   font-weight: bold;
-  background-color: white;
   color: black;
-  border: 1px solid #525252;
+  /* border: 1px solid #525252; */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
 }
 
 .quantity-selector {
+  cursor: pointer;
+  text-align: center;
   flex-grow: 2;
   height: 6.5vh;
-  padding: 0.5vw;
+  padding: 1vw;
   font-size: 1vw;
-  background-color: white;
   color: black;
-  border: 1px solid #525252;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
 }
 
 .cart-buttons {
@@ -359,11 +382,13 @@ li a {
 
 .cart-buttons > button {
   cursor: pointer;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
 }
 
-.cart-buttons > button:hover {
+/* .cart-buttons > button:hover {
   background-color: rgb(236, 234, 234);
-}
+} */
 
 .add-to-bag {
   flex-grow: 5;
@@ -372,9 +397,7 @@ li a {
   padding: 1vw;
   font-size: 1vw;
   font-weight: bold;
-  background-color: white;
   color: black;
-  border: 1px solid black;
 }
 
 .add-text {
@@ -390,9 +413,7 @@ li a {
   height: 6.5vh;
   max-width: 4vw;
   font-size: 2vw;
-  background-color: white;
   color: black;
-  border: 1px solid black;
 }
 
 .social-media {
@@ -441,33 +462,33 @@ li a {
   margin-top: 4%;
   margin-bottom: 4%;
   color: #525252;
-  overflow: auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-left: 10%;
+  padding-left: 6%;
   padding-right: 10%;
-  /* position: relative; */
 }
 
 .product-description-left {
   justify-content: center;
   position: relative;
+  font-size: 120%;
   width: 70%;
-  height: 100%;
+  height: auto;
   border-right: 0.1vw solid #525252;
   padding-right: 1%;
 }
 
 .product-description-right {
   position: absolute;
-  left: 70%;
+  font-size: 120%;
+  left: 66%;
   height: auto;
 }
 
 .slogan {
   margin-bottom: 2%;
-  font-size: 175%;
+  font-size: 200%;
   font-weight: bolder;
 }
 

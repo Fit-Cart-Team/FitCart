@@ -63,7 +63,12 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
   return globalProdInfo ? (
     <>
       <div
-        style={{ fontSize: '1.5vw', fontWeight: 'bold', fontStyle: 'italic' }}
+        style={{
+          fontSize: '1.5vw',
+          fontWeight: 'bold',
+          fontStyle: 'italic',
+          marginLeft: '6%'
+        }}
       >
         RELATED PRODUCTS
       </div>
@@ -73,7 +78,12 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
         globalProdInfo={globalProdInfo}
       />
       <div
-        style={{ fontSize: '1.5vw', fontWeight: 'bold', fontStyle: 'italic' }}
+        style={{
+          fontSize: '1.5vw',
+          fontWeight: 'bold',
+          fontStyle: 'italic',
+          marginLeft: '6%'
+        }}
       >
         MY OUTFIT
       </div>

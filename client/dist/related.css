@@ -2,7 +2,7 @@
 .outfit {
   display: flex;
   justify-content: flex-start;
-  margin: 1.5vw 0 1.5vw 0;
+  margin: 1.5vw 10% 1.5vw 6%;
   position: relative;
 }
 
@@ -26,10 +26,11 @@
 }
 
 .related-next {
-  right: -3%;
+  right: -1%;
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 10%,
+    rgba(255, 255, 255, 0.5) 25%,
     rgb(255, 255, 255) 40%
   );
 }
@@ -39,6 +40,7 @@
   background: linear-gradient(
     270deg,
     rgba(255, 255, 255, 0) 10%,
+    rgba(255, 255, 255, 0.5) 25%,
     rgb(255, 255, 255) 40%
   );
 }
@@ -90,10 +92,10 @@
 
   margin-right: 2%;
 
-  min-height: 27vw;
-  max-height: 27vw;
-  min-width: 19vw;
-  max-width: 19vw;
+  min-height: 25.5vw;
+  max-height: 25.5vw;
+  min-width: 16.5vw;
+  max-width: 16.5vw;
 
   position: relative;
   display: flex;
@@ -116,10 +118,10 @@
   object-fit: cover;
   flex-grow: 3;
   /* box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2); */
-  min-height: 18vw;
-  max-height: 18vw;
-  /* min-width: 19vw;
-  max-width: 19vw; */
+  min-height: 16.5vw;
+  max-height: 16.5vw;
+  /* min-width: 16.5vw;
+  max-width: 16.5vw; */
   width: 105%;
 }
 
@@ -134,7 +136,7 @@
 .card-prev-arrow {
   cursor: pointer;
   position: absolute;
-  top: 57%;
+  top: 56%;
   width: auto;
   padding: 0.3vw;
   color: white;
@@ -150,8 +152,8 @@
 
 .related-thumbnails-row {
   position: absolute;
-  top: 56%;
-  left: 14%;
+  top: 55%;
+  left: 13.5%;
   display: flex;
   transition: opacity 0.3s linear;
 }
@@ -161,10 +163,10 @@
   margin-left: 0.5vw;
   margin-right: 0.5vw;
   opacity: 0.4;
-  min-width: 2.5vw;
-  max-width: 2.5vw;
-  min-height: 2.5vw;
-  max-height: 2.5vw;
+  min-width: 2vw;
+  max-width: 2vw;
+  min-height: 2vw;
+  max-height: 2vw;
   object-fit: cover;
   border: 0.08vw solid black;
 }
