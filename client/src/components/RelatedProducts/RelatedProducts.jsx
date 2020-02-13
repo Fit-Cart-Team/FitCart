@@ -22,7 +22,6 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
           return prod !== Number(id);
         })
       );
-      console.log(noDuplicateProducts);
       // Get all the product information for each related product
       const prodPromises = [];
       noDuplicateProducts.forEach(product => {
@@ -54,7 +53,6 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
               }
             });
             return defaultStyle;
-            // return styleResults;
           });
           setrelatedStyles(styleData);
         });
@@ -64,13 +62,21 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
 
   return globalProdInfo ? (
     <>
-      <div style={{ fontSize: '1.3vw' }}>RELATED PRODUCTS</div>
+      <div
+        style={{ fontSize: '1.5vw', fontWeight: 'bold', fontStyle: 'italic' }}
+      >
+        RELATED PRODUCTS
+      </div>
       <OtherProductList
         relatedProds={relatedProds}
         relatedStyles={relatedStyles}
         globalProdInfo={globalProdInfo}
       />
-      <div style={{ fontSize: '1.3vw' }}>MY OUTFIT</div>
+      <div
+        style={{ fontSize: '1.5vw', fontWeight: 'bold', fontStyle: 'italic' }}
+      >
+        MY OUTFIT
+      </div>
       <Outfit
         globalProdInfo={globalProdInfo}
         globalStyleInfo={globalStyleInfo}

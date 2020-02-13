@@ -1,8 +1,13 @@
 .characteristic {
-  width: 30%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
+}
+
+.characteristic h3 {
+  margin-bottom: 2%;
+  margin-top: 5%;
 }
 
 .characteristic-bar-container {
@@ -19,7 +24,7 @@
 
 .characteristic-bar-container > div {
   position: absolute;
-  height: 1vh;
+  height: 0.7vw;
   background-color: #ebebeb;
 }
 
@@ -53,6 +58,19 @@
   width: 23.5%;
 }
 
+.characteristic-ratings {
+  position: absolute;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  bottom: -15%;
+}
+
+.characteristic-ratings p {
+  margin: 0;
+}
+
 .ratings-breakdown {
   width: 100%;
 }
@@ -72,7 +90,7 @@
 
 #ratings-reviews {
   width: 100%;
-  height: 100vh;
+  height: fit-content;
   padding: 10px;
   border: 3px solid black;
 }
@@ -93,7 +111,11 @@
 .left-container {
   border: 3px solid blue;
   padding: 5px;
+  padding-top: 0;
   width: 30%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
 .right-container {
@@ -105,7 +127,13 @@
 .rating-breakdown {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  height: auto;
+  margin-bottom: 5%;
+}
+
+.ratings-breakdown-container {
+  display: flex;
+  height: min-content;
 }
 
 .ratings-summary {
@@ -116,13 +144,16 @@
 .rating-breakdown-stars-container {
   position: absolute;
   left: 30%;
-  top: 15%;
+  top: 35%;
 }
 
-/* .ratings-summary {
-  display: flex;
-} */
+.product-breakdown h2 {
+  margin: 0;
+}
 
+.ratings-recommendations {
+  margin-bottom: 3%;
+}
 .ratings-recommendations > h3 {
   font-size: 1.2vw;
 }
@@ -132,9 +163,14 @@
 }
 
 .ratings-breakdown-labels-container {
-  padding: 5px;
+  /* padding: 5px; */
+  width: 20%;
+  height: fit-content;
+  text-align: center;
 }
 
 .ratings-breakdown-bars-container {
-  padding: 5px;
+  /* padding: 5px; */
+  width: 80%;
+  height: fit-content;
 }
