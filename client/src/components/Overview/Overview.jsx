@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 // Image Gallery
-import ImageGallery from './Image Gallery/ImageGallery';
+// import ImageGallery from './Image Gallery/ImageGallery';
+const ImageGallery = lazy(() => import('./Image Gallery/ImageGallery'));
 
 // Top-Level Details
-import Details from './Details/Details';
+// import Details from './Details/Details';
+const Details = lazy(() => import('./Details/Details'));
 
 // Style Selector
-import StyleSelector from './Style Selector/StyleSelector';
+// import StyleSelector from './Style Selector/StyleSelector';
+const StyleSelector = lazy(() => import('./Style Selector/StyleSelector'));
 
 // Add To Cart
-import AddCart from './Add to Cart/AddCart';
+// import AddCart from './Add to Cart/AddCart';
+const AddCart = lazy(() => import('./Add to Cart/AddCart'));
 
 // Description Information
-import ProductOverview from './Information/ProductOverview';
-import SocialMedia from './SocialMedia';
+// import ProductOverview from './Information/ProductOverview';
+const ProductOverview = lazy(() => import('./Information/ProductOverview'));
+// import SocialMedia from './SocialMedia';
+const SocialMedia = lazy(() => import('./SocialMedia'));
 
 const Overview = ({ avg, total, setGlobalProdInfo, setGlobalStyleInfo }) => {
   const { id } = useParams();
@@ -82,36 +88,38 @@ const Overview = ({ avg, total, setGlobalProdInfo, setGlobalStyleInfo }) => {
   //     });
   // }, [url]);
   return loading ? (
-    <div className="overview">
-      <div className="overview-top">
-        <ImageGallery
-          styleInfo={styleInfo}
-          selectedStyle={selectedStyle}
-          url={url}
-        />
-        <div className="right-hand-overview">
-          <Details
-            productInfo={productInfo}
+    <Suspense fallback={<div>LOADING</div>}>
+      <div className="overview">
+        <div className="overview-top">
+          <ImageGallery
             styleInfo={styleInfo}
             selectedStyle={selectedStyle}
-            avg={avg}
-            total={total}
+            url={url}
           />
-          <div className="style-label">
-            <b>Style > </b>
-            {selectedStyle.name}
+          <div className="right-hand-overview">
+            <Details
+              productInfo={productInfo}
+              styleInfo={styleInfo}
+              selectedStyle={selectedStyle}
+              avg={avg}
+              total={total}
+            />
+            <div className="style-label">
+              <b>Style > </b>
+              {selectedStyle.name}
+            </div>
+            <StyleSelector
+              styleInfo={styleInfo}
+              setSelectedStyle={setSelectedStyle}
+              selectedStyle={selectedStyle}
+            />
+            <AddCart styleInfo={styleInfo} selectedStyle={selectedStyle} />
+            <SocialMedia url={url} />
           </div>
-          <StyleSelector
-            styleInfo={styleInfo}
-            setSelectedStyle={setSelectedStyle}
-            selectedStyle={selectedStyle}
-          />
-          <AddCart styleInfo={styleInfo} selectedStyle={selectedStyle} />
-          <SocialMedia url={url} />
         </div>
+        <ProductOverview productInfo={productInfo} />
       </div>
-      <ProductOverview productInfo={productInfo} />
-    </div>
+    </Suspense>
   ) : (
     <div></div>
   );
