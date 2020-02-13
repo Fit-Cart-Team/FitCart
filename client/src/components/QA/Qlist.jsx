@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Question from './Question';
 
-const QList = ({ list }) => {
+const QList = ({ productName, list }) => {
   const [showMoreQuestions, setShowMoreQuestions] = useState(true);
 
   const handleClick = isOn => {
@@ -12,32 +12,51 @@ const QList = ({ list }) => {
     return <div></div>;
   } else if (list.length === 1) {
     return (
-      <div>
-        <span>
-          <Question q={list[0]} key={list[0].question_id} />
-        </span>
-      </div>
+      <span>
+        <Question
+          productName={productName}
+          q={list[0]}
+          key={list[0].question_id}
+        />
+      </span>
     );
   } else if (list.length === 2) {
     return (
-      <div>
-        <Question q={list[0]} key={list[0].question_id} />
-        <Question q={list[1]} key={list[1].question_id} />
-      </div>
+      <span>
+        <Question
+          productName={productName}
+          q={list[0]}
+          key={list[0].question_id}
+        />
+        <Question
+          productName={productName}
+          q={list[1]}
+          key={list[1].question_id}
+        />
+      </span>
     );
   } else if (list.length > 2 && showMoreQuestions) {
     return (
-      <div>
-        <Question q={list[0]} key={list[0].question_id} />
-        <Question q={list[1]} key={list[1].question_id} />
+      <span>
+        <Question
+          productName={productName}
+          q={list[0]}
+          key={list[0].question_id}
+        />
+        <Question
+          productName={productName}
+          q={list[1]}
+          key={list[1].question_id}
+        />
+        <br />
         <button onClick={() => handleClick(false)}>
-          MORE ANSWERED QUESTIONS
+          More Answered Questions
         </button>
-      </div>
+      </span>
     );
   } else {
     return (
-      <div>
+      <span>
         <div
           style={{
             maxHeight: '75vh',
@@ -46,14 +65,15 @@ const QList = ({ list }) => {
         >
           <span>
             {list.map(q => (
-              <Question q={q} key={q.question_id} />
+              <Question productName={productName} q={q} key={q.question_id} />
             ))}
           </span>
         </div>
+        <br />
         <button onClick={() => handleClick(true)}>
-          LESS ANSWERED QUESTIONS
+          Less Answered Questions
         </button>
-      </div>
+      </span>
     );
   }
 };

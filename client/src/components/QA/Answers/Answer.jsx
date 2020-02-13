@@ -10,13 +10,13 @@ const Answer = ({ a }) => {
 
   return (
     <span>
-      {a.body}
+      <span className='text-body'>{a.body}</span>
       {a.photos.length > 0 ? <AnswerPhotos photos={a.photos} /> : <div></div>}
       <p>
         <small>
-          by <Name unformattedName={a.answerer_name} />,{' '}
+          by <Name unformattedName={a.answerer_name} />,{'   '}
           <span>
-            {formattedDate} | <Helpful answer={a} /> |{' '}
+            {formattedDate} | <Helpful answer={a} /> |{'   '}
             <Report answer_id={a.answer_id} />
           </span>
         </small>

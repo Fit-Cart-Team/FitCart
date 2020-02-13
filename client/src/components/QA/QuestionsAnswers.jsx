@@ -10,6 +10,8 @@ const QuestionsAnswers = () => {
   const [url, setUrl] = useState();
   const [questionList, setQuestionList] = useState([]);
   const [searchList, setSearchList] = useState([]);
+  const [productName, setProductName] = useState('');
+  const [openModal, setOpenModal] = useState(false);
 
   if (url !== id) {
     setUrl(id);
@@ -19,7 +21,16 @@ const QuestionsAnswers = () => {
     axios
       .get(`http://3.134.102.30/qa/${id}?page=${1}&count=${100}`)
       .then(res => {
-        return setQuestionList(res.data.results);
+        setQuestionList(res.data.results);
+      })
+      .catch(err => console.error(err));
+  };
+
+  const getProductName = () => {
+    axios
+      .get(`http://3.134.102.30/products/${id}`)
+      .then(res => {
+        setProductName(res.data.name);
       })
       .catch(err => console.error(err));
   };
@@ -30,13 +41,24 @@ const QuestionsAnswers = () => {
 
   useEffect(() => {
     getQList();
+    getProductName();
   }, [url]);
 
   return (
-    <div>
+    <div className='questions-answers'>
       <p>Questions and Answers</p>
+      <br />
       <SearchQuestions qList={questionList} onSearch={handleSearch} />
-      <QList list={searchList.length > 0 ? searchList : questionList} />
+      <br />
+      <span>
+        <QList
+          productName={productName}
+          list={searchList.length > 0 ? searchList : questionList}
+        />
+        <Qform productName={productName} id={url} refreshList={getQList} />
+      </span>
+      <br />
+      <br />
     </div>
   );
 };

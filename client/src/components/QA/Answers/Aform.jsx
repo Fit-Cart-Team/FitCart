@@ -1,69 +1,72 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal, Button, Header, Form } from 'semantic-ui-react';
 import axios from 'axios';
 
-const Qform = ({ productName, id, refreshList }) => {
-  const [questionInput, setQuestionInput] = useState('');
+const Aform = ({ productName, questionId, questionBody }) => {
+  const [answerInput, setAnswerInput] = useState('');
   const [nicknameInput, setNicknameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
-  const [questionInputError, setQuestionInputError] = useState(false);
+  const [answerInputError, setAnswerInputError] = useState(false);
   const [nicknameInputError, setNicknameInputError] = useState(false);
   const [emailInputError, setEmailInputError] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (questionInput === '') {
-      setQuestionInputError(true);
+    if (answerInput === '') {
+      setAnswerInputError(true);
     } else if (nicknameInput === '') {
       setNicknameInputError(true);
     } else if (!emailInput.includes('@')) {
       setEmailInputError(true);
     } else {
-      postQuestion();
+      postAnswer();
     }
   };
 
-  const postQuestion = () => {
+  const postAnswer = () => {
     axios
-      .post(`http://3.134.102.30/qa/${id}`, {
-        body: questionInput,
+      .post(`http://3.134.102.30/qa/${questionId}/answers`, {
+        body: answerInput,
         name: nicknameInput,
         email: emailInput,
       })
-      .then(res => refreshList())
+      .then(res => console.log(res))
       .then(res => setModalIsOpen(false))
       .catch(err => console.error(err));
   };
 
   return (
     <>
-      <span>
-        <button onClick={() => setModalIsOpen(true)}>+ Ask a Question </button>
-      </span>
+      <u onClick={() => setModalIsOpen(true)} style={{ cursor: 'pointer' }}>
+        Add Answer
+      </u>
       <Modal
         closeIcon={true}
         open={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
       >
         <Header size='large' textAlign='left'>
-          Ask Your Question
+          Submit an Answer
+        </Header>
+        <Header size='medium' textAlign='left'>
+          {productName} : {questionBody}
         </Header>
         <Modal.Content>
           <Form>
             <Form.TextArea
-              label='Your Question'
-              name='questionInput'
+              label='Your Answer'
+              name='answerInput'
               type='text'
               required={true}
-              value={questionInput}
+              value={answerInput}
               maxLength='1000'
-              onChange={e => setQuestionInput(e.target.value)}
-              placeholder={`about the ${productName}...`}
+              onChange={e => setAnswerInput(e.target.value)}
+              placeholder={`answer ${questionBody} here`}
               error={
-                questionInputError
+                answerInputError
                   ? {
-                      content: 'Please enter a question',
+                      content: 'Please submit an answer',
                       pointing: 'below',
                     }
                   : false
@@ -74,7 +77,7 @@ const Qform = ({ productName, id, refreshList }) => {
               label='Nickname'
               required={true}
               maxLength='60'
-              placeholder='Example: jackson11!'
+              placeholder='Example: jack543!'
               name='nicknameInput'
               value={nicknameInput}
               onChange={e => setNicknameInput(e.target.value)}
@@ -95,7 +98,7 @@ const Qform = ({ productName, id, refreshList }) => {
               label='Email'
               type='email'
               maxLength='60'
-              placeholder='Example: jackson11@gmail.com'
+              placeholder='Example: jack@email.com'
               name='emailInput'
               value={emailInput}
               onChange={e => setEmailInput(e.target.value)}
@@ -117,7 +120,7 @@ const Qform = ({ productName, id, refreshList }) => {
             type='submit'
             basic
             color='olive'
-            content='Submit Question'
+            content='Submit Answer'
             onClick={e => handleSubmit(e)}
           />
         </Modal.Actions>
@@ -126,4 +129,4 @@ const Qform = ({ productName, id, refreshList }) => {
   );
 };
 
-export default Qform;
+export default Aform;
