@@ -19,7 +19,7 @@ const Details = ({ productInfo, styleInfo, selectedStyle, avg, total }) => {
   return (
     // < className="product-info">
     <>
-      <div>
+      <div className="star-container">
         <Stars avg={avg} />
         <span>
           <a
