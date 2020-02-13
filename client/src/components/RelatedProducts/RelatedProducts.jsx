@@ -5,7 +5,7 @@ import axios from 'axios';
 import OtherProductList from './OtherProducts/OtherProductList';
 import Outfit from './Outfit/Outfit';
 
-const RelatedProducts = ({ prodInfo, styleInfo }) => {
+const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
   const [relatedProds, setrelatedProds] = useState([]);
@@ -17,7 +17,12 @@ const RelatedProducts = ({ prodInfo, styleInfo }) => {
 
   useEffect(() => {
     axios.get(`http://3.134.102.30/products/${url}/related`).then(results => {
-      let noDuplicateProducts = new Set(results.data);
+      let noDuplicateProducts = new Set(
+        results.data.filter(prod => {
+          return prod !== Number(id);
+        })
+      );
+      console.log(noDuplicateProducts);
       // Get all the product information for each related product
       const prodPromises = [];
       noDuplicateProducts.forEach(product => {
@@ -39,14 +44,17 @@ const RelatedProducts = ({ prodInfo, styleInfo }) => {
         Promise.all(stylePromises).then(styles => {
           // Get default style for each product and set state
           const tempStyleData = styles.map(style => style.data);
+
           const styleData = tempStyleData.map(style => {
             let styleResults = style.results;
+            let defaultStyle = styleResults[0];
             styleResults.forEach(style => {
               if (style['default?'] === 1) {
-                return style;
+                defaultStyle = style;
               }
             });
-            return styleResults[0];
+            return defaultStyle;
+            // return styleResults;
           });
           setrelatedStyles(styleData);
         });
@@ -54,17 +62,22 @@ const RelatedProducts = ({ prodInfo, styleInfo }) => {
     });
   }, [url]);
 
-  return (
+  return globalProdInfo ? (
     <>
-      <div style={{ fontSize: '1.2vw' }}>RELATED PRODUCTS</div>
+      <div style={{ fontSize: '1.3vw' }}>RELATED PRODUCTS</div>
       <OtherProductList
         relatedProds={relatedProds}
         relatedStyles={relatedStyles}
-        prodInfo={prodInfo}
+        globalProdInfo={globalProdInfo}
       />
-      <div style={{ fontSize: '1.2vw' }}>MY OUTFIT</div>
-      <Outfit prodInfo={prodInfo} styleInfo={styleInfo} />
+      <div style={{ fontSize: '1.3vw' }}>MY OUTFIT</div>
+      <Outfit
+        globalProdInfo={globalProdInfo}
+        globalStyleInfo={globalStyleInfo}
+      />
     </>
+  ) : (
+    <div></div>
   );
 };
 

@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Stars from '../../Stars';
 import { useHistory } from 'react-router-dom';
-import { Header, Button, Icon, Modal, Grid } from 'semantic-ui-react';
+import { Header, Modal, Grid } from 'semantic-ui-react';
 import axios from 'axios';
 
-const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
+const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
   let history = useHistory();
-  const defaultIMG = 'https://img.moglimg.com/p/I/P/N/d/MINIPN3LI0NZS.jpg';
+  const defaultIMG =
+    'https://avatars0.githubusercontent.com/u/5233442?s=400&v=4';
 
   const [avg, setavg] = useState(0);
   const [modalOpen, setmodalOpen] = useState(false);
+  const [styleCardIndex, setstyleCardIndex] = useState(0);
+  const [thumbnailIndex, setthumbnailIndex] = useState(0);
+  const [showThumbnails, setshowThumbnails] = useState(false);
   useEffect(() => {
     axios
       .get(`http://3.134.102.30/reviews/${product.id}/meta`)
@@ -27,8 +31,8 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
         setavg(ratingAvg);
       });
   }, [product]);
-
   let currPrice;
+  let relatedThumbnails;
   if (style) {
     currPrice =
       style.sale_price === '0' ? (
@@ -39,12 +43,32 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
           <p className="original-price">${style.original_price}</p>{' '}
         </div>
       );
+
+    relatedThumbnails = style.photos.map((photo, index) => {
+      const classes =
+        styleCardIndex === index
+          ? 'related-thumbnail active-related-thumbnail'
+          : 'related-thumbnail';
+      return (
+        <div key={photo.url} className="related-thumbnail-container">
+          <img
+            key={photo.url}
+            className={classes}
+            src={photo.thumbnail_url || defaultIMG}
+            onClick={() => {
+              setstyleCardIndex(index);
+            }}
+            alt="Thumbnail"
+          />
+        </div>
+      );
+    });
   }
   let comparisonChart;
   if (type === 'related') {
     let prodFeatures = {};
     let cardFeatures = {};
-    prodInfo.features.forEach(
+    globalProdInfo.features.forEach(
       feature => (prodFeatures[feature.feature] = feature.value)
     );
 
@@ -58,11 +82,11 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
       return (
         <Grid.Row key={feature}>
           <Grid.Column textAlign="right">
-            {prodFeatures[feature] ? '✓ ' + prodFeatures[feature] : ''}
+            {prodFeatures[feature] ? prodFeatures[feature] : ''}
           </Grid.Column>
           <Grid.Column textAlign="center">{feature}</Grid.Column>
           <Grid.Column textAlign="left">
-            {cardFeatures[feature] ? '✓ ' + cardFeatures[feature] : ''}
+            {cardFeatures[feature] ? cardFeatures[feature] : ''}
           </Grid.Column>
         </Grid.Row>
       );
@@ -76,12 +100,18 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
     setmodalOpen(true);
   };
 
-  return (
+  const thumbnailStyles = !showThumbnails ? { opacity: '0' } : {};
+
+  return style ? (
     <>
       <div
         className="product-card"
         onClick={e => {
-          if (e.target.className !== 'far fa-star card-icon') {
+          if (
+            !e.target.className.includes('card-icon') &&
+            !e.target.className.includes('arrow') &&
+            !e.target.className.includes('thumbnail')
+          ) {
             history.push(`${product.id}`);
           }
         }}
@@ -93,7 +123,7 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
             className="far fa-times-circle card-icon"
             onClick={() => {
               if (type === 'outfit') {
-                removeProduct();
+                removeProduct(product);
               }
             }}
           ></i>
@@ -102,39 +132,99 @@ const ProdCard = ({ product, style, prodInfo, removeProduct, type }) => {
           className="card-image"
           src={
             style
-              ? style.photos[0].thumbnail_url
-                ? style.photos[0].thumbnail_url
+              ? style.photos[styleCardIndex].thumbnail_url
+                ? style.photos[styleCardIndex].thumbnail_url
                 : defaultIMG
               : ''
           }
-          alt="Avatar"
-          style={{ width: '100%' }}
+          alt="Related Product"
+          onMouseEnter={() => {
+            setshowThumbnails(true);
+          }}
+          onMouseLeave={() => {
+            setshowThumbnails(false);
+          }}
         />
+        {styleCardIndex > 0 && (
+          <a
+            className="card-prev-arrow"
+            onClick={() => {
+              if (styleCardIndex < thumbnailIndex + 1) {
+                setthumbnailIndex(prev => prev - 1);
+              }
+              setstyleCardIndex(prev => {
+                if (prev >= 1) {
+                  return prev - 1;
+                } else {
+                  return prev;
+                }
+              });
+            }}
+            style={{ left: '1%' }}
+          >
+            &#9668;
+          </a>
+        )}
+        {styleCardIndex < style.photos.length - 1 && (
+          <a
+            className="card-next-arrow"
+            onClick={() => {
+              if (styleCardIndex >= 3 - thumbnailIndex) {
+                setthumbnailIndex(prev => prev + 1);
+              }
+              setstyleCardIndex(prev => {
+                if (prev < style.photos.length - 1) {
+                  return prev + 1;
+                } else {
+                  return prev;
+                }
+              });
+            }}
+          >
+            &#9658;
+          </a>
+        )}
+        <div
+          className="related-thumbnails-row"
+          onMouseEnter={() => {
+            setshowThumbnails(true);
+          }}
+          onMouseLeave={() => {
+            setshowThumbnails(false);
+          }}
+          style={thumbnailStyles}
+        >
+          {relatedThumbnails.slice(thumbnailIndex, thumbnailIndex + 4)}
+        </div>
         <div className="card-container">
           <p>{product.category}</p>
           <p>
             <b>{product.name}</b>
           </p>
-          <div>{currPrice}</div>
+          {currPrice}
           <Stars avg={avg} />
         </div>
       </div>
       {type === 'related' && (
-        <Modal open={modalOpen} onClose={handleClose} size="small">
+        <Modal open={modalOpen} onClose={handleClose} size="small" closeIcon>
           <Header content="Comparing" />
           <Modal.Content>
+            <Grid.Row>
+              <Grid.Column textAlign="center">{product.name}</Grid.Column>
+              <Grid.Column textAlign="center"></Grid.Column>
+              <Grid.Column textAlign="center">
+                {globalProdInfo.name}
+              </Grid.Column>
+            </Grid.Row>
             <Grid columns={3} relaxed>
               {type === 'related' && comparisonChart}
             </Grid>
           </Modal.Content>
-          <Modal.Actions>
-            <Button color="green" onClick={handleClose} inverted>
-              <Icon name="checkmark" /> Got it
-            </Button>
-          </Modal.Actions>
         </Modal>
       )}
     </>
+  ) : (
+    <div></div>
   );
 };
 

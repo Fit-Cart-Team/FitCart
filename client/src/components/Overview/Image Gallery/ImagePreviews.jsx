@@ -36,7 +36,7 @@ const ImagePreviews = ({
                 }
               : {}
           }
-          alt="Loading"
+          alt="Thumbnail"
         />
       </div>
     );
@@ -72,8 +72,7 @@ const ImagePreviews = ({
           }}
           style={upStyles}
         >
-          {/* {'⮝'} */}
-          &#11165;
+          &#8963;
         </div>
 
         {photoThumbnails.slice(shownThumbnails, shownThumbnails + 7)}
@@ -84,8 +83,7 @@ const ImagePreviews = ({
           }}
           style={downStyles}
         >
-          {/* {'⮟'} */}
-          &#11167;
+          &#8964;
         </div>
       </div>
     );

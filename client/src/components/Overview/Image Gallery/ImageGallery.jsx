@@ -25,12 +25,19 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   useEffect(() => {
     setSlide(0);
     setview('default');
-    setimgStyles({
-      backgroundSize: 'contain',
-      position: 'relative',
-      width: '70%',
-      cursor: 'zoom-in'
-    });
+    let defaultStyle = photoSlides[currSlide]
+      ? {
+          backgroundSize: 'contain',
+          position: 'relative',
+          width: '70%',
+          cursor: 'zoom-in'
+        }
+      : {
+          backgroundSize: 'contain',
+          position: 'relative',
+          width: '70%'
+        };
+    setimgStyles(defaultStyle);
   }, [url, selectedStyle]);
 
   const setSlide = index => {
@@ -55,7 +62,10 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   };
 
   const expandView = e => {
-    if (e.target.className.includes('image-gallery')) {
+    if (
+      e.target.className.includes('image-gallery') &&
+      photoSlides[currSlide]
+    ) {
       if (view === 'default') {
         setimgStyles({
           backgroundSize: 'contain',
@@ -93,7 +103,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
     const y = ((e.pageY - top) / height) * 100;
     console.log(x, y);
     setimgStyles(prev => {
-      return { ...prev, backgroundPosition: `${-x}px ${y}%` };
+      return { ...prev, backgroundPosition: `${-x * 1.5}px ${y}%` };
     });
   };
 
@@ -163,8 +173,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
                 incrementSlide(-1);
               }}
             >
-              {/* {'🡠'} */}
-              &#129120;
+              &#9668;
             </a>
           ) : (
             <div></div>
@@ -176,8 +185,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
                 incrementSlide(1);
               }}
             >
-              {/* {'🡢'} */}
-              &#129122;
+              &#9658;
             </a>
           ) : (
             <div></div>

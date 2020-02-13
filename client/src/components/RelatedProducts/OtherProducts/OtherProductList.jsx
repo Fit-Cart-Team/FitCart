@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProdCard from './ProdCard';
 
-const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
+const OtherProductList = ({ relatedProds, relatedStyles, globalProdInfo }) => {
   const [relatedProductsIndex, setrelatedProductsIndex] = useState(0);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
       key={index}
       product={product}
       style={relatedStyles[index]}
-      prodInfo={prodInfo}
+      globalProdInfo={globalProdInfo}
       type="related"
     />
   ));
@@ -29,8 +29,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
             }
           }}
         >
-          {/* {'🡠'} */}
-          &#129120;
+          <div className="prev-arrow-arrow">&#9668;</div>
         </a>
       ) : (
         <></>
@@ -44,8 +43,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, prodInfo }) => {
               setrelatedProductsIndex(prev => prev + 1);
           }}
         >
-          {/* {'🡢'} */}
-          &#129122;
+          <div className="next-arrow-arrow">&#9658;</div>
         </a>
       ) : (
         <></>

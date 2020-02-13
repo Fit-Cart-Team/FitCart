@@ -18,66 +18,70 @@ import AddCart from './Add to Cart/AddCart';
 import ProductOverview from './Information/ProductOverview';
 import SocialMedia from './SocialMedia';
 
-const Overview = ({ avg, total, setprodInfo, setstyledata }) => {
+const Overview = ({ avg, total, setGlobalProdInfo, setGlobalStyleInfo }) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
   const [productInfo, setProductInfo] = useState({});
   const [styleInfo, setStyleInfo] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({ 0: '' });
+  const [loading, setloading] = useState(false);
   if (url !== id) {
     seturl(id);
   }
-
-  // Async Attempt
-  // const getData = async () => {
-  //   const products = await axios.get(`http://3.134.102.30/products/${url}`);
-  //   const styles = await axios.get(
-  //     `http://3.134.102.30/products/${url}/styles`
-  //   );
-
-  //   setProductInfo(products.data);
-  //   let styleReturn = styles.data.results;
-  //   let emptyStyle = true;
-  //   setStyleInfo(styles);
-  //   styles.forEach((style, index) => {
-  //     if (style['default?'] === 1) {
-  //       setSelectedStyle({ index: index, name: style.name });
-  //       emptyStyle = false;
-  //     }
-  //   });
-  //   if (emptyStyle) {
-  //     setSelectedStyle({ index: 0, name: styles[0].name });
-  //   }
-  // };
   useEffect(() => {
-    axios
-      .get(`http://3.134.102.30/products/${url}`)
-      .then(results => {
-        setProductInfo(results.data);
-        setprodInfo(results.data);
-      })
-      .then(() => {
-        axios
-          .get(`http://3.134.102.30/products/${url}/styles`)
-          .then(results => {
-            let styles = results.data.results;
-            let emptyStyle = true;
-            setStyleInfo(styles);
-            styles.forEach((style, index) => {
-              if (style['default?'] === 1) {
-                setSelectedStyle({ index: index, name: style.name });
-                setstyledata(style);
-                emptyStyle = false;
-              }
-            });
-            if (emptyStyle) {
-              setSelectedStyle({ index: 0, name: styles[0].name });
-              setstyledata(style[0]);
-            }
-          });
+    const productPromise = axios.get(`http://3.134.102.30/products/${url}`);
+    const stylePromise = axios.get(
+      `http://3.134.102.30/products/${url}/styles`
+    );
+
+    Promise.all([productPromise, stylePromise]).then(results => {
+      setProductInfo(results[0].data);
+      setGlobalProdInfo(results[0].data);
+      let styleResults = results[1].data.results;
+      let emptyStyle = true;
+      setStyleInfo(styleResults);
+      styleResults.forEach((style, index) => {
+        if (style['default?'] === 1) {
+          setSelectedStyle({ index: index, name: style.name });
+          setGlobalStyleInfo(style);
+          emptyStyle = false;
+        }
       });
+      if (emptyStyle) {
+        setSelectedStyle({ index: 0, name: styleResults[0].name });
+      }
+      setloading(true);
+    });
   }, [url]);
-  return (
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://3.134.102.30/products/${url}`)
+  //     .then(results => {
+  //       setProductInfo(results.data);
+  //       setGlobalProdInfo(results.data);
+  //     })
+  //     .then(() => {
+  //       axios
+  //         .get(`http://3.134.102.30/products/${url}/styles`)
+  //         .then(results => {
+  //           let styles = results.data.results;
+  //           let emptyStyle = true;
+  //           setStyleInfo(styles);
+  //           styles.forEach((style, index) => {
+  //             if (style['default?'] === 1) {
+  //               setSelectedStyle({ index: index, name: style.name });
+  //               setGlobalStyleInfo(style);
+  //               emptyStyle = false;
+  //             }
+  //           });
+  //           if (emptyStyle) {
+  //             setSelectedStyle({ index: 0, name: styles[0].name });
+  //             setGlobalStyleInfo(styles[0]);
+  //           }
+  //         });
+  //     });
+  // }, [url]);
+  return loading ? (
     <div className="overview">
       <div className="overview-top">
         <ImageGallery
@@ -108,6 +112,8 @@ const Overview = ({ avg, total, setprodInfo, setstyledata }) => {
       </div>
       <ProductOverview productInfo={productInfo} />
     </div>
+  ) : (
+    <div></div>
   );
 };
 
