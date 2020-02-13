@@ -22,7 +22,6 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
           return prod !== Number(id);
         })
       );
-      console.log(noDuplicateProducts);
       // Get all the product information for each related product
       const prodPromises = [];
       noDuplicateProducts.forEach(product => {
@@ -54,7 +53,6 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
               }
             });
             return defaultStyle;
-            // return styleResults;
           });
           setrelatedStyles(styleData);
         });
