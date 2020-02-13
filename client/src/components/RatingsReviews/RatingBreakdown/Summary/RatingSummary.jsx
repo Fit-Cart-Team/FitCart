@@ -5,9 +5,11 @@ const RatingSummary = (props) => {
   let average = (Math.round(props.ratingAverage * 10) / 10).toFixed(1);
 
   return (
-    <div>
-      <h3 style={{"display": "inline-block", margin: "5px"}} >{average}</h3>
-      <Stars avg={average} />
+    <div className="ratings-summary" >
+      <h3 style={{"display": "inline-flex", margin: "5px", "font-size": "50px", "font-weight": "bold"}} >{average}</h3>
+      <div className="rating-breakdown-stars-container" >
+        <Stars avg={average} />
+      </div>
     </div>
   );
 }
