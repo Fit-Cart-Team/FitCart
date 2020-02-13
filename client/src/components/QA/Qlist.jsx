@@ -12,19 +12,17 @@ const QList = ({ productName, list }) => {
     return <div></div>;
   } else if (list.length === 1) {
     return (
-      <div>
-        <span>
-          <Question
-            productName={productName}
-            q={list[0]}
-            key={list[0].question_id}
-          />
-        </span>
-      </div>
+      <span>
+        <Question
+          productName={productName}
+          q={list[0]}
+          key={list[0].question_id}
+        />
+      </span>
     );
   } else if (list.length === 2) {
     return (
-      <div>
+      <span>
         <Question
           productName={productName}
           q={list[0]}
@@ -35,11 +33,11 @@ const QList = ({ productName, list }) => {
           q={list[1]}
           key={list[1].question_id}
         />
-      </div>
+      </span>
     );
   } else if (list.length > 2 && showMoreQuestions) {
     return (
-      <div>
+      <span>
         <Question
           productName={productName}
           q={list[0]}
@@ -50,14 +48,15 @@ const QList = ({ productName, list }) => {
           q={list[1]}
           key={list[1].question_id}
         />
+        <br />
         <button onClick={() => handleClick(false)}>
           More Answered Questions
         </button>
-      </div>
+      </span>
     );
   } else {
     return (
-      <div>
+      <span>
         <div
           style={{
             maxHeight: '75vh',
@@ -74,7 +73,7 @@ const QList = ({ productName, list }) => {
         <button onClick={() => handleClick(true)}>
           Less Answered Questions
         </button>
-      </div>
+      </span>
     );
   }
 };

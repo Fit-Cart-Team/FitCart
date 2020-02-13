@@ -11,6 +11,7 @@ const QuestionsAnswers = () => {
   const [questionList, setQuestionList] = useState([]);
   const [searchList, setSearchList] = useState([]);
   const [productName, setProductName] = useState('');
+  const [openModal, setOpenModal] = useState(false);
 
   if (url !== id) {
     setUrl(id);
@@ -49,11 +50,14 @@ const QuestionsAnswers = () => {
       <br />
       <SearchQuestions qList={questionList} onSearch={handleSearch} />
       <br />
-      <QList
-        productName={productName}
-        list={searchList.length > 0 ? searchList : questionList}
-      />
-      <Qform productName={productName} id={url} refreshList={getQList} />
+      <span>
+        <QList
+          productName={productName}
+          list={searchList.length > 0 ? searchList : questionList}
+        />
+        <Qform productName={productName} id={url} refreshList={getQList} />
+      </span>
+      <br />
       <br />
     </div>
   );

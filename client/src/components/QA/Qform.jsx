@@ -3,9 +3,9 @@ import { Modal, Button, Header, Form } from 'semantic-ui-react';
 import axios from 'axios';
 
 const Qform = ({ productName, id, refreshList }) => {
-  const [questionInput, setquestionInput] = useState('');
-  const [nicknameInput, setnicknameInput] = useState('');
-  const [emailInput, setemailInput] = useState('');
+  const [questionInput, setQuestionInput] = useState('');
+  const [nicknameInput, setNicknameInput] = useState('');
+  const [emailInput, setEmailInput] = useState('');
   const [questionInputError, setQuestionInputError] = useState(false);
   const [nicknameInputError, setNicknameInputError] = useState(false);
   const [emailInputError, setEmailInputError] = useState(false);
@@ -16,7 +16,7 @@ const Qform = ({ productName, id, refreshList }) => {
     if (questionInput === '') {
       setQuestionInputError(true);
     } else if (nicknameInput === '') {
-      setnicknameInputError(true);
+      setNicknameInputError(true);
     } else if (!emailInput.includes('@')) {
       setEmailInputError(true);
     } else {
@@ -38,7 +38,9 @@ const Qform = ({ productName, id, refreshList }) => {
 
   return (
     <>
-      <button onClick={() => setModalIsOpen(true)}>+ Ask a Question </button>
+      <span>
+        <button onClick={() => setModalIsOpen(true)}>+ Ask a Question </button>
+      </span>
       <Modal
         closeIcon={true}
         open={modalIsOpen}
@@ -56,7 +58,7 @@ const Qform = ({ productName, id, refreshList }) => {
               required={true}
               value={questionInput}
               maxLength='1000'
-              onChange={e => setquestionInput(e.target.value)}
+              onChange={e => setQuestionInput(e.target.value)}
               placeholder={`about the ${productName}...`}
               error={
                 questionInputError
@@ -75,7 +77,7 @@ const Qform = ({ productName, id, refreshList }) => {
               placeholder='Example: jackson11!'
               name='nicknameInput'
               value={nicknameInput}
-              onChange={e => setnicknameInput(e.target.value)}
+              onChange={e => setNicknameInput(e.target.value)}
               error={
                 nicknameInputError
                   ? {
@@ -96,7 +98,7 @@ const Qform = ({ productName, id, refreshList }) => {
               placeholder='Example: jackson11@gmail.com'
               name='emailInput'
               value={emailInput}
-              onChange={e => setemailInput(e.target.value)}
+              onChange={e => setEmailInput(e.target.value)}
               required={true}
               error={
                 emailInputError
