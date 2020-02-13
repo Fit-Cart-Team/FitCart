@@ -64,13 +64,21 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
 
   return globalProdInfo ? (
     <>
-      <div style={{ fontSize: '1.3vw' }}>RELATED PRODUCTS</div>
+      <div
+        style={{ fontSize: '1.5vw', fontWeight: 'bold', fontStyle: 'italic' }}
+      >
+        RELATED PRODUCTS
+      </div>
       <OtherProductList
         relatedProds={relatedProds}
         relatedStyles={relatedStyles}
         globalProdInfo={globalProdInfo}
       />
-      <div style={{ fontSize: '1.3vw' }}>MY OUTFIT</div>
+      <div
+        style={{ fontSize: '1.5vw', fontWeight: 'bold', fontStyle: 'italic' }}
+      >
+        MY OUTFIT
+      </div>
       <Outfit
         globalProdInfo={globalProdInfo}
         globalStyleInfo={globalStyleInfo}

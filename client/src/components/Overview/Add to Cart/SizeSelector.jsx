@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SizeSelector = ({ selectedStyle, setSize, id }) => {
-  // console.log('Size Re Rendered', selectedStyle, id);
   const skus = selectedStyle ? selectedStyle.skus : {};
   let sizes = Object.keys(skus);
   if (sizes[0] === 'null') {
@@ -25,8 +24,9 @@ const SizeSelector = ({ selectedStyle, setSize, id }) => {
       onChange={e => {
         setSize(e.target.value);
       }}
+      defaultValue={'default'}
     >
-      <option value="" selected disabled hidden>
+      <option value="default" disabled hidden>
         SELECT SIZE
       </option>
       {sizeOptions}
