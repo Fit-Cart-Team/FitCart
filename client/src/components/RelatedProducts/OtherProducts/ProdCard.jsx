@@ -209,14 +209,20 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         <Modal open={modalOpen} onClose={handleClose} size="small" closeIcon>
           <Header content="Comparing" />
           <Modal.Content>
-            <Grid.Row>
-              <Grid.Column textAlign="center">{product.name}</Grid.Column>
-              <Grid.Column textAlign="center"></Grid.Column>
-              <Grid.Column textAlign="center">
-                {globalProdInfo.name}
-              </Grid.Column>
-            </Grid.Row>
             <Grid columns={3} relaxed>
+              <Grid.Row>
+                <Grid.Column textAlign="right">
+                  <h2>
+                    <u>{product.name}</u>
+                  </h2>
+                </Grid.Column>
+                <Grid.Column textAlign="center"></Grid.Column>
+                <Grid.Column textAlign="left">
+                  <h2>
+                    <u>{globalProdInfo.name}</u>
+                  </h2>
+                </Grid.Column>
+              </Grid.Row>
               {type === 'related' && comparisonChart}
             </Grid>
           </Modal.Content>
