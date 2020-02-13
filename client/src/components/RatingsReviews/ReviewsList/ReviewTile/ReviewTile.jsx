@@ -35,8 +35,8 @@ const ReviewTile = (props) => {
           <ReviewerName reviewerName={review.reviewer_name} />
           <ReviewDate date={review.date} />
         </div>
-        <br/>
       </div>
+      <br/>
       <ReviewSummary summary={review.summary} />
       <ReviewBody body={review.body} photos={review.photos} />
       { (review.recommend > 0) ? <Recommend recommend={review.recommend} /> : <div></div> }

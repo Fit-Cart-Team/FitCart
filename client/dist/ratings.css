@@ -69,3 +69,72 @@
     #ebebeb var(--barpercent)
   );
 }
+
+#ratings-reviews {
+  width: 100%;
+  height: 100vh;
+  padding: 10px;
+  border: 3px solid black;
+}
+
+.top-container {
+  display: static;
+  height: 10%;
+  border: 3px solid red;
+}
+
+.bottom-container {
+  display: flex;
+  height: 90%;
+  padding: 5px;
+  border: 3px solid yellow;
+}
+
+.left-container {
+  border: 3px solid blue;
+  padding: 5px;
+  width: 30%;
+}
+
+.right-container {
+  border: 3px solid green;
+  padding: 5px;
+  width: 70%;
+}
+
+.rating-breakdown {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.ratings-summary {
+  display: flex;
+  position: relative;
+}
+
+.rating-breakdown-stars-container {
+  position: absolute;
+  left: 30%;
+  top: 15%;
+}
+
+/* .ratings-summary {
+  display: flex;
+} */
+
+.ratings-recommendations > h3 {
+  font-size: 1.2vw;
+}
+
+.rating-breakdown {
+  display: flex;
+}
+
+.ratings-breakdown-labels-container {
+  padding: 5px;
+}
+
+.ratings-breakdown-bars-container {
+  padding: 5px;
+}
