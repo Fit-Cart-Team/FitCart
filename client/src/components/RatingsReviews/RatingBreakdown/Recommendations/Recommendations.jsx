@@ -17,7 +17,7 @@ const Recommendations = (props) => {
     }
 
     return (
-      <div>
+      <div className="ratings-recommendations" >
         <h3>{percentage}% of reviews recommend this product</h3>
       </div>
     );

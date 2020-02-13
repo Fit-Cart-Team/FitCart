@@ -138,13 +138,21 @@ const RatingsReviews = (props) => {
 
   return (
     <div id="ratings-reviews" >
-      <h1>
-        Ratings & Reviews
-      </h1>
-      <RatingBreakdown recommended={meta.recommended} ratings={meta.ratings} ratingAverage={props.ratingAverage} totalRatings={totalRatings} toggleFilterBy={toggleFilterBy} clearFilters={clearFilters} />
-      <ProductBreakdown characteristics={meta.characteristics} />
-      <SortOptions totalReviews={props.totalReviews} changeSortParameter={changeSortParameter} />
-      <ReviewsList reviewsList={reviewsList} filter={filter} filterBy={filterBy} />
+      <div>
+        <h1 className="top-container" >
+          Ratings & Reviews
+        </h1>
+      </div>
+      <div className="bottom-container" >
+        <div className="left-container" >
+          <RatingBreakdown recommended={meta.recommended} ratings={meta.ratings} ratingAverage={props.ratingAverage} totalRatings={totalRatings} toggleFilterBy={toggleFilterBy} clearFilters={clearFilters} />
+          <ProductBreakdown characteristics={meta.characteristics} />
+        </div>
+        <div className="right-container" >
+          <SortOptions totalReviews={props.totalReviews} changeSortParameter={changeSortParameter} />
+          <ReviewsList reviewsList={reviewsList} filter={filter} filterBy={filterBy} />
+        </div>
+      </div>
     </div>
   );
 };
