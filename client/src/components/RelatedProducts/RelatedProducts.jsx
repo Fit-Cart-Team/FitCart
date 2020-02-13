@@ -17,7 +17,12 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
 
   useEffect(() => {
     axios.get(`http://3.134.102.30/products/${url}/related`).then(results => {
-      let noDuplicateProducts = new Set(results.data);
+      let noDuplicateProducts = new Set(
+        results.data.filter(prod => {
+          return prod !== Number(id);
+        })
+      );
+      console.log(noDuplicateProducts);
       // Get all the product information for each related product
       const prodPromises = [];
       noDuplicateProducts.forEach(product => {
