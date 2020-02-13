@@ -8,9 +8,7 @@ const Rating = props => {
   }
 
   return (
-    <div className="ratings-breakdown" style={{ '--ratingval': barVal }}>
-      <span style={{ width: '10%', "textDecoration": "underline", "cursor": "pointer" }} onClick={handleClick} >{props.rating} stars ({props.quantity}):</span>
-      {/* {barVal}, {props.quantity} */}
+    <div className="ratings-breakdown" style={{ '--ratingval': barVal , "align-self": "flex-start"}}>
       <div className="ratings-bar"></div>
     </div>
   );

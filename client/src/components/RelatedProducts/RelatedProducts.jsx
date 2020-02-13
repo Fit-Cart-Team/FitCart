@@ -17,7 +17,11 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
 
   useEffect(() => {
     axios.get(`http://3.134.102.30/products/${url}/related`).then(results => {
-      let noDuplicateProducts = new Set(results.data);
+      let noDuplicateProducts = new Set(
+        results.data.filter(prod => {
+          return prod !== Number(id);
+        })
+      );
       // Get all the product information for each related product
       const prodPromises = [];
       noDuplicateProducts.forEach(product => {
@@ -39,14 +43,16 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
         Promise.all(stylePromises).then(styles => {
           // Get default style for each product and set state
           const tempStyleData = styles.map(style => style.data);
+
           const styleData = tempStyleData.map(style => {
             let styleResults = style.results;
+            let defaultStyle = styleResults[0];
             styleResults.forEach(style => {
               if (style['default?'] === 1) {
-                return style;
+                defaultStyle = style;
               }
             });
-            return styleResults[0];
+            return defaultStyle;
           });
           setrelatedStyles(styleData);
         });
@@ -54,20 +60,40 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
     });
   }, [url]);
 
-  return (
+  return globalProdInfo ? (
     <>
-      <div style={{ fontSize: '1.3vw' }}>RELATED PRODUCTS</div>
+      <div
+        style={{
+          fontSize: '1.5vw',
+          fontWeight: 'bold',
+          fontStyle: 'italic',
+          marginLeft: '6%'
+        }}
+      >
+        RELATED PRODUCTS
+      </div>
       <OtherProductList
         relatedProds={relatedProds}
         relatedStyles={relatedStyles}
         globalProdInfo={globalProdInfo}
       />
-      <div style={{ fontSize: '1.3vw' }}>MY OUTFIT</div>
+      <div
+        style={{
+          fontSize: '1.5vw',
+          fontWeight: 'bold',
+          fontStyle: 'italic',
+          marginLeft: '6%'
+        }}
+      >
+        MY OUTFIT
+      </div>
       <Outfit
         globalProdInfo={globalProdInfo}
         globalStyleInfo={globalStyleInfo}
       />
     </>
+  ) : (
+    <div></div>
   );
 };
 
