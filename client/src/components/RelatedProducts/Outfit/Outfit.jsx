@@ -44,29 +44,29 @@ const Outfit = ({ globalProdInfo, globalStyleInfo }) => {
             product={prod[0]}
             style={prod[1]}
             removeProduct={removeProduct}
-            type='outfit'
+            type="outfit"
           />
         ))
       : [];
   return (
-    <div className='outfit'>
-      <div className='add-card' onClick={addProduct}>
+    <div className="outfit">
+      <div className="add-card" onClick={addProduct}>
         <h2 style={{ textAlign: 'center', marginTop: '5%', marginBottom: '0' }}>
           {globalProdInfo ? globalProdInfo.name : ''}
         </h2>
         <img
-          className='card-image'
-          src='https://printables.space/files/uploads/download-and-print/large-printable-numbers/plus-a4-1200x1697.jpg'
-          alt='Add to Outfit'
+          className="card-image"
+          src="https://printables.space/files/uploads/download-and-print/large-printable-numbers/plus-a4-1200x1697.jpg"
+          alt="Add to Outfit"
           style={{ width: '100%' }}
         />
-        <div className='card-container'>
+        <div className="card-container">
           <h1>Total: {outfit.length}</h1>
         </div>
       </div>
       {outfitIndex > 0 ? (
         <a
-          className='related-prev outfit-prev'
+          className="related-prev outfit-prev"
           onClick={() => {
             if (outfitIndex > 0) {
               setoutfitIndex(prev => prev - 1);
@@ -82,7 +82,7 @@ const Outfit = ({ globalProdInfo, globalStyleInfo }) => {
       {outfitCards.slice(outfitIndex, outfitIndex + 3)}
       {outfitIndex < outfit.length - 3 ? (
         <a
-          className='related-next'
+          className="related-next"
           onClick={() => {
             if (outfitIndex < outfit.length - 2)
               setoutfitIndex(prev => prev + 1);

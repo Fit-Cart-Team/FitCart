@@ -17,7 +17,12 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
 
   useEffect(() => {
     axios.get(`http://3.134.102.30/products/${url}/related`).then(results => {
-      let noDuplicateProducts = new Set(results.data);
+      let noDuplicateProducts = new Set(
+        results.data.filter(prod => {
+          return prod !== Number(id);
+        })
+      );
+      console.log(noDuplicateProducts);
       // Get all the product information for each related product
       const prodPromises = [];
       noDuplicateProducts.forEach(product => {
@@ -39,14 +44,17 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
         Promise.all(stylePromises).then(styles => {
           // Get default style for each product and set state
           const tempStyleData = styles.map(style => style.data);
+
           const styleData = tempStyleData.map(style => {
             let styleResults = style.results;
+            let defaultStyle = styleResults[0];
             styleResults.forEach(style => {
               if (style['default?'] === 1) {
-                return style;
+                defaultStyle = style;
               }
             });
-            return styleResults[0];
+            return defaultStyle;
+            // return styleResults;
           });
           setrelatedStyles(styleData);
         });
@@ -54,7 +62,7 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
     });
   }, [url]);
 
-  return (
+  return globalProdInfo ? (
     <>
       <div style={{ fontSize: '1.3vw' }}>RELATED PRODUCTS</div>
       <OtherProductList
@@ -68,6 +76,8 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
         globalStyleInfo={globalStyleInfo}
       />
     </>
+  ) : (
+    <div></div>
   );
 };
 

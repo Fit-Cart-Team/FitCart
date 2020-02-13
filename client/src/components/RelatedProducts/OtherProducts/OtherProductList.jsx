@@ -14,23 +14,22 @@ const OtherProductList = ({ relatedProds, relatedStyles, globalProdInfo }) => {
       product={product}
       style={relatedStyles[index]}
       globalProdInfo={globalProdInfo}
-      type='related'
+      type="related"
     />
   ));
 
   return (
-    <div className='related-products'>
+    <div className="related-products">
       {relatedProductsIndex > 0 ? (
         <a
-          className='related-prev'
+          className="related-prev"
           onClick={() => {
             if (relatedProductsIndex > 0) {
               setrelatedProductsIndex(prev => prev - 1);
             }
           }}
         >
-          {/* {'🡠'} */}
-          <div className='prev-arrow-arrow'>&#9668;</div>
+          <div className="prev-arrow-arrow">&#9668;</div>
         </a>
       ) : (
         <></>
@@ -38,15 +37,13 @@ const OtherProductList = ({ relatedProds, relatedStyles, globalProdInfo }) => {
       {prodCards.slice(relatedProductsIndex, relatedProductsIndex + 4)}
       {relatedProductsIndex < relatedProds.length - 4 ? (
         <a
-          className='related-next'
+          className="related-next"
           onClick={() => {
             if (relatedProductsIndex < relatedProds.length - 4)
               setrelatedProductsIndex(prev => prev + 1);
           }}
         >
-          {/* {'🡢'} */}
-          {/* &#129122; */}
-          <div className='next-arrow-arrow'>&#9658;</div>
+          <div className="next-arrow-arrow">&#9658;</div>
         </a>
       ) : (
         <></>

@@ -26,7 +26,7 @@
 }
 
 .related-next {
-  right: 0;
+  right: -3%;
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 10%,
@@ -35,7 +35,7 @@
 }
 
 .related-prev {
-  left: -1%;
+  left: -2%;
   background: linear-gradient(
     270deg,
     rgba(255, 255, 255, 0) 10%,
@@ -128,4 +128,51 @@
   padding: 8px 16px;
   flex-grow: 1;
   text-align: center;
+}
+
+.card-next-arrow,
+.card-prev-arrow {
+  cursor: pointer;
+  position: absolute;
+  top: 57%;
+  width: auto;
+  padding: 0.3vw;
+  color: white;
+  font-size: 1.2vw;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.card-next-arrow {
+  right: 1%;
+}
+
+.related-thumbnails-row {
+  position: absolute;
+  top: 56%;
+  left: 14%;
+  display: flex;
+  transition: opacity 0.3s linear;
+}
+
+.related-thumbnail {
+  cursor: pointer;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+  opacity: 0.4;
+  min-width: 2.5vw;
+  max-width: 2.5vw;
+  min-height: 2.5vw;
+  max-height: 2.5vw;
+  object-fit: cover;
+  border: 0.08vw solid black;
+}
+
+.related-thumbnail:hover {
+  opacity: 1;
+}
+
+.active-related-thumbnail {
+  opacity: 1;
 }
