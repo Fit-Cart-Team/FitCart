@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Question from './Question';
 
-const QList = ({ productName, list }) => {
+const QList = ({ productName, list, searchTerm }) => {
   const [showMoreQuestions, setShowMoreQuestions] = useState(true);
 
   const handleClick = isOn => {
@@ -12,7 +12,7 @@ const QList = ({ productName, list }) => {
     return <div></div>;
   } else if (list.length === 1) {
     return (
-      <span>
+      <span className='question-list'>
         <Question
           productName={productName}
           q={list[0]}
@@ -22,41 +22,90 @@ const QList = ({ productName, list }) => {
     );
   } else if (list.length === 2) {
     return (
-      <span>
+      <span className='question-list'>
         <Question
           productName={productName}
           q={list[0]}
           key={list[0].question_id}
+          searchTerm={searchTerm}
         />
         <Question
           productName={productName}
           q={list[1]}
           key={list[1].question_id}
+          searchTerm={searchTerm}
         />
       </span>
     );
-  } else if (list.length > 2 && showMoreQuestions) {
+  } else if (list.length === 3) {
     return (
-      <span>
+      <span className='question-list'>
         <Question
           productName={productName}
           q={list[0]}
           key={list[0].question_id}
+          searchTerm={searchTerm}
         />
         <Question
           productName={productName}
           q={list[1]}
           key={list[1].question_id}
+          searchTerm={searchTerm}
+        />
+        <Question
+          productName={productName}
+          q={list[2]}
+          key={list[2].question_id}
+          searchTerm={searchTerm}
         />
         <br />
-        <button onClick={() => handleClick(false)}>
+        <button
+          onClick={() => handleClick(false)}
+          className='more-answered-questions'
+        >
+          More Answered Questions
+        </button>
+      </span>
+    );
+  } else if (list.length >= 4 && showMoreQuestions) {
+    return (
+      <span className='question-list'>
+        <Question
+          productName={productName}
+          q={list[0]}
+          key={list[0].question_id}
+          searchTerm={searchTerm}
+        />
+        <Question
+          productName={productName}
+          q={list[1]}
+          key={list[1].question_id}
+          searchTerm={searchTerm}
+        />
+        <Question
+          productName={productName}
+          q={list[2]}
+          key={list[2].question_id}
+          searchTerm={searchTerm}
+        />
+        <Question
+          productName={productName}
+          q={list[3]}
+          key={list[3].question_id}
+          searchTerm={searchTerm}
+        />
+        <br />
+        <button
+          onClick={() => handleClick(false)}
+          className='more-answered-questions'
+        >
           More Answered Questions
         </button>
       </span>
     );
   } else {
     return (
-      <span>
+      <span className='question-list'>
         <div
           style={{
             maxHeight: '75vh',
@@ -65,12 +114,20 @@ const QList = ({ productName, list }) => {
         >
           <span>
             {list.map(q => (
-              <Question productName={productName} q={q} key={q.question_id} />
+              <Question
+                productName={productName}
+                q={q}
+                key={q.question_id}
+                searchTerm={searchTerm}
+              />
             ))}
           </span>
         </div>
         <br />
-        <button onClick={() => handleClick(true)}>
+        <button
+          onClick={() => handleClick(true)}
+          className='less-answered-questions'
+        >
           Less Answered Questions
         </button>
       </span>

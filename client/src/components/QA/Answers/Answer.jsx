@@ -9,14 +9,15 @@ const Answer = ({ a }) => {
   let formattedDate = dateFormatter(a.date);
 
   return (
-    <span>
-      <span className='text-body'>{a.body}</span>
+    <span className='answer-tile'>
+      <span className='answer-body'>{a.body}</span>
       {a.photos.length > 0 ? <AnswerPhotos photos={a.photos} /> : <div></div>}
       <p>
         <small>
           by <Name unformattedName={a.answerer_name} />,{'   '}
           <span>
-            {formattedDate} | <Helpful answer={a} /> |{'   '}
+            {formattedDate} | <Helpful answer={a} className='helpful-answer' />{' '}
+            |{'   '}
             <Report answer_id={a.answer_id} />
           </span>
         </small>

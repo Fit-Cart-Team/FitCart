@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Header, Form } from 'semantic-ui-react';
 import axios from 'axios';
 
-const Aform = ({ productName, questionId, questionBody }) => {
+const Aform = ({ productName, questionId, questionBody, refreshList }) => {
   const [answerInput, setAnswerInput] = useState('');
   const [nicknameInput, setNicknameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
@@ -10,6 +10,7 @@ const Aform = ({ productName, questionId, questionBody }) => {
   const [nicknameInputError, setNicknameInputError] = useState(false);
   const [emailInputError, setEmailInputError] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [photoUpload, setPhotoUpload] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -30,15 +31,20 @@ const Aform = ({ productName, questionId, questionBody }) => {
         body: answerInput,
         name: nicknameInput,
         email: emailInput,
+        photos: photoUpload,
       })
-      .then(res => console.log(res))
+      .then(res => refreshList())
       .then(res => setModalIsOpen(false))
       .catch(err => console.error(err));
   };
 
   return (
     <>
-      <u onClick={() => setModalIsOpen(true)} style={{ cursor: 'pointer' }}>
+      <u
+        onClick={() => setModalIsOpen(true)}
+        style={{ cursor: 'pointer' }}
+        className='answer-question-modal'
+      >
         Add Answer
       </u>
       <Modal
@@ -46,10 +52,10 @@ const Aform = ({ productName, questionId, questionBody }) => {
         open={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
       >
-        <Header size='large' textAlign='left'>
+        <Header size='large' color='green'>
           Submit an Answer
         </Header>
-        <Header size='medium' textAlign='left'>
+        <Header as='h3'>
           {productName} : {questionBody}
         </Header>
         <Modal.Content>
@@ -62,7 +68,7 @@ const Aform = ({ productName, questionId, questionBody }) => {
               value={answerInput}
               maxLength='1000'
               onChange={e => setAnswerInput(e.target.value)}
-              placeholder={`answer ${questionBody} here`}
+              placeholder={`answer "${questionBody}" here`}
               error={
                 answerInputError
                   ? {
@@ -94,6 +100,7 @@ const Aform = ({ productName, questionId, questionBody }) => {
               For Privacy reasons, do not use your full name or email address.
             </small>
             <br />
+            <br />
             <Form.Input
               label='Email'
               type='email'
@@ -113,15 +120,22 @@ const Aform = ({ productName, questionId, questionBody }) => {
               }
             />
             <small>For authentication reasons, you will not be emailed.</small>
+            <Form.Input
+              label='Photo(s)'
+              type='file'
+              name='photoUpload'
+              value={photoUpload}
+              onChange={e => setPhotoUpload(e.target.value)}
+            />
           </Form>
         </Modal.Content>
         <Modal.Actions>
           <Button
             type='submit'
-            basic
-            color='olive'
+            color='green'
             content='Submit Answer'
             onClick={e => handleSubmit(e)}
+            className='submit-answer'
           />
         </Modal.Actions>
       </Modal>

@@ -14,7 +14,7 @@ const SearchQuestions = ({ qList, onSearch }) => {
   }, [searchTerm]);
 
   useEffect(() => {
-    onSearch(filteredList);
+    onSearch(filteredList, searchTerm);
   }, [filteredList]);
 
   const filter = () => {
@@ -42,6 +42,7 @@ const SearchQuestions = ({ qList, onSearch }) => {
       placeholder='Have a question? Search for answers...'
       value={searchTerm}
       onChange={e => handleChange(e)}
+      className='questions-searchbar'
     />
   );
 };
