@@ -26,7 +26,7 @@ const RatingHelpfulness = props => {
   const style = {"textDecoration": "underline", "cursor": "pointer"};
 
   return (
-    <div>
+    <div className="review-tile-helpfulness" >
       <span>Was this review helpful? </span>
       { markable ? <span onClick={markHelpful} style={style} >Yes</span> : <span style={style} >Yes</span> }
       <span>({helpfulness}) | </span>   

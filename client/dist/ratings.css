@@ -90,27 +90,27 @@
 
 #ratings-reviews {
   width: 100%;
-  height: fit-content;
-  /* padding: 10px; */
-  border: 3px solid black;
+  height: 98vh;
+  padding-top: 2vh;
+  /* border: 3px solid black; */
 }
 
 .top-container {
   display: static;
   height: 10%;
-  border: 3px solid red;
+  /* border: 3px solid red; */
 }
 
 .bottom-container {
   display: flex;
   height: 90%;
   /* padding: 5px; */
-  border: 3px solid yellow;
+  /* border: 3px solid yellow; */
   justify-content: space-between;
 }
 
 .left-container {
-  border: 3px solid blue;
+  /* border: 3px solid blue; */
   padding: 5px;
   padding-top: 0;
   width: 32%;
@@ -120,7 +120,7 @@
 }
 
 .right-container {
-  border: 3px solid green;
+  /* border: 3px solid green; */
   padding: 5px;
   width: 65%;
 }
@@ -175,3 +175,116 @@
   width: 80%;
   height: fit-content;
 }
+
+.stars-container {
+  position: relative;
+}
+
+.stars-container > span {
+  position: absolute;
+  left: 35%;
+}
+
+.star {
+  --percent: calc(var(--rating) * 100%);
+
+  display: inline-block;
+  font-size: 2vw;
+  font-family: Times;
+}
+
+.star:before {
+  content: '★';
+  /* letter-spacing: 0.1px; */
+  background: linear-gradient(
+    90deg,
+    #ffee03 var(--percent),
+    rgb(192, 188, 188) var(--percent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sort-options-container {
+  margin-bottom: 1em;
+}
+
+.review-tile {
+  border-bottom: 2px solid lightgray;
+  margin-bottom: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.review-tile-bottom-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.review-tile-summary {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.review-tile-recommendation {
+  margin-bottom: 1em;
+}
+
+.review-tile-helpfulness {
+  margin-bottom: 1em;
+}
+
+.reviews-list-buttons {
+  margin-top: 2%;
+  margin-left: 1%;
+  margin-bottom: 2%;
+}
+
+.reviews-list {
+  overflow: auto;
+  max-height: 75vh;
+}
+
+.form-input-container{
+  padding-bottom: .5em;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+.form-input-note {
+  margin-bottom: .15em;
+  margin-top: .15em;
+}
+
+.form-input-error {
+  color: red;
+  margin-bottom: .15em;
+  margin-top: .15em; 
+}
+
+.characteristic-fields-container {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 2%;
+}
+
+.characteristic-ratings-buttons-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* characteristic-field-input-container inline-block */
+/* overflow: auto, max-height */
+
+/* input[type=radio] {
+  display: block;
+  margin: 0 auto;
+} */
+/* label {
+  display: inline-block;
+} */

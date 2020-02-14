@@ -23,7 +23,7 @@ const ReviewDate = (props) => {
   let day = splitDate[2];
 
   return (
-    <span>Date: {`${month} ${day}, ${year}`}</span>
+    <span>{`${month} ${day}, ${year}`}</span>
   );
 };
 

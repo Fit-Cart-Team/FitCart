@@ -8,7 +8,7 @@ const Rating = props => {
   }
 
   return (
-    <div className="ratings-breakdown" style={{ '--ratingval': barVal , "align-self": "flex-start"}}>
+    <div className="ratings-breakdown" style={{ '--ratingval': barVal , "alignSelf": "flex-start"}}>
       <div className="ratings-bar"></div>
     </div>
   );

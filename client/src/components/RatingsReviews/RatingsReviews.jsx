@@ -6,44 +6,6 @@ import SortOptions from './SortOptions/SortOptions';
 import RatingBreakdown from './RatingBreakdown/RatingBreakdown';
 import ProductBreakdown from './ProductBreakdown/ProductBreakdown';
 
-//setAppAvg(value)
-//setAppTotal(value)
-
-// Meta Data:
-//
-// {
-//   "product_id": "1",
-//   "ratings": {
-//       "1": 15,
-//       "2": 2,
-//       "3": 9,
-//       "4": 12,
-//       "5": 19
-//   },
-//   "recommended": {
-//       "0": 23,
-//       "1": 34
-//   },
-//   "characteristics": {
-//       "Fit": {
-//           "id": 1,
-//           "value": "2.8158"
-//       },
-//       "Length": {
-//           "id": 2,
-//           "value": "2.8462"
-//       },
-//       "Comfort": {
-//           "id": 3,
-//           "value": "2.7949"
-//       },
-//       "Quality": {
-//           "id": 4,
-//           "value": "2.9231"
-//       }
-//   }
-// }
-
 const RatingsReviews = (props) => {
   const { id } = useParams();
 
@@ -88,6 +50,18 @@ const RatingsReviews = (props) => {
   const clearFilters = () => {
     setFilter(false);
     setFilterBy({ 5: false, 4: false, 3: false, 2: false, 1: false });
+  }
+
+  const updateMeta = (newMeta) => {
+    setMeta(newMeta);
+  }
+
+  const updateList = (newList) => {
+    setReviewsList(newList);
+  }
+
+  const updateTotalRatings = (newTotal) => {
+    setTotalRatings(newTotal);
   }
 
   if (url !== id) {
@@ -136,8 +110,8 @@ const RatingsReviews = (props) => {
     }
   }
 
-  return (
-    <div id="ratings-reviews" >
+  return props.productInfo ? (
+    <div id="ratings-reviews" className="ratings-reviews" >
       <div>
         <h1 className="top-container" >
           Ratings & Reviews
@@ -150,11 +124,11 @@ const RatingsReviews = (props) => {
         </div>
         <div className="right-container" >
           <SortOptions totalReviews={props.totalReviews} changeSortParameter={changeSortParameter} />
-          <ReviewsList reviewsList={reviewsList} filter={filter} filterBy={filterBy} characteristics={meta.characteristics} />
+          <ReviewsList reviewsList={reviewsList} filter={filter} filterBy={filterBy} characteristics={meta.characteristics} productName={props.productInfo.name} productID={url} updateList={updateList} updateMeta={updateMeta} updateTotalRatings={updateTotalRatings} setAppAvg={props.setAppAvg} setAppTotal={props.setAppTotal} sortParameter={sortParameter} />
         </div>
       </div>
     </div>
-  );
+  ) : (<div></div>);
 };
 
 export default RatingsReviews;

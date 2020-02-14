@@ -6,7 +6,7 @@ const RatingSummary = (props) => {
 
   return (
     <div className="ratings-summary" >
-      <h3 style={{"display": "inline-flex", margin: "5px", "font-size": "50px", "font-weight": "bold"}} >{average}</h3>
+      <h3 style={{"display": "inline-flex", margin: "5px", "fontSize": "50px", "fontWeight": "bold"}} >{average}</h3>
       <div className="rating-breakdown-stars-container" >
         <Stars avg={average} />
       </div>

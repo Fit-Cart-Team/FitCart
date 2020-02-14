@@ -3,7 +3,7 @@ import React from 'react';
 const ReviewSummary = (props) => {
 
   return (
-    <div>
+    <div className="review-tile-summary" >
       <h3>
         {(props.summary.length > 60) ? (`${props.summary.slice(0, 60)}...`) : (`${props.summary}`)}
       </h3>   

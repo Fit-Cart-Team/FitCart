@@ -19,9 +19,9 @@ const Breakdown = props => {
     return (
       <div className="ratings-breakdown-container">
         <div className="ratings-breakdown-labels-container">
-          {ratings.map(rating => {
+          {ratings.map((rating, index) => {
             return (
-              <p style={style} onClick={handleClick}>
+              <p key={index} style={style} onClick={handleClick}>
                 {rating} stars (
                 {props.ratings.hasOwnProperty(rating)
                   ? props.ratings[rating]
