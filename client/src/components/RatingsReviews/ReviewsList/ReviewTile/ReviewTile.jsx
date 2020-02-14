@@ -38,7 +38,7 @@ const ReviewTile = (props) => {
         <ReviewSummary summary={review.summary} />
         <ReviewBody body={review.body} photos={review.photos} />
         { (review.recommend > 0) ? <Recommend recommend={review.recommend} /> : <div></div> }
-        { ((review.response) || (review.response !== 'null')) ? <ReviewResponse response={review.response} /> : <div></div> }
+        { ((review.response) && (review.response !== 'null')) ? <ReviewResponse response={review.response} /> : <div></div> }
         <RatingHelpfulness helpfulness={review.helpfulness} reviewID={review.review_id} />
       </div>
     </div>
