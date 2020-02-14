@@ -15,7 +15,11 @@ const Report = ({ answer_id }) => {
 
   if (reportButtonOn) {
     return (
-      <u onClick={handleReportClick} style={{ cursor: 'pointer' }}>
+      <u
+        onClick={handleReportClick}
+        style={{ cursor: 'pointer' }}
+        className='report-answer'
+      >
         Report
       </u>
     );

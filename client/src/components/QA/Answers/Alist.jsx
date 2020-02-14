@@ -1,44 +1,8 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState } from 'react';
 import Answer from './Answer';
-import axios from 'axios';
 
-const AList = ({ question }) => {
-  const [aList, setAList] = useState([]);
+const AList = ({ aList }) => {
   const [showMoreAnswers, setShowMoreAnswers] = useState(true);
-
-  const getAnswers = () => {
-    axios
-      .get(
-        `http://3.134.102.30/qa/${
-          question.question_id
-        }/answers?page=${1}&count=${100}`
-      )
-      .then(res => {
-        return sorter(res.data.results);
-      })
-      .then(sortedArray => {
-        return filter(sortedArray);
-      })
-      .then(filteredArray => {
-        return setAList(filteredArray);
-      })
-      .catch(err => console.error(err));
-  };
-
-  const sorter = array => {
-    return array.sort((a, b) => b.helpfulness - a.helpfulness);
-  };
-
-  const filter = array => {
-    return array.sort(
-      (a, b) =>
-        b.answerer_name.includes('Seller') - a.answerer_name.includes('Seller')
-    );
-  };
-
-  useEffect(() => {
-    getAnswers();
-  }, [question]);
 
   const handleClick = isOn => {
     setShowMoreAnswers(isOn);
@@ -71,7 +35,11 @@ const AList = ({ question }) => {
           <span>
             <Answer a={aList[0]} key={aList[0].answer_id} />
             <Answer a={aList[1]} key={aList[1].answer_id} />
-            <a onClick={() => handleClick(false)} style={{ cursor: 'pointer' }}>
+            <a
+              onClick={() => handleClick(false)}
+              style={{ cursor: 'pointer' }}
+              className='expand-answer-list'
+            >
               <small>
                 <u>Load More Answers</u>
               </small>
@@ -96,7 +64,11 @@ const AList = ({ question }) => {
             ))}
           </span>
         </div>
-        <a onClick={() => handleClick(true)} style={{ cursor: 'pointer' }}>
+        <a
+          onClick={() => handleClick(true)}
+          style={{ cursor: 'pointer' }}
+          className='collapse-answer-list'
+        >
           <small>
             <u>Less Answers</u>
           </small>
