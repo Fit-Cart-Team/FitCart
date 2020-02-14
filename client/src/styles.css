@@ -216,9 +216,10 @@ li a {
   position: relative;
 }
 
-.star-container > span {
+.reviews-link {
+  display: inline-block;
   position: absolute;
-  left: 35%;
+  padding-left: 6%;
 }
 
 .stars {
