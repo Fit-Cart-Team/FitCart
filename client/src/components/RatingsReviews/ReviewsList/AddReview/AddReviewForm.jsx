@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
+import Axios from 'axios';
 
 const validate = values => {
   const errors = {};
@@ -31,15 +32,102 @@ const validate = values => {
 };
 
 const AddReviewForm = (props) => {
-  const { chars } = props;
+  const { chars, productID, updateList, updateMeta, updateTotalRatings, setAppAvg, setAppTotal, sortParameter } = props;
+  let charNames = Object.keys(chars);
 
   const [recommend, setRecommend] = useState(false);
+  const [characteristics, setCharacteristics] = useState({});
+  const [rating, setRating] = useState(0);
 
   const handleRecommendClick = (e) => {
     if (e.target.value === 'true') {
       setRecommend(true);
     } else {
       setRecommend(false);
+    }
+  }
+
+  const handleCharClick = (e) => {
+    setCharacteristics({...characteristics, [e.target.name]: parseInt(e.target.value)});
+  }
+
+  const handleRatingClick = (e) => {
+    //console.log(e.target.getAttribute("data-value"));
+    setRating(parseInt(e.target.getAttribute("data-value")));
+  }
+
+  const isRatingValid = () => {
+    if (rating < 1) {
+      return false;
+    }
+
+    return true;
+  }
+
+  const charButtonLabel = (name, rating) => {
+    let messageIndex = rating - 1;
+    let message = [];
+
+    if (name === 'Size') {
+      message = [
+        'A size too small',
+        '1/2 a size too small',
+        'Perfect',
+        '1/2 a size too big',
+        'A size too wide'
+      ];
+
+      return message[messageIndex];
+    } else if (name === 'Width') {
+      message = [
+        'Too narrow',
+        'Slightly narrow',
+        'Perfect',
+        'Slightly wide',
+        'Too wide'
+      ];
+
+      return message[messageIndex];
+    } else if (name === 'Comfort') {
+      message = [
+        'Uncomfortable',
+        'Slightly uncomfortable',
+        'Ok',
+        'Comfortable',
+        'Perfect'
+      ];
+
+      return message[messageIndex];
+    } else if (name === 'Quality') {
+      message = [
+        'Poor',
+        'Below average',
+        'What I expected',
+        'Pretty great',
+        'Perfect'
+      ];
+
+      return message[messageIndex];
+    } else if (name === 'Length') {
+      message = [
+        'Runs short',
+        'Runs slightly short',
+        'Perfect',
+        'Runs slightly long',
+        'Runs long'
+      ];
+
+      return message[messageIndex];
+    } else if (name === 'Fit') {
+      message = [
+        'Runs tight',
+        'Runs slightly short',
+        'Perfect',
+        'Runs slightly loose',
+        'Runs loose'
+      ];
+
+      return message[messageIndex];
     }
   }
 
@@ -53,66 +141,48 @@ const AddReviewForm = (props) => {
     validate,
     onSubmit: formikValues => {
       let stateInputs = {
-        recommend: recommend
+        recommend: recommend,
+        characteristics: characteristics,
+        rating: rating,
+        photos: []
       }
 
-      alert(JSON.stringify(Object.assign(formikValues, stateInputs), null, 2));
+      if (!isRatingValid()) {
+        return alert('Please give an overall rating');
+      }
+
+      Axios.post(`http://3.134.102.30/reviews/${productID}`, Object.assign(formikValues, stateInputs)).then((response) => {
+        Axios.get(`http://3.134.102.30/reviews/${productID}/meta`)
+          .then(( {data} ) => {
+            updateMeta(data);
+            
+            let totalQuantity = 0;
+            let ratingSum = 0;
+
+            for (let rating in data.ratings) {
+              totalQuantity += data.ratings[rating];
+              ratingSum += rating * data.ratings[rating];
+            }
+
+            updateTotalRatings(totalQuantity);
+            
+            let ratingAvg = ratingSum / totalQuantity;
+            setAppAvg(ratingAvg);
+
+            Axios.get(`http://3.134.102.30/reviews/${productID}/list?page=1&count=${totalQuantity}&sort=${sortParameter}`)
+              .then(( {data} ) => {
+                setAppTotal(data.results.length)
+                updateList(data.results);
+              });
+          });
+      });
     },
   });
 
   return (
     <form onSubmit={formik.handleSubmit}>
       <div>
-        <label htmlFor="recommend">Do you recommend this product?*</label>
-        <input
-          id="recommend"
-          name="recommend"
-          type="radio"
-          value="true"
-          onClick={handleRecommendClick}
-        />Yes
-        <input
-          id="recommend"
-          name="recommend"
-          type="radio"
-          value="false"
-          onClick={handleRecommendClick}
-          checked
-        />No
-      </div>
-      <div>
-        <label htmlFor="summary">Review Summary</label>
-        <input
-          id="summary"
-          name="summary"
-          type="text"
-          placeholder="Example: Best purchase ever!"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.summary}
-        />
-        {formik.touched.summary && formik.errors.summary ? (
-          <div>{formik.errors.summary}</div>
-        ) : null}
-      </div>
-      <div>
-        <label htmlFor="body">Review Body*</label>
-        <input
-          id="body"
-          name="body"
-          type="text"
-          placeholder="Why did you like the product or not?"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.body}
-        />
-        <div>{ (formik.values.body.length < 50) ? (`Minimum required characters left: ${50 - formik.values.body.length}`) : ('Minimum reached') }</div>
-        {formik.touched.body && formik.errors.body ? (
-          <div>{formik.errors.body}</div>
-        ) : null}
-      </div>
-      <div>
-        <label htmlFor="name">What is your nickname*</label>
+        <h3 htmlFor="name">What is your nickname*</h3>
         <input
           id="name"
           name="name"
@@ -128,7 +198,7 @@ const AddReviewForm = (props) => {
         ) : null}
       </div>
       <div>
-        <label htmlFor="email">Your email*</label>
+        <h3 htmlFor="email">Your email*</h3>
         <input
           id="email"
           name="email"
@@ -142,6 +212,95 @@ const AddReviewForm = (props) => {
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
         ) : null}
+      </div>
+      <div>
+        <h3 htmlFor="rating">Overall Rating*</h3>
+        <div id="rating-1" name="rating" data-value="1" className="star" style={{ '--rating': ((rating >= 1) ? 1 : 0) }} onClick={handleRatingClick} ></div>
+        <div id="rating-2" name="rating" data-value="2" className="star" style={{ '--rating': ((rating >= 2) ? 1 : 0) }} onClick={handleRatingClick} ></div>
+        <div id="rating-3" name="rating" data-value="3" className="star" style={{ '--rating': ((rating >= 3) ? 1 : 0) }} onClick={handleRatingClick} ></div>
+        <div id="rating-4" name="rating" data-value="4" className="star" style={{ '--rating': ((rating >= 4) ? 1 : 0) }} onClick={handleRatingClick} ></div>
+        <div id="rating-5" name="rating" data-value="5" className="star" style={{ '--rating': ((rating >= 5) ? 1 : 0) }} onClick={handleRatingClick} ></div>
+        
+        {!isRatingValid() ? (
+          <div>Please select a rating</div>
+        ) : null}
+      </div>
+      <div>
+        <h3 htmlFor="summary">Review Summary</h3>
+        <input
+          id="summary"
+          name="summary"
+          type="text"
+          placeholder="Example: Best purchase ever!"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.summary}
+        />
+        {formik.touched.summary && formik.errors.summary ? (
+          <div>{formik.errors.summary}</div>
+        ) : null}
+      </div>
+      <div>
+        <h3 htmlFor="body">Review Body*</h3>
+        <input
+          id="body"
+          name="body"
+          type="text"
+          placeholder="Why did you like the product or not?"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.body}
+        />
+        <div>{ (formik.values.body.length < 50) ? (`Minimum required characters left: ${50 - formik.values.body.length}`) : ('Minimum reached') }</div>
+        {formik.touched.body && formik.errors.body ? (
+          <div>{formik.errors.body}</div>
+        ) : null}
+      </div>
+      <div>
+        <h3 htmlFor="recommend">Do you recommend this product?*</h3>
+        <input
+          id="recommend-yes"
+          name="recommend"
+          type="radio"
+          value="true"
+          onClick={handleRecommendClick}
+          required
+        />Yes
+        <input
+          id="recommend-no"
+          name="recommend"
+          type="radio"
+          value="false"
+          onClick={handleRecommendClick}
+          required
+        />No
+      </div>
+      <div>
+        <h3>Characteristics*</h3>
+        {charNames.map((name, index) => {
+          let ratings = [1, 2, 3, 4, 5];
+
+          return (
+            <div key={`${index}`} >
+              <h4 htmlFor={`${chars[name].id}`} >{name}*</h4>
+              {ratings.map((rating, index) => {
+                return(
+                  <span key={`${index}`} >
+                    <input
+                    id={`${name}-${rating}`}
+                    name={`${chars[name].id}`}
+                    type="radio"
+                    value={`${rating}`}
+                    onClick={handleCharClick}
+                    required
+                    />{charButtonLabel(name, rating)}
+                  </span>
+                );
+              })}
+              
+            </div>
+          );
+        })}
       </div>
       <button type="submit">Submit</button>
     </form>

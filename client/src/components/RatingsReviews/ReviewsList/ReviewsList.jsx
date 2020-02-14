@@ -5,7 +5,7 @@ import AddReview from './AddReview/AddReview';
 import ReviewModal from './AddReview/ReviewModal';
 
 const ReviewsList = (props) => {
-  const { reviewsList, filter, filterBy, characteristics } = props;
+  const { reviewsList, filter, filterBy, characteristics, productName, productID, updateList, updateMeta, updateTotalRatings, setAppAvg, setAppTotal, sortParameter } = props;
   const [reviewsCount, setReviewsCount] = useState(2);
 
   let filteredList = reviewsList.filter((review) => {
@@ -39,14 +39,14 @@ const ReviewsList = (props) => {
         })}
         <div style={{margin: "10px"}} >
           {(reviewsCount >= filteredList.length) ? <div></div> : (<MoreReviews incrementReviewsCount={incrementReviewsCount} />)}
-          <ReviewModal characteristics={characteristics} />
+          <ReviewModal characteristics={characteristics} productName={productName} productID={productID} updateList={updateList} updateMeta={updateMeta} updateTotalRatings={updateTotalRatings} setAppAvg={setAppAvg} setAppTotal={setAppTotal} sortParameter={sortParameter} />
         </div>
       </div>
     );
   } else {
     return (
       <div className="reviews-list" >
-        <ReviewModal characteristics={characteristics} />
+        <ReviewModal characteristics={characteristics} productName={productName} productID={productID} updateList={updateList} updateMeta={updateMeta} updateTotalRatings={updateTotalRatings} setAppAvg={setAppAvg} setAppTotal={setAppTotal} sortParameter={sortParameter} />
       </div>
     );
   }
