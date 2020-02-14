@@ -13,7 +13,13 @@ const PhotoModal = ({ photo }) => {
   return (
     <Modal
       trigger={
-        <img src={photo.url} style={style} id={photo.id} alt='Photo'></img>
+        <img
+          src={photo.url}
+          style={style}
+          id={photo.id}
+          alt='Photo'
+          className='answer-photo-modal-trigger'
+        ></img>
       }
       basic
       closeIcon='window close'

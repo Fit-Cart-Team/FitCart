@@ -1,0 +1,82 @@
+.questions-answers {
+  margin: 6%;
+}
+
+.questions-answers-title {
+  color: grey;
+  font-size: 18px;
+}
+
+.keyword-search-questions {
+  margin: 8%;
+  font-weight: bolder;
+}
+
+.helpful-add-answer {
+  float: right;
+  font-size: 10px;
+  margin-right: 3%;
+  color: grey;
+}
+.question-body {
+  font-size: 16px;
+}
+.answer-body {
+  font-size: 14px;
+}
+
+.answer-list-indent {
+  margin: 2%;
+}
+.answer-name-date-helpful {
+  font-size: 10px;
+  margin: 2%;
+  color: grey;
+}
+.answer-name {
+  padding-right: 5px;
+}
+.report-answer {
+  padding-left: 5px;
+}
+.helpful-answer {
+  padding: 5px;
+}
+.helpful-question {
+  padding: 5px;
+}
+
+.add-answer {
+  padding-left: 5px;
+}
+.date {
+  padding-right: 5px;
+}
+
+.load-more-answers {
+  margin: 2%;
+  font-weight: bold;
+}
+.less-answers {
+  margin: 2%;
+  font-weight: bold;
+}
+
+/* .less-answered-questions-button {
+}
+.more-answered-questions-button {
+} */
+
+.answer-photo-modal {
+  margin: 1%;
+}
+
+.question-divider {
+  margin: 3%;
+  color: whitesmoke;
+  opacity: 0.5%;
+}
+
+.highlight {
+  background-color: yellow;
+}

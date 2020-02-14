@@ -38,9 +38,9 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
       style.sale_price === '0' ? (
         <p>${style.original_price}</p>
       ) : (
-        <div className="prices">
-          <p className="sale-price">${style.sale_price}</p>
-          <p className="original-price">${style.original_price}</p>{' '}
+        <div className='prices'>
+          <p className='sale-price'>${style.sale_price}</p>
+          <p className='original-price'>${style.original_price}</p>{' '}
         </div>
       );
 
@@ -50,7 +50,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
           ? 'related-thumbnail active-related-thumbnail'
           : 'related-thumbnail';
       return (
-        <div key={photo.url} className="related-thumbnail-container">
+        <div key={photo.url} className='related-thumbnail-container'>
           <img
             key={photo.url}
             className={classes}
@@ -58,7 +58,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
             onClick={() => {
               setstyleCardIndex(index);
             }}
-            alt="Thumbnail"
+            alt='Thumbnail'
           />
         </div>
       );
@@ -81,11 +81,11 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
     comparisonChart = [...featureSet].map(feature => {
       return (
         <Grid.Row key={feature}>
-          <Grid.Column textAlign="right">
+          <Grid.Column textAlign='right'>
             {prodFeatures[feature] ? prodFeatures[feature] : ''}
           </Grid.Column>
-          <Grid.Column textAlign="center">{feature}</Grid.Column>
-          <Grid.Column textAlign="left">
+          <Grid.Column textAlign='center'>{feature}</Grid.Column>
+          <Grid.Column textAlign='left'>
             {cardFeatures[feature] ? cardFeatures[feature] : ''}
           </Grid.Column>
         </Grid.Row>
@@ -105,7 +105,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
   return style ? (
     <>
       <div
-        className="product-card"
+        className='product-card'
         onClick={e => {
           if (
             !e.target.className.includes('card-icon') &&
@@ -117,10 +117,10 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         }}
       >
         {type === 'related' ? (
-          <i className="far fa-star card-icon" onClick={handleOpen}></i>
+          <i className='far fa-star card-icon' onClick={handleOpen}></i>
         ) : (
           <i
-            className="far fa-times-circle card-icon"
+            className='far fa-times-circle card-icon'
             onClick={() => {
               if (type === 'outfit') {
                 removeProduct(product);
@@ -129,7 +129,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
           ></i>
         )}
         <img
-          className="card-image"
+          className='card-image'
           src={
             style
               ? style.photos[styleCardIndex].thumbnail_url
@@ -137,7 +137,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
                 : defaultIMG
               : ''
           }
-          alt="Related Product"
+          alt='Related Product'
           onMouseEnter={() => {
             setshowThumbnails(true);
           }}
@@ -147,7 +147,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         />
         {styleCardIndex > 0 && (
           <a
-            className="card-prev-arrow"
+            className='card-prev-arrow'
             onClick={() => {
               if (styleCardIndex < thumbnailIndex + 1) {
                 setthumbnailIndex(prev => prev - 1);
@@ -167,7 +167,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         )}
         {styleCardIndex < style.photos.length - 1 && (
           <a
-            className="card-next-arrow"
+            className='card-next-arrow'
             onClick={() => {
               if (styleCardIndex >= 3 - thumbnailIndex) {
                 setthumbnailIndex(prev => prev + 1);
@@ -185,7 +185,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
           </a>
         )}
         <div
-          className="related-thumbnails-row"
+          className='related-thumbnails-row'
           onMouseEnter={() => {
             setshowThumbnails(true);
           }}
@@ -196,7 +196,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         >
           {relatedThumbnails.slice(thumbnailIndex, thumbnailIndex + 4)}
         </div>
-        <div className="card-container">
+        <div className='card-container'>
           <p>{product.category}</p>
           <p>
             <b>{product.name}</b>
@@ -206,18 +206,18 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
         </div>
       </div>
       {type === 'related' && (
-        <Modal open={modalOpen} onClose={handleClose} size="small" closeIcon>
-          <Header content="Comparing" />
+        <Modal open={modalOpen} onClose={handleClose} size='small' closeIcon>
+          <Header content='Comparing' />
           <Modal.Content>
             <Grid columns={3} relaxed>
               <Grid.Row>
-                <Grid.Column textAlign="right">
+                <Grid.Column textAlign='right'>
                   <h2>
                     <u>{product.name}</u>
                   </h2>
                 </Grid.Column>
-                <Grid.Column textAlign="center"></Grid.Column>
-                <Grid.Column textAlign="left">
+                <Grid.Column textAlign='center'></Grid.Column>
+                <Grid.Column textAlign='left'>
                   <h2>
                     <u>{globalProdInfo.name}</u>
                   </h2>
