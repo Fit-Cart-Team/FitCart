@@ -52,7 +52,7 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
         open={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
       >
-        <Header size='large' color='green'>
+        <Header size='large' color='grey'>
           Submit an Answer
         </Header>
         <Header as='h3'>
@@ -120,6 +120,8 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
               }
             />
             <small>For authentication reasons, you will not be emailed.</small>
+            <br />
+            <br />
             <Form.Input
               label='Photo(s)'
               type='file'
@@ -132,7 +134,7 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
         <Modal.Actions>
           <Button
             type='submit'
-            color='green'
+            color='grey'
             content='Submit Answer'
             onClick={e => handleSubmit(e)}
             className='submit-answer'

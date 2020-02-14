@@ -13,7 +13,7 @@ const AList = ({ aList }) => {
   } else if (aList.length === 1) {
     return (
       <span>
-        <b>A: </b>
+        <b className='question-body'>A: </b>{' '}
         <span>
           <Answer a={aList[0]} key={aList[0].answer_id} />
         </span>
@@ -22,26 +22,30 @@ const AList = ({ aList }) => {
   } else if (aList.length === 2) {
     return (
       <span>
-        <b>A: </b>
+        <b className='question-body'>A: </b>{' '}
         <Answer a={aList[0]} key={aList[0].answer_id} />
-        <Answer a={aList[1]} key={aList[1].answer_id} />
+        <span className='answer-list-indent'>
+          <Answer a={aList[1]} key={aList[1].answer_id} />
+        </span>
       </span>
     );
   } else if (aList.length > 2 && showMoreAnswers) {
     return (
       <div>
         <span>
-          <b>A: </b>
+          <b className='question-body'>A: </b>
           <span>
             <Answer a={aList[0]} key={aList[0].answer_id} />
-            <Answer a={aList[1]} key={aList[1].answer_id} />
+            <span className='answer-list-indent'>
+              <Answer a={aList[1]} key={aList[1].answer_id} />
+            </span>
             <a
               onClick={() => handleClick(false)}
               style={{ cursor: 'pointer' }}
               className='expand-answer-list'
             >
               <small>
-                <u>Load More Answers</u>
+                <span className='load-more-answers'>Load More Answers</span>
               </small>
             </a>
           </span>
@@ -53,16 +57,17 @@ const AList = ({ aList }) => {
       <div>
         <div
           style={{
-            maxHeight: '35vh',
+            maxHeight: '50vh',
             overflow: 'auto',
           }}
         >
-          <b>A: </b>
-          <span>
-            {aList.map(a => (
+          <b className='question-body'>A: </b>
+          <Answer a={aList[0]} key={aList[0].answer_id} />
+          {aList.slice(1).map(a => (
+            <span className='answer-list-indent'>
               <Answer a={a} key={a.answer_id} />
-            ))}
-          </span>
+            </span>
+          ))}
         </div>
         <a
           onClick={() => handleClick(true)}
@@ -70,7 +75,7 @@ const AList = ({ aList }) => {
           className='collapse-answer-list'
         >
           <small>
-            <u>Less Answers</u>
+            <span className='less-answers'>Less Answers</span>
           </small>
         </a>
       </div>

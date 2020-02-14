@@ -48,7 +48,7 @@ const Qform = ({ productName, id, refreshList }) => {
         open={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
       >
-        <Header size='large' color='green'>
+        <Header size='large' color='grey'>
           Ask a Question
         </Header>
         <Modal.Content>
@@ -118,7 +118,7 @@ const Qform = ({ productName, id, refreshList }) => {
         <Modal.Actions>
           <Button
             type='submit'
-            color='green'
+            color='grey'
             content='Submit Question'
             onClick={e => handleSubmit(e)}
             className='submit-question'

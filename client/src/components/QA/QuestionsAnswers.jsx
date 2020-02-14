@@ -48,8 +48,8 @@ const QuestionsAnswers = () => {
 
   return (
     <div className='questions-answers'>
-      <p>Questions and Answers</p>
       <br />
+      <p className='questions-answers-title'>Questions and Answers</p>
       <SearchQuestions
         qList={questionList}
         onSearch={handleSearch}

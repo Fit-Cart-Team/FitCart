@@ -37,7 +37,7 @@ const QList = ({ productName, list, searchTerm }) => {
         />
       </span>
     );
-  } else if (list.length === 3) {
+  } else if (list.length >= 3 && showMoreQuestions) {
     return (
       <span className='question-list'>
         <Question
@@ -61,43 +61,7 @@ const QList = ({ productName, list, searchTerm }) => {
         <br />
         <button
           onClick={() => handleClick(false)}
-          className='more-answered-questions'
-        >
-          More Answered Questions
-        </button>
-      </span>
-    );
-  } else if (list.length >= 4 && showMoreQuestions) {
-    return (
-      <span className='question-list'>
-        <Question
-          productName={productName}
-          q={list[0]}
-          key={list[0].question_id}
-          searchTerm={searchTerm}
-        />
-        <Question
-          productName={productName}
-          q={list[1]}
-          key={list[1].question_id}
-          searchTerm={searchTerm}
-        />
-        <Question
-          productName={productName}
-          q={list[2]}
-          key={list[2].question_id}
-          searchTerm={searchTerm}
-        />
-        <Question
-          productName={productName}
-          q={list[3]}
-          key={list[3].question_id}
-          searchTerm={searchTerm}
-        />
-        <br />
-        <button
-          onClick={() => handleClick(false)}
-          className='more-answered-questions'
+          className='more-answered-questions-button'
         >
           More Answered Questions
         </button>
@@ -111,6 +75,7 @@ const QList = ({ productName, list, searchTerm }) => {
             maxHeight: '75vh',
             overflow: 'auto',
           }}
+          className='infinite-scroll-question-list'
         >
           <span>
             {list.map(q => (
@@ -126,7 +91,7 @@ const QList = ({ productName, list, searchTerm }) => {
         <br />
         <button
           onClick={() => handleClick(true)}
-          className='less-answered-questions'
+          className='less-answered-questions-button'
         >
           Less Answered Questions
         </button>
