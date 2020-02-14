@@ -11,20 +11,26 @@ const ReviewBody = (props) => {
   if (props.body.length < 250) {
     return (
       <div>
-        <p>
+        <div className="review-body">
           {props.body}
-        </p>
-        { (props.photos.length) ? (<Photos photos={props.photos} />) : (<div></div>) }
+        </div>
+        <div className="review-body-photos" >
+          { (props.photos.length) ? (<Photos photos={props.photos} />) : (<div></div>) }
+        </div>
       </div>
     );
   } else {
     return (
       <div>
-        <p>
+        <div className="review-body-sliced">
           { (!showMore) ? (`${props.body.slice(0, 250)}...`) : (`${props.body}`) }
-        </p>
-        <button onClick={toggleShowMore} >{ (!showMore) ? 'Show more' : 'Show less' }</button>
-        { (props.photos.length) ? (<Photos photos={props.photos} />) : (<div></div>) }
+        </div>
+        <div className="review-body-show-more" >
+          <div onClick={toggleShowMore} >{ (!showMore) ? 'Show more' : 'Show less' }</div>
+        </div>
+        <div className="review-body-photos" >
+          { (props.photos.length) ? (<Photos photos={props.photos} />) : (<div></div>) }
+        </div>
       </div>
     )
   }
