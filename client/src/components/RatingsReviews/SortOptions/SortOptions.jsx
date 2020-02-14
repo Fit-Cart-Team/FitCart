@@ -9,7 +9,7 @@ const SortOptions = (props) => {
 
   return (
     <div className="sort-options-container" >
-      <h3 style={{"display": "inline-block", "margin-right": ".25em"}} >{props.totalReviews} Reviews, sorted by </h3>
+      <h3 style={{"display": "inline-block", "marginRight": ".25em"}} >{props.totalReviews} Reviews, sorted by </h3>
       <select className="sort-options-dropdown" onChange={handleChange} >
         <option className="sort-option" value="relevant" >Relevance</option>
         <option className="sort-option" value="helpful" >Helpful</option>

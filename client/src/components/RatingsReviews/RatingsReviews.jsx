@@ -111,7 +111,7 @@ const RatingsReviews = (props) => {
   }
 
   return props.productInfo ? (
-    <div id="ratings-reviews" >
+    <div id="ratings-reviews" className="ratings-reviews" >
       <div>
         <h1 className="top-container" >
           Ratings & Reviews
