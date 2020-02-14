@@ -1,8 +1,3 @@
-// let index = qList[i].question_body
-//   .toLowerCase()
-//   .indexOf(searchTerm.toLowerCase());
-// // console.log(index);
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AList from './Answers/Alist';
@@ -12,18 +7,23 @@ import Aform from './Answers/Aform';
 const Question = ({ productName, q, searchTerm }) => {
   const [answerList, setAnswerList] = useState([]);
   const [highlight, setHighlight] = useState(false);
-  const [highlightedKeyword, setHighlightedKeyword] = useState('');
+  // const [highlightedKeyword, setHighlightedKeyword] = useState();
+  // const [body, setBody] = useState([]);
+
+  // if (highlightedKeyword !== searchTerm) {
+  //   setHighlightedKeyword(searchTerm);
+  // }
 
   // useEffect(() => {
-  //   let splitBodyOnSearchTerm = q.question_body.split(searchTerm);
-  //   let toHighlight = <span className='highlight'>${searchTerm}</span>;
-  //   setHighlightedKeyword(
-  //     splitBodyOnSearchTerm[0] + toHighlight + splitBodyOnSearchTerm[1]
-  //   );
-  //   console.log(highlightedKeyword);
+  //   // let splitBodyOnSearchTerm = q.question_body.split(highlightedKeyword);
+  //   setBody(q.question_body.split(highlightedKeyword));
+  //   // let toHighlight = <span className='highlight'>{highlightedKeyword}</span>;
+  //   // setBody(
+  //   //   splitBodyOnSearchTerm[0] + { toHighlight } + splitBodyOnSearchTerm[1]
+  //   // );
 
   //   setHighlight(true);
-  // }, [searchTerm]);
+  // }, [highlightedKeyword]);
 
   const getAnswers = () => {
     axios
@@ -60,22 +60,29 @@ const Question = ({ productName, q, searchTerm }) => {
   return (
     <div>
       <p>
-        <b className='question-tile'>
-          Q: {highlight ? highlightedKeyword : q.question_body}{' '}
-        </b>
+        <span className='question-tile'>
+          <b className='question-body'>Q: {q.question_body} </b>
+        </span>
         <span className='helpful-add-answer'>
-          <Helpful question={q} /> |{' '}
-          <Aform
-            productName={productName}
-            questionId={q.question_id}
-            questionBody={q.question_body}
-            refreshList={() => getAnswers()}
-            className='add-answer'
-          />
+          <span className='helpful-question'>
+            <Helpful question={q} />
+          </span>
+          |{' '}
+          <span className='add-answer'>
+            <Aform
+              productName={productName}
+              questionId={q.question_id}
+              questionBody={q.question_body}
+              refreshList={() => getAnswers()}
+              className='add-answer'
+            />
+          </span>
         </span>
       </p>
       <AList aList={answerList} className='answer-list' />
-      <br />
+      <span className='question-divider'>
+        <hr />
+      </span>
     </div>
   );
 };

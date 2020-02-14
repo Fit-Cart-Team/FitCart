@@ -24,7 +24,7 @@ const Helpful = props => {
   };
 
   return (
-    <span>
+    <span className='helpful-qa'>
       <span>Helpful? </span>
       {yesButton ? (
         <u onClick={handleYesClick} style={{ cursor: 'pointer' }}>

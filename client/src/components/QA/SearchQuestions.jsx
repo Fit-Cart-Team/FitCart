@@ -42,7 +42,6 @@ const SearchQuestions = ({ qList, onSearch }) => {
       placeholder='Have a question? Search for answers...'
       value={searchTerm}
       onChange={e => handleChange(e)}
-      className='questions-searchbar'
     />
   );
 };
