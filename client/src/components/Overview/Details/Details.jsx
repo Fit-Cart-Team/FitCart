@@ -9,9 +9,9 @@ const Details = ({ productInfo, styleInfo, selectedStyle, avg, total }) => {
       currStyle.sale_price === '0' ? (
         <p>${currStyle.original_price}</p>
       ) : (
-        <div className="prices">
-          <p className="sale-price">${currStyle.sale_price}</p>
-          <p className="original-price">${currStyle.original_price}</p>{' '}
+        <div className='prices'>
+          <p className='sale-price'>${currStyle.sale_price}</p>
+          <p className='original-price'>${currStyle.original_price}</p>{' '}
         </div>
       );
   }
@@ -19,24 +19,23 @@ const Details = ({ productInfo, styleInfo, selectedStyle, avg, total }) => {
   return (
     // < className="product-info">
     <>
-      <div className="star-container">
+      <div className='star-container'>
         <Stars avg={avg} />
-        <span>
-          <a
-            href="#ratings-reviews"
-            style={{ fontSize: 'small', color: '#525252' }}
-          >
-            {total === 0
-              ? 'Be the first to review this product!'
-              : total === 1
-              ? `Read 1 review`
-              : `Read all ${total} reviews`}
-          </a>
-        </span>
+        <a
+          className='reviews-link'
+          href='#ratings-reviews'
+          style={{ fontSize: 'small', color: '#525252' }}
+        >
+          {total === 0
+            ? 'Be the first to review this product!'
+            : total === 1
+            ? `Read 1 review`
+            : `Read all ${total} reviews`}
+        </a>
       </div>
-      <div className="product-category">{prodCat}</div>
-      <div className="product-title">{productInfo.name}</div>
-      <div className="product-price">{currPrice}</div>
+      <div className='product-category'>{prodCat}</div>
+      <div className='product-title'>{productInfo.name}</div>
+      <div className='product-price'>{currPrice}</div>
     </>
   );
 };

@@ -124,7 +124,7 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
             <br />
             <Form.Input
               label='Photo(s)'
-              type='file'
+              type=''
               name='photoUpload'
               value={photoUpload}
               onChange={e => setPhotoUpload(e.target.value)}
