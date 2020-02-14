@@ -115,7 +115,7 @@
   /* border: 3px solid blue; */
   padding: 5px;
   padding-top: 0;
-  width: 38%;
+  min-width: 38%;
   height: fit-content;
   display: flex;
   flex-direction: column;
