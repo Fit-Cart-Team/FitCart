@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Question from './Question';
+import { Button } from 'semantic-ui-react';
 
 const QList = ({ productName, list, searchTerm }) => {
   const [showMoreQuestions, setShowMoreQuestions] = useState(true);
@@ -59,12 +60,12 @@ const QList = ({ productName, list, searchTerm }) => {
           searchTerm={searchTerm}
         />
         <br />
-        <button
+        <Button
           onClick={() => handleClick(false)}
           className='more-answered-questions-button'
         >
           More Answered Questions
-        </button>
+        </Button>
       </span>
     );
   } else {
@@ -89,12 +90,12 @@ const QList = ({ productName, list, searchTerm }) => {
           </span>
         </div>
         <br />
-        <button
+        <Button
           onClick={() => handleClick(true)}
           className='less-answered-questions-button'
         >
           Less Answered Questions
-        </button>
+        </Button>
       </span>
     );
   }
