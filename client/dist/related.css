@@ -114,7 +114,8 @@
   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.card-image {
+.card-image,
+.add-card-image {
   object-fit: cover;
   flex-grow: 3;
   /* box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.2); */

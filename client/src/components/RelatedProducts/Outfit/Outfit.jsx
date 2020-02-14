@@ -55,8 +55,8 @@ const Outfit = ({ globalProdInfo, globalStyleInfo }) => {
           {globalProdInfo ? globalProdInfo.name : ''}
         </h2>
         <img
-          className="card-image"
-          src="https://printables.space/files/uploads/download-and-print/large-printable-numbers/plus-a4-1200x1697.jpg"
+          className="add-card-image"
+          src="https://us.123rf.com/450wm/misteremil/misteremil1905/misteremil190500116/123641468-plus-sign-symbol-simple-design-.jpg?ver=6"
           alt="Add to Outfit"
           style={{ width: '100%' }}
         />
@@ -73,7 +73,6 @@ const Outfit = ({ globalProdInfo, globalStyleInfo }) => {
             }
           }}
         >
-          {/* {'🡠'} */}
           &#9668;
         </a>
       ) : (
@@ -82,13 +81,12 @@ const Outfit = ({ globalProdInfo, globalStyleInfo }) => {
       {outfitCards.slice(outfitIndex, outfitIndex + 3)}
       {outfitIndex < outfit.length - 3 ? (
         <a
-          className="related-next"
+          className="related-next outfit-next"
           onClick={() => {
             if (outfitIndex < outfit.length - 2)
               setoutfitIndex(prev => prev + 1);
           }}
         >
-          {/* {'🡢'} */}
           &#9658;
         </a>
       ) : (

@@ -29,7 +29,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, globalProdInfo }) => {
             }
           }}
         >
-          <div className="prev-arrow-arrow">&#9668;</div>
+          <div className="related-prev">&#9668;</div>
         </a>
       ) : (
         <></>
@@ -43,7 +43,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, globalProdInfo }) => {
               setrelatedProductsIndex(prev => prev + 1);
           }}
         >
-          <div className="next-arrow-arrow">&#9658;</div>
+          <div className="related-next">&#9658;</div>
         </a>
       ) : (
         <></>

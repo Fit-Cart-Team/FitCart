@@ -5,12 +5,16 @@ const Style = ({ style, setSelectedStyle, index, selectedStyle }) => {
     'https://avatars0.githubusercontent.com/u/5233442?s=400&v=4';
   const photoIMG = style.photos[0].thumbnail_url ? (
     <img
-      className="thumbnail-img"
+      className="style-selector-thumbnail-img"
       src={style.photos[0].thumbnail_url}
       alt="Style Thumbnail"
     ></img>
   ) : (
-    <img className="thumbnail-img" src={defaultIMG} alt="No Image"></img>
+    <img
+      className="style-selector-thumbnail-img"
+      src={defaultIMG}
+      alt="No Image"
+    ></img>
   );
 
   const checked =
