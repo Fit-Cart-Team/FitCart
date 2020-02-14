@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal, Button, Header, Form } from 'semantic-ui-react';
 import axios from 'axios';
 
@@ -39,15 +39,17 @@ const Qform = ({ productName, id, refreshList }) => {
   return (
     <>
       <span>
-        <button onClick={() => setModalIsOpen(true)}>+ Ask a Question </button>
+        <button onClick={() => setModalIsOpen(true)} className='ask-question'>
+          + Ask a Question{' '}
+        </button>
       </span>
       <Modal
         closeIcon={true}
         open={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
       >
-        <Header size='large' textAlign='left'>
-          Ask Your Question
+        <Header size='large' color='green'>
+          Ask a Question
         </Header>
         <Modal.Content>
           <Form>
@@ -91,6 +93,7 @@ const Qform = ({ productName, id, refreshList }) => {
               For Privacy reasons, do not use your full name or email address.
             </small>
             <br />
+            <br />
             <Form.Input
               label='Email'
               type='email'
@@ -115,10 +118,10 @@ const Qform = ({ productName, id, refreshList }) => {
         <Modal.Actions>
           <Button
             type='submit'
-            basic
-            color='olive'
+            color='green'
             content='Submit Question'
             onClick={e => handleSubmit(e)}
+            className='submit-question'
           />
         </Modal.Actions>
       </Modal>

@@ -7,7 +7,7 @@ const AnswerPhotos = ({ photos }) => {
       {photos.map(photo => {
         return (
           <span key={photo.id}>
-            <PhotoModal photo={photo} />
+            <PhotoModal photo={photo} className='answer-photo-modal' />
           </span>
         );
       })}
