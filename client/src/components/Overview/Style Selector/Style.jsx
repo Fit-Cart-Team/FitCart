@@ -2,7 +2,7 @@ import React from 'react';
 
 const Style = ({ style, setSelectedStyle, index, selectedStyle }) => {
   const defaultIMG =
-    'https://avatars0.githubusercontent.com/u/5233442?s=400&v=4';
+    'https://avatars3.githubusercontent.com/u/12416599?s=460&v=4';
   const photoIMG = style.photos[0].thumbnail_url ? (
     <img
       className="style-selector-thumbnail-img"
