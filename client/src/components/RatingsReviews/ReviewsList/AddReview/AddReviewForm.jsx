@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import Axios from 'axios';
+import { Button } from 'semantic-ui-react';
 
 const validate = values => {
   const errors = {};
@@ -32,7 +33,7 @@ const validate = values => {
 };
 
 const AddReviewForm = (props) => {
-  const { chars, productID, updateList, updateMeta, updateTotalRatings, setAppAvg, setAppTotal, sortParameter } = props;
+  const { chars, productID, updateList, updateMeta, updateTotalRatings, setAppAvg, setAppTotal, sortParameter, closeModal } = props;
   let charNames = Object.keys(chars);
 
   const [recommend, setRecommend] = useState(false);
@@ -151,30 +152,32 @@ const AddReviewForm = (props) => {
         return alert('Please give an overall rating');
       }
 
-      Axios.post(`http://3.134.102.30/reviews/${productID}`, Object.assign(formikValues, stateInputs)).then((response) => {
-        Axios.get(`http://3.134.102.30/reviews/${productID}/meta`)
-          .then(( {data} ) => {
-            updateMeta(data);
-            
-            let totalQuantity = 0;
-            let ratingSum = 0;
+      Axios.post(`http://3.134.102.30/reviews/${productID}`, Object.assign(formikValues, stateInputs))
+        .then((response) => {
+          Axios.get(`http://3.134.102.30/reviews/${productID}/meta`)
+            .then(( {data} ) => {
+              updateMeta(data);
+              
+              let totalQuantity = 0;
+              let ratingSum = 0;
 
-            for (let rating in data.ratings) {
-              totalQuantity += data.ratings[rating];
-              ratingSum += rating * data.ratings[rating];
-            }
+              for (let rating in data.ratings) {
+                totalQuantity += data.ratings[rating];
+                ratingSum += rating * data.ratings[rating];
+              }
 
-            updateTotalRatings(totalQuantity);
-            
-            let ratingAvg = ratingSum / totalQuantity;
-            setAppAvg(ratingAvg);
+              updateTotalRatings(totalQuantity);
+              
+              let ratingAvg = ratingSum / totalQuantity;
+              setAppAvg(ratingAvg);
 
-            Axios.get(`http://3.134.102.30/reviews/${productID}/list?page=1&count=${totalQuantity}&sort=${sortParameter}`)
-              .then(( {data} ) => {
-                setAppTotal(data.results.length)
-                updateList(data.results);
-              });
-          });
+              Axios.get(`http://3.134.102.30/reviews/${productID}/list?page=1&count=${totalQuantity}&sort=${sortParameter}`)
+                .then(( {data} ) => {
+                  setAppTotal(data.results.length)
+                  updateList(data.results);
+                  closeModal();
+                });
+            });
       });
     },
   });
@@ -302,7 +305,7 @@ const AddReviewForm = (props) => {
           );
         })}
       </div>
-      <button type="submit">Submit</button>
+      <Button type="submit" color='green' inverted>Submit</Button>
     </form>
   );
 };
