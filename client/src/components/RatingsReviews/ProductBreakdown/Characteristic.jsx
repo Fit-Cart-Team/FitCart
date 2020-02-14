@@ -70,7 +70,7 @@ const Characteristic = props => {
           ></i>
         </div>
         <div className="characteristic-ratings">
-          <p style={{ display: 'inline-block', float: 'left' }}>Poor</p>
+          <p style={{ display: 'inline-block', float: 'left' }}>Uncomfortable</p>
           <p style={{ display: 'inline-block', float: 'right' }}>Perfect</p>
         </div>
         <br />
@@ -92,7 +92,7 @@ const Characteristic = props => {
         </div>
         <div className="characteristic-ratings">
           <p style={{ display: 'inline-block', float: 'left' }}>Poor</p>
-          <p style={{ display: 'inline-block', float: 'right' }}>Great</p>
+          <p style={{ display: 'inline-block', float: 'right' }}>Perfect</p>
         </div>
         <br />
       </div>
@@ -123,18 +123,18 @@ const Characteristic = props => {
       <div className="characteristic">
         <h3>{name}</h3>
         <div className="characteristic-bar-container">
-          <div className="child-bar-1a"></div>
-          <div className="child-bar-2a"></div>
-          <div className="child-bar-3a"></div>
-          <div className="child-bar-4a"></div>
+          <div className="child-bar-1"></div>
+          <div className="child-bar-2"></div>
+          <div className="child-bar-3"></div>
           <i
             className="fas fa-caret-down"
             style={{ left: `${Math.round(positionVal * 100)}%` }}
           ></i>
         </div>
         <div className="characteristic-ratings">
-          <p style={{ display: 'inline-block', float: 'left' }}>Poor</p>
-          <p style={{ display: 'inline-block', float: 'right' }}>Perfect</p>
+          <p style={{ display: 'inline-block', float: 'left' }}>Too tight</p>
+          <p style={{ display: 'inline-block', float: 'middle' }}>Perfect</p>
+          <p style={{ display: 'inline-block', float: 'right' }}>Too loose</p>
         </div>
         <br />
       </div>

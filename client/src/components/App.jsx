@@ -48,6 +48,7 @@ const App = () => {
             totalReviews={total}
             setAppAvg={setAppAvg}
             setAppTotal={setAppTotal}
+            productInfo={globalProdInfo}
           />
         </Route>
       </Switch>
