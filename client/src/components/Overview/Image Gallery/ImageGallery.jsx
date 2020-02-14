@@ -10,7 +10,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   const [shownThumbnails, setshownThumbnails] = useState(0);
 
   const defaultIMG =
-    'https://avatars0.githubusercontent.com/u/5233442?s=400&v=4';
+    'https://avatars3.githubusercontent.com/u/12416599?s=460&v=4';
 
   const photoSlides = photos.map(photo => {
     return photo.url;
