@@ -90,8 +90,8 @@
 
 #ratings-reviews {
   width: 100%;
-  height: fit-content;
-  /* padding: 10px; */
+  height: 98vh;
+  padding-top: 2vh;
   /* border: 3px solid black; */
 }
 
@@ -206,4 +206,85 @@
   background-clip: text;
 }
 
+.sort-options-container {
+  margin-bottom: 1em;
+}
+
+.review-tile {
+  border-bottom: 2px solid lightgray;
+  margin-bottom: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.review-tile-bottom-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.review-tile-summary {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.review-tile-recommendation {
+  margin-bottom: 1em;
+}
+
+.review-tile-helpfulness {
+  margin-bottom: 1em;
+}
+
+.reviews-list-buttons {
+  margin-top: 2%;
+  margin-left: 1%;
+  margin-bottom: 2%;
+}
+
+.reviews-list {
+  overflow: auto;
+  max-height: 75vh;
+}
+
+.form-input-container{
+  padding-bottom: .5em;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+.form-input-note {
+  margin-bottom: .15em;
+  margin-top: .15em;
+}
+
+.form-input-error {
+  color: red;
+  margin-bottom: .15em;
+  margin-top: .15em; 
+}
+
+.characteristic-fields-container {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 2%;
+}
+
+.characteristic-ratings-buttons-container {
+  display: flex;
+  flex-direction: column;
+}
+
 /* characteristic-field-input-container inline-block */
+/* overflow: auto, max-height */
+
+/* input[type=radio] {
+  display: block;
+  margin: 0 auto;
+} */
+/* label {
+  display: inline-block;
+} */

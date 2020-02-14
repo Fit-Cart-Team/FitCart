@@ -23,11 +23,8 @@ const ReviewTile = (props) => {
   const { review } = props;
 
   return (
-    <div>
-      <h2>
-        Review #{review.review_id}
-      </h2>
-      <div>
+    <div className="review-tile" >
+      <div className="review-tile-top-container" >
         <div style={{display: "inline-block", "float": "left"}} >
           <Stars avg={review.rating} />
         </div>
@@ -37,11 +34,13 @@ const ReviewTile = (props) => {
         </div>
       </div>
       <br/>
-      <ReviewSummary summary={review.summary} />
-      <ReviewBody body={review.body} photos={review.photos} />
-      { (review.recommend > 0) ? <Recommend recommend={review.recommend} /> : <div></div> }
-      { review.response ? <ReviewResponse response={review.response} /> : <div></div> }
-      <RatingHelpfulness helpfulness={review.helpfulness} reviewID={review.review_id} />
+      <div className="review-tile-bottom-container" >
+        <ReviewSummary summary={review.summary} />
+        <ReviewBody body={review.body} photos={review.photos} />
+        { (review.recommend > 0) ? <Recommend recommend={review.recommend} /> : <div></div> }
+        { review.response ? <ReviewResponse response={review.response} /> : <div></div> }
+        <RatingHelpfulness helpfulness={review.helpfulness} reviewID={review.review_id} />
+      </div>
     </div>
   );
 };

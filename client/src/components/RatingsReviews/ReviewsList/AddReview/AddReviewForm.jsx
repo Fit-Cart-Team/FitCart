@@ -6,27 +6,27 @@ import { Button } from 'semantic-ui-react';
 const validate = values => {
   const errors = {};
   if (values.summary.length > 60) {
-    errors.summary = 'Must be 60 characters or less';
+    errors.summary = '*Must be 60 characters or less';
   }
 
   if (!values.body) {
-    errors.body = 'Required';
+    errors.body = '*Required';
   } else if (values.body.length > 1000) {
-    errors.body = 'Must be 1000 characters or less';
+    errors.body = '*Must be 1000 characters or less';
   } else if (values.body.length < 50) {
-    errors.body = 'Must be 50 characters or more';
+    errors.body = '*Must be 50 characters or more';
   }
 
   if (!values.name) {
-    errors.name = 'Required';
+    errors.name = '*Required';
   } else if (values.name.length > 60) {
-    errors.name = 'Must be 60 characters or less';
+    errors.name = '*Must be 60 characters or less';
   }
 
   if (!values.email) {
-    errors.email = 'Required';
+    errors.email = '*Required';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
+    errors.email = '*Invalid email address';
   }
 
   return errors;
@@ -184,128 +184,140 @@ const AddReviewForm = (props) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div>
+      <div className="form-input-container" >
         <h3 htmlFor="name">What is your nickname*</h3>
         <input
           id="name"
           name="name"
           type="text"
+          className="form-input-text-field"
           placeholder="Example: jackson11"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.name}
         />
-        <div>For privacy reasons, do not use your full name or email address</div>
+        <div className="form-input-note" >For privacy reasons, do not use your full name or email address</div>
         {formik.touched.name && formik.errors.name ? (
-          <div>{formik.errors.name}</div>
+          <div className="form-input-error" >{formik.errors.name}</div>
         ) : null}
       </div>
-      <div>
+      <div className="form-input-container">
         <h3 htmlFor="email">Your email*</h3>
         <input
           id="email"
           name="email"
           type="email"
+          className="form-input-text-field"
           placeholder="Example: jackson11@email.com"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
         />
-        <div>For authentication reasons, you will not be emailed</div>
+        <div className="form-input-note">For authentication reasons, you will not be emailed</div>
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
+          <div className="form-input-error" >{formik.errors.email}</div>
         ) : null}
       </div>
-      <div>
+      <div className="form-input-container">
         <h3 htmlFor="rating">Overall Rating*</h3>
-        <div id="rating-1" name="rating" data-value="1" className="star" style={{ '--rating': ((rating >= 1) ? 1 : 0) }} onClick={handleRatingClick} ></div>
-        <div id="rating-2" name="rating" data-value="2" className="star" style={{ '--rating': ((rating >= 2) ? 1 : 0) }} onClick={handleRatingClick} ></div>
-        <div id="rating-3" name="rating" data-value="3" className="star" style={{ '--rating': ((rating >= 3) ? 1 : 0) }} onClick={handleRatingClick} ></div>
-        <div id="rating-4" name="rating" data-value="4" className="star" style={{ '--rating': ((rating >= 4) ? 1 : 0) }} onClick={handleRatingClick} ></div>
-        <div id="rating-5" name="rating" data-value="5" className="star" style={{ '--rating': ((rating >= 5) ? 1 : 0) }} onClick={handleRatingClick} ></div>
-        
+        <div className="overall-star-ratings-input-container" >
+          <div id="rating-1" name="rating" data-value="1" className="star" style={{ '--rating': ((rating >= 1) ? 1 : 0) }} onClick={handleRatingClick} ></div>
+          <div id="rating-2" name="rating" data-value="2" className="star" style={{ '--rating': ((rating >= 2) ? 1 : 0) }} onClick={handleRatingClick} ></div>
+          <div id="rating-3" name="rating" data-value="3" className="star" style={{ '--rating': ((rating >= 3) ? 1 : 0) }} onClick={handleRatingClick} ></div>
+          <div id="rating-4" name="rating" data-value="4" className="star" style={{ '--rating': ((rating >= 4) ? 1 : 0) }} onClick={handleRatingClick} ></div>
+          <div id="rating-5" name="rating" data-value="5" className="star" style={{ '--rating': ((rating >= 5) ? 1 : 0) }} onClick={handleRatingClick} ></div>
+        </div>
         {!isRatingValid() ? (
-          <div>Please select a rating</div>
+          <div className="form-input-error" >*Please select a rating</div>
         ) : null}
       </div>
-      <div>
+      <div className="form-input-container">
         <h3 htmlFor="summary">Review Summary</h3>
         <input
           id="summary"
           name="summary"
           type="text"
+          className="form-input-text-field"
           placeholder="Example: Best purchase ever!"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.summary}
         />
         {formik.touched.summary && formik.errors.summary ? (
-          <div>{formik.errors.summary}</div>
+          <div className="form-input-error" >{formik.errors.summary}</div>
         ) : null}
       </div>
-      <div>
+      <div className="form-input-container">
         <h3 htmlFor="body">Review Body*</h3>
         <input
           id="body"
           name="body"
           type="text"
+          className="form-input-text-field"
           placeholder="Why did you like the product or not?"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.body}
         />
-        <div>{ (formik.values.body.length < 50) ? (`Minimum required characters left: ${50 - formik.values.body.length}`) : ('Minimum reached') }</div>
+        <div className="form-input-note">{ (formik.values.body.length < 50) ? (`Minimum required characters left: ${50 - formik.values.body.length}`) : ('Minimum reached') }</div>
         {formik.touched.body && formik.errors.body ? (
-          <div>{formik.errors.body}</div>
+          <div className="form-input-error" >{formik.errors.body}</div>
         ) : null}
       </div>
-      <div>
+      <div className="form-input-container">
         <h3 htmlFor="recommend">Do you recommend this product?*</h3>
-        <input
-          id="recommend-yes"
-          name="recommend"
-          type="radio"
-          value="true"
-          onClick={handleRecommendClick}
-          required
-        />Yes
-        <input
-          id="recommend-no"
-          name="recommend"
-          type="radio"
-          value="false"
-          onClick={handleRecommendClick}
-          required
-        />No
+        <div className="recommend-buttons-container" >
+          <input
+            id="recommend-yes"
+            name="recommend"
+            type="radio"
+            value="true"
+            onClick={handleRecommendClick}
+            required
+          />Yes
+          <input
+            id="recommend-no"
+            name="recommend"
+            type="radio"
+            value="false"
+            onClick={handleRecommendClick}
+            required
+          />No
+        </div>
       </div>
-      <div>
+      <div className="form-input-container">
         <h3>Characteristics*</h3>
-        {charNames.map((name, index) => {
-          let ratings = [1, 2, 3, 4, 5];
+        <div className="characteristic-fields-container" >
+          {charNames.map((name, index) => {
+            let ratings = [1, 2, 3, 4, 5];
 
-          return (
-            <div key={`${index}`} >
-              <h4 htmlFor={`${chars[name].id}`} >{name}*</h4>
-              {ratings.map((rating, index) => {
-                return(
-                  <span key={`${index}`} >
-                    <input
-                    id={`${name}-${rating}`}
-                    name={`${chars[name].id}`}
-                    type="radio"
-                    value={`${rating}`}
-                    onClick={handleCharClick}
-                    required
-                    />{charButtonLabel(name, rating)}
-                  </span>
-                );
-              })}
-              
-            </div>
-          );
-        })}
+            return (
+              <div key={`${index}`} className="characteristic-field-container" >
+                <h4 htmlFor={`${chars[name].id}`} >{name}</h4>
+                <div className="characteristic-ratings-buttons-container" >
+                  {ratings.map((rating, index) => {
+                    return(
+                      <span key={`${index}`} >
+                        <input
+                        id={`${name}-${rating}`}
+                        name={`${chars[name].id}`}
+                        type="radio"
+                        value={`${rating}`}
+                        onClick={handleCharClick}
+                        required
+                        />{charButtonLabel(name, rating)}
+                      </span>
+                    );
+                  })}
+                </div>
+                
+              </div>
+            );
+          })}
+
+        </div>
       </div>
-      <Button type="submit" color='green' inverted>Submit</Button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 };

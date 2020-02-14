@@ -31,13 +31,15 @@ const ReviewsList = (props) => {
   
   if (filteredList.length > 0) {
     return (
-      <div className="reviews-list" >
-        {filteredList.slice(0, reviewsCount).map((review) => {
-          return (
-            <ReviewTile key={review.review_id} review={review} />
-          );
-        })}
-        <div style={{margin: "10px"}} >
+      <div>
+        <div className="reviews-list" >
+          {filteredList.slice(0, reviewsCount).map((review) => {
+            return (
+              <ReviewTile key={review.review_id} review={review} />
+            );
+          })}
+        </div>
+        <div className="reviews-list-buttons" >
           {(reviewsCount >= filteredList.length) ? <div></div> : (<MoreReviews incrementReviewsCount={incrementReviewsCount} />)}
           <ReviewModal characteristics={characteristics} productName={productName} productID={productID} updateList={updateList} updateMeta={updateMeta} updateTotalRatings={updateTotalRatings} setAppAvg={setAppAvg} setAppTotal={setAppTotal} sortParameter={sortParameter} />
         </div>
