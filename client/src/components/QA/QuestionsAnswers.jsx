@@ -12,6 +12,7 @@ const QuestionsAnswers = () => {
   const [searchList, setSearchList] = useState([]);
   const [productName, setProductName] = useState('');
   const [openModal, setOpenModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   if (url !== id) {
     setUrl(id);
@@ -35,8 +36,9 @@ const QuestionsAnswers = () => {
       .catch(err => console.error(err));
   };
 
-  const handleSearch = filteredSearchList => {
+  const handleSearch = (filteredSearchList, searchTerm) => {
     setSearchList(filteredSearchList);
+    setSearchTerm(searchTerm);
   };
 
   useEffect(() => {
@@ -48,12 +50,18 @@ const QuestionsAnswers = () => {
     <div className='questions-answers'>
       <p>Questions and Answers</p>
       <br />
-      <SearchQuestions qList={questionList} onSearch={handleSearch} />
+      <SearchQuestions
+        qList={questionList}
+        onSearch={handleSearch}
+        className='keyword-search-questions'
+      />
       <br />
       <span>
         <QList
           productName={productName}
           list={searchList.length > 0 ? searchList : questionList}
+          searchTerm={searchTerm}
+          className='question-list'
         />
         <Qform productName={productName} id={url} refreshList={getQList} />
       </span>

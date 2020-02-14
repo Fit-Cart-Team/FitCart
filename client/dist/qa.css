@@ -5,3 +5,7 @@ questions-answers {
 helpful-add-answer {
   float: right;
 }
+
+highlight {
+  background-color: yellow;
+}
