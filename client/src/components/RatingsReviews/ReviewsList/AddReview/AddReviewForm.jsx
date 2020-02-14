@@ -186,7 +186,7 @@ const AddReviewForm = (props) => {
     <form onSubmit={formik.handleSubmit}>
       <div className="form-input-container" >
         <h3 htmlFor="name">What is your nickname*</h3>
-        <input
+        <textarea
           id="name"
           name="name"
           type="text"
@@ -203,7 +203,7 @@ const AddReviewForm = (props) => {
       </div>
       <div className="form-input-container">
         <h3 htmlFor="email">Your email*</h3>
-        <input
+        <textarea
           id="email"
           name="email"
           type="email"
@@ -233,7 +233,7 @@ const AddReviewForm = (props) => {
       </div>
       <div className="form-input-container">
         <h3 htmlFor="summary">Review Summary</h3>
-        <input
+        <textarea
           id="summary"
           name="summary"
           type="text"
@@ -249,7 +249,7 @@ const AddReviewForm = (props) => {
       </div>
       <div className="form-input-container">
         <h3 htmlFor="body">Review Body*</h3>
-        <input
+        <textarea
           id="body"
           name="body"
           type="text"
@@ -297,7 +297,7 @@ const AddReviewForm = (props) => {
                 <div className="characteristic-ratings-buttons-container" >
                   {ratings.map((rating, index) => {
                     return(
-                      <span key={`${index}`} >
+                      <span key={`${index}`} className="characteristic-ratings-button" >
                         <input
                         id={`${name}-${rating}`}
                         name={`${chars[name].id}`}
