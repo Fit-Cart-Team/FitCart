@@ -63,8 +63,8 @@ const AList = ({ aList }) => {
         >
           <b className='question-body'>A: </b>
           <Answer a={aList[0]} key={aList[0].answer_id} />
-          {aList.slice(1).map(a => (
-            <span className='answer-list-indent'>
+          {aList.slice(1).map((a, i) => (
+            <span className='answer-list-indent' key={i}>
               <Answer a={a} key={a.answer_id} />
             </span>
           ))}
