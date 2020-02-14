@@ -39,9 +39,9 @@ const Qform = ({ productName, id, refreshList }) => {
   return (
     <>
       <span>
-        <button onClick={() => setModalIsOpen(true)} className='ask-question'>
+        <Button onClick={() => setModalIsOpen(true)} className='ask-question'>
           + Ask a Question{' '}
-        </button>
+        </Button>
       </span>
       <Modal
         closeIcon={true}
