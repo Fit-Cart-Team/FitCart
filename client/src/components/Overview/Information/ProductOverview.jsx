@@ -17,7 +17,7 @@ const ProductOverview = ({ productInfo }) => {
         <div className="slogan">{slogan}</div>
         <div className="description">{description}</div>
       </div>
-      <div className="product-description-right">{displayFeatures}</div>
+      <div className="product-features">{displayFeatures}</div>
     </div>
   );
 };

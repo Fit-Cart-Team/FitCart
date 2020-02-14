@@ -110,7 +110,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   const compressIcon =
     view === 'expanded' ? (
       <i
-        className="fa fa-expand"
+        className="shrink-zoom fa fa-expand"
         onClick={() => {
           setimgStyles({
             backgroundSize: 'contain',
@@ -168,7 +168,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
         <>
           {currSlide > 0 ? (
             <a
-              className="prev"
+              className="carousel-prev"
               onClick={() => {
                 incrementSlide(-1);
               }}
@@ -180,7 +180,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
           )}
           {currSlide < photos.length - 1 ? (
             <a
-              className="next"
+              className="carousel-next"
               onClick={() => {
                 incrementSlide(1);
               }}
