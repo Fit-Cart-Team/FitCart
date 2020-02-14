@@ -315,3 +315,21 @@
 .product-breakdown {
   padding-right: 5%;
 }
+
+.review-body {
+  margin-bottom: .5em;
+  width: 95%;
+  overflow-wrap: break-word;
+}
+
+.review-body-show-more {
+  text-decoration: underline;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  margin-bottom: .5em;
+}
+
+.ratings-recommendations {
+  margin-top: .5em;
+}
