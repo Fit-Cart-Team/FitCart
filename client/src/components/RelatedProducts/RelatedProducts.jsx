@@ -63,6 +63,7 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
   return globalProdInfo ? (
     <>
       <div
+        className="related-products-header"
         style={{
           fontSize: '1.5vw',
           fontWeight: 'bold',
@@ -78,6 +79,7 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
         globalProdInfo={globalProdInfo}
       />
       <div
+        className="outfit-header"
         style={{
           fontSize: '1.5vw',
           fontWeight: 'bold',
