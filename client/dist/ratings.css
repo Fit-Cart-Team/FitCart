@@ -206,4 +206,34 @@
   background-clip: text;
 }
 
+.sort-options-container {
+  margin-bottom: 1em;
+}
+
+.review-tile {
+  border-bottom: 2px solid lightgray;
+  margin-bottom: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.review-tile-bottom-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.review-tile-summary {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.review-tile-recommendation {
+  margin-bottom: 1em;
+}
+
+.review-tile-helpfulness {
+  margin-bottom: 1em;
+}
 /* characteristic-field-input-container inline-block */

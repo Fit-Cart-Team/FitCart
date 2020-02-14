@@ -10,7 +10,7 @@ const PhotoModal = (props) => {
   };
   
   return (
-    <Modal trigger={<img src={props.photo.url} style={style} ></img>} basic closeIcon >
+    <Modal trigger={<img src={props.photo.url} style={style} alt="Loading..." ></img>} basic closeIcon >
       <Modal.Content image>
         <Image src={props.photo.url} size="big" verticalAlign="top" centered rounded />
       </Modal.Content>
