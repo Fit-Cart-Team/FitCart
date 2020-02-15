@@ -4,6 +4,13 @@ html {
   color: #525252;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Squada+One&display=swap');
+
+.logo {
+  font-family: 'Squada One', 'cursive';
+  font-size: 5vw;
+}
+
 body {
   margin: 0px 8% 0px 8%;
 }
