@@ -3,16 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 
 const NavBar = () => {
   const history = useHistory();
-  const [searchVal, setsearchVal] = useState('');
+  const [dark, setDark] = useState(false);
 
-  const keyChange = e => {
-    if (e.key === 'Enter' || e.key === 'Return') {
-      history.push(searchVal);
-    }
-  };
-  const clickChange = e => {
-    history.push(searchVal);
-  };
   return (
     <ul>
       <li>
@@ -20,16 +12,18 @@ const NavBar = () => {
           FitCart
         </Link>
       </li>
-      <li className="search-bar">
-        <input
-          className="search-text"
-          type="text"
-          onChange={e => {
-            setsearchVal(e.target.value);
-          }}
-          onKeyPress={keyChange}
-        ></input>
-        <div className="fa fa-search search-button" onClick={clickChange}></div>
+      <li>
+        <div id="theme-toggle" onClick={prev => setDark(!prev)}>
+          <span className="toggle-icon">☀️</span>
+          <span className="toggle-icon">
+            <i
+              className={`fa fa-toggle-on ${
+                dark ? '' : 'fa-flip-horizontal'
+              } fa-2x`}
+            ></i>
+          </span>
+          <span className="toggle-icon">🌙</span>
+        </div>
       </li>
     </ul>
   );

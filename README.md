@@ -15,7 +15,15 @@ FitCart is a modern front-end redesign of a multi-feature product details page f
 
 ## Description
 
-FitCart consists of many essential features in a modern e-commerce product details page, including:
+FitCart contains many essential features in a modern e-commerce product details page, including:
+
+- [Product Overview](#product-overview)
+- [Related Products](#related-products)
+- [My Outfit](#my-outfit)
+- [Questions & Answers](#questions-&-answers)
+- [Ratings & Reviews](#ratings-&-reviews)
+
+This application was developed based on strict design requirements in the form of a detailed design mock-up and a requirements document.
 
 ### Product Overview <!-- omit in TOC -->
 

@@ -1,12 +1,39 @@
 @import url('https://fonts.googleapis.com/css?family=Squada+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Patua+One&display=swap');
+
+[theme='dark'] {
+  --color: #ededed;
+  --background-color: rgb(37, 37, 37);
+  --translucent-background-color: rgba(80, 80, 80, 0.6);
+  --primary-accent-color: #949494;
+  --secondary-background-color: rgba(65, 65, 65, 0.7);
+  --error: #ff0000;
+  --highlighted: #8a6a30;
+  --link-color: #6fa5a5;
+  --title-color: #ffffff;
+  --title-background: #27544e;
+}
+
+[theme='dark'] {
+  --color: #ededed;
+  --background-color: rgb(37, 37, 37);
+  --translucent-background-color: rgba(80, 80, 80, 0.6);
+  --primary-accent-color: #949494;
+  --secondary-background-color: rgba(65, 65, 65, 0.7);
+  --error: #ff0000;
+  --highlighted: #8a6a30;
+  --link-color: #6fa5a5;
+  --title-color: #ffffff;
+  --title-background: #27544e;
+}
+
 html {
   scroll-behavior: smooth;
   color: #525252;
 }
 
 body {
-  margin: 0px 8% 0px 8%;
+  margin: 1% 8% 0px 8%;
   font-family: 'Patua One', cursive;
 }
 
@@ -40,36 +67,6 @@ li {
   padding: 3vh 0.5vw;
   text-decoration: none;
   font-size: 400%;
-}
-
-.search-bar {
-  position: absolute;
-  /* top: 3vh; */
-  right: 0;
-  background: none;
-  padding-right: 1.5%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.search-button {
-  color: white;
-  float: right;
-}
-
-.search-text {
-  border: 0;
-  outline: 0;
-  background: transparent;
-  border-bottom: 0.15vw solid white;
-  float: left;
-  padding: 0;
-  margin-right: 10%;
-  color: white;
-  font-size: 1vw;
-  line-height: 50%;
-  width: 70%;
 }
 
 .announcement {
