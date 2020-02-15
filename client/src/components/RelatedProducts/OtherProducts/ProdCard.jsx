@@ -160,6 +160,12 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
                 }
               });
             }}
+            onMouseEnter={() => {
+              setshowThumbnails(true);
+            }}
+            onMouseLeave={() => {
+              setshowThumbnails(false);
+            }}
             style={{ left: '1%' }}
           >
             &#9668;
@@ -179,6 +185,12 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
                   return prev;
                 }
               });
+            }}
+            onMouseEnter={() => {
+              setshowThumbnails(true);
+            }}
+            onMouseLeave={() => {
+              setshowThumbnails(false);
             }}
           >
             &#9658;
