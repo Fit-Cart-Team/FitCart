@@ -6,11 +6,6 @@ html {
 
 @import url('https://fonts.googleapis.com/css?family=Squada+One&display=swap');
 
-.logo {
-  font-family: 'Squada One', 'cursive';
-  font-size: 5vw;
-}
-
 body {
   margin: 0px 8% 0px 8%;
 }
@@ -21,12 +16,12 @@ body {
 
 ul {
   list-style-type: none;
-  height: 9vh;
+  height: 10vh;
   margin: 0;
   padding: 0;
   padding-left: 1.5%;
   overflow: hidden;
-  background-color: #525252;
+  background-color: #4d975e;
   position: relative;
 }
 
@@ -34,14 +29,16 @@ li {
   float: left;
 }
 
-li a {
+.logo {
+  font-family: 'Squada One', 'cursive';
   display: block;
+  height: auto;
   margin-top: 2vh;
   color: white;
   text-align: center;
   padding: 1vh 0.5vw;
   text-decoration: none;
-  font-size: 250%;
+  font-size: 400%;
 }
 
 .search-bar {
@@ -71,7 +68,7 @@ li a {
   color: white;
   font-size: 1vw;
   line-height: 3vh;
-  width: 60%;
+  width: 70%;
 }
 
 .announcement {
@@ -96,7 +93,7 @@ li a {
 
 .image-gallery {
   background-repeat: no-repeat;
-  background-color: #525252;
+  background-color: #4d975e;
   background-position: center center;
   display: flex;
   margin: 0px;
