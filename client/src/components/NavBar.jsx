@@ -16,8 +16,8 @@ const NavBar = () => {
   return (
     <ul>
       <li>
-        <Link to="/" className="active">
-          <u>Lo</u>g<u>o</u>
+        <Link to="/" className="active" className="logo">
+          FitCart
         </Link>
       </li>
       <li className="search-bar">
