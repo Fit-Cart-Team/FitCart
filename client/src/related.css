@@ -4,6 +4,7 @@
   justify-content: flex-start;
   margin: 1.5vw 10% 2vw 12%;
   position: relative;
+  font-size: 130%;
 }
 
 .related-prev,
@@ -85,7 +86,6 @@
 
 .product-card,
 .add-card {
-  /* Add shadows to create the "card" effect */
   cursor: pointer;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -103,15 +103,22 @@
   overflow: hidden;
 }
 
+.add-card {
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .product-card p {
   margin: 0;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
 }
 
 .product-card:hover,
 .add-card:hover {
   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-price {
+  padding-bottom: 5%;
 }
 
 .card-image,

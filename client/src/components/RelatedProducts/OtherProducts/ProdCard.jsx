@@ -36,11 +36,11 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
   if (style) {
     currPrice =
       style.sale_price === '0' ? (
-        <p>${style.original_price}</p>
+        <p className="card-price">${style.original_price}</p>
       ) : (
-        <div className="prices">
+        <div className="prices card-price">
           <p className="sale-price">${style.sale_price}</p>
-          <p className="original-price">${style.original_price}</p>{' '}
+          <p className="original-price">${style.original_price}</p>
         </div>
       );
 

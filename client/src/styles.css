@@ -31,6 +31,24 @@
   --moon-color: #dacd17;
 }
 
+/* Overwrite Semantic */
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+button,
+select,
+input,
+.ui.button {
+  font-family: 'Patua One', cursive;
+}
+/* Overwrite Semantic */
+
+a {
+  color: var(--link-color);
+}
 html {
   scroll-behavior: smooth;
 }
@@ -106,7 +124,6 @@ li {
 }
 
 .announcement a {
-  color: var(--link-color);
   text-decoration: underline;
 }
 .overview {
@@ -268,10 +285,6 @@ li {
   background-clip: text;
 }
 
-.product-info a {
-  color: var(--color);
-}
-
 .product-category {
   font-size: 140%;
   margin-top: 2%;
@@ -313,7 +326,6 @@ li {
 
 .style-container {
   display: flex;
-  /* justify-content: space-between; */
   flex-wrap: wrap;
   min-width: 25vw;
   max-width: 25vw;

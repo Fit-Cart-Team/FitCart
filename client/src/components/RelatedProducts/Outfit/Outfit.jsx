@@ -51,15 +51,26 @@ const Outfit = ({ globalProdInfo, globalStyleInfo }) => {
   return (
     <div className="outfit">
       <div className="add-card" onClick={addProduct}>
-        <h2 style={{ textAlign: 'center', marginTop: '5%', marginBottom: '0' }}>
+        <h2
+          style={{
+            textAlign: 'center',
+            marginTop: '5%',
+            marginBottom: '0',
+            flexGrow: '1'
+          }}
+        >
           {globalProdInfo ? globalProdInfo.name : ''}
         </h2>
-        <img
+        {/* <img
           className="add-card-image"
           src="https://us.123rf.com/450wm/misteremil/misteremil1905/misteremil190500116/123641468-plus-sign-symbol-simple-design-.jpg?ver=6"
           alt="Add to Outfit"
           style={{ width: '100%' }}
-        />
+        /> */}
+        <i
+          class="fas fa-plus-circle"
+          style={{ fontSize: '600%', flexGrow: '1', color: 'var(--color)' }}
+        ></i>
         <div className="card-container">
           <h1>Total: {outfit.length}</h1>
         </div>
