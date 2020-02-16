@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 
 import Homepage from './Homepage';
 import Overview from './Overview/Overview';
@@ -19,9 +19,26 @@ const App = () => {
   const [total, setAppTotal] = useState(0);
   const [globalProdInfo, setGlobalProdInfo] = useState();
   const [globalStyleInfo, setGlobalStyleInfo] = useState();
+  const [dark, setdark] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('theme', 'dark');
+      setdark(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (dark) {
+      document.documentElement.setAttribute('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('theme', 'light');
+    }
+  }, [dark]);
+
   return (
     <React.Fragment>
-      <NavBar />
+      <NavBar setdark={setdark} dark={dark} />
       {/* <Suspense fallback={<div>LOADING</div>}> */}
       <Switch>
         <Route exact path="/">
