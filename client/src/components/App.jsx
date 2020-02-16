@@ -67,7 +67,7 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <NavBar setdark={setdark} dark={dark} />
+      <NavBar setdark={setdark} dark={dark} cartAmount={outfit.length} />
       {/* <Suspense fallback={<div>LOADING</div>}> */}
       <Switch>
         <Route exact path="/">

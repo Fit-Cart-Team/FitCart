@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-const NavBar = ({ setdark, dark }) => {
+const NavBar = ({ setdark, dark, cartAmount }) => {
   const history = useHistory();
 
   return (
@@ -25,7 +25,7 @@ const NavBar = ({ setdark, dark }) => {
       <li className="cart-nav">
         <i className="fas fa-shopping-cart"></i>
         Cart
-        <span className="cart-amount">3</span>
+        <span className="cart-amount">{cartAmount}</span>
       </li>
     </ul>
   );
