@@ -14,10 +14,13 @@ const Homepage = ({ outfit, removeProduct }) => {
           />
         ))
       : [];
+
   return (
     <>
       <h1 className="homepage-title">
-        Get Started! Here's your outfit at the moment
+        {outfitCards.length > 0
+          ? 'Here is your outfit at the moment'
+          : 'Add / and a number to the URL to begin shopping!'}
       </h1>
       <div className="homepage">{outfitCards}</div>
     </>
