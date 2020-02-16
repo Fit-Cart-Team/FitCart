@@ -5,7 +5,16 @@ import QuantitySelector from './QuantitySelector';
 import SizeSelector from './SizeSelector';
 import FavoriteButton from './FavoriteButton';
 
-const AddCart = ({ selectedStyle, styleInfo, url }) => {
+const AddCart = ({
+  productInfo,
+  selectedStyle,
+  styleInfo,
+  url,
+  addProduct,
+  removeProduct,
+  outfit,
+  setoutfit
+}) => {
   let currStyle = styleInfo[selectedStyle.index];
   const [selectedSize, setSize] = useState(null);
   const [quant, setQuant] = useState(1);
@@ -21,7 +30,14 @@ const AddCart = ({ selectedStyle, styleInfo, url }) => {
       </div>
       <div className="cart-buttons">
         <AddButton />
-        <FavoriteButton url={url} />
+        <FavoriteButton
+          productInfo={productInfo}
+          styleInfo={styleInfo}
+          addProduct={addProduct}
+          removeProduct={removeProduct}
+          outfit={outfit}
+          setoutfit={setoutfit}
+        />
       </div>
     </React.Fragment>
   );

@@ -24,7 +24,16 @@ import ProductOverview from './Information/ProductOverview';
 import SocialMedia from './SocialMedia';
 // const SocialMedia = lazy(() => import('./SocialMedia'));
 
-const Overview = ({ avg, total, setGlobalProdInfo, setGlobalStyleInfo }) => {
+const Overview = ({
+  avg,
+  total,
+  setGlobalProdInfo,
+  setGlobalStyleInfo,
+  addProduct,
+  removeProduct,
+  outfit,
+  setoutfit
+}) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
   const [productInfo, setProductInfo] = useState({});
@@ -87,9 +96,14 @@ const Overview = ({ avg, total, setGlobalProdInfo, setGlobalStyleInfo }) => {
             selectedStyle={selectedStyle}
           />
           <AddCart
+            productInfo={productInfo}
             styleInfo={styleInfo}
             selectedStyle={selectedStyle}
             url={url}
+            addProduct={addProduct}
+            removeProduct={removeProduct}
+            outfit={outfit}
+            setoutfit={setoutfit}
           />
           <SocialMedia url={url} />
         </div>

@@ -21,6 +21,8 @@ const App = () => {
   const [globalStyleInfo, setGlobalStyleInfo] = useState();
   const [dark, setdark] = useState(false);
 
+  const [outfit, setoutfit] = useState([]);
+
   useEffect(() => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.setAttribute('theme', 'dark');
@@ -35,6 +37,34 @@ const App = () => {
       document.documentElement.setAttribute('theme', 'light');
     }
   }, [dark]);
+
+  const addProduct = () => {
+    const product = [globalProdInfo, globalStyleInfo];
+    let currOutfit = [...outfit];
+    let addable = true;
+
+    for (let prod of currOutfit) {
+      if (prod[0].id === globalProdInfo.id) {
+        addable = false;
+        break;
+      }
+    }
+    if (addable) {
+      console.log(product);
+      currOutfit.push(product);
+      localStorage.setItem('outfit', JSON.stringify(currOutfit));
+      setoutfit(currOutfit);
+    }
+  };
+
+  const removeProduct = currProduct => {
+    let currOutfit = JSON.parse(localStorage.getItem('outfit'));
+    currOutfit = currOutfit.filter((prod, index) => {
+      return prod[0].id !== currProduct.id;
+    });
+    localStorage.setItem('outfit', JSON.stringify(currOutfit));
+    setoutfit(currOutfit);
+  };
 
   return (
     <React.Fragment>
@@ -54,11 +84,19 @@ const App = () => {
             total={total}
             setGlobalProdInfo={setGlobalProdInfo}
             setGlobalStyleInfo={setGlobalStyleInfo}
+            addProduct={addProduct}
+            removeProduct={removeProduct}
+            outfit={outfit}
+            setoutfit={setoutfit}
           />
           <RelatedProducts
             avg={avg}
             globalProdInfo={globalProdInfo}
             globalStyleInfo={globalStyleInfo}
+            addProduct={addProduct}
+            removeProduct={removeProduct}
+            outfit={outfit}
+            setoutfit={setoutfit}
           />
           <QuestionsAnswers />
           <RatingsReviews
