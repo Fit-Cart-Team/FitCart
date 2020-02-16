@@ -10,10 +10,6 @@ const Outfit = ({
   setoutfit
 }) => {
   const [outfitIndex, setoutfitIndex] = useState(0);
-  useEffect(() => {
-    let cache = JSON.parse(localStorage.getItem('outfit')) || [];
-    setoutfit(cache);
-  }, []);
 
   const outfitCards =
     outfit.length > 0

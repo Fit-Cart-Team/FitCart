@@ -141,6 +141,15 @@ li {
   text-align: center;
 }
 
+.homepage-title {
+  text-align: center;
+}
+
+.homepage {
+  display: flex;
+  margin: 5%;
+}
+
 .announcement {
   text-align: center;
   margin: 1% 0 1% 0;

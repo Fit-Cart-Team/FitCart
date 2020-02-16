@@ -62,6 +62,7 @@ const Overview = ({
       });
       if (emptyStyle) {
         setSelectedStyle({ index: 0, name: styleResults[0].name });
+        setGlobalStyleInfo(styleResults[0]);
       }
       setloading(true);
     });

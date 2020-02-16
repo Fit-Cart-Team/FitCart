@@ -28,6 +28,8 @@ const App = () => {
       document.documentElement.setAttribute('theme', 'dark');
       setdark(true);
     }
+    let cache = JSON.parse(localStorage.getItem('outfit')) || [];
+    setoutfit(cache);
   }, []);
 
   useEffect(() => {
@@ -71,7 +73,7 @@ const App = () => {
       {/* <Suspense fallback={<div>LOADING</div>}> */}
       <Switch>
         <Route exact path="/">
-          <Homepage />
+          <Homepage outfit={outfit} removeProduct={removeProduct} />
         </Route>
         <Route path="/:id">
           <div className="announcement">
