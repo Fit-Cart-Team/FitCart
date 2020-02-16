@@ -59,34 +59,7 @@ const Overview = ({ avg, total, setGlobalProdInfo, setGlobalStyleInfo }) => {
       setloading(true);
     });
   }, [url]);
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://3.134.102.30/products/${url}`)
-  //     .then(results => {
-  //       setProductInfo(results.data);
-  //       setGlobalProdInfo(results.data);
-  //     })
-  //     .then(() => {
-  //       axios
-  //         .get(`http://3.134.102.30/products/${url}/styles`)
-  //         .then(results => {
-  //           let styles = results.data.results;
-  //           let emptyStyle = true;
-  //           setStyleInfo(styles);
-  //           styles.forEach((style, index) => {
-  //             if (style['default?'] === 1) {
-  //               setSelectedStyle({ index: index, name: style.name });
-  //               setGlobalStyleInfo(style);
-  //               emptyStyle = false;
-  //             }
-  //           });
-  //           if (emptyStyle) {
-  //             setSelectedStyle({ index: 0, name: styles[0].name });
-  //             setGlobalStyleInfo(styles[0]);
-  //           }
-  //         });
-  //     });
-  // }, [url]);
+
   return loading ? (
     // <Suspense fallback={<div>LOADING</div>}>
     <div className="overview">
@@ -113,7 +86,11 @@ const Overview = ({ avg, total, setGlobalProdInfo, setGlobalStyleInfo }) => {
             setSelectedStyle={setSelectedStyle}
             selectedStyle={selectedStyle}
           />
-          <AddCart styleInfo={styleInfo} selectedStyle={selectedStyle} />
+          <AddCart
+            styleInfo={styleInfo}
+            selectedStyle={selectedStyle}
+            url={url}
+          />
           <SocialMedia url={url} />
         </div>
       </div>

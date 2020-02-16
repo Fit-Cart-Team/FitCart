@@ -5,7 +5,7 @@ import QuantitySelector from './QuantitySelector';
 import SizeSelector from './SizeSelector';
 import FavoriteButton from './FavoriteButton';
 
-const AddCart = ({ selectedStyle, styleInfo }) => {
+const AddCart = ({ selectedStyle, styleInfo, url }) => {
   let currStyle = styleInfo[selectedStyle.index];
   const [selectedSize, setSize] = useState(null);
   const [quant, setQuant] = useState(1);
@@ -21,7 +21,7 @@ const AddCart = ({ selectedStyle, styleInfo }) => {
       </div>
       <div className="cart-buttons">
         <AddButton />
-        <FavoriteButton />
+        <FavoriteButton url={url} />
       </div>
     </React.Fragment>
   );

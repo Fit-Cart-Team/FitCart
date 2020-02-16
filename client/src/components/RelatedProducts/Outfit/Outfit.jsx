@@ -61,14 +61,8 @@ const Outfit = ({ globalProdInfo, globalStyleInfo }) => {
         >
           {globalProdInfo ? globalProdInfo.name : ''}
         </h2>
-        {/* <img
-          className="add-card-image"
-          src="https://us.123rf.com/450wm/misteremil/misteremil1905/misteremil190500116/123641468-plus-sign-symbol-simple-design-.jpg?ver=6"
-          alt="Add to Outfit"
-          style={{ width: '100%' }}
-        /> */}
         <i
-          class="fas fa-plus-circle"
+          className="fas fa-plus-circle"
           style={{ fontSize: '600%', flexGrow: '1', color: 'var(--color)' }}
         ></i>
         <div className="card-container">
