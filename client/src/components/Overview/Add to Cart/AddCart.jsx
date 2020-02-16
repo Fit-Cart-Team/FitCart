@@ -6,14 +6,11 @@ import SizeSelector from './SizeSelector';
 import FavoriteButton from './FavoriteButton';
 
 const AddCart = ({
-  productInfo,
   selectedStyle,
   styleInfo,
   url,
   addProduct,
-  removeProduct,
-  outfit,
-  setoutfit
+  removeProduct
 }) => {
   let currStyle = styleInfo[selectedStyle.index];
   const [selectedSize, setSize] = useState(null);
@@ -31,12 +28,9 @@ const AddCart = ({
       <div className="cart-buttons">
         <AddButton />
         <FavoriteButton
-          productInfo={productInfo}
-          styleInfo={styleInfo}
+          url={url}
           addProduct={addProduct}
           removeProduct={removeProduct}
-          outfit={outfit}
-          setoutfit={setoutfit}
         />
       </div>
     </React.Fragment>

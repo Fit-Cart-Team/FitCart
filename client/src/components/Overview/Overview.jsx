@@ -30,9 +30,7 @@ const Overview = ({
   setGlobalProdInfo,
   setGlobalStyleInfo,
   addProduct,
-  removeProduct,
-  outfit,
-  setoutfit
+  removeProduct
 }) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
@@ -96,14 +94,11 @@ const Overview = ({
             selectedStyle={selectedStyle}
           />
           <AddCart
-            productInfo={productInfo}
             styleInfo={styleInfo}
             selectedStyle={selectedStyle}
             url={url}
             addProduct={addProduct}
             removeProduct={removeProduct}
-            outfit={outfit}
-            setoutfit={setoutfit}
           />
           <SocialMedia url={url} />
         </div>

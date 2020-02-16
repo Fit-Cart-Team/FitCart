@@ -50,7 +50,6 @@ const App = () => {
       }
     }
     if (addable) {
-      console.log(product);
       currOutfit.push(product);
       localStorage.setItem('outfit', JSON.stringify(currOutfit));
       setoutfit(currOutfit);
@@ -86,8 +85,6 @@ const App = () => {
             setGlobalStyleInfo={setGlobalStyleInfo}
             addProduct={addProduct}
             removeProduct={removeProduct}
-            outfit={outfit}
-            setoutfit={setoutfit}
           />
           <RelatedProducts
             avg={avg}
