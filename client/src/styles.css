@@ -98,7 +98,7 @@ li {
   align-items: center;
   justify-content: space-between;
   width: 7%;
-  right: 3%;
+  right: 11%;
   color: var(--title-color);
 }
 
@@ -115,6 +115,30 @@ li {
 .fa-moon {
   font-size: 160%;
   color: var(--moon-color);
+}
+
+.cart-nav {
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 8%;
+  right: 2%;
+  font-size: 160%;
+  color: var(--title-color);
+}
+
+.cart-amount {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 40%;
+  border-radius: 20%;
+  background-color: var(--background-color);
+  color: var(--color);
+  text-align: center;
 }
 
 .announcement {
@@ -382,6 +406,11 @@ li {
   display: flex;
 }
 
+option {
+  color: var(--color);
+  background-color: var(--background-color);
+}
+
 .size-selector {
   cursor: pointer;
   flex-grow: 3;
@@ -461,7 +490,7 @@ li {
   flex-grow: 2;
   height: 6.5vh;
   max-width: 4vw;
-  font-size: 2vw;
+  font-size: 150%;
   color: var(--color);
   background-color: var(--background-color);
 }
@@ -485,27 +514,25 @@ li {
   opacity: 0.7;
 }
 
-.fa-facebook {
-  padding: 2%;
-  padding-top: 2.3%;
+.fab {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.fa-facebook {
   background: #3b5998;
-  color: white;
+  color: #ededed;
 }
 
 .fa-twitter {
-  padding: 2%;
-  padding-top: 2.3%;
   background: #55acee;
-  color: white;
+  color: #ededed;
 }
 
 .fa-pinterest {
-  padding: 2%;
-  padding-top: 2.3%;
-  cursor: pointer;
   background: #cb2027;
-  color: white;
+  color: #ededed;
 }
 
 .product-description {

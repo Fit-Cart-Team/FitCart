@@ -22,6 +22,11 @@ const NavBar = ({ setdark, dark }) => {
         </span>
         <i class="fas fa-moon"></i>
       </li>
+      <li className="cart-nav">
+        <i class="fas fa-shopping-cart"></i>
+        Cart
+        <span className="cart-amount">3</span>
+      </li>
     </ul>
   );
 };
