@@ -96,7 +96,7 @@ const Overview = ({
           <AddCart
             styleInfo={styleInfo}
             selectedStyle={selectedStyle}
-            url={url}
+            productInfo={productInfo}
             addProduct={addProduct}
             removeProduct={removeProduct}
           />

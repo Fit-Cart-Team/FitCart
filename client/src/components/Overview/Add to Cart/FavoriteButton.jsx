@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const FavoriteButton = ({ url, addProduct, removeProduct }) => {
+const FavoriteButton = ({ productInfo, addProduct, removeProduct }) => {
   const [favorited, setfavorited] = useState(false);
   const favoritedStyle = favorited ? { color: 'var(--star-color)' } : {};
 
@@ -8,12 +8,12 @@ const FavoriteButton = ({ url, addProduct, removeProduct }) => {
     setfavorited(false);
     let cache = JSON.parse(localStorage.getItem('outfit')) || [];
     for (let product of cache) {
-      if (product[0].id === Number(url)) {
+      if (product[0].id === productInfo.id) {
         setfavorited(true);
         break;
       }
     }
-  }, [url, favorited]);
+  }, [productInfo, favorited]);
 
   const handleFavoriteClick = () => {
     let isFavorited = favorited;

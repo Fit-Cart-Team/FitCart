@@ -8,7 +8,7 @@ import FavoriteButton from './FavoriteButton';
 const AddCart = ({
   selectedStyle,
   styleInfo,
-  url,
+  productInfo,
   addProduct,
   removeProduct
 }) => {
@@ -28,7 +28,7 @@ const AddCart = ({
       <div className="cart-buttons">
         <AddButton />
         <FavoriteButton
-          url={url}
+          productInfo={productInfo}
           addProduct={addProduct}
           removeProduct={removeProduct}
         />
