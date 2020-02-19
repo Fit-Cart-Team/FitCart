@@ -3,8 +3,8 @@ import React from 'react';
 const AddButton = () => {
   return (
     <button className="add-to-bag">
-      <span className="add-text">ADD TO BAG</span>
-      <span className="plus-sign">+</span>
+      <span className="add-text">ADD TO CART</span>
+      <i className="fas fa-plus plus-sign"></i>
     </button>
   );
 };
