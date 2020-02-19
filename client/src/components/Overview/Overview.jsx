@@ -24,7 +24,14 @@ import ProductOverview from './Information/ProductOverview';
 import SocialMedia from './SocialMedia';
 // const SocialMedia = lazy(() => import('./SocialMedia'));
 
-const Overview = ({ avg, total, setGlobalProdInfo, setGlobalStyleInfo }) => {
+const Overview = ({
+  avg,
+  total,
+  setGlobalProdInfo,
+  setGlobalStyleInfo,
+  addProduct,
+  removeProduct
+}) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
   const [productInfo, setProductInfo] = useState({});
@@ -55,38 +62,12 @@ const Overview = ({ avg, total, setGlobalProdInfo, setGlobalStyleInfo }) => {
       });
       if (emptyStyle) {
         setSelectedStyle({ index: 0, name: styleResults[0].name });
+        setGlobalStyleInfo(styleResults[0]);
       }
       setloading(true);
     });
   }, [url]);
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://3.134.102.30/products/${url}`)
-  //     .then(results => {
-  //       setProductInfo(results.data);
-  //       setGlobalProdInfo(results.data);
-  //     })
-  //     .then(() => {
-  //       axios
-  //         .get(`http://3.134.102.30/products/${url}/styles`)
-  //         .then(results => {
-  //           let styles = results.data.results;
-  //           let emptyStyle = true;
-  //           setStyleInfo(styles);
-  //           styles.forEach((style, index) => {
-  //             if (style['default?'] === 1) {
-  //               setSelectedStyle({ index: index, name: style.name });
-  //               setGlobalStyleInfo(style);
-  //               emptyStyle = false;
-  //             }
-  //           });
-  //           if (emptyStyle) {
-  //             setSelectedStyle({ index: 0, name: styles[0].name });
-  //             setGlobalStyleInfo(styles[0]);
-  //           }
-  //         });
-  //     });
-  // }, [url]);
+
   return loading ? (
     // <Suspense fallback={<div>LOADING</div>}>
     <div className="overview">
@@ -113,7 +94,13 @@ const Overview = ({ avg, total, setGlobalProdInfo, setGlobalStyleInfo }) => {
             setSelectedStyle={setSelectedStyle}
             selectedStyle={selectedStyle}
           />
-          <AddCart styleInfo={styleInfo} selectedStyle={selectedStyle} />
+          <AddCart
+            styleInfo={styleInfo}
+            selectedStyle={selectedStyle}
+            productInfo={productInfo}
+            addProduct={addProduct}
+            removeProduct={removeProduct}
+          />
           <SocialMedia url={url} />
         </div>
       </div>

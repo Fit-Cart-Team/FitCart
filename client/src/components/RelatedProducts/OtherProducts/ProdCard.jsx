@@ -36,11 +36,11 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
   if (style) {
     currPrice =
       style.sale_price === '0' ? (
-        <p>${style.original_price}</p>
+        <p className="card-price">${style.original_price}</p>
       ) : (
-        <div className="prices">
+        <div className="prices card-price">
           <p className="sale-price">${style.sale_price}</p>
-          <p className="original-price">${style.original_price}</p>{' '}
+          <p className="original-price">${style.original_price}</p>
         </div>
       );
 
@@ -160,6 +160,12 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
                 }
               });
             }}
+            onMouseEnter={() => {
+              setshowThumbnails(true);
+            }}
+            onMouseLeave={() => {
+              setshowThumbnails(false);
+            }}
             style={{ left: '1%' }}
           >
             &#9668;
@@ -179,6 +185,12 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
                   return prev;
                 }
               });
+            }}
+            onMouseEnter={() => {
+              setshowThumbnails(true);
+            }}
+            onMouseLeave={() => {
+              setshowThumbnails(false);
             }}
           >
             &#9658;

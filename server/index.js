@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 // const expressStaticGzip = require('express-static-gzip');
 const app = express();
-const port = 3000;
+const port = 51623;
 app.use(express.static(path.join(__dirname, '/../client/dist/')));
 // app.use(
 //   '/',

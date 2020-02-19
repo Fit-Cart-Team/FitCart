@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({ setdark, dark, cartAmount }) => {
   const history = useHistory();
-  const [searchVal, setsearchVal] = useState('');
 
-  const keyChange = e => {
-    if (e.key === 'Enter' || e.key === 'Return') {
-      history.push(searchVal);
-    }
-  };
-  const clickChange = e => {
-    history.push(searchVal);
-  };
   return (
     <ul>
       <li>
@@ -20,16 +11,21 @@ const NavBar = () => {
           FitCart
         </Link>
       </li>
-      <li className="search-bar">
-        <input
-          className="search-text"
-          type="text"
-          onChange={e => {
-            setsearchVal(e.target.value);
-          }}
-          onKeyPress={keyChange}
-        ></input>
-        <div className="fa fa-search search-button" onClick={clickChange}></div>
+      <li className="theme-toggle">
+        <i className="fas fa-sun"></i>
+        <span className="toggle-icon" onClick={() => setdark(prev => !prev)}>
+          <i
+            className={`fa fa-toggle-on ${
+              dark ? '' : 'fa-flip-horizontal'
+            } fa-2x`}
+          ></i>
+        </span>
+        <i className="fas fa-moon"></i>
+      </li>
+      <li className="cart-nav">
+        <i className="fas fa-shopping-cart"></i>
+        Cart
+        <span className="cart-amount">{cartAmount}</span>
       </li>
     </ul>
   );

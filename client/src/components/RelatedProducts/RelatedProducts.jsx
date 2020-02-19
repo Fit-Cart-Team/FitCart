@@ -5,7 +5,14 @@ import axios from 'axios';
 import OtherProductList from './OtherProducts/OtherProductList';
 import Outfit from './Outfit/Outfit';
 
-const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
+const RelatedProducts = ({
+  globalProdInfo,
+  globalStyleInfo,
+  addProduct,
+  removeProduct,
+  outfit,
+  setoutfit
+}) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
   const [relatedProds, setrelatedProds] = useState([]);
@@ -92,6 +99,10 @@ const RelatedProducts = ({ globalProdInfo, globalStyleInfo }) => {
       <Outfit
         globalProdInfo={globalProdInfo}
         globalStyleInfo={globalStyleInfo}
+        addProduct={addProduct}
+        removeProduct={removeProduct}
+        outfit={outfit}
+        setoutfit={setoutfit}
       />
     </>
   ) : (

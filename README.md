@@ -23,7 +23,7 @@ FitCart contains many essential features in a modern e-commerce product details 
 - [Questions & Answers](#questions-&-answers)
 - [Ratings & Reviews](#ratings-&-reviews)
 
-This application was developed based on strict design requirements in the form of a detailed design mock-up and a requirements document. 
+This application was developed based on strict design requirements in the form of a detailed design mock-up and a requirements document.
 
 ### Product Overview <!-- omit in TOC -->
 
