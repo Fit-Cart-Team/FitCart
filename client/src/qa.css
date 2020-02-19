@@ -36,6 +36,11 @@
 .answer-name {
   padding-right: 5px;
 }
+
+.bold-seller {
+  font-weight: bolder;
+  color: black;
+}
 .report-answer {
   padding-left: 5px;
 }
