@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button, Header, Form } from 'semantic-ui-react';
+import { Modal, Button, Header, Form, InputFile } from 'semantic-ui-react';
 import axios from 'axios';
 
 const Aform = ({ productName, questionId, questionBody, refreshList }) => {
@@ -10,7 +10,7 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
   const [nicknameInputError, setNicknameInputError] = useState(false);
   const [emailInputError, setEmailInputError] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [photoUpload, setPhotoUpload] = useState('');
+  const [photoUpload, setPhotoUpload] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -122,13 +122,6 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
             <small>For authentication reasons, you will not be emailed.</small>
             <br />
             <br />
-            <Form.Input
-              label='Photo(s)'
-              type='file'
-              name='photoUpload'
-              value={photoUpload}
-              onChange={e => setPhotoUpload(e.target.value)}
-            />
           </Form>
         </Modal.Content>
         <Modal.Actions>
@@ -141,6 +134,14 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
           />
         </Modal.Actions>
       </Modal>
+      <br />
+      {/* <InputFile
+        label='Photo(s)'
+        type='file'
+        name='photoUpload'
+        value={photoUpload}
+        onChange={e => setPhotoUpload(e)}
+      /> */}
     </>
   );
 };
