@@ -7,7 +7,7 @@ const Name = ({ unformattedName }) => {
     return (
       <span className='answerer-name-seller'>
         {name}
-        <b>Seller</b>
+        <span className='bold-seller'>Seller</span>
       </span>
     );
   } else {
