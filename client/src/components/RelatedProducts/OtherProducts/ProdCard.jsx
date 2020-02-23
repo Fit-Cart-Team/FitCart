@@ -6,8 +6,7 @@ import axios from 'axios';
 
 const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
   let history = useHistory();
-  const defaultIMG =
-    'https://avatars3.githubusercontent.com/u/12416599?s=460&v=4';
+  const defaultIMG = 'https://homestaymatch.com/images/no-image-available.png';
 
   const [avg, setavg] = useState(0);
   const [modalOpen, setmodalOpen] = useState(false);

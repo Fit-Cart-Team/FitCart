@@ -9,8 +9,7 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
   const [view, setview] = useState('default');
   const [shownThumbnails, setshownThumbnails] = useState(0);
 
-  const defaultIMG =
-    'https://avatars3.githubusercontent.com/u/12416599?s=460&v=4';
+  const defaultIMG = 'https://homestaymatch.com/images/no-image-available.png';
 
   const photoSlides = photos.map(photo => {
     return photo.url;
@@ -173,7 +172,8 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
                 incrementSlide(-1);
               }}
             >
-              &#9668;
+              {/* &#9668; */}
+              🡨
             </a>
           ) : (
             <div></div>
@@ -185,7 +185,8 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
                 incrementSlide(1);
               }}
             >
-              &#9658;
+              {/* &#9658; */}
+              🡪
             </a>
           ) : (
             <div></div>

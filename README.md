@@ -17,6 +17,8 @@ FitCart is a modern front-end redesign of a multi-feature product details page f
 
 FitCart contains many essential features in a modern e-commerce product details page, including:
 
+![Overall App](http://g.recordit.co/9tOHoPT28C.gif)
+- [Themes](#themes)
 - [Product Overview](#product-overview)
 - [Related Products](#related-products)
 - [My Outfit](#my-outfit)
@@ -25,21 +27,29 @@ FitCart contains many essential features in a modern e-commerce product details 
 
 This application was developed based on strict design requirements in the form of a detailed design mock-up and a requirements document.
 
-### Product Overview <!-- omit in TOC -->
+<!-- omit in TOC -->
+### Themes
+
+Per business requirements, customers have the ability to toggle between light-mode and dark-mode. 
+<!-- omit in TOC -->
+### Product Overview 
 
 _Developed by [William Loo](#team-members)_
 
-All the information you would need about your product is located on the right of the Product Overview widget, including the product's rating, category, name, and price. Next to the rating, there is an option to jump down to [Ratings & Reviews](#ratings-&-reviews) to read all reviews.
+All the requisite information for your product is located on the right-hand side of the Product Overview widget. This includes the product's rating, category, name, and price. Next to the rating, there is an option to jump down to [Ratings & Reviews](#ratings-&-reviews) and read all reviews.
 
 Customers have the option to select one of a multitude of styles for each product, with one selected by default. When a new style is selected, the price and style indicators update dynamically. This change is also reflected in the Image Gallery on the left.
 
-When a customer clicks on the star button, they will add the current item to their outfit while automatically being scrolled down to view said outfit. The customer also has the option to share this product on popular social media platforms Facebook, Twitter, and Pinterest.
+When a customer clicks on the star button, they will add the current item to their outfit and immediately jump to the [My Outfit](#my-outfit) section. 
+
+The customer also has the option to share this product on popular social media platforms Facebook, Twitter, and Pinterest.
 
 The Image Gallery defaults to the selected style's first image. The customer can select different images by either clicking on its thumbnail, or by navigating through the left and right arrows on the side of the image. These arrows are dynamically displayed, depending on where in the image list the customer is. 
 
 Per requirements, the Image Gallery was given three different view options: regular, expanded, and zoomed. In expanded mode, the customer is provided a better view of the image, spanning hte entirety of the Overview. When a customer clicks on the expanded image, they will be shown a 2.5x zoomed version of the image, allowing them to pan the image by moving their mouse around the image. 
 
-### Related Products <!-- omit in TOC -->
+<!-- omit in TOC -->
+### Related Products 
 
 _Developed by [William Loo](#team-members)_
 
@@ -51,7 +61,8 @@ On each product, all of the necessary information is displayed, as well as the p
 
 If the customer clicks on the star icon at the top right of each related product, a modal will pop up detailing a comparison between the product the customer is currently browsing, and the selected related product. This modal will run through the features included in each product in list format, providing the customer an easy way to see which product is best for them.
 
-### My Outfit <!-- omit in TOC -->
+<!-- omit in TOC -->
+### My Outfit 
 
 _Developed by [William Loo](#team-members)_
 
@@ -61,14 +72,14 @@ To remove an item from their outfit, the customer simply needs to click on the r
 
 If the customer happens to close their browser while shopping, there's no need to worry! The outfit is persistent so that if you navigate back, all your products will still be right there.
 
-### Questions & Answers <!-- omit in TOC -->
-
+<!-- omit in TOC -->
+### Questions & Answers 
 _Developed by [Erin Levsen](#team-members)_
 
-### Ratings & Reviews <!-- omit in TOC -->
+<!-- omit in TOC -->
+### Ratings & Reviews 
 
 _Developed by [Patrick Pagba](#team-members)_
-
 ## Getting Started
 
 This project can be run locally by following these steps.
