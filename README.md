@@ -4,6 +4,8 @@
 
 FitCart is a modern front-end redesign of a multi-feature product details page for an e-commerce web application, built with React.
 
+![Overall Page](README&#32;public/Overall&#32;App.gif)
+
 ## Table of Contents
 
 - [Overview](#overview)
@@ -17,6 +19,7 @@ FitCart is a modern front-end redesign of a multi-feature product details page f
 
 FitCart contains many essential features in a modern e-commerce product details page, including:
 
+- [Themes](#themes)
 - [Product Overview](#product-overview)
 - [Related Products](#related-products)
 - [My Outfit](#my-outfit)
@@ -25,21 +28,33 @@ FitCart contains many essential features in a modern e-commerce product details 
 
 This application was developed based on strict design requirements in the form of a detailed design mock-up and a requirements document.
 
-### Product Overview <!-- omit in TOC -->
+<!-- omit in TOC -->
+### Themes
+
+Per business requirements, customers have the ability to toggle between light-mode and dark-mode. 
+
+![Themes](README&#32;public/Dark&#32;Light&#32;Themes.gif)
+<!-- omit in TOC -->
+### Product Overview 
 
 _Developed by [William Loo](#team-members)_
 
-All the information you would need about your product is located on the right of the Product Overview widget, including the product's rating, category, name, and price. Next to the rating, there is an option to jump down to [Ratings & Reviews](#ratings-&-reviews) to read all reviews.
+All the requisite information for your product is located on the right-hand side of the Product Overview widget. This includes the product's rating, category, name, and price. Next to the rating, there is an option to jump down to [Ratings & Reviews](#ratings-&-reviews) and read all reviews.
 
 Customers have the option to select one of a multitude of styles for each product, with one selected by default. When a new style is selected, the price and style indicators update dynamically. This change is also reflected in the Image Gallery on the left.
 
-When a customer clicks on the star button, they will add the current item to their outfit while automatically being scrolled down to view said outfit. The customer also has the option to share this product on popular social media platforms Facebook, Twitter, and Pinterest.
+When a customer clicks on the star button, they will add the current item to their outfit and immediately jump to the [My Outfit](#my-outfit) section. 
+
+The customer also has the option to share this product on popular social media platforms Facebook, Twitter, and Pinterest.
+
+![Image Gallery](README&#32;public/Image&#32;Gallery.gif)
 
 The Image Gallery defaults to the selected style's first image. The customer can select different images by either clicking on its thumbnail, or by navigating through the left and right arrows on the side of the image. These arrows are dynamically displayed, depending on where in the image list the customer is. 
 
 Per requirements, the Image Gallery was given three different view options: regular, expanded, and zoomed. In expanded mode, the customer is provided a better view of the image, spanning hte entirety of the Overview. When a customer clicks on the expanded image, they will be shown a 2.5x zoomed version of the image, allowing them to pan the image by moving their mouse around the image. 
 
-### Related Products <!-- omit in TOC -->
+<!-- omit in TOC -->
+### Related Products 
 
 _Developed by [William Loo](#team-members)_
 
@@ -49,26 +64,31 @@ This section will display four products at a time, with the ability to scroll th
 
 On each product, all of the necessary information is displayed, as well as the product's default style's default image. When a customer hovers on the product card, a row of image thumbnails will appear at the bottom of the main image, allowing them to change the displayed image. 
 
+![Related Products](README&#32;public/Related&#32;Products.gif)
+
 If the customer clicks on the star icon at the top right of each related product, a modal will pop up detailing a comparison between the product the customer is currently browsing, and the selected related product. This modal will run through the features included in each product in list format, providing the customer an easy way to see which product is best for them.
 
-### My Outfit <!-- omit in TOC -->
+<!-- omit in TOC -->
+### My Outfit 
 
 _Developed by [William Loo](#team-members)_
 
 My Outfit provides the customer a way to keep track of products they're fond of! If the customer wants to store a particular product, they can add it to their outfit through the star button in the overview, or by clicking on the persistent first card in the My Outfit section. 
 
+![My Outfit](README&#32;public/My&#32;Outfit.gif)
+
 To remove an item from their outfit, the customer simply needs to click on the red x icon at the top right of their product card, and the change will be instantly reflected.
 
 If the customer happens to close their browser while shopping, there's no need to worry! The outfit is persistent so that if you navigate back, all your products will still be right there.
 
-### Questions & Answers <!-- omit in TOC -->
-
+<!-- omit in TOC -->
+### Questions & Answers 
 _Developed by [Erin Levsen](#team-members)_
 
-### Ratings & Reviews <!-- omit in TOC -->
+<!-- omit in TOC -->
+### Ratings & Reviews 
 
 _Developed by [Patrick Pagba](#team-members)_
-
 ## Getting Started
 
 This project can be run locally by following these steps.

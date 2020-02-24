@@ -10,8 +10,7 @@ const ImagePreviews = ({
   selectedStyle,
   size
 }) => {
-  const defaultIMG =
-    'https://avatars3.githubusercontent.com/u/12416599?s=460&v=4';
+  const defaultIMG = 'https://homestaymatch.com/images/no-image-available.png';
   const photoThumbnails = photos.map((photo, index) => {
     const classes =
       currSlide === index
