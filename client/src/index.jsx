@@ -1,7 +1,7 @@
-import './qa.css';
-import './ratings.css';
-import './related.css';
-import './styles.css';
+import './styles/qa.css';
+import './styles/ratings.css';
+import './styles/related.css';
+import './styles/styles.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -20,7 +20,7 @@ document.addEventListener(
       handleClickTrackingUserInteractions({
         element: element,
         widget: widget,
-        time: time,
+        time: time
       });
     }
   },

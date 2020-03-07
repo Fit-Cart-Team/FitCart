@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NavBar = ({ setdark, dark, cartAmount }) => {
-  const history = useHistory();
-
   return (
     <ul>
       <li>
