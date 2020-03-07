@@ -97,10 +97,8 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
 
   const handleZoom = e => {
     const { left, top, width, height } = e.target.getBoundingClientRect();
-    // const x = -((e.pageX - left) / width) * 100;
     const x = e.pageX - left;
     const y = ((e.pageY - top) / height) * 100;
-    console.log(x, y);
     setimgStyles(prev => {
       return { ...prev, backgroundPosition: `${-x * 1.5}px ${y}%` };
     });
@@ -172,7 +170,6 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
                 incrementSlide(-1);
               }}
             >
-              {/* &#9668; */}
               🡨
             </a>
           ) : (
@@ -185,12 +182,11 @@ const ImageGallery = ({ styleInfo, selectedStyle, url }) => {
                 incrementSlide(1);
               }}
             >
-              {/* &#9658; */}
               🡪
             </a>
           ) : (
             <div></div>
-          )}{' '}
+          )}
         </>
       ) : (
         <></>

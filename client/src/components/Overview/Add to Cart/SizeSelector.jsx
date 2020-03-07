@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SizeSelector = ({ selectedStyle, setSize, id }) => {
+const SizeSelector = ({ selectedStyle, setSize }) => {
   const skus = selectedStyle ? selectedStyle.skus : {};
   let sizes = Object.keys(skus);
   if (sizes[0] === 'null') {
