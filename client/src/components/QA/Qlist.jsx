@@ -41,25 +41,32 @@ const QList = ({ productName, list, searchTerm }) => {
   } else if (list.length >= 3 && showMoreQuestions) {
     return (
       <span className='question-list'>
-        <Question
-          productName={productName}
-          q={list[0]}
-          key={list[0].question_id}
-          searchTerm={searchTerm}
-        />
-        <Question
-          productName={productName}
-          q={list[1]}
-          key={list[1].question_id}
-          searchTerm={searchTerm}
-        />
-        <Question
-          productName={productName}
-          q={list[2]}
-          key={list[2].question_id}
-          searchTerm={searchTerm}
-        />
-        <br />
+        <div
+          style={{
+            maxHeight: '75vh',
+            overflow: 'auto',
+          }}
+        >
+          <Question
+            productName={productName}
+            q={list[0]}
+            key={list[0].question_id}
+            searchTerm={searchTerm}
+          />
+          <Question
+            productName={productName}
+            q={list[1]}
+            key={list[1].question_id}
+            searchTerm={searchTerm}
+          />
+          <Question
+            productName={productName}
+            q={list[2]}
+            key={list[2].question_id}
+            searchTerm={searchTerm}
+          />
+          <br />
+        </div>
         <Button
           onClick={() => handleClick(false)}
           className='more-answered-questions-button'

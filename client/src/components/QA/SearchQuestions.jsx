@@ -18,7 +18,7 @@ const SearchQuestions = ({ qList, onSearch }) => {
   }, [filteredList]);
 
   const filter = () => {
-    const filteredSearch = [];
+    var filteredSearch = [];
     if (searchTerm.length > 2) {
       for (let i = 0; i < qList.length; i++) {
         if (
