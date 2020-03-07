@@ -1,17 +1,8 @@
 import React from 'react';
 
-// Size, Width, Comfort, Quality, Length, and Fit
-//
-// Size : Too small, Perfect, Too big
-// Width : Too narrow, Perfect, Too Wide
-// Comfort : Poor, Perfect
-// Quality : Poor, Great
-// Length : Too short, Perfect, Too long
-// Fit : Poor, Great
-
 const Characteristic = props => {
   let { name, rating } = props;
-  let positionVal = rating / 5; // From left
+  let positionVal = rating / 5;
 
   if (name === 'Size') {
     return (

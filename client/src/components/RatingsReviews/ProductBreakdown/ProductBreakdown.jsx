@@ -7,7 +7,6 @@ const ProductBreakdown = props => {
 
     return (
       <div className="product-breakdown">
-        {/* <h2>Product Breakdown Component</h2> */}
         {characteristicNames.map(characteristicName => {
           return (
             <Characteristic
