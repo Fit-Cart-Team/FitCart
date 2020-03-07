@@ -65,7 +65,7 @@ const Question = ({ productName, q, searchTerm = '' }) => {
         <span className='question-tile'>
           {
             <b className='question-body'>
-              {body[0]} <mark>{highlightedKeyword}</mark>
+              Q: {body[0]} <mark>{highlightedKeyword}</mark>
               {body[1]}
             </b>
           }
