@@ -17,9 +17,8 @@ const ImagePreviews = ({
         ? 'thumbnail-preview active-img'
         : 'thumbnail-preview';
     return (
-      <div key={photo.url} className="thumbnail-container">
+      <div key={index} className="thumbnail-container">
         <img
-          key={photo.url}
           className={classes}
           src={photo.thumbnail_url || defaultIMG}
           onClick={() => {
