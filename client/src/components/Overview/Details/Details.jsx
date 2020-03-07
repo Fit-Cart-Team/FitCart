@@ -17,7 +17,6 @@ const Details = ({ productInfo, styleInfo, selectedStyle, avg, total }) => {
   }
   let prodCat = productInfo.category ? productInfo.category.toUpperCase() : '';
   return (
-    // < className="product-info">
     <>
       <div className="star-container">
         <Stars avg={avg} />

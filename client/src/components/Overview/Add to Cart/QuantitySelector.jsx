@@ -1,7 +1,6 @@
 import React from 'react';
 
 const QuantitySelector = ({ selectedStyle, selectedSize, setQuant }) => {
-  // console.log('Quantity Re Rendered', selectedStyle, selectedSize);
   let displayOptions;
   if (selectedSize) {
     let quant = selectedStyle['skus'][selectedSize];

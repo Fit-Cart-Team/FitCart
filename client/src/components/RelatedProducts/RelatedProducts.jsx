@@ -7,11 +7,9 @@ import Outfit from './Outfit/Outfit';
 
 const RelatedProducts = ({
   globalProdInfo,
-  globalStyleInfo,
   addProduct,
   removeProduct,
-  outfit,
-  setoutfit
+  outfit
 }) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
@@ -98,11 +96,9 @@ const RelatedProducts = ({
       </div>
       <Outfit
         globalProdInfo={globalProdInfo}
-        globalStyleInfo={globalStyleInfo}
         addProduct={addProduct}
         removeProduct={removeProduct}
         outfit={outfit}
-        setoutfit={setoutfit}
       />
     </>
   ) : (

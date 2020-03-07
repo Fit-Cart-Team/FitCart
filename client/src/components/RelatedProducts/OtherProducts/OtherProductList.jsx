@@ -29,10 +29,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, globalProdInfo }) => {
             }
           }}
         >
-          <div className="related-prev">
-            {/* &#9668; */}
-            🡨
-          </div>
+          <div className="related-prev">🡨</div>
         </a>
       ) : (
         <></>
@@ -46,10 +43,7 @@ const OtherProductList = ({ relatedProds, relatedStyles, globalProdInfo }) => {
               setrelatedProductsIndex(prev => prev + 1);
           }}
         >
-          <div className="related-next">
-            {/* &#9658; */}
-            🡪
-          </div>
+          <div className="related-next">🡪</div>
         </a>
       ) : (
         <></>

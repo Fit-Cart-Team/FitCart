@@ -12,7 +12,6 @@ FitCart is a modern front-end redesign of a multi-feature product details page f
 - [Table of Contents](#table-of-contents)
 - [Description](#description)
 - [Getting Started](#getting-started)
-- [Running Tests](#running-tests)
 - [Team Members](#team-members)
 
 ## Description
@@ -105,26 +104,6 @@ In the same directory, run `npm build` to build the requisite files
 ### Start the Server <!-- omit in TOC -->
 
 Within the root directory, `npm start` and then navigate to our [webpage](http://localhost:51623)
-
-## Running Tests
-
-Our team incorporated Jest and Enzyme for Unit testing, and used Cypress for end-to-end testing.
-
-### Unit Tests <!-- omit in TOC -->
-
-Explain what these tests test and why
-
-```bash
-npm run test
-```
-
-### End-to-end Tests <!-- omit in TOC -->
-
-Explain what these tests test and why
-
-```
-cypress blahblah
-```
 
 ## Team Members
 

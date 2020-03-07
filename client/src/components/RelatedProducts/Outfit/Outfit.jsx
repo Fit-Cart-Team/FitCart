@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProdCard from '../OtherProducts/ProdCard';
 
-const Outfit = ({
-  globalProdInfo,
-  globalStyleInfo,
-  addProduct,
-  removeProduct,
-  outfit,
-  setoutfit
-}) => {
+const Outfit = ({ globalProdInfo, addProduct, removeProduct, outfit }) => {
   const [outfitIndex, setoutfitIndex] = useState(0);
 
   const outfitCards =

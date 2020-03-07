@@ -1,28 +1,24 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 // Image Gallery
 import ImageGallery from './Image Gallery/ImageGallery';
-// const ImageGallery = lazy(() => import('./Image Gallery/ImageGallery'));
 
 // Top-Level Details
 import Details from './Details/Details';
-// const Details = lazy(() => import('./Details/Details'));
 
 // Style Selector
 import StyleSelector from './Style Selector/StyleSelector';
-// const StyleSelector = lazy(() => import('./Style Selector/StyleSelector'));
 
 // Add To Cart
 import AddCart from './Add to Cart/AddCart';
-// const AddCart = lazy(() => import('./Add to Cart/AddCart'));
 
 // Description Information
 import ProductOverview from './Information/ProductOverview';
-// const ProductOverview = lazy(() => import('./Information/ProductOverview'));
+
+// Social Media Buttons
 import SocialMedia from './SocialMedia';
-// const SocialMedia = lazy(() => import('./SocialMedia'));
 
 const Overview = ({
   avg,
@@ -37,7 +33,7 @@ const Overview = ({
   const [productInfo, setProductInfo] = useState({});
   const [styleInfo, setStyleInfo] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({ 0: '' });
-  const [loading, setloading] = useState(false);
+  const [loading, setloading] = useState(true);
   if (url !== id) {
     seturl(id);
   }
@@ -64,12 +60,11 @@ const Overview = ({
         setSelectedStyle({ index: 0, name: styleResults[0].name });
         setGlobalStyleInfo(styleResults[0]);
       }
-      setloading(true);
+      setloading(false);
     });
   }, [url]);
 
-  return loading ? (
-    // <Suspense fallback={<div>LOADING</div>}>
+  return !loading ? (
     <div className="overview">
       <div className="overview-top">
         <ImageGallery
@@ -107,8 +102,7 @@ const Overview = ({
       <ProductOverview productInfo={productInfo} />
     </div>
   ) : (
-    // </Suspense>
-    <div></div>
+    <div>Loading...</div>
   );
 };
 

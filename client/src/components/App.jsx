@@ -1,15 +1,10 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Homepage from './Homepage';
 import Overview from './Overview/Overview';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
 import RatingsReviews from './RatingsReviews/RatingsReviews';
 import QuestionsAnswers from './QA/QuestionsAnswers';
-
-// const Overview = lazy(() => import('./Overview/Overview'));
-// const RelatedProducts = lazy(() => import('./RelatedProducts/RelatedProducts'));
-// const RatingsReviews = lazy(() => import('./RatingsReviews/RatingsReviews'));
-// const QuestionsAnswers = lazy(() => import('./QA/QuestionsAnswers'));
 
 import NavBar from './NavBar';
 import { Route, Switch } from 'react-router-dom';
@@ -60,7 +55,7 @@ const App = () => {
 
   const removeProduct = currProduct => {
     let currOutfit = JSON.parse(localStorage.getItem('outfit'));
-    currOutfit = currOutfit.filter((prod, index) => {
+    currOutfit = currOutfit.filter(prod => {
       return prod[0].id !== currProduct.id;
     });
     localStorage.setItem('outfit', JSON.stringify(currOutfit));
@@ -70,7 +65,6 @@ const App = () => {
   return (
     <React.Fragment>
       <NavBar setdark={setdark} dark={dark} cartAmount={outfit.length} />
-      {/* <Suspense fallback={<div>LOADING</div>}> */}
       <Switch>
         <Route exact path="/">
           <Homepage outfit={outfit} removeProduct={removeProduct} />
@@ -91,11 +85,9 @@ const App = () => {
           <RelatedProducts
             avg={avg}
             globalProdInfo={globalProdInfo}
-            globalStyleInfo={globalStyleInfo}
             addProduct={addProduct}
             removeProduct={removeProduct}
             outfit={outfit}
-            setoutfit={setoutfit}
           />
           <QuestionsAnswers />
           <RatingsReviews
@@ -107,7 +99,6 @@ const App = () => {
           />
         </Route>
       </Switch>
-      {/* </Suspense> */}
     </React.Fragment>
   );
 };
