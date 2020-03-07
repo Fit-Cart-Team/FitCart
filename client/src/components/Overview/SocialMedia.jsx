@@ -12,8 +12,6 @@ const SocialMedia = ({ url }) => {
         className="fab fa-twitter"
         href="https://twitter.com/intent/tweet?text=Check%20out%20this%20product!&hashtags=f,e,c"
       ></a>
-      {/* <a href="#" className="fab fa-twitter"></a> */}
-      {/* <a href="#" className="fab fa-pinterest"></a> */}
       <a
         className="fab fa-pinterest"
         href="https://www.pinterest.com/pin/create/button/"
