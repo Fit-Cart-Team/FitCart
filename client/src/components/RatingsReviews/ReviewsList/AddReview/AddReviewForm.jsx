@@ -53,7 +53,6 @@ const AddReviewForm = (props) => {
   }
 
   const handleRatingClick = (e) => {
-    //console.log(e.target.getAttribute("data-value"));
     setRating(parseInt(e.target.getAttribute("data-value")));
   }
 

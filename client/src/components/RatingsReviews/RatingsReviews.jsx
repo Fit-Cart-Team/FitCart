@@ -13,12 +13,10 @@ const RatingsReviews = (props) => {
   const [reviewsList, setReviewsList] = useState([]);
   const [meta, setMeta] = useState({});
   const [totalRatings, setTotalRatings] = useState(0);
-  const [ratingAvg, setRatingAvg] = useState(0);
   const [sortParameter, setSortParameter] = useState('relevant');
   const [filter, setFilter] = useState(false);
   const [filterBy, setFilterBy] = useState({ 5: false, 4: false, 3: false, 2: false, 1: false });
 
-  // Returns false if any of the filterBy's are true
   const allFiltersAreFalse = (filters) => {
     let allAreFalse = true;
     
@@ -31,14 +29,12 @@ const RatingsReviews = (props) => {
     return allAreFalse;
   }
   
-  // When a rating is clicked, toggle FilterBy
   const toggleFilterBy = (num) => {
     
     let tempFilters = {...filterBy, [num]: !filterBy[num]};
     
     setFilterBy({...filterBy, [num]: !filterBy[num]});
 
-    // If any of the filterBy's are true, set the filter to false
     if (allFiltersAreFalse(tempFilters)) {
       setFilter(false);
     } else {
@@ -46,7 +42,6 @@ const RatingsReviews = (props) => {
     }
   }
 
-  // Sets all the filters to false
   const clearFilters = () => {
     setFilter(false);
     setFilterBy({ 5: false, 4: false, 3: false, 2: false, 1: false });
@@ -84,7 +79,6 @@ const RatingsReviews = (props) => {
         setTotalRatings(totalQuantity);
         
         let ratingAvg = ratingSum / totalQuantity;
-        // setRatingAvg(ratingAvg);
 
         props.setAppAvg(ratingAvg);
 

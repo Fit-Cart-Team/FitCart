@@ -1,5 +1,4 @@
 import React from 'react';
-import StarRating from './StarRating';
 import ReviewSummary from './ReviewSummary';
 import ReviewBody from './ReviewBody';
 import Recommend from './Recommend';
@@ -8,16 +7,6 @@ import RatingHelpfulness from './RatingHelpfulness';
 import ReviewDate from './ReviewDate';
 import ReviewerName from './ReviewerName';
 import Stars from '../../../Stars';
-
-// review_id: 57340
-// rating: 5
-// summary: "good"
-// recommend: 1
-// response: null
-// body: "they good!"
-// date: "2019-12-04T00:00:00.000Z"
-// reviewer_name: "yaboi69"
-// helpfulness: 43
 
 const ReviewTile = (props) => {
   const { review } = props;

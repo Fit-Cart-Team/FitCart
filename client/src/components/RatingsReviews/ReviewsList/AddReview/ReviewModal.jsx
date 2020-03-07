@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import AddReviewForm from './AddReviewForm';
-import { Button, Header, Icon, Modal } from 'semantic-ui-react'
+import { Button, Header, Modal } from 'semantic-ui-react'
 
 const ReviewModal = (props) => {
   const { characteristics, productName, productID, updateList, updateMeta, updateTotalRatings, setAppAvg, setAppTotal, sortParameter } = props;

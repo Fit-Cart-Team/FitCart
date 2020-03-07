@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReviewTile from './ReviewTile/ReviewTile';
 import MoreReviews from './MoreReviews/MoreReviews';
-import AddReview from './AddReview/AddReview';
 import ReviewModal from './AddReview/ReviewModal';
 
 const ReviewsList = (props) => {

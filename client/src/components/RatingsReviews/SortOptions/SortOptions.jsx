@@ -1,5 +1,4 @@
 import React from 'react';
-import { Select } from 'semantic-ui-react';
 
 const SortOptions = (props) => {
 
