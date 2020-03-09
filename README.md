@@ -1,4 +1,4 @@
-# <h1 align="center">FitCart :tada:<h1> <!-- omit in TOC -->
+# <h1 align="center">FitCart<h1> <!-- omit in TOC -->
 
 ## Overview
 
