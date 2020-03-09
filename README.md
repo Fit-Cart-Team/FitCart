@@ -1,5 +1,4 @@
-# <h1 align="center">FitCart<h1> <!-- omit in TOC -->
-
+# FitCart <!-- omit in TOC -->
 ## Overview
 
 FitCart is a modern front-end redesign of a multi-feature product details page for an e-commerce web application, built with React.
