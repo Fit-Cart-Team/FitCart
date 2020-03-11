@@ -95,13 +95,19 @@ The Questions and Answers feature extends the user's ability to view and search 
 
 The search bar above the questions list provides the user with the capability to enter search terms and filter the list for matching results. After the user types 3 or more characters into the search bar the results begin to filter and continue to update as the user adds or removes characters. Any matching text within the questons is highlighted.
 
+![Questions & Answers](https://media.giphy.com/media/Y1RUV2nEYG2vPlvZuA/giphy.gif)
+
 By default, on page load up to 3 questions are displayed and sorted by helpfulness rating in descending order. If the user clicks "More Answered Questions", the list expands into an infinite scroll.
 
 Below each question, the respective answers are sorted by "Seller" and then by descending order of helpfulness. By default, up to 2 answers are displayed but the user can expand the list into an infinite scroll.
 
+![Questions & Answers](https://media.giphy.com/media/hu7BLinedrDb0ZQ6wq/giphy.gif)
+
 The user has the ability to report a question or answer or vote helpful. No questions or answers that have been reported will be rendered to the page.
 
 If an answer submitted includes images, thumbnail images per image submitted appear below the answer and above the username and other metadata. Upon the user clicking a thumbnail, a modal window expanding the image at full resolution appears over the page.
+
+![Questions & Answers](https://media.giphy.com/media/dUNajlcRDMP31Z46bZ/giphy.gif)
 
 Upon clicking the "Add Answer" or "Ask a Question" buttons, a modal window opens, overlaying the product page. These form's inputs are validated.
 
