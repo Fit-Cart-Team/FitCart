@@ -101,13 +101,13 @@ By default, on page load up to 3 questions are displayed and sorted by helpfulne
 
 Below each question, the respective answers are sorted by "Seller" and then by descending order of helpfulness. By default, up to 2 answers are displayed but the user can expand the list into an infinite scroll.
 
-<!-- ![Questions & Answers](https://media.giphy.com/media/hu7BLinedrDb0ZQ6wq/giphy.gif) -->
+![Questions & Answers](<README public/Infinite Scroll.gif>)
 
 The user has the ability to report a question or answer or vote helpful. No questions or answers that have been reported will be rendered to the page.
 
 If an answer submitted includes images, thumbnail images per image submitted appear below the answer and above the username and other metadata. Upon the user clicking a thumbnail, a modal window expanding the image at full resolution appears over the page.
 
-<!-- ![Questions & Answers](https://media.giphy.com/media/dUNajlcRDMP31Z46bZ/giphy.gif) -->
+![Questions & Answers](<README public/Modal.gif>)
 
 Upon clicking the "Add Answer" or "Ask a Question" buttons, a modal window opens, overlaying the product page. These form's inputs are validated.
 
