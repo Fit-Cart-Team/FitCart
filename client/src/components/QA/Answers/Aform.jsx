@@ -12,7 +12,7 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [photoUpload, setPhotoUpload] = useState();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (answerInput === '') {
       setAnswerInputError(true);
@@ -27,15 +27,15 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
 
   const postAnswer = () => {
     axios
-      .post(`http://3.134.102.30/qa/${questionId}/answers`, {
+      .post(`http://18.224.200.47/qa/${questionId}/answers`, {
         body: answerInput,
         name: nicknameInput,
         email: emailInput,
         photos: photoUpload,
       })
-      .then(res => refreshList())
-      .then(res => setModalIsOpen(false))
-      .catch(err => console.error(err));
+      .then((res) => refreshList())
+      .then((res) => setModalIsOpen(false))
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -43,7 +43,7 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
       <u
         onClick={() => setModalIsOpen(true)}
         style={{ cursor: 'pointer' }}
-        className='answer-question-modal'
+        className="answer-question-modal"
       >
         Add Answer
       </u>
@@ -52,22 +52,22 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
         open={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
       >
-        <Header size='large' color='grey'>
+        <Header size="large" color="grey">
           Submit an Answer
         </Header>
-        <Header as='h3'>
+        <Header as="h3">
           {productName} : {questionBody}
         </Header>
         <Modal.Content>
           <Form>
             <Form.TextArea
-              label='Your Answer'
-              name='answerInput'
-              type='text'
+              label="Your Answer"
+              name="answerInput"
+              type="text"
               required={true}
               value={answerInput}
-              maxLength='1000'
-              onChange={e => setAnswerInput(e.target.value)}
+              maxLength="1000"
+              onChange={(e) => setAnswerInput(e.target.value)}
               placeholder={`answer "${questionBody}" here`}
               error={
                 answerInputError
@@ -79,14 +79,14 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
               }
             />
             <Form.Input
-              type='text'
-              label='Nickname'
+              type="text"
+              label="Nickname"
               required={true}
-              maxLength='60'
-              placeholder='Example: jack543!'
-              name='nicknameInput'
+              maxLength="60"
+              placeholder="Example: jack543!"
+              name="nicknameInput"
               value={nicknameInput}
-              onChange={e => setNicknameInput(e.target.value)}
+              onChange={(e) => setNicknameInput(e.target.value)}
               error={
                 nicknameInputError
                   ? {
@@ -102,13 +102,13 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
             <br />
             <br />
             <Form.Input
-              label='Email'
-              type='email'
-              maxLength='60'
-              placeholder='Example: jack@email.com'
-              name='emailInput'
+              label="Email"
+              type="email"
+              maxLength="60"
+              placeholder="Example: jack@email.com"
+              name="emailInput"
               value={emailInput}
-              onChange={e => setEmailInput(e.target.value)}
+              onChange={(e) => setEmailInput(e.target.value)}
               required={true}
               error={
                 emailInputError
@@ -126,11 +126,11 @@ const Aform = ({ productName, questionId, questionBody, refreshList }) => {
         </Modal.Content>
         <Modal.Actions>
           <Button
-            type='submit'
-            color='grey'
-            content='Submit Answer'
-            onClick={e => handleSubmit(e)}
-            className='submit-answer'
+            type="submit"
+            color="grey"
+            content="Submit Answer"
+            onClick={(e) => handleSubmit(e)}
+            className="submit-answer"
           />
         </Modal.Actions>
       </Modal>

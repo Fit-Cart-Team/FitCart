@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 
-const RatingHelpfulness = props => {
+const RatingHelpfulness = (props) => {
   let review_id = props.reviewID;
 
   const [markable, setMarkable] = useState(true);
@@ -9,28 +9,42 @@ const RatingHelpfulness = props => {
   const [helpfulness, setHelpfulness] = useState(props.helpfulness);
 
   const markHelpful = () => {
-    Axios.put(`http://3.134.102.30/reviews/helpful/${review_id}`)
-      .then((data) => {
+    Axios.put(`http://18.224.200.47/reviews/helpful/${review_id}`).then(
+      (data) => {
         setMarkable(false);
         setHelpfulness(helpfulness + 1);
-      })
-  }
+      }
+    );
+  };
 
   const sendReport = () => {
-    Axios.put(`http://3.134.102.30/reviews/report/${review_id}`)
-      .then((data) => {
+    Axios.put(`http://18.224.200.47/reviews/report/${review_id}`).then(
+      (data) => {
         setReportable(false);
-      })
-  }
+      }
+    );
+  };
 
-  const style = {"textDecoration": "underline", "cursor": "pointer"};
+  const style = { textDecoration: 'underline', cursor: 'pointer' };
 
   return (
-    <div className="review-tile-helpfulness" >
+    <div className="review-tile-helpfulness">
       <span>Was this review helpful? </span>
-      { markable ? <span onClick={markHelpful} style={style} >Yes</span> : <span style={style} >Yes</span> }
-      <span>({helpfulness}) | </span>   
-      { reportable ? <span onClick={sendReport} style={style} >Report</span> : <span style={style} >Reported</span> }
+      {markable ? (
+        <span onClick={markHelpful} style={style}>
+          Yes
+        </span>
+      ) : (
+        <span style={style}>Yes</span>
+      )}
+      <span>({helpfulness}) | </span>
+      {reportable ? (
+        <span onClick={sendReport} style={style}>
+          Report
+        </span>
+      ) : (
+        <span style={style}>Reported</span>
+      )}
     </div>
   );
 };

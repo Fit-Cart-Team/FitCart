@@ -20,20 +20,20 @@ const QuestionsAnswers = () => {
 
   const getQList = () => {
     axios
-      .get(`http://3.134.102.30/qa/${id}?page=${1}&count=${100}`)
-      .then(res => {
+      .get(`http://18.224.200.47/qa/${id}?page=${1}&count=${100}`)
+      .then((res) => {
         setQuestionList(res.data.results);
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   };
 
   const getProductName = () => {
     axios
-      .get(`http://3.134.102.30/products/${id}`)
-      .then(res => {
+      .get(`http://18.224.200.47/products/${id}`)
+      .then((res) => {
         setProductName(res.data.name);
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   };
 
   const handleSearch = (filteredSearchList, searchTerm) => {
@@ -47,13 +47,13 @@ const QuestionsAnswers = () => {
   }, [url]);
 
   return (
-    <div className='questions-answers'>
+    <div className="questions-answers">
       <br />
-      <p className='questions-answers-title'>Questions and Answers</p>
+      <p className="questions-answers-title">Questions and Answers</p>
       <SearchQuestions
         qList={questionList}
         onSearch={handleSearch}
-        className='keyword-search-questions'
+        className="keyword-search-questions"
       />
       <br />
       <span>
@@ -61,7 +61,7 @@ const QuestionsAnswers = () => {
           productName={productName}
           list={searchList.length > 0 ? searchList : questionList}
           searchTerm={searchTerm}
-          className='question-list'
+          className="question-list"
         />
         <Qform productName={productName} id={url} refreshList={getQList} />
       </span>
