@@ -4,26 +4,28 @@ import AList from './Answers/Alist';
 import Helpful from './Helpful';
 import Aform from './Answers/Aform';
 
-const Question = ({ productName, q, searchTerm }) => {
+const Question = ({ productName, q, searchTerm = '' }) => {
   const [answerList, setAnswerList] = useState([]);
   const [highlight, setHighlight] = useState(false);
-  // const [highlightedKeyword, setHighlightedKeyword] = useState();
-  // const [body, setBody] = useState([]);
+  const [highlightedKeyword, setHighlightedKeyword] = useState('');
+  const [body, setBody] = useState([]);
 
   // if (highlightedKeyword !== searchTerm) {
   //   setHighlightedKeyword(searchTerm);
   // }
 
-  // useEffect(() => {
-  //   // let splitBodyOnSearchTerm = q.question_body.split(highlightedKeyword);
-  //   setBody(q.question_body.split(highlightedKeyword));
-  //   // let toHighlight = <span className='highlight'>{highlightedKeyword}</span>;
-  //   // setBody(
-  //   //   splitBodyOnSearchTerm[0] + { toHighlight } + splitBodyOnSearchTerm[1]
-  //   // );
-
-  //   setHighlight(true);
-  // }, [highlightedKeyword]);
+  useEffect(() => {
+    if (searchTerm.length > 2) {
+      setHighlightedKeyword(searchTerm);
+      let splitBodyOnSearchTerm = q.question_body
+        .toLowerCase()
+        .split(searchTerm.toLowerCase());
+      setBody(splitBodyOnSearchTerm);
+    } else {
+      setBody([q.question_body, '']);
+      setHighlightedKeyword('');
+    }
+  }, [searchTerm]);
 
   const getAnswers = () => {
     axios
@@ -62,8 +64,13 @@ const Question = ({ productName, q, searchTerm }) => {
   return (
     <div>
       <p>
-        <span className="question-tile">
-          <b className="question-body">Q: {q.question_body} </b>
+        <span className='question-tile'>
+          {
+            <b className='question-body'>
+              Q: {body[0]} <mark>{highlightedKeyword}</mark>
+              {body[1]}
+            </b>
+          }
         </span>
         <span className="helpful-add-answer">
           <span className="helpful-question">

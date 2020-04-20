@@ -66,9 +66,8 @@ const AddReviewForm = (props) => {
   };
 
   const handleRatingClick = (e) => {
-    //console.log(e.target.getAttribute("data-value"));
-    setRating(parseInt(e.target.getAttribute('data-value')));
-  };
+    setRating(parseInt(e.target.getAttribute("data-value")));
+  }
 
   const isRatingValid = () => {
     if (rating < 1) {
