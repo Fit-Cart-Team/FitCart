@@ -19,7 +19,7 @@ const Details = ({ productInfo, styleInfo, selectedStyle, avg, total }) => {
   return (
     <>
       <div className="star-container">
-        <Stars avg={avg} />
+        <Stars avg={avg || 0} />
         <a
           className="reviews-link"
           href="#ratings-reviews"
