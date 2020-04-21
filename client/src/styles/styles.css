@@ -344,6 +344,7 @@ li {
 .sale-price {
   margin-right: 10px;
   color: red;
+  margin-bottom: 0;
 }
 
 .style-label {
