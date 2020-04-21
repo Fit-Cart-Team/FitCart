@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import Axios from 'axios';
 import { Button } from 'semantic-ui-react';
 
-const validate = values => {
+const validate = (values) => {
   const errors = {};
   if (values.summary.length > 60) {
     errors.summary = '*Must be 60 characters or less';
@@ -33,7 +33,17 @@ const validate = values => {
 };
 
 const AddReviewForm = (props) => {
-  const { chars, productID, updateList, updateMeta, updateTotalRatings, setAppAvg, setAppTotal, sortParameter, closeModal } = props;
+  const {
+    chars,
+    productID,
+    updateList,
+    updateMeta,
+    updateTotalRatings,
+    setAppAvg,
+    setAppTotal,
+    sortParameter,
+    closeModal,
+  } = props;
   let charNames = Object.keys(chars);
 
   const [recommend, setRecommend] = useState(false);
@@ -46,11 +56,14 @@ const AddReviewForm = (props) => {
     } else {
       setRecommend(false);
     }
-  }
+  };
 
   const handleCharClick = (e) => {
-    setCharacteristics({...characteristics, [e.target.name]: parseInt(e.target.value)});
-  }
+    setCharacteristics({
+      ...characteristics,
+      [e.target.name]: parseInt(e.target.value),
+    });
+  };
 
   const handleRatingClick = (e) => {
     setRating(parseInt(e.target.getAttribute("data-value")));
@@ -62,7 +75,7 @@ const AddReviewForm = (props) => {
     }
 
     return true;
-  }
+  };
 
   const charButtonLabel = (name, rating) => {
     let messageIndex = rating - 1;
@@ -74,7 +87,7 @@ const AddReviewForm = (props) => {
         '1/2 a size too small',
         'Perfect',
         '1/2 a size too big',
-        'A size too wide'
+        'A size too wide',
       ];
 
       return message[messageIndex];
@@ -84,7 +97,7 @@ const AddReviewForm = (props) => {
         'Slightly narrow',
         'Perfect',
         'Slightly wide',
-        'Too wide'
+        'Too wide',
       ];
 
       return message[messageIndex];
@@ -94,7 +107,7 @@ const AddReviewForm = (props) => {
         'Slightly uncomfortable',
         'Ok',
         'Comfortable',
-        'Perfect'
+        'Perfect',
       ];
 
       return message[messageIndex];
@@ -104,7 +117,7 @@ const AddReviewForm = (props) => {
         'Below average',
         'What I expected',
         'Pretty great',
-        'Perfect'
+        'Perfect',
       ];
 
       return message[messageIndex];
@@ -114,7 +127,7 @@ const AddReviewForm = (props) => {
         'Runs slightly short',
         'Perfect',
         'Runs slightly long',
-        'Runs long'
+        'Runs long',
       ];
 
       return message[messageIndex];
@@ -124,66 +137,70 @@ const AddReviewForm = (props) => {
         'Runs slightly short',
         'Perfect',
         'Runs slightly loose',
-        'Runs loose'
+        'Runs loose',
       ];
 
       return message[messageIndex];
     }
-  }
+  };
 
   const formik = useFormik({
     initialValues: {
       summary: '',
       body: '',
       name: '',
-      email: ''
+      email: '',
     },
     validate,
-    onSubmit: formikValues => {
+    onSubmit: (formikValues) => {
       let stateInputs = {
         recommend: recommend,
         characteristics: characteristics,
         rating: rating,
-        photos: []
-      }
+        photos: [],
+      };
 
       if (!isRatingValid()) {
         return alert('Please give an overall rating');
       }
 
-      Axios.post(`http://3.134.102.30/reviews/${productID}`, Object.assign(formikValues, stateInputs))
-        .then((response) => {
-          Axios.get(`http://3.134.102.30/reviews/${productID}/meta`)
-            .then(( {data} ) => {
-              updateMeta(data);
-              
-              let totalQuantity = 0;
-              let ratingSum = 0;
+      Axios.post(
+        `http://18.224.200.47/reviews/${productID}`,
+        Object.assign(formikValues, stateInputs)
+      ).then((response) => {
+        Axios.get(`http://18.224.200.47/reviews/${productID}/meta`).then(
+          ({ data }) => {
+            updateMeta(data);
 
-              for (let rating in data.ratings) {
-                totalQuantity += data.ratings[rating];
-                ratingSum += rating * data.ratings[rating];
-              }
+            let totalQuantity = 0;
+            let ratingSum = 0;
 
-              updateTotalRatings(totalQuantity);
-              
-              let ratingAvg = ratingSum / totalQuantity;
-              setAppAvg(ratingAvg);
+            for (let rating in data.ratings) {
+              totalQuantity += data.ratings[rating];
+              ratingSum += rating * data.ratings[rating];
+            }
 
-              Axios.get(`http://3.134.102.30/reviews/${productID}/list?page=1&count=${totalQuantity}&sort=${sortParameter}`)
-                .then(( {data} ) => {
-                  setAppTotal(data.results.length)
-                  updateList(data.results);
-                  closeModal();
-                });
+            updateTotalRatings(totalQuantity);
+
+            let ratingAvg = ratingSum / totalQuantity;
+            setAppAvg(ratingAvg);
+
+            Axios.get(
+              `http://18.224.200.47/reviews/${productID}/list?page=1&count=${totalQuantity}&sort=${sortParameter}`
+            ).then(({ data }) => {
+              setAppTotal(data.results.length);
+              updateList(data.results);
+              closeModal();
             });
+          }
+        );
       });
     },
   });
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div className="form-input-container" >
+      <div className="form-input-container">
         <h3 htmlFor="name">What is your nickname*</h3>
         <textarea
           id="name"
@@ -195,9 +212,11 @@ const AddReviewForm = (props) => {
           onBlur={formik.handleBlur}
           value={formik.values.name}
         />
-        <div className="form-input-note" >For privacy reasons, do not use your full name or email address</div>
+        <div className="form-input-note">
+          For privacy reasons, do not use your full name or email address
+        </div>
         {formik.touched.name && formik.errors.name ? (
-          <div className="form-input-error" >{formik.errors.name}</div>
+          <div className="form-input-error">{formik.errors.name}</div>
         ) : null}
       </div>
       <div className="form-input-container">
@@ -212,22 +231,59 @@ const AddReviewForm = (props) => {
           onBlur={formik.handleBlur}
           value={formik.values.email}
         />
-        <div className="form-input-note">For authentication reasons, you will not be emailed</div>
+        <div className="form-input-note">
+          For authentication reasons, you will not be emailed
+        </div>
         {formik.touched.email && formik.errors.email ? (
-          <div className="form-input-error" >{formik.errors.email}</div>
+          <div className="form-input-error">{formik.errors.email}</div>
         ) : null}
       </div>
       <div className="form-input-container">
         <h3 htmlFor="rating">Overall Rating*</h3>
-        <div className="overall-star-ratings-input-container" >
-          <div id="rating-1" name="rating" data-value="1" className="star" style={{ '--rating': ((rating >= 1) ? 1 : 0) }} onClick={handleRatingClick} ></div>
-          <div id="rating-2" name="rating" data-value="2" className="star" style={{ '--rating': ((rating >= 2) ? 1 : 0) }} onClick={handleRatingClick} ></div>
-          <div id="rating-3" name="rating" data-value="3" className="star" style={{ '--rating': ((rating >= 3) ? 1 : 0) }} onClick={handleRatingClick} ></div>
-          <div id="rating-4" name="rating" data-value="4" className="star" style={{ '--rating': ((rating >= 4) ? 1 : 0) }} onClick={handleRatingClick} ></div>
-          <div id="rating-5" name="rating" data-value="5" className="star" style={{ '--rating': ((rating >= 5) ? 1 : 0) }} onClick={handleRatingClick} ></div>
+        <div className="overall-star-ratings-input-container">
+          <div
+            id="rating-1"
+            name="rating"
+            data-value="1"
+            className="star"
+            style={{ '--rating': rating >= 1 ? 1 : 0 }}
+            onClick={handleRatingClick}
+          ></div>
+          <div
+            id="rating-2"
+            name="rating"
+            data-value="2"
+            className="star"
+            style={{ '--rating': rating >= 2 ? 1 : 0 }}
+            onClick={handleRatingClick}
+          ></div>
+          <div
+            id="rating-3"
+            name="rating"
+            data-value="3"
+            className="star"
+            style={{ '--rating': rating >= 3 ? 1 : 0 }}
+            onClick={handleRatingClick}
+          ></div>
+          <div
+            id="rating-4"
+            name="rating"
+            data-value="4"
+            className="star"
+            style={{ '--rating': rating >= 4 ? 1 : 0 }}
+            onClick={handleRatingClick}
+          ></div>
+          <div
+            id="rating-5"
+            name="rating"
+            data-value="5"
+            className="star"
+            style={{ '--rating': rating >= 5 ? 1 : 0 }}
+            onClick={handleRatingClick}
+          ></div>
         </div>
         {!isRatingValid() ? (
-          <div className="form-input-error" >*Please select a rating</div>
+          <div className="form-input-error">*Please select a rating</div>
         ) : null}
       </div>
       <div className="form-input-container">
@@ -243,7 +299,7 @@ const AddReviewForm = (props) => {
           value={formik.values.summary}
         />
         {formik.touched.summary && formik.errors.summary ? (
-          <div className="form-input-error" >{formik.errors.summary}</div>
+          <div className="form-input-error">{formik.errors.summary}</div>
         ) : null}
       </div>
       <div className="form-input-container">
@@ -258,14 +314,20 @@ const AddReviewForm = (props) => {
           onBlur={formik.handleBlur}
           value={formik.values.body}
         />
-        <div className="form-input-note">{ (formik.values.body.length < 50) ? (`Minimum required characters left: ${50 - formik.values.body.length}`) : ('Minimum reached') }</div>
+        <div className="form-input-note">
+          {formik.values.body.length < 50
+            ? `Minimum required characters left: ${
+                50 - formik.values.body.length
+              }`
+            : 'Minimum reached'}
+        </div>
         {formik.touched.body && formik.errors.body ? (
-          <div className="form-input-error" >{formik.errors.body}</div>
+          <div className="form-input-error">{formik.errors.body}</div>
         ) : null}
       </div>
       <div className="form-input-container">
         <h3 htmlFor="recommend">Do you recommend this product?*</h3>
-        <div className="recommend-buttons-container" >
+        <div className="recommend-buttons-container">
           <input
             id="recommend-yes"
             name="recommend"
@@ -273,7 +335,8 @@ const AddReviewForm = (props) => {
             value="true"
             onClick={handleRecommendClick}
             required
-          />Yes
+          />
+          Yes
           <input
             id="recommend-no"
             name="recommend"
@@ -281,39 +344,42 @@ const AddReviewForm = (props) => {
             value="false"
             onClick={handleRecommendClick}
             required
-          />No
+          />
+          No
         </div>
       </div>
       <div className="form-input-container">
         <h3>Characteristics*</h3>
-        <div className="characteristic-fields-container" >
+        <div className="characteristic-fields-container">
           {charNames.map((name, index) => {
             let ratings = [1, 2, 3, 4, 5];
 
             return (
-              <div key={`${index}`} className="characteristic-field-container" >
-                <h4 htmlFor={`${chars[name].id}`} >{name}</h4>
-                <div className="characteristic-ratings-buttons-container" >
+              <div key={`${index}`} className="characteristic-field-container">
+                <h4 htmlFor={`${chars[name].id}`}>{name}</h4>
+                <div className="characteristic-ratings-buttons-container">
                   {ratings.map((rating, index) => {
-                    return(
-                      <span key={`${index}`} className="characteristic-ratings-button" >
+                    return (
+                      <span
+                        key={`${index}`}
+                        className="characteristic-ratings-button"
+                      >
                         <input
-                        id={`${name}-${rating}`}
-                        name={`${chars[name].id}`}
-                        type="radio"
-                        value={`${rating}`}
-                        onClick={handleCharClick}
-                        required
-                        />{charButtonLabel(name, rating)}
+                          id={`${name}-${rating}`}
+                          name={`${chars[name].id}`}
+                          type="radio"
+                          value={`${rating}`}
+                          onClick={handleCharClick}
+                          required
+                        />
+                        {charButtonLabel(name, rating)}
                       </span>
                     );
                   })}
                 </div>
-                
               </div>
             );
           })}
-
         </div>
       </div>
       <Button type="submit">Submit</Button>

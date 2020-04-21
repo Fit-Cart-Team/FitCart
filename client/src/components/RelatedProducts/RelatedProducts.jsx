@@ -9,7 +9,7 @@ const RelatedProducts = ({
   globalProdInfo,
   addProduct,
   removeProduct,
-  outfit
+  outfit,
 }) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
@@ -21,48 +21,52 @@ const RelatedProducts = ({
   }
 
   useEffect(() => {
-    axios.get(`http://3.134.102.30/products/${url}/related`).then(results => {
-      let noDuplicateProducts = new Set(
-        results.data.filter(prod => {
-          return prod !== Number(id);
-        })
-      );
-      // Get all the product information for each related product
-      const prodPromises = [];
-      noDuplicateProducts.forEach(product => {
-        prodPromises.push(axios.get(`http://3.134.102.30/products/${product}`));
-      });
-
-      // Get all the style information for each related product
-      const stylePromises = [];
-      noDuplicateProducts.forEach(product => {
-        stylePromises.push(
-          axios.get(`http://3.134.102.30/products/${product}/styles`)
+    axios
+      .get(`http://18.224.200.47/products/${url}/related`)
+      .then((results) => {
+        let noDuplicateProducts = new Set(
+          results.data.filter((prod) => {
+            return prod !== Number(id);
+          })
         );
-      });
+        // Get all the product information for each related product
+        const prodPromises = [];
+        noDuplicateProducts.forEach((product) => {
+          prodPromises.push(
+            axios.get(`http://18.224.200.47/products/${product}`)
+          );
+        });
 
-      Promise.all(prodPromises).then(products => {
-        // Set state with each product's information
-        const prodData = products.map(prod => prod.data);
-        setrelatedProds(prodData);
-        Promise.all(stylePromises).then(styles => {
-          // Get default style for each product and set state
-          const tempStyleData = styles.map(style => style.data);
+        // Get all the style information for each related product
+        const stylePromises = [];
+        noDuplicateProducts.forEach((product) => {
+          stylePromises.push(
+            axios.get(`http://18.224.200.47/products/${product}/styles`)
+          );
+        });
 
-          const styleData = tempStyleData.map(style => {
-            let styleResults = style.results;
-            let defaultStyle = styleResults[0];
-            styleResults.forEach(style => {
-              if (style['default?'] === 1) {
-                defaultStyle = style;
-              }
+        Promise.all(prodPromises).then((products) => {
+          // Set state with each product's information
+          const prodData = products.map((prod) => prod.data);
+          setrelatedProds(prodData);
+          Promise.all(stylePromises).then((styles) => {
+            // Get default style for each product and set state
+            const tempStyleData = styles.map((style) => style.data);
+
+            const styleData = tempStyleData.map((style) => {
+              let styleResults = style.results;
+              let defaultStyle = styleResults[0];
+              styleResults.forEach((style) => {
+                if (style['default?'] === 1) {
+                  defaultStyle = style;
+                }
+              });
+              return defaultStyle;
             });
-            return defaultStyle;
+            setrelatedStyles(styleData);
           });
-          setrelatedStyles(styleData);
         });
       });
-    });
   }, [url]);
 
   return globalProdInfo ? (
@@ -73,7 +77,7 @@ const RelatedProducts = ({
           fontSize: '1.5vw',
           fontWeight: 'bold',
           fontStyle: 'italic',
-          marginLeft: '6%'
+          marginLeft: '6%',
         }}
       >
         RELATED PRODUCTS
@@ -89,7 +93,7 @@ const RelatedProducts = ({
           fontSize: '1.5vw',
           fontWeight: 'bold',
           fontStyle: 'italic',
-          marginLeft: '6%'
+          marginLeft: '6%',
         }}
       >
         MY OUTFIT

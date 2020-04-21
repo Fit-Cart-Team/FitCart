@@ -26,7 +26,7 @@ const Overview = ({
   setGlobalProdInfo,
   setGlobalStyleInfo,
   addProduct,
-  removeProduct
+  removeProduct,
 }) => {
   const { id } = useParams();
   const [url, seturl] = useState(id);
@@ -38,12 +38,12 @@ const Overview = ({
     seturl(id);
   }
   useEffect(() => {
-    const productPromise = axios.get(`http://3.134.102.30/products/${url}`);
+    const productPromise = axios.get(`http://18.224.200.47/products/${url}`);
     const stylePromise = axios.get(
-      `http://3.134.102.30/products/${url}/styles`
+      `http://18.224.200.47/products/${url}/styles`
     );
 
-    Promise.all([productPromise, stylePromise]).then(results => {
+    Promise.all([productPromise, stylePromise]).then((results) => {
       setProductInfo(results[0].data);
       setGlobalProdInfo(results[0].data);
       let styleResults = results[1].data.results;

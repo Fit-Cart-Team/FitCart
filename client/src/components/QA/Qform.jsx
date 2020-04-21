@@ -11,7 +11,7 @@ const Qform = ({ productName, id, refreshList }) => {
   const [emailInputError, setEmailInputError] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (questionInput === '') {
       setQuestionInputError(true);
@@ -26,20 +26,20 @@ const Qform = ({ productName, id, refreshList }) => {
 
   const postQuestion = () => {
     axios
-      .post(`http://3.134.102.30/qa/${id}`, {
+      .post(`http://18.224.200.47/qa/${id}`, {
         body: questionInput,
         name: nicknameInput,
         email: emailInput,
       })
-      .then(res => refreshList())
-      .then(res => setModalIsOpen(false))
-      .catch(err => console.error(err));
+      .then((res) => refreshList())
+      .then((res) => setModalIsOpen(false))
+      .catch((err) => console.error(err));
   };
 
   return (
     <>
       <span>
-        <Button onClick={() => setModalIsOpen(true)} className='ask-question'>
+        <Button onClick={() => setModalIsOpen(true)} className="ask-question">
           + Ask a Question{' '}
         </Button>
       </span>
@@ -48,19 +48,19 @@ const Qform = ({ productName, id, refreshList }) => {
         open={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
       >
-        <Header size='large' color='grey'>
+        <Header size="large" color="grey">
           Ask a Question
         </Header>
         <Modal.Content>
           <Form>
             <Form.TextArea
-              label='Your Question'
-              name='questionInput'
-              type='text'
+              label="Your Question"
+              name="questionInput"
+              type="text"
               required={true}
               value={questionInput}
-              maxLength='1000'
-              onChange={e => setQuestionInput(e.target.value)}
+              maxLength="1000"
+              onChange={(e) => setQuestionInput(e.target.value)}
               placeholder={`about the ${productName}...`}
               error={
                 questionInputError
@@ -72,14 +72,14 @@ const Qform = ({ productName, id, refreshList }) => {
               }
             />
             <Form.Input
-              type='text'
-              label='Nickname'
+              type="text"
+              label="Nickname"
               required={true}
-              maxLength='60'
-              placeholder='Example: jackson11!'
-              name='nicknameInput'
+              maxLength="60"
+              placeholder="Example: jackson11!"
+              name="nicknameInput"
               value={nicknameInput}
-              onChange={e => setNicknameInput(e.target.value)}
+              onChange={(e) => setNicknameInput(e.target.value)}
               error={
                 nicknameInputError
                   ? {
@@ -95,13 +95,13 @@ const Qform = ({ productName, id, refreshList }) => {
             <br />
             <br />
             <Form.Input
-              label='Email'
-              type='email'
-              maxLength='60'
-              placeholder='Example: jackson11@gmail.com'
-              name='emailInput'
+              label="Email"
+              type="email"
+              maxLength="60"
+              placeholder="Example: jackson11@gmail.com"
+              name="emailInput"
               value={emailInput}
-              onChange={e => setEmailInput(e.target.value)}
+              onChange={(e) => setEmailInput(e.target.value)}
               required={true}
               error={
                 emailInputError
@@ -117,11 +117,11 @@ const Qform = ({ productName, id, refreshList }) => {
         </Modal.Content>
         <Modal.Actions>
           <Button
-            type='submit'
-            color='grey'
-            content='Submit Question'
-            onClick={e => handleSubmit(e)}
-            className='submit-question'
+            type="submit"
+            color="grey"
+            content="Submit Question"
+            onClick={(e) => handleSubmit(e)}
+            className="submit-question"
           />
         </Modal.Actions>
       </Modal>

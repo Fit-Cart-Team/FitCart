@@ -6,11 +6,11 @@ const Report = ({ answer_id }) => {
 
   const handleReportClick = () => {
     axios
-      .put(`http://3.134.102.30/qa/answer/${answer_id}/report`)
-      .then(res => {
+      .put(`http://18.224.200.47/qa/answer/${answer_id}/report`)
+      .then((res) => {
         return setReportButtonOn(false);
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   };
 
   if (reportButtonOn) {
@@ -18,7 +18,7 @@ const Report = ({ answer_id }) => {
       <u
         onClick={handleReportClick}
         style={{ cursor: 'pointer' }}
-        className='report-answer'
+        className="report-answer"
       >
         Report
       </u>

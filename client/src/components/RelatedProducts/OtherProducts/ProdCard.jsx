@@ -15,7 +15,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
   const [showThumbnails, setshowThumbnails] = useState(false);
   useEffect(() => {
     axios
-      .get(`http://3.134.102.30/reviews/${product.id}/meta`)
+      .get(`http://18.224.200.47/reviews/${product.id}/meta`)
       .then(({ data }) => {
         let totalQuantity = 0;
         let ratingSum = 0;
@@ -68,16 +68,16 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
     let prodFeatures = {};
     let cardFeatures = {};
     globalProdInfo.features.forEach(
-      feature => (prodFeatures[feature.feature] = feature.value)
+      (feature) => (prodFeatures[feature.feature] = feature.value)
     );
 
     product.features.forEach(
-      feature => (cardFeatures[feature.feature] = feature.value)
+      (feature) => (cardFeatures[feature.feature] = feature.value)
     );
     const featureSet = new Set(
       Object.keys(prodFeatures).concat(Object.keys(cardFeatures))
     );
-    comparisonChart = [...featureSet].map(feature => {
+    comparisonChart = [...featureSet].map((feature) => {
       return (
         <Grid.Row key={feature}>
           <Grid.Column textAlign="right">
@@ -105,7 +105,7 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
     <>
       <div
         className="product-card"
-        onClick={e => {
+        onClick={(e) => {
           if (
             !e.target.className.includes('card-icon') &&
             !e.target.className.includes('arrow') &&
@@ -149,9 +149,9 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
             className="card-prev-arrow"
             onClick={() => {
               if (styleCardIndex < thumbnailIndex + 1) {
-                setthumbnailIndex(prev => prev - 1);
+                setthumbnailIndex((prev) => prev - 1);
               }
-              setstyleCardIndex(prev => {
+              setstyleCardIndex((prev) => {
                 if (prev >= 1) {
                   return prev - 1;
                 } else {
@@ -175,9 +175,9 @@ const ProdCard = ({ product, style, globalProdInfo, removeProduct, type }) => {
             className="card-next-arrow"
             onClick={() => {
               if (styleCardIndex >= 3 - thumbnailIndex) {
-                setthumbnailIndex(prev => prev + 1);
+                setthumbnailIndex((prev) => prev + 1);
               }
-              setstyleCardIndex(prev => {
+              setstyleCardIndex((prev) => {
                 if (prev < style.photos.length - 1) {
                   return prev + 1;
                 } else {
